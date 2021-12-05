@@ -2,55 +2,58 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Whats Cookin</title>
+    <title>What's Cookin' Good Lookin'</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
       <h1>What's Cookin' Good Lookin'</h1>
       <nav>
-        <button><img src="images/recipe-book.png"> Recipes</button>
-        <button><img src="images/like.png"> Favorites</button>
-        <button><img src="images/baking.png"> To Cook</button>
+        <button class="menu-button"><img class="icon" src="images/recipe-book.png"> Recipes</button>
+        <button class="menu-button"><img class="icon" src="images/like.png"> Favorites</button>
+        <button class="menu-button"><img class="icon" src="images/baking.png"> To Cook</button>
       </nav>
     </header>
     <main>
-      <section>
+      <section class="search-bar">
         <h2>Explore a Recipe</h2>
         <input type="search" placeholder="Search Recipe">
-        <button>Search</button>
+        <button class="search-button">Let's Cook!</button>
       </section>
-      <section>
-        <article>
-          <div>
-            <img src="images/like.png">
-            <img src="images/baking.png">
+      <section class="recipe-cards">
+        <article class="card">
+          <div class="card-icons">
+            <img class="icon" src="images/like.png">
+            <img class="icon"src="images/baking.png">
           </div>
           <h3>Recipe Name</h3>
-          <img src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
+          <img class="thumbnail-image" src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
         </article>
-        <article>
-          <div>
-            <img src="images/like.png">
-            <img src="images/baking.png">
+        <article class="card">
+          <div class="card-icons">
+            <img class="icon" src="images/like.png">
+            <img class="icon" src="images/baking.png">
           </div>
           <h3>Recipe Name</h3>
-          <img src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
+          <img class="thumbnail-image" src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
         </article>
-        <article>
-          <div>
-            <img src="images/like.png">
-            <img src="images/baking.png">
+        <article class="card">
+          <div class="card-icons">
+            <img class="icon" src="images/like.png">
+            <img class="icon" src="images/baking.png">
           </div>
           <h3>Recipe Name</h3>
-          <img src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
+          <img class="thumbnail-image" src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
         </article>
-        <article>
-          <div>
-            <img src="images/like.png">
-            <img src="images/baking.png">
+        <article class="card">
+          <div class="card-icons">
+            <img class="icon" src="images/like.png">
+            <img class="icon" src="images/baking.png">
           </div>
           <h3>Recipe Name</h3>
-          <img src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
+          <img class="thumbnail-image" src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
         </article>
       </section>
     </main>
