@@ -43,18 +43,49 @@ table {
 	border-spacing: 0;
 }
 
+* {
+
+}
+
 body {
 	background-image: url('images/background-image.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 100%;
+	height: 100vh;
 	width: 100vw;
 }
 
 header {
 	background-color: rgba(242,242,242,.25);
+	display: flex;
+  justify-content: space-between;
 }
 
 main {
 	background-color: rgba(242,242,242,.25);
+	height: 100%;
+}
+
+.search-bar {
+	display: flex;
+  justify-content: center;
+}
+
+.recipe-cards {
+	display: grid;
+	gap: 2em;
+  grid-template-columns: 25% 25% 25% 25%;
+  justify-content: center;
+	padding: 10% 10%;
+}
+
+.card {
+	border-radius: 0.5em;
+  font-size: 1em;
+  background-color: rgba(242, 242, 242, 0.7);
+  box-shadow: 1px 1px 7px black;
+}
+
+.thumbnail-image {
+	width: 100%;
 }
