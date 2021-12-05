@@ -52,7 +52,6 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 100vh;
-	width: 100vw;
 }
 
 header {
@@ -60,16 +59,19 @@ header {
 	display: flex;
   justify-content: space-between;
 	padding: 2%;
+	background-color: rgba(166, 105, 83, .85);
 }
 
 h1 {
 	font-family: 'Poppins', sans-serif;
 	font-size: 2em;
+	color: #F2F2F2;
 }
 
 h2 {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.5em;
+	color: #F2F2F2
 }
 
 main {
@@ -106,4 +108,11 @@ main {
 
 input {
 	margin: 1% 0%;
+}
+
+.menu-button {
+	background-color: transparent;
+	color: #f2f2f2;
+  border: none;
+  font-size: 1.5em;
 }
