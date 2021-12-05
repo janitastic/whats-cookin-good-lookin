@@ -38,6 +38,7 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -59,7 +60,7 @@ header {
 	display: flex;
   justify-content: space-between;
 	padding: 2%;
-	background-color: rgba(166, 105, 83, .85);
+	background-color: rgba(10, 30, 35, .90);
 }
 
 h1 {
@@ -70,12 +71,20 @@ h1 {
 
 h2 {
 	font-family: 'Poppins', sans-serif;
-	font-size: 1.5em;
-	color: #F2F2F2
+	font-size: 2em;
+	color: #F2F2F2;
+	text-shadow: 3px 3px 8px black;
+}
+
+h3 {
+	font-size: 1.2em;
+	color: #F2F2F2;
+	padding: 5%;
+	text-align: center;
 }
 
 main {
-	background-color: rgba(242,242,242,.25);
+	background-color: rgba(242,242,242,.20);
 	height: 100%;
 }
 
@@ -84,7 +93,8 @@ main {
 	flex-direction: column;
 	flex-wrap: wrap;
 	align-content: center;
-	padding: 5%;
+	align-items: center;
+	padding: 5% 5% 2% 5%;
 }
 
 .recipe-cards {
@@ -98,16 +108,28 @@ main {
 .card {
 	border-radius: 0.5em;
   font-size: 1em;
-  background-color: rgba(242, 242, 242, 0.7);
+  background-color: rgba(10, 30, 35, .90);
   box-shadow: 1px 1px 7px black;
+	padding: 5%;
+}
+
+.card:hover {
+	transform: scale(1.1);
 }
 
 .thumbnail-image {
 	width: 100%;
+	border-radius: 0.2em;
 }
 
 input {
 	margin: 1% 0%;
+	width: 30%;
+	padding: 1%;
+	border-radius: 3px;
+	border: none;
+	font-size: 1.2em;
+	box-shadow: 1px 1px 2px black;
 }
 
 .menu-button {
@@ -115,4 +137,30 @@ input {
 	color: #f2f2f2;
   border: none;
   font-size: 1.5em;
+}
+
+.icon:hover {
+	transform: scale(1.2);
+}
+
+.card-icons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.search-button {
+	border-radius: 0.5em;
+  font-size: 1.2em;
+  background-color: #641220;
+  box-shadow: 1px 1px 7px black;
+  padding: .5% 8%;
+  color: #F2F2F2;
+	border: none;
+	letter-spacing: 2px;
+}
+
+.search-button:hover {
+	cursor: pointer;
+	background-color: #A66953;
+	transform: scale(1.1);
 }
