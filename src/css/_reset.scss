@@ -46,21 +46,3 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-/* delete CSS reset above when we do sass */
-
-body {
-	background-image: url('images/background-image.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	height: 100%;
-	width: 100vw;
-}
-
-header {
-	background-color: rgba(242,242,242,.25);
-}
-
-main {
-	background-color: rgba(242,242,242,.25);
-}
