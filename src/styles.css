@@ -63,6 +63,11 @@ header {
 	background-color: rgba(10, 30, 35, .90);
 }
 
+nav {
+	display: flex;
+	padding: 0 10% 0 0;
+}
+
 h1 {
 	font-family: 'Poppins', sans-serif;
 	font-size: 2em;
@@ -133,14 +138,26 @@ input {
 }
 
 .menu-button {
+	display: flex;
+	align-items: center;
 	background-color: transparent;
 	color: #f2f2f2;
   border: none;
-  font-size: 1.5em;
+  font-size: 1.3em;
+	white-space: nowrap;
+	padding: 0 5%;
+}
+
+.icon {
+	padding: 5%;
 }
 
 .icon:hover {
 	transform: scale(1.2);
+}
+
+.menu-button:hover {
+	transform: scale(1.1);
 }
 
 .card-icons {
