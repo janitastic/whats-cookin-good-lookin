@@ -152,6 +152,10 @@ input {
 	padding: 5%;
 }
 
+.icon:hover {
+	transform: scale(1.2);
+}
+
 .menu-button:hover {
 	transform: scale(1.1);
 }
