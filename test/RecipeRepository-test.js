@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import RecipeRepository from '../src/classes/RecipeRepository';
-import {recipeData} from '../src/data/recipes'
+import recipeData from '../src/data/recipes';
 
 describe('Recipe', () => {
   let recipeRepository
@@ -18,6 +18,6 @@ describe('Recipe', () => {
   });
 
   it('should filter by tag', () => {
-
+    expect(recipeRepository.filterByTag(["side dish", "antipasto"]).length).to.equal(30);
   })
 })

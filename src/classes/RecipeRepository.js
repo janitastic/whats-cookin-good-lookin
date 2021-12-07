@@ -1,4 +1,5 @@
-import Recipe from '../data/recipes'
+import Recipe from '../data/recipes';
+
 class RecipeRepository {
   constructor(recipeData) {
     this.recipes = recipeData;
@@ -10,8 +11,16 @@ class RecipeRepository {
     });
   }
 
-  filterByTag() {
-
+  filterByTag(tags) {
+    const filteredRecipes = this.recipes.reduce((taggedRecipes, recipe) => {
+      tags.forEach(tag => {
+        if (recipe.tags.includes(tag) && !taggedRecipes.includes(recipe)) {
+          taggedRecipes.push(recipe)
+        }
+      });
+      return taggedRecipes;
+    }, [])
+    return filteredRecipes;
   }
 
   filterByName() {
