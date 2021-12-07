@@ -23,8 +23,14 @@ class RecipeRepository {
     return filteredRecipes;
   }
 
-  filterByName() {
-
+  filterByName(userInput) {
+    const filteredRecipes = this.recipes.reduce((recipeNames, recipe) => {
+        if (recipe.name.toLowerCase().includes(userInput.toLowerCase())) {
+          recipeNames.push(recipe)
+        }
+      return recipeNames;
+    }, [])
+    return filteredRecipes;
   }
 
   filterByIngredient() {

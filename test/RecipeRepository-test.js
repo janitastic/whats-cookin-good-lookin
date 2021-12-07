@@ -19,5 +19,9 @@ describe('Recipe', () => {
 
   it('should filter by tag', () => {
     expect(recipeRepository.filterByTag(["side dish", "antipasto"]).length).to.equal(30);
-  })
+  });
+
+  it('should filter by name', () => {
+    expect(recipeRepository.filterByName("Chocolate").length).to.equal(3);
+  });
 })
