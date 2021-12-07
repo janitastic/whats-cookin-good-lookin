@@ -1,7 +1,25 @@
+import Recipe from '../data/recipes'
 class RecipeRepository {
-  constructor() {
+  constructor(recipeData) {
+    this.recipes = recipeData;
+  }
 
-    // One class to get you started!
+  buildRecipe() {
+    this.recipes = this.recipes.map(recipe => {
+      recipeData.id, recipeData.image, recipeData.ingredients, recipeData.instructions, recipeData.name, recipeData.tags
+    });
+  }
+
+  filterByTag() {
+
+  }
+
+  filterByName() {
+
+  }
+
+  filterByIngredient() {
+
   }
 }
 
