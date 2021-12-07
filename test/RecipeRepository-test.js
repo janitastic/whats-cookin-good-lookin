@@ -1,9 +1,10 @@
 import { expect } from 'chai';
 import RecipeRepository from '../src/classes/RecipeRepository';
 import recipeData from '../src/data/recipes';
+import ingredientsData from '../src/data/ingredients';
 
 describe('Recipe', () => {
-  let recipeRepository
+  let recipeRepository;
 
   beforeEach(() => {
     recipeRepository = new RecipeRepository(recipeData);
@@ -23,5 +24,9 @@ describe('Recipe', () => {
 
   it('should filter by name', () => {
     expect(recipeRepository.filterByName("Chocolate").length).to.equal(3);
+  });
+
+  it('should filter by ingredients', () => {
+    expect(recipeRepository.filterByIngredients("chocolate").length).to.equal(2);
   });
 })

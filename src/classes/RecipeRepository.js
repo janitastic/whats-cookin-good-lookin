@@ -1,8 +1,10 @@
 import Recipe from '../data/recipes';
+import Ingredient from '../data/ingredients';
 
 class RecipeRepository {
   constructor(recipeData) {
-    this.recipes = recipeData;
+    this.recipes = recipeData
+
   }
 
   buildRecipe() {
@@ -33,8 +35,16 @@ class RecipeRepository {
     return filteredRecipes;
   }
 
-  filterByIngredient() {
-
+  filterByIngredients(userInput) {
+    const filteredRecipes = this.recipes.filter(recipe =>
+      // recipe.ingredients.some((ingredient) =>
+      recipe.ingredients.includes((ingredient) =>
+      userInput.includes(this.recipe.ingredients.id)
+    ));
+    // console.log(ingredient.id);
+    console.log(userInput);
+    console.log(filteredRecipes);
+    return filteredRecipes;
   }
 }
 
