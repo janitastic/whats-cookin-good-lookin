@@ -1,16 +1,9 @@
 import Recipe from '../data/recipes';
-import Ingredient from '../data/ingredients';
+import Ingredients from '../data/ingredients';
 
 class RecipeRepository {
   constructor(recipeData) {
     this.recipes = recipeData
-
-  }
-
-  buildRecipe() {
-    this.recipes = this.recipes.map(recipe => {
-      recipeData.id, recipeData.image, recipeData.ingredients, recipeData.instructions, recipeData.name, recipeData.tags
-    });
   }
 
   filterByTag(tags) {
@@ -36,15 +29,13 @@ class RecipeRepository {
   }
 
   filterByIngredients(userInput) {
-    const filteredRecipes = this.recipes.filter(recipe =>
-      // recipe.ingredients.some((ingredient) =>
-      recipe.ingredients.includes((ingredient) =>
-      userInput.includes(this.recipe.ingredients.id)
-    ));
-    // console.log(ingredient.id);
-    console.log(userInput);
-    console.log(filteredRecipes);
-    return filteredRecipes;
+    const ingObj = Ingredients.find(ingredient => ingredient.name === userInput)
+    const ingId = ingObj.id
+    
+    const filteredRecipes = this.recipes.filter(recipe => {
+      return recipe.ingredients.some(ingredient => ingredient.id === ingId)
+    })
+    return filteredRecipes
   }
 }
 
