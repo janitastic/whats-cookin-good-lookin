@@ -27,6 +27,6 @@ describe('Recipe', () => {
   });
 
   it('should filter by ingredients', () => {
-    expect(recipeRepository.filterByIngredients("chocolate").length).to.equal(2);
+    expect(recipeRepository.filterByIngredients("onion powder").length).to.equal(3);
   });
 })
