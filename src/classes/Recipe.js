@@ -11,11 +11,14 @@ class Recipe {
   }
 
   logIngredients() {
-    const ingredientNameArr = this.ingredients.map(ing => {
-      const ingResponse = ingredientsData.find(ingObj => ingObj.id === ing.id)
-      return ingResponse.name
+    const ingredientNameArr = this.ingredients.map(ingredient => {
+      const ingredientList = ingredientsData.find(ingredientObj => ingredientObj.id === ingredient.id)
+      return ingredientList.name
     })
     return ingredientNameArr
+  }
+  logRecipeDirections() {
+    return this.instructions;
   }
 }
 
