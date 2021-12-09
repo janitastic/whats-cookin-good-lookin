@@ -34,10 +34,12 @@ describe.only('Recipe', () => {
     ]
 
     const actual = myRecipe.logIngredients()
+   
     expect(actual).to.deep.equal(expected)
   })
 
   it('should return recipe instructions', () => {
+    console.log(myRecipe.logRecipeCost())
     expect(myRecipe.logRecipeDirections()).to.deep.equal([
       {
         instruction: 'In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.',
@@ -65,4 +67,7 @@ describe.only('Recipe', () => {
       }
     ])
   })
+  it('should calculate recipe cost', () => {
+    expect(myRecipe.logRecipeCost()).to.deep.equal('177.76') 
+   })
 });
