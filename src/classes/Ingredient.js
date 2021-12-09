@@ -1,10 +1,10 @@
 import ingredientsData from '../data/ingredients';
 
 class Ingredient {
-  constructor(ingredientsData) {
-    this.id = ingredientsData.id;
-    this.name = ingredientsData.name;
-    this.cost = ingredientsData.cost;
+  constructor(id, name, cost) {
+    this.id = id;
+    this.name = name;
+    this.cost = cost;
   }
 }
 
