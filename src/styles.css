@@ -46,6 +46,7 @@ table {
 
 * {
 	font-family: 'Raleway', sans-serif;
+	color: #F2F2F2;
 }
 
 body {
@@ -88,6 +89,17 @@ h3 {
 	text-align: center;
 }
 
+h4 {
+	font-size: 1em;
+	color: #F2F2F2;
+	padding: 5%;
+	/* text-align: center; */
+}
+
+p {
+	padding: 5%;
+}
+
 main {
 	background-color: rgba(242,242,242,.20);
 	height: 100%;
@@ -110,7 +122,8 @@ main {
 	padding: 5% 10%;
 }
 
-.card {
+.card,
+.full-recipe {
 	border-radius: 0.5em;
   font-size: 1em;
   background-color: rgba(10, 30, 35, .90);

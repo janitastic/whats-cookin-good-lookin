@@ -14,7 +14,7 @@ import ingredientsData from './data/ingredients';
 
 let recipeCardSection = document.getElementById('recipeCardSection');
 const allRecipesBtn = document.getElementById('recipesBtn');
-window.addEventListener('load', displayAllRecipes);
+// window.addEventListener('load', displayAllRecipes);
 
 function displayAllRecipes() {
   recipeCardSection.innerHTML = '';
