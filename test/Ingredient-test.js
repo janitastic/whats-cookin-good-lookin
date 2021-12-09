@@ -3,7 +3,7 @@ import Ingredient from '../src/classes/Ingredient';
 import ingredientsData from '../src/data/ingredients';
 
 
-describe.only('Ingredient', () => {
+describe('Ingredient', () => {
   let ingredient;
 
   beforeEach(() => {
