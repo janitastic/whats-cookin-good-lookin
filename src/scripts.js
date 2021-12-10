@@ -38,21 +38,23 @@ function displayAllRecipes() {
 function displayFullRecipe() {
   recipeCardSection.innerHTML = '';
   let recipeID = Number(event.target.parentNode.id);
-  for(var i = 0; i < recipeData.length; i++) {
-    if (recipeData[i].id === recipeID) {
-      recipeCardSection.innerHTML +=
+
+  recipeData.forEach(recipe => {
+    if (recipe.id === recipeID) {
+      console.log(recipe.instructions[0])
+      return recipeCardSection.innerHTML +=
       `<article class="full-recipe">
-        <h3>Recipe Name</h3>
-        <img class="thumbnail-image" src="https://spoonacular.com/recipeImages/595736-556x370.jpg">
+        <h3>${recipe.name}</h3>
+        <img class="thumbnail-image" src=${recipe.image}>
           <h4>Ingredients</h4>
             <ul>
-              <li>2 oz Ingredient Name</li>
+              <li>${recipe.ingredients[0].quantity.amount} ${recipe.ingredients[0].quantity.unit} Ingredient</li>
               <li>2 oz Ingredient Name</li>
               <li>2 oz Ingredient Name</li>
             </ul>
           <h4>Directions</h4>
             <ol>
-              <li>1. sdfjsdlkfjsdljkfs</li>
+              <li>${recipe.instructions[0].number}) ${recipe.instructions[0].instruction}</li>
               <li>1. sdfjsdlkfjsdljkfs</li>
               <li>1. sdfjsdlkfjsdljkfs</li>
               <li>1. sdfjsdlkfjsdljkfs</li>
@@ -60,5 +62,5 @@ function displayFullRecipe() {
           <h4>Total Cost = $27</h4>
       </article>`
     }
-  }
+  });
 }
