@@ -13,13 +13,14 @@ import ingredientsData from './data/ingredients';
 
 //Query Selectors
 let recipeCardSection = document.getElementById('recipeCardSection');
-let displayArea = document.getElementById('displayArea');
+let recipeImageName = document.getElementById('recipeImageName');
+let recipeIngredients = document.getElementById('recipeIngredients');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
 //Event Listeners
 window.addEventListener('load', displayAllRecipes);
-recipeCardSection.addEventListener('click', displayNameAndImage);
+recipeCardSection.addEventListener('click', displayRecipeCard);
 
 function displayAllRecipes() {
   recipeCardSection.innerHTML = '';
@@ -36,20 +37,41 @@ function displayAllRecipes() {
   });
 }
 
+function displayRecipeCard() {
+  displayNameAndImage();
+  displayIngredients();
+}
+
 function displayNameAndImage() {
-recipeCardSection.innerHTML = '';
+  recipeCardSection.innerHTML = '';
   let recipeID = Number(event.target.parentNode.id);
   recipeData.forEach((recipe, index) => {
-    console.log("<>>>>>>>>>", recipe.ingredients)
+    // console.log("<>>>>>>>>>", recipe.ingredients)
     if (recipe.id === recipeID) {
-      console.log("index", index);
-     return displayArea.innerHTML +=
+      // console.log("index", index);
+     return recipeImageName.innerHTML +=
       `<article class="full-recipe">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-      <h4>Ingredients</h4>`
+      </article>`
     }
-  })
+  });
+}
+
+function displayIngredients() {
+  let recipeID = Number(event.target.parentNode.id);
+  recipeData.forEach((recipe, index) => {
+    if (recipe.id === recipeID) {
+      console.log(recipe.name);
+      return recipeIngredients.innerHTML +=
+      `<h4>Ingredients</h4>
+      <article class="full-recipe">
+        <ul>
+          <li>${recipe.ingredients[index].quantity.amount} ${recipe.ingredients[index].quantity.unit} Need to Access Ingredient</li>
+        </ul>
+      </article>`
+    }
+  });
 }
 
 
