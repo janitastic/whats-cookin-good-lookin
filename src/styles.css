@@ -177,6 +177,17 @@ input {
 	transform: scale(1.1);
 }
 
+.filter-buttons {
+	/* display: flex;
+	align-items: center; */
+	background-color: black;
+	color: #f2f2f2;
+  border: none;
+  font-size: 1em;
+	white-space: nowrap;
+	padding: 0 5%;
+}
+
 .card-icons {
 	display: flex;
 	justify-content: space-between;
