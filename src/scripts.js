@@ -12,7 +12,8 @@ import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
 //may not need line 15
-let recipeRepo = new RecipeRepository(recipeData);
+// let recipeRepo = new RecipeRepository(recipeData);
+const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData))
 
 //Query Selectors
 let recipeCardSection = document.getElementById('recipeCardSection');
@@ -28,8 +29,6 @@ const allRecipesBtn = document.getElementById('recipesBtn');
 //Event Listeners
 window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
-
-const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData))
 
 function displayAllRecipes() {
   hide(ingredientsTitle);
@@ -51,13 +50,13 @@ function displayRecipeCard() {
   displayNameAndImage();
   displayIngredients();
   displayDirections();
+  displayRecipeCost();
 }
 
 function displayNameAndImage() {
   recipeCardSection.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   recipeClasses.forEach((recipe, index) => {
-
     if (recipe.id === recipeId) {
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
@@ -99,7 +98,12 @@ function displayDirections() {
 }
 
 function displayRecipeCost() {
-
+  const recipeId = Number(event.target.parentNode.id);
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
+    return recipeCost.innerHTML +=
+    `<article class="full-recipe">
+      <h4>Total Cost $${foundRecipe.logRecipeCost()}</h4>
+    </article>`
 }
 
 function show(element) {
