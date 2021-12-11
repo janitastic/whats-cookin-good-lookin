@@ -141,6 +141,6 @@ function searchRecipes() {
 }
 
 function dropDown() {
-  dropDownSearch.classList.toggle('hidden');
+  dropDownSearch.classList.toggle('show');
 }
 
