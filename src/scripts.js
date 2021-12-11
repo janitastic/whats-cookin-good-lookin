@@ -39,6 +39,7 @@ let dropDownSearch = document.getElementById('dropDownSearch');
 let searchByName = document.getElementById('searchByNameLink');
 let searchByIngredient = document.getElementById('searchByIngredientLink');
 let filterByAppetizer = document.getElementById('appetizerButton');
+let filterByBreakfast = document.getElementById('breakfastButton');
 
 // const recipeCard = document.getElementById('${recipe.id}');
 
@@ -51,6 +52,7 @@ searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', searchRecipes);
 filterByAppetizer.addEventListener('click', findAppetizers);
+filterByBreakfast.addEventListener('click', findBreakfast);
 
 
 function show(element) {
@@ -165,6 +167,7 @@ function searchByIngredients() {
     </article>`
   });
   dropDown();
+  searchInput.value = '';
 }
 
 function searchByRecipeName() {
@@ -183,6 +186,7 @@ function searchByRecipeName() {
     </article>`
   });
   dropDown();
+  searchInput.value = '';
 }
 
 function dropDown() {
@@ -192,6 +196,23 @@ function dropDown() {
 function findAppetizers() {
   recipeCardSection.innerHTML = '';
   let userSelection = tags.appetizers;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findBreakfast() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.breakfast;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
