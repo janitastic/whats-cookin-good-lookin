@@ -19,6 +19,9 @@ let recipeCardSection = document.getElementById('recipeCardSection');
 let recipeImageName = document.getElementById('recipeImageName');
 let recipeIngredients = document.getElementById('recipeIngredients');
 let ingredientsTitle = document.getElementById('ingredientsTitle');
+let directionsTitle = document.getElementById('directionsTitle');
+let recipeDirections = document.getElementById('recipeDirections');
+let recipeCost = document.getElementById('recipeCost');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
@@ -47,15 +50,15 @@ function displayAllRecipes() {
 function displayRecipeCard() {
   displayNameAndImage();
   displayIngredients();
+  displayDirections();
 }
 
 function displayNameAndImage() {
   recipeCardSection.innerHTML = '';
-  let recipeID = Number(event.target.parentNode.id);
+  const recipeId = Number(event.target.parentNode.id);
   recipeClasses.forEach((recipe, index) => {
-    // console.log("<>>>>>>>>>", recipe.ingredients)
-    if (recipe.id === recipeID) {
-      // console.log("index", index);
+
+    if (recipe.id === recipeId) {
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
       <h3>${recipe.name}</h3>
@@ -68,45 +71,36 @@ function displayNameAndImage() {
 function displayIngredients() {
   show(ingredientsTitle);
   const recipeId = Number(event.target.parentNode.id);
-  const foundRecipe = recipeClasses.find(r => r.id === recipeId)
-  // console.log(foundRecipe);
-  foundRecipe.ingredients.forEach(step => {
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
+
+  foundRecipe.ingredients.forEach((step, index) => {
       return recipeIngredients.innerHTML +=
       `<article class="full-recipe">
-      <ul>
-      <li>${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()}</li>
-      </ul>
+        <ul>
+          <li>${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}</li>
+        </ul>
       </article>`
   });
 }
 
+function displayDirections() {
+  show(directionsTitle);
+  const recipeId = Number(event.target.parentNode.id);
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
 
-// function displayFullRecipe() {
-//
-// //This recipe acc accesses amount and unit
-//   //recipe.ingredients[index].quantity.amount
-//   //recipe.ingredients[index].quantity.unit
-//   //recipe.ingredients[index].id
-// // This step element accesses the step of instructions
-//   //step.instruction
-//     //step.number
-//       recipe.instructions.forEach(step => {
-//         console.log("instructions", step.instruction);
-//         <div>
-//         <ul>
-//           <li>${recipe.ingredients[index].quantity.amount} ${recipe.ingredients[index].quantity.unit} ${ingredient[index].name}</li>
-//         </ul>
-//         <h4>Directions</h4>
-//         <ol>
-//           <li>${step.number}) ${step.instruction}</li>
-//         </ol>
-//         <h4>Total Cost = $${recipe.logRecipeCost()}</h4>
-//         </div>
-//         </article>`
-//       })
-//     }
-//   });
-// }
+  foundRecipe.instructions.forEach((step, index) => {
+      return recipeDirections.innerHTML +=
+      `<article class="full-recipe">
+        <ol>
+          <li>${step.number}) ${step.instruction}</li>
+        </ol>
+      </article>`
+  });
+}
+
+function displayRecipeCost() {
+
+}
 
 function show(element) {
   element.classList.remove("hidden");

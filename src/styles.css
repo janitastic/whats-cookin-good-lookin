@@ -125,7 +125,8 @@ main {
 /* we need to refactor/remove 127 & 128 for recipe card */
 .card,
 .full-recipe,
-.ingredients-title {
+.ingredients-title,
+.directions-title {
 	border-radius: 0.5em;
   font-size: 1em;
   background-color: rgba(10, 30, 35, .90);
