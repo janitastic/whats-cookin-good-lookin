@@ -11,10 +11,14 @@ import RecipeRepository from './classes/RecipeRepository';
 import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
+//may not need line 15
+let recipeRepo = new RecipeRepository(recipeData);
+
 //Query Selectors
 let recipeCardSection = document.getElementById('recipeCardSection');
 let recipeImageName = document.getElementById('recipeImageName');
 let recipeIngredients = document.getElementById('recipeIngredients');
+let ingredientsTitle = document.getElementById('ingredientsTitle');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
@@ -22,9 +26,12 @@ const allRecipesBtn = document.getElementById('recipesBtn');
 window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
 
+const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData))
+
 function displayAllRecipes() {
+  hide(ingredientsTitle);
   recipeCardSection.innerHTML = '';
-  recipeData.forEach(recipe => {
+  recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <div class="card-icons">
@@ -45,7 +52,7 @@ function displayRecipeCard() {
 function displayNameAndImage() {
   recipeCardSection.innerHTML = '';
   let recipeID = Number(event.target.parentNode.id);
-  recipeData.forEach((recipe, index) => {
+  recipeClasses.forEach((recipe, index) => {
     // console.log("<>>>>>>>>>", recipe.ingredients)
     if (recipe.id === recipeID) {
       // console.log("index", index);
@@ -59,18 +66,17 @@ function displayNameAndImage() {
 }
 
 function displayIngredients() {
-  let recipeID = Number(event.target.parentNode.id);
-  recipeData.forEach((recipe, index) => {
-    if (recipe.id === recipeID) {
-      console.log(recipe.name);
+  show(ingredientsTitle);
+  const recipeId = Number(event.target.parentNode.id);
+  const foundRecipe = recipeClasses.find(r => r.id === recipeId)
+  // console.log(foundRecipe);
+  foundRecipe.ingredients.forEach(step => {
       return recipeIngredients.innerHTML +=
-      `<h4>Ingredients</h4>
-      <article class="full-recipe">
-        <ul>
-          <li>${recipe.ingredients[index].quantity.amount} ${recipe.ingredients[index].quantity.unit} Need to Access Ingredient</li>
-        </ul>
+      `<article class="full-recipe">
+      <ul>
+      <li>${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()}</li>
+      </ul>
       </article>`
-    }
   });
 }
 
