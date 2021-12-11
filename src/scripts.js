@@ -37,7 +37,7 @@ recipeCardSection.addEventListener('click', displayRecipeCard);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 searchButton.addEventListener('click', dropDown);
 searchByName.addEventListener('click', searchByRecipeName);
-searchByIngredient.addEventListener('click', searchByIngredient);
+searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', searchRecipes);
 
 
@@ -133,9 +133,28 @@ function searchRecipes() {
     //else if searchByIngredient is clicked
       // invoke searchByIngredient
       // else console.log "Please make a selection"
-  if(document.getElementById('searchByNameLink').clicked === true) {
-    searchByName();
+  if (searchByName.clicked === true) {
+    searchByRecipeName();
+  } else if (searchByIngredient.clicked === true) {
+    searchByIngredients();
   }
+}
+
+function searchByIngredients() {
+  recipeCardSection.innerHTML = '';
+  let userInput = searchInput.value;
+  let filteredRecipes = recipeRepo.filterByIngredients(userInput);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
 }
 
 function searchByRecipeName() {
