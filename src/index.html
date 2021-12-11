@@ -18,9 +18,15 @@
     </header>
     <main>
       <section class="search-bar">
-        <h2>Explore a Recipe</h2>
-        <input class="input" type="search" placeholder="Search Recipe" id="searchBar">
-        <button class="search-button" id="searchButton">Let's Cook!</button>
+        <div class="drop-down">
+        <button class="search-button" 
+        id="searchButton">Search Recipes</button>
+        <div id="dropDownSearch" class="drop-down-search hidden">
+          <input class="input" type="search" placeholder="Search Recipe" id="searchBar">
+          <a id="searchByNameLink">Search recipe names</a>
+          <a id="searchByIngredientLink">Search ingredients</a>
+        </div>
+      </div>
       </section>
       <section class="recipe-cards" id="recipeCardSection">
         <!-- display all recipe cards -->

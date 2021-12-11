@@ -25,6 +25,9 @@ let recipeDirections = document.getElementById('recipeDirections');
 let recipeCost = document.getElementById('recipeCost');
 let searchButton = document.getElementById('searchButton');
 let searchInput = document.getElementById('searchBar');
+let dropDownSearch = document.getElementById('dropDownSearch');
+let searchByName = document.getElementById('searchByNameLink');
+let searchByIngredient = document.getElementById('searchByIngredientLink');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
@@ -32,8 +35,10 @@ const allRecipesBtn = document.getElementById('recipesBtn');
 window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
-searchButton.addEventListener('click', searchRecipes);
-// searchInput.addEventListener('keyup', searchRecipes);
+searchButton.addEventListener('click', dropDown);
+searchByName.addEventListener('click', searchByRecipeName);
+searchByIngredient.addEventListener('click', searchByIngredients);
+searchInput.addEventListener('keyup', searchRecipes);
 
 
 function show(element) {
@@ -123,6 +128,36 @@ function displayRecipeCost() {
 }
 
 function searchRecipes() {
+  //if searchByName is clicked 
+    //invoke searchByName
+    //else if searchByIngredient is clicked
+      // invoke searchByIngredient
+      // else console.log "Please make a selection"
+  if (searchByName.clicked === true) {
+    searchByRecipeName();
+  } else if (searchByIngredient.clicked === true) {
+    searchByIngredients();
+  }
+}
+
+function searchByIngredients() {
+  recipeCardSection.innerHTML = '';
+  let userInput = searchInput.value;
+  let filteredRecipes = recipeRepo.filterByIngredients(userInput);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function searchByRecipeName() {
   recipeCardSection.innerHTML = '';
   let userInput = searchInput.value;
   let filteredRecipes = recipeRepo.filterByName(userInput);
@@ -137,5 +172,9 @@ function searchRecipes() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
+}
+
+function dropDown() {
+  dropDownSearch.classList.toggle('show');
 }
 

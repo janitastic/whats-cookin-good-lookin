@@ -29,11 +29,12 @@ class RecipeRepository {
   }
 
   filterByIngredients(userInput) {
-    const ingObj = Ingredients.find(ingredient => ingredient.name === userInput)
+    const ingObj = Ingredients.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()))
     const ingId = ingObj.id
     
     const filteredRecipes = this.recipes.filter(recipe => {
-      return recipe.ingredients.some(ingredient => ingredient.id === ingId)
+      return recipe.ingredients.some(ingredient => 
+      ingredient.id === ingId)
     })
     return filteredRecipes
   }
