@@ -25,6 +25,7 @@ let recipeDirections = document.getElementById('recipeDirections');
 let recipeCost = document.getElementById('recipeCost');
 let searchButton = document.getElementById('searchButton');
 let searchInput = document.getElementById('searchBar');
+let dropDownSearch = document.getElementById('dropDownSearch');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
@@ -32,7 +33,7 @@ const allRecipesBtn = document.getElementById('recipesBtn');
 window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
-searchButton.addEventListener('click', searchRecipes);
+searchButton.addEventListener('click', dropDown);
 // searchInput.addEventListener('keyup', searchRecipes);
 
 
@@ -137,5 +138,9 @@ function searchRecipes() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
+}
+
+function dropDown() {
+  dropDownSearch.classList.toggle('hidden');
 }
 
