@@ -59,11 +59,11 @@ searchByIngredient.addEventListener('click', searchByIngredients);
 // searchInput.addEventListener('keyup', searchRecipes);
 filterByAppetizer.addEventListener('click', findAppetizers);
 filterByBreakfast.addEventListener('click', findBreakfast);
-// filterByLunch.addEventListener('click', findLunch);
-// filterByDinner.addEventListener('click', findDinner);
-// filterBySides.addEventListener('click', findSides);
-// filterByCondiments.addEventListener('click', findCondiments);
-// filterBySnacks.addEventListener('click', findSnacks);
+filterByLunch.addEventListener('click', findLunch);
+filterByDinner.addEventListener('click', findDinner);
+filterBySides.addEventListener('click', findSides);
+filterByCondiments.addEventListener('click', findCondiments);
+filterBySnacks.addEventListener('click', findSnacks);
 showAllButton.addEventListener('click', displayAllRecipes);
 
 
@@ -258,6 +258,74 @@ function findBreakfast() {
 function findLunch() {
   recipeCardSection.innerHTML = '';
   let userSelection = tags.lunch;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findDinner() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.dinner;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findSides() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.sides;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findCondiments() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.condiments;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findSnacks() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.snacks;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
