@@ -128,15 +128,12 @@ function displayRecipeCost() {
 }
 
 function searchRecipes() {
-  //if searchByName is clicked 
-    //invoke searchByName
-    //else if searchByIngredient is clicked
-      // invoke searchByIngredient
-      // else console.log "Please make a selection"
   if (searchByName.clicked === true) {
     searchByRecipeName();
   } else if (searchByIngredient.clicked === true) {
     searchByIngredients();
+  } else {
+    console.log("please make a selection");
   }
 }
 
@@ -155,6 +152,7 @@ function searchByIngredients() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
+  dropDown();
 }
 
 function searchByRecipeName() {
@@ -172,9 +170,9 @@ function searchByRecipeName() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
+  dropDown();
 }
 
 function dropDown() {
   dropDownSearch.classList.toggle('show');
 }
-
