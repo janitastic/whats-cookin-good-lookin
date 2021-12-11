@@ -11,18 +11,29 @@ import RecipeRepository from './classes/RecipeRepository';
 import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
+//may not need line 15
+// let recipeRepo = new RecipeRepository(recipeData);
+const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData))
+
 //Query Selectors
 let recipeCardSection = document.getElementById('recipeCardSection');
+let recipeImageName = document.getElementById('recipeImageName');
+let recipeIngredients = document.getElementById('recipeIngredients');
+let ingredientsTitle = document.getElementById('ingredientsTitle');
+let directionsTitle = document.getElementById('directionsTitle');
+let recipeDirections = document.getElementById('recipeDirections');
+let recipeCost = document.getElementById('recipeCost');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
 //Event Listeners
 window.addEventListener('load', displayAllRecipes);
-recipeCardSection.addEventListener('click', displayFullRecipe);
+recipeCardSection.addEventListener('click', displayRecipeCard);
 
 function displayAllRecipes() {
+  hide(ingredientsTitle);
   recipeCardSection.innerHTML = '';
-  recipeData.forEach(recipe => {
+  recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <div class="card-icons">
@@ -35,32 +46,70 @@ function displayAllRecipes() {
   });
 }
 
-function displayFullRecipe() {
-  recipeCardSection.innerHTML = '';
-  let recipeID = Number(event.target.parentNode.id);
+function displayRecipeCard() {
+  displayNameAndImage();
+  displayIngredients();
+  displayDirections();
+  displayRecipeCost();
+}
 
-  recipeData.forEach(recipe => {
-    if (recipe.id === recipeID) {
-      console.log(recipe.instructions[0])
-      return recipeCardSection.innerHTML +=
+function displayNameAndImage() {
+  recipeCardSection.innerHTML = '';
+  const recipeId = Number(event.target.parentNode.id);
+  recipeClasses.forEach((recipe, index) => {
+    if (recipe.id === recipeId) {
+     return recipeImageName.innerHTML +=
       `<article class="full-recipe">
-        <h3>${recipe.name}</h3>
-        <img class="thumbnail-image" src=${recipe.image}>
-          <h4>Ingredients</h4>
-            <ul>
-              <li>${recipe.ingredients[0].quantity.amount} ${recipe.ingredients[0].quantity.unit} Ingredient</li>
-              <li>2 oz Ingredient Name</li>
-              <li>2 oz Ingredient Name</li>
-            </ul>
-          <h4>Directions</h4>
-            <ol>
-              <li>${recipe.instructions[0].number}) ${recipe.instructions[0].instruction}</li>
-              <li>1. sdfjsdlkfjsdljkfs</li>
-              <li>1. sdfjsdlkfjsdljkfs</li>
-              <li>1. sdfjsdlkfjsdljkfs</li>
-            </ol>
-          <h4>Total Cost = $27</h4>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
       </article>`
     }
   });
+}
+
+function displayIngredients() {
+  show(ingredientsTitle);
+  const recipeId = Number(event.target.parentNode.id);
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
+
+  foundRecipe.ingredients.forEach((step, index) => {
+      return recipeIngredients.innerHTML +=
+      `<article class="full-recipe">
+        <ul>
+          <li>${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}</li>
+        </ul>
+      </article>`
+  });
+}
+
+function displayDirections() {
+  show(directionsTitle);
+  const recipeId = Number(event.target.parentNode.id);
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
+
+  foundRecipe.instructions.forEach((step, index) => {
+      return recipeDirections.innerHTML +=
+      `<article class="full-recipe">
+        <ol>
+          <li>${step.number}) ${step.instruction}</li>
+        </ol>
+      </article>`
+  });
+}
+
+function displayRecipeCost() {
+  const recipeId = Number(event.target.parentNode.id);
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
+    return recipeCost.innerHTML +=
+    `<article class="full-recipe">
+      <h4>Total Cost $${foundRecipe.logRecipeCost()}</h4>
+    </article>`
+}
+
+function show(element) {
+  element.classList.remove("hidden");
+}
+
+function hide(element) {
+  element.classList.add("hidden");
 }
