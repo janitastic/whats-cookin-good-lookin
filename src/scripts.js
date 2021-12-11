@@ -26,6 +26,8 @@ let recipeCost = document.getElementById('recipeCost');
 let searchButton = document.getElementById('searchButton');
 let searchInput = document.getElementById('searchBar');
 let dropDownSearch = document.getElementById('dropDownSearch');
+let searchByName = document.getElementById('searchByNameLink');
+let searchByIngredient = document.getElementById('searchByIngredientLink');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
@@ -34,7 +36,9 @@ window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 searchButton.addEventListener('click', dropDown);
-// searchInput.addEventListener('keyup', searchRecipes);
+searchByName.addEventListener('click', searchByRecipeName);
+searchByIngredient.addEventListener('click', searchByIngredient);
+searchInput.addEventListener('keyup', searchRecipes);
 
 
 function show(element) {
@@ -124,6 +128,17 @@ function displayRecipeCost() {
 }
 
 function searchRecipes() {
+  //if searchByName is clicked 
+    //invoke searchByName
+    //else if searchByIngredient is clicked
+      // invoke searchByIngredient
+      // else console.log "Please make a selection"
+  if(document.getElementById('searchByNameLink').clicked === true) {
+    searchByName();
+  }
+}
+
+function searchByRecipeName() {
   recipeCardSection.innerHTML = '';
   let userInput = searchInput.value;
   let filteredRecipes = recipeRepo.filterByName(userInput);
