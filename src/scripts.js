@@ -11,11 +11,21 @@ import RecipeRepository from './classes/RecipeRepository';
 import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
-//may not need line 15
+//global variables
 let recipeRepo = new RecipeRepository(recipeData);
-const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData))
+const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
+const tags = {
+  appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
+  breakfast: ['breakfast', 'morning meal', 'brunch'],
+  lunch: ['lunch', 'brunch', 'main dish', 'salad'],
+  dinner: ['dinner', 'main course', 'main dish', 'salad'],
+  sides: ['side dish', 'dip'],
+  snacks: ['snack', 'dip'],
+  condiments: ['condiment', 'sauce']
+}
 
 //Query Selectors
+const allRecipesBtn = document.getElementById('recipesBtn');
 let recipeCardSection = document.getElementById('recipeCardSection');
 let recipeImageName = document.getElementById('recipeImageName');
 let recipeIngredients = document.getElementById('recipeIngredients');
@@ -28,7 +38,8 @@ let searchInput = document.getElementById('searchBar');
 let dropDownSearch = document.getElementById('dropDownSearch');
 let searchByName = document.getElementById('searchByNameLink');
 let searchByIngredient = document.getElementById('searchByIngredientLink');
-const allRecipesBtn = document.getElementById('recipesBtn');
+let filterByAppetizer = document.getElementById('appetizerButton');
+
 // const recipeCard = document.getElementById('${recipe.id}');
 
 //Event Listeners
@@ -39,6 +50,7 @@ searchButton.addEventListener('click', dropDown);
 searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', searchRecipes);
+filterByAppetizer.addEventListener('click', findAppetizers);
 
 
 function show(element) {
@@ -175,4 +187,21 @@ function searchByRecipeName() {
 
 function dropDown() {
   dropDownSearch.classList.toggle('show');
+}
+
+function findAppetizers() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.appetizers;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
 }
