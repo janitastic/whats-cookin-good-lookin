@@ -23,12 +23,14 @@ let ingredientsTitle = document.getElementById('ingredientsTitle');
 let directionsTitle = document.getElementById('directionsTitle');
 let recipeDirections = document.getElementById('recipeDirections');
 let recipeCost = document.getElementById('recipeCost');
+let searchBar = document.getElementById('searchBar');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
 //Event Listeners
 window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
+allRecipesBtn.addEventListener('click', displayAllRecipes);
 
 function displayAllRecipes() {
   hide(ingredientsTitle);
@@ -47,6 +49,7 @@ function displayAllRecipes() {
 }
 
 function displayRecipeCard() {
+  recipeImageName.innerHTML = '';
   displayNameAndImage();
   displayIngredients();
   displayDirections();
