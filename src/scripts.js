@@ -40,6 +40,12 @@ let searchByName = document.getElementById('searchByNameLink');
 let searchByIngredient = document.getElementById('searchByIngredientLink');
 let filterByAppetizer = document.getElementById('appetizerButton');
 let filterByBreakfast = document.getElementById('breakfastButton');
+let filterByLunch = document.getElementById('lunchButton');
+let filterByDinner = document.getElementById('dinnerButton');
+let filterBySides = document.getElementById('sideButton');
+let filterByCondiments = document.getElementById('condimentButton');
+let filterBySnacks = document.getElementById('snackButton');
+let showAllButton = document.getElementById('showAllButton');
 
 // const recipeCard = document.getElementById('${recipe.id}');
 
@@ -50,9 +56,16 @@ allRecipesBtn.addEventListener('click', displayAllRecipes);
 searchButton.addEventListener('click', dropDown);
 searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
-searchInput.addEventListener('keyup', searchRecipes);
+// searchInput.addEventListener('keyup', searchRecipes);
 filterByAppetizer.addEventListener('click', findAppetizers);
 filterByBreakfast.addEventListener('click', findBreakfast);
+// filterByLunch.addEventListener('click', findLunch);
+// filterByDinner.addEventListener('click', findDinner);
+// filterBySides.addEventListener('click', findSides);
+// filterByCondiments.addEventListener('click', findCondiments);
+// filterBySnacks.addEventListener('click', findSnacks);
+showAllButton.addEventListener('click', displayAllRecipes);
+
 
 
 function show(element) {
@@ -141,13 +154,27 @@ function displayRecipeCost() {
     </article>`
 }
 
+// function checkInput() {
+//   let userInput = searchInput.value;
+//   if (!userInput.value) {
+//     // searchByName.disabled = true;
+//     // searchByIngredient.disabled = true;
+//     console.log('please enter something');
+//   }
+// }
+
 function searchRecipes() {
-  if (searchByName.clicked === true) {
+  let userInput = searchInput.value;
+  if (!userInput.value && searchByName.clicked === true) {
+    console.log('please type a name');
+  } else if (!userInput.value && searchByIngredient.clicked === true) {
+    console.log('please type an ingredient');
+  } else if (userInput.value && searchByName.clicked === true) {
     searchByRecipeName();
-  } else if (searchByIngredient.clicked === true) {
+  } else if (userInput.value && searchByIngredient.clicked === true) {
     searchByIngredients();
   } else {
-    console.log("please make a selection");
+    console.log('please make a selection');
   }
 }
 
@@ -166,7 +193,7 @@ function searchByIngredients() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
-  dropDown();
+  // dropDown();
   searchInput.value = '';
 }
 
@@ -185,12 +212,13 @@ function searchByRecipeName() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
-  dropDown();
+  // dropDown();
   searchInput.value = '';
 }
 
 function dropDown() {
   dropDownSearch.classList.toggle('show');
+  searchRecipes();
 }
 
 function findAppetizers() {
@@ -213,6 +241,23 @@ function findAppetizers() {
 function findBreakfast() {
   recipeCardSection.innerHTML = '';
   let userSelection = tags.breakfast;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findLunch() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.lunch;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
