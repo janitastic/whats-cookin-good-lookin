@@ -11,11 +11,21 @@ import RecipeRepository from './classes/RecipeRepository';
 import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
-//may not need line 15
+//global variables
 let recipeRepo = new RecipeRepository(recipeData);
-const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData))
+const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
+const tags = {
+  appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
+  breakfast: ['breakfast', 'morning meal', 'brunch'],
+  lunch: ['lunch', 'brunch', 'main dish', 'salad'],
+  dinner: ['dinner', 'main course', 'main dish', 'salad'],
+  sides: ['side dish', 'dip'],
+  snacks: ['snack', 'dip'],
+  condiments: ['condiment', 'sauce']
+}
 
 //Query Selectors
+const allRecipesBtn = document.getElementById('recipesBtn');
 let recipeCardSection = document.getElementById('recipeCardSection');
 let recipeImageName = document.getElementById('recipeImageName');
 let recipeIngredients = document.getElementById('recipeIngredients');
@@ -28,7 +38,15 @@ let searchInput = document.getElementById('searchBar');
 let dropDownSearch = document.getElementById('dropDownSearch');
 let searchByName = document.getElementById('searchByNameLink');
 let searchByIngredient = document.getElementById('searchByIngredientLink');
-const allRecipesBtn = document.getElementById('recipesBtn');
+let filterByAppetizer = document.getElementById('appetizerButton');
+let filterByBreakfast = document.getElementById('breakfastButton');
+let filterByLunch = document.getElementById('lunchButton');
+let filterByDinner = document.getElementById('dinnerButton');
+let filterBySides = document.getElementById('sideButton');
+let filterByCondiments = document.getElementById('condimentButton');
+let filterBySnacks = document.getElementById('snackButton');
+let showAllButton = document.getElementById('showAllButton');
+
 // const recipeCard = document.getElementById('${recipe.id}');
 
 //Event Listeners
@@ -38,7 +56,16 @@ allRecipesBtn.addEventListener('click', displayAllRecipes);
 searchButton.addEventListener('click', dropDown);
 searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
-searchInput.addEventListener('keyup', searchRecipes);
+// searchInput.addEventListener('keyup', searchRecipes);
+filterByAppetizer.addEventListener('click', findAppetizers);
+filterByBreakfast.addEventListener('click', findBreakfast);
+filterByLunch.addEventListener('click', findLunch);
+filterByDinner.addEventListener('click', findDinner);
+filterBySides.addEventListener('click', findSides);
+filterByCondiments.addEventListener('click', findCondiments);
+filterBySnacks.addEventListener('click', findSnacks);
+showAllButton.addEventListener('click', displayAllRecipes);
+
 
 
 function show(element) {
@@ -127,16 +154,27 @@ function displayRecipeCost() {
     </article>`
 }
 
+// function checkInput() {
+//   let userInput = searchInput.value;
+//   if (!userInput.value) {
+//     // searchByName.disabled = true;
+//     // searchByIngredient.disabled = true;
+//     console.log('please enter something');
+//   }
+// }
+
 function searchRecipes() {
-  //if searchByName is clicked 
-    //invoke searchByName
-    //else if searchByIngredient is clicked
-      // invoke searchByIngredient
-      // else console.log "Please make a selection"
-  if (searchByName.clicked === true) {
+  let userInput = searchInput.value;
+  if (!userInput.value && searchByName.clicked === true) {
+    console.log('please type a name');
+  } else if (!userInput.value && searchByIngredient.clicked === true) {
+    console.log('please type an ingredient');
+  } else if (userInput.value && searchByName.clicked === true) {
     searchByRecipeName();
-  } else if (searchByIngredient.clicked === true) {
+  } else if (userInput.value && searchByIngredient.clicked === true) {
     searchByIngredients();
+  } else {
+    console.log('please make a selection');
   }
 }
 
@@ -155,6 +193,8 @@ function searchByIngredients() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
+  // dropDown();
+  searchInput.value = '';
 }
 
 function searchByRecipeName() {
@@ -172,9 +212,130 @@ function searchByRecipeName() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
+  // dropDown();
+  searchInput.value = '';
 }
 
 function dropDown() {
   dropDownSearch.classList.toggle('show');
+  searchRecipes();
 }
 
+function findAppetizers() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.appetizers;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findBreakfast() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.breakfast;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findLunch() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.lunch;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findDinner() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.dinner;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findSides() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.sides;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findCondiments() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.condiments;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}
+
+function findSnacks() {
+  recipeCardSection.innerHTML = '';
+  let userSelection = tags.snacks;
+  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
+}

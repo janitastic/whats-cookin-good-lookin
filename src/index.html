@@ -11,7 +11,7 @@
     <header>
       <h1>What's Cookin' Good Lookin'</h1>
       <nav>
-        <button class="menu-button" id="recipesBtn"><img class="icon" src="images/recipe-book.png"> Recipes</button>
+        <button class="menu-button" id="recipesBtn"><img class="icon" src="images/recipe-book.png"> All Recipes</button>
         <button class="menu-button"><img class="icon" src="images/like.png">  Favorites</button>
         <button class="menu-button"><img class="icon" src="images/baking.png"> To Cook</button>
       </nav>
@@ -19,14 +19,32 @@
     <main>
       <section class="search-bar">
         <div class="drop-down">
-        <button class="search-button" 
+        <button class="search-button"
         id="searchButton">Search Recipes</button>
         <div id="dropDownSearch" class="drop-down-search hidden">
-          <input class="input" type="search" placeholder="Search Recipe" id="searchBar">
+          <input class="input" type="search" placeholder="Search Recipe" id="searchBar" required>
           <a id="searchByNameLink">Search recipe names</a>
           <a id="searchByIngredientLink">Search ingredients</a>
         </div>
       </div>
+      </section>
+      <section class="filter-icons" id="filterIcons">
+        <button class="filter-buttons" id="appetizerButton">
+        Appetizers</button>
+        <button class="filter-buttons" id="breakfastButton">
+        Breakfast</button>
+        <button class="filter-buttons" id="lunchButton">
+        Lunch</button>
+        <button class="filter-buttons" id="dinnerButton">
+        Dinner</button>
+        <button class="filter-buttons" id="sideButton">
+        Sides</button>
+        <button class="filter-buttons" id="condimentButton">
+        Condiments</button>
+        <button class="filter-buttons" id="snackButton">
+        Snacks</button>
+        <button class="filter-buttons" id="showAllButton">
+        Show All Recipes</button>
       </section>
       <section class="recipe-cards" id="recipeCardSection">
         <!-- display all recipe cards -->
