@@ -12,26 +12,41 @@ import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
 //may not need line 15
-// let recipeRepo = new RecipeRepository(recipeData);
+let recipeRepo = new RecipeRepository(recipeData);
 const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData))
 
 //Query Selectors
 let recipeCardSection = document.getElementById('recipeCardSection');
 let recipeImageName = document.getElementById('recipeImageName');
 let recipeIngredients = document.getElementById('recipeIngredients');
-let ingredientsTitle = document.getElementById('ingredientsTitle');
-let directionsTitle = document.getElementById('directionsTitle');
+let ingredientsTitle = document.querySelector('.ingredients-title');
+let directionsTitle = document.querySelector('.directions-title');
 let recipeDirections = document.getElementById('recipeDirections');
 let recipeCost = document.getElementById('recipeCost');
+let searchButton = document.getElementById('searchButton');
+let searchInput = document.getElementById('searchBar');
 const allRecipesBtn = document.getElementById('recipesBtn');
 // const recipeCard = document.getElementById('${recipe.id}');
 
 //Event Listeners
 window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
+allRecipesBtn.addEventListener('click', displayAllRecipes);
+searchButton.addEventListener('click', searchRecipes);
+// searchInput.addEventListener('keyup', searchRecipes);
+
+
+function show(element) {
+  element.classList.remove("hidden");
+}
+
+function hide(element) {
+  element.classList.add("hidden");
+}
 
 function displayAllRecipes() {
   hide(ingredientsTitle);
+  hide(directionsTitle);
   recipeCardSection.innerHTML = '';
   recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
@@ -47,6 +62,7 @@ function displayAllRecipes() {
 }
 
 function displayRecipeCard() {
+  recipeImageName.innerHTML = '';
   displayNameAndImage();
   displayIngredients();
   displayDirections();
@@ -106,10 +122,20 @@ function displayRecipeCost() {
     </article>`
 }
 
-function show(element) {
-  element.classList.remove("hidden");
+function searchRecipes() {
+  recipeCardSection.innerHTML = '';
+  let userInput = searchInput.value;
+  let filteredRecipes = recipeRepo.filterByName(userInput);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <div class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </div>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`
+  });
 }
 
-function hide(element) {
-  element.classList.add("hidden");
-}
