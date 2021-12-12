@@ -3,14 +3,14 @@ import Recipe from '../src/classes/Recipe';
 import recipeData from '../src/data/recipes';
 import ingredientsData from '../src/data/ingredients';
 
-describe.only('Recipe', () => {
+describe('Recipe', () => {
   let myRecipe;
 
   beforeEach(() => {
     myRecipe = new Recipe(recipeData[0]);
   });
 
-  it('Should be a function', () => {
+  it('should be a function', () => {
     expect(Recipe).to.be.a('function');
   });
 
@@ -34,7 +34,7 @@ describe.only('Recipe', () => {
     ]
 
     const actual = myRecipe.logIngredients()
-   
+
     expect(actual).to.deep.equal(expected)
   })
 
@@ -68,6 +68,6 @@ describe.only('Recipe', () => {
     ])
   })
   it('should calculate recipe cost', () => {
-    expect(myRecipe.logRecipeCost()).to.deep.equal('177.76') 
+    expect(myRecipe.logRecipeCost()).to.deep.equal('177.76')
    })
 });
