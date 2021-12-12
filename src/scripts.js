@@ -79,13 +79,15 @@ function hide(element) {
 }
 
 function showRecipeCardSection() {
+  hide(ingredientsTitle);
+  hide(directionsTitle);
   show(recipeCardSection);
   hide(individualCardView);
 }
 
 function displayAllRecipes() {
-  hide(ingredientsTitle);
-  hide(directionsTitle);
+
+  showRecipeCardSection();
   recipeCardSection.innerHTML = '';
   recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
@@ -98,11 +100,6 @@ function displayAllRecipes() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
-}
-
-function scrollViewAllRecipes() {
-  document.getElementById('recipeCardSection');
-  displayAllRecipes();
 }
 
 function displayRecipeCard() {
