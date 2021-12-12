@@ -7,11 +7,13 @@ import usersData from '../src/data/users';
 import recipeData from '../src/data/recipes';
 // import ingredientsData from '../src/data/ingredients';
 describe.only('User', () => {
-  let currentUser, favoriteRecipe;
+  let currentUser, recipe1, recipe2, recipe3;
 
   beforeEach(() => {
     currentUser = new User(usersData[0]);
-    favoriteRecipe = new Recipe(recipeData[0]);
+    recipe1 = new Recipe(recipeData[0]);
+    recipe2 = new Recipe(recipeData[1]);
+    recipe3 = new Recipe(recipeData[2]);
   });
 
   it('should instantiate a new User', () => {
@@ -42,13 +44,18 @@ describe.only('User', () => {
     expect(currentUser.toCook).to.deep.equal([]);
   });
 
-  it('should be able to add to a list of favorites', () => {
-    currentUser.addToFavorites(recipeData[0]);
-    expect(currentUser.favorites).to.deep.equal([recipeData[0]]);
+  it('should be able to add and remove to a list of favorites', () => {
+    currentUser.addToFavorites(recipe1);
+    currentUser.addToFavorites(recipe2);
+    currentUser.addToFavorites(recipe3);
+    currentUser.removeFromFavorites(currentUser.favorites, recipe1);
+    expect(currentUser.favorites.length).to.equal(2);
   });
 
-  it('should be able to remove from a list of favorites', () => {
-    currentUser.removeFromFavorites(recipeData[0]);
-    expect(currentUser.favorites).to.deep.equal([]);
+  it('should be able to add to a list of recipes to cook', () => {
+    currentUser.addToCook(recipe1);
+    currentUser.addToCook(recipe2);
+    currentUser.addToCook(recipe3);
+    expect(currentUser.toCook.length).to.equal(3);
   });
 })

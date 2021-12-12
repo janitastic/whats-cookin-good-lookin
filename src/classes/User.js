@@ -13,15 +13,17 @@ class User {
     this.favorites.push(selectedRecipe);
   }
 
-  removeFromFavorites(id) {
-    this.favorites.forEach((favorite, index) => {
-      if (favorite.id === id) {
-        this.favorites.splice(index, 1)
-      }
-    });
+  removeFromFavorites(favorites, selectedRecipe) {
+    let index = favorites.indexOf(selectedRecipe);
+    if (index > -1) {
+      favorites.splice(index, 1);
+    }
+    return favorites;
   }
 
-  
+  addToCook(selectedRecipe) {
+    this.toCook.push(selectedRecipe);
+  }
 }
 
 
