@@ -7,13 +7,14 @@ import usersData from '../src/data/users';
 import recipeData from '../src/data/recipes';
 // import ingredientsData from '../src/data/ingredients';
 describe.only('User', () => {
-  let currentUser, recipe1, recipe2, recipe3;
+  let currentUser, recipe1, recipe2, recipe3, recipe4;
 
   beforeEach(() => {
     currentUser = new User(usersData[0]);
     recipe1 = new Recipe(recipeData[0]);
     recipe2 = new Recipe(recipeData[1]);
     recipe3 = new Recipe(recipeData[2]);
+    recipe4 = new Recipe(recipeData[3]);
   });
 
   it('should instantiate a new User', () => {
@@ -52,10 +53,24 @@ describe.only('User', () => {
     expect(currentUser.favorites.length).to.equal(2);
   });
 
-  it('should be able to add to a list of recipes to cook', () => {
-    currentUser.addToCook(recipe1);
-    currentUser.addToCook(recipe2);
-    currentUser.addToCook(recipe3);
-    expect(currentUser.toCook.length).to.equal(3);
+  it('should be able to add filter through favorites by tag', () => {
+    currentUser.addToFavorites(recipe1);
+    currentUser.addToFavorites(recipe2);
+    currentUser.addToFavorites(recipe3);
+    expect(currentUser.filterByTag(["snack", "sauce"]).length).to.equal(2);
+  });
+
+  it('should filter by name', () => {
+    currentUser.addToFavorites(recipe1);
+    currentUser.addToFavorites(recipe2);
+    currentUser.addToFavorites(recipe3);
+    expect(currentUser.filterByName("Chocolate").length).to.equal(1);
+  });
+
+  it('should filter by ingredients', () => {
+    currentUser.addToFavorites(recipe1);
+    currentUser.addToFavorites(recipe2);
+    currentUser.addToFavorites(recipe4);
+    expect(currentUser.filterByIngredients("flour").length).to.equal(2);
   });
 })
