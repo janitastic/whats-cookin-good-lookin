@@ -447,14 +447,14 @@ function findSnacks() {
 }
 
 
-function saveToFavorites() {
-  // if (recipe.id === user.id) {
+function saveToFavorites(currentUser) {
   // get the recipe.id from the event by using event. target ? find where the id matches which will return the whole recipe object , then push that recipe
-    console.log(user)
-    console.log('user id', user.id)
-    console.log('user name', user.name)
-    user.addToFavorites(recipeData)
-    console.log('user.favorites', user.favorites)
+
+    console.log(currentUser)
+    console.log('user id', currentUserId)
+    console.log('user name', currentUserName)
+    currentUser.addToFavorites(recipeData)
+    console.log('user.favorites', currentUser.favorites)
   // }
   
   // buildHTML();
