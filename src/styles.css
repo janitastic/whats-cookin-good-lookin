@@ -371,6 +371,7 @@ input {
 }
 
 .drop-down a:hover {
+	cursor: default;
 	/* background-color: #A66953; */
 }
 
