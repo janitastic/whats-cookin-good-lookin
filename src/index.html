@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <h1>What's Cookin' Good Lookin'</h1>
+      <a href="/"><h1>What's Cookin' Good Lookin'</h1></a>
       <nav>
           <button class="menu-button" id="recipesBtn">
           <img class="icon" src="images/recipe-book.png"> All Recipes
@@ -75,7 +75,6 @@
       <article class="recipe-cards" id="recipeCardSection">
         <!-- display all recipe cards -->
       </article>
-      <!-- this is our new area that we need to style -->
       <article class="individual-card hidden" id="individualCardView">
         <summary class="recipe-card-top">
           <aside class="name-and-image">
@@ -87,7 +86,6 @@
             <section class="ingredients-title hidden" id="ingredientsTitle">
               <h4>Ingredients</h4>
             </section>
-          <!-- </section> -->
             <section class="recipe-ingredients" id="recipeIngredients">
               <!-- displays recipe ingredients -->
             </section>
@@ -107,6 +105,12 @@
             <!-- display recipe cost here -->
           </section>
         </summary>
+      </article>
+      <article class="favorites-section hidden" id="favoritesSection">
+        <!-- display favorites section -->
+      </article>
+      <article class="to-cook-section hidden" id="toCookSection">
+        <!-- display recipes to cook section -->
       </article>
     </main>
   </body>

@@ -66,7 +66,7 @@ body {
 	background-image: url('images/background-image.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
-	padding: 5% 0;
+	padding: 5% 0 0 0;
 	width: 100vw;
 }
 
@@ -121,6 +121,10 @@ p {
 main {
 	/* background-color: rgba(242,242,242,.20); */
 	height: 100%;
+}
+
+a {
+	text-decoration: none;
 }
 
 .search-bar {
@@ -220,6 +224,7 @@ hr {
 }
 
 .menu-button {
+	cursor: pointer;
 	display: flex;
 	align-items: center;
 	background-color: transparent;
@@ -311,8 +316,10 @@ input {
 }
 
 .filter-icons {
-	margin-top: 2%;
+	margin-top: 10%;
+	padding: 2% 0;
 	text-align: center;
+	background-color: rgba(10, 30, 35, .9);
 }
 
 .link-to-recipes {
