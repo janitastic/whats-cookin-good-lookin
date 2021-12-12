@@ -5,70 +5,117 @@
     <title>What's Cookin' Good Lookin'</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/390ee8da6c.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
-      <h1>What's Cookin' Good Lookin'</h1>
+      <a href="/"><h1>What's Cookin' Good Lookin'</h1></a>
       <nav>
-        <button class="menu-button" id="recipesBtn"><img class="icon" src="images/recipe-book.png"> All Recipes</button>
-        <button class="menu-button"><img class="icon" src="images/like.png">  Favorites</button>
-        <button class="menu-button"><img class="icon" src="images/baking.png"> To Cook</button>
+          <button class="menu-button" id="recipesBtn">
+          <img class="icon" src="images/recipe-book.png"> All Recipes
+        </button>
+        <button class="menu-button" id="favoritesBtn">
+          <img class="icon" src="images/like.png">  Favorites
+        </button>
+        <button class="menu-button" id="toCookBtn">
+          <img class="icon" src="images/baking.png"> To Cook
+        </button>
       </nav>
     </header>
     <main>
-      <section class="search-bar">
-        <div class="drop-down">
-        <button class="search-button"
-        id="searchButton">Search Recipes</button>
-        <div id="dropDownSearch" class="drop-down-search hidden">
-          <input class="input" type="search" placeholder="Search Recipe" id="searchBar" required>
-          <a id="searchByNameLink">Search recipe names</a>
-          <a id="searchByIngredientLink">Search ingredients</a>
+      <article class="hero">
+        <section class="search-bar">
+          <div class="drop-down">
+          <button class="search-button"
+          id="searchButton">Search Recipes
+          <span class="search-icon" id="searchIcon">
+            <i class="fa fa-chevron-down fa-flip-horizontal"></i>
+          </span>
+          </button>
+          <div id="dropDownSearch" class="drop-down-search hidden">
+            <h2 class="search-title">What would you like to cook?</h2>
+            <input class="input" type="search" placeholder="Search by name or ingredients" id="searchBar" required>
+            <p class="example-text">Example: Chicken, pork, flour, chocolate, etc.</p>
+            <a href="#recipeCardSection">
+              <button class="search-buttons" id="searchByNameLink" disabled>Search Recipe Names</button>
+            </a>
+            <a href="#recipeCardSection">
+              <button class="search-buttons" id="searchByIngredientLink" disabled>Search Ingredients</button>
+            </a>
+          </div>
         </div>
-      </div>
-      </section>
-      <section class="filter-icons" id="filterIcons">
-        <button class="filter-buttons" id="appetizerButton">
-        Appetizers</button>
-        <button class="filter-buttons" id="breakfastButton">
-        Breakfast</button>
-        <button class="filter-buttons" id="lunchButton">
-        Lunch</button>
-        <button class="filter-buttons" id="dinnerButton">
-        Dinner</button>
-        <button class="filter-buttons" id="sideButton">
-        Sides</button>
-        <button class="filter-buttons" id="condimentButton">
-        Condiments</button>
-        <button class="filter-buttons" id="snackButton">
-        Snacks</button>
-        <button class="filter-buttons" id="showAllButton">
-        Show All Recipes</button>
-      </section>
-      <section class="recipe-cards" id="recipeCardSection">
+        </section>
+        <section class="filter-icons" id="filterIcons">
+          <h2>Filter Recipes By Recipe Type</h2>
+          <a class="link-to-recipes" href="#recipeCardSection">
+            <button class="filter-buttons" id="appetizerButton">
+              <img class="filter-icon" src="images/like.png">Appetizers
+            </button>
+            <button class="filter-buttons" id="breakfastButton">
+              <img class="filter-icon" src="images/like.png">Breakfast
+            </button>
+            <button class="filter-buttons" id="lunchButton">
+              <img class="filter-icon" src="images/like.png">Lunch
+            </button>
+            <button class="filter-buttons" id="dinnerButton">
+              <img class="filter-icon" src="images/like.png">Dinner
+            </button>
+            <button class="filter-buttons" id="sideButton">
+              <img class="filter-icon" src="images/like.png">Sides
+            </button>
+            <button class="filter-buttons" id="condimentButton">
+              <img class="filter-icon" src="images/like.png">Condiments
+            </button>
+            <button class="filter-buttons" id="snackButton">
+              <img class="filter-icon" src="images/like.png">Snacks
+            </button>
+            <button class="filter-buttons" id="showAllButton">
+              <img class="filter-icon" src="images/like.png">Show All Recipes
+            </button>
+        </a>
+        </section>
+      </article>
+      <article class="recipe-cards" id="recipeCardSection">
         <!-- display all recipe cards -->
-      </section>
-      <section id="recipeImageName">
-        <!-- displays recipe image & name -->
-      </section>
-      <section class="ingredients-title hidden" id="ingredientsTitle">
-        <h4>Ingredients</h4>
-      </section>
-      </section>
-      <section id="recipeIngredients">
-        <!-- displays recipe ingredients -->
-      </section>
-      <section class="directions-title hidden" id="directionsTitle">
-        <h4>Directions</h4>
-      </section>
-      <section id="recipeDirections">
-        <!-- display recipe directions -->
-      </section>
-      </section>
-      <section id="recipeCost">
-        <!-- display recipe cost here -->
-      </section>
+      </article>
+      <article class="individual-card hidden" id="individualCardView">
+        <summary class="recipe-card-top">
+          <aside class="name-and-image">
+            <section id="recipeImageName">
+              <!-- displays recipe image & name -->
+            </section>
+          </aside>
+          <aside class="ingredients">
+            <section class="ingredients-title hidden" id="ingredientsTitle">
+              <h4>Ingredients</h4>
+            </section>
+            <section class="recipe-ingredients" id="recipeIngredients">
+              <!-- displays recipe ingredients -->
+            </section>
+          </aside>
+        </summary>
+        <hr>
+        <summary class="recipe-card-bottom">
+          <section class="directions-title hidden" id="directionsTitle">
+            <h4>Directions</h4>
+          </section>
+          <section id="recipeDirections">
+            <!-- display recipe directions -->
+          </section>
+          </section>
+          <hr>
+          <section id="recipeCost">
+            <!-- display recipe cost here -->
+          </section>
+        </summary>
+      </article>
+      <article class="favorites-section hidden" id="favoritesSection">
+        <!-- display favorites section -->
+      </article>
+      <article class="to-cook-section hidden" id="toCookSection">
+        <!-- display recipes to cook section -->
+      </article>
     </main>
   </body>
 </html>

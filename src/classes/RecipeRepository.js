@@ -19,6 +19,7 @@ class RecipeRepository {
   }
 
   filterByName(userInput) {
+    //we need to add some error handling for when a name doesn't exist
     const filteredRecipes = this.recipes.reduce((recipeNames, recipe) => {
         if (recipe.name.toLowerCase().includes(userInput.toLowerCase())) {
           recipeNames.push(recipe);
@@ -28,6 +29,7 @@ class RecipeRepository {
   }
 
   filterByIngredients(userInput) {
+    //we may need an if/else here so that it can create error handling when an ingredient doesn't exist
     const foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()));
     const foundId = foundIngredient.id;
 
