@@ -35,6 +35,7 @@ let directionsTitle = document.querySelector('.directions-title');
 let recipeDirections = document.getElementById('recipeDirections');
 let recipeCost = document.getElementById('recipeCost');
 let searchButton = document.getElementById('searchButton');
+let searchIcon = document.getElementById('searchIcon');
 let searchInput = document.getElementById('searchBar');
 let dropDownSearch = document.getElementById('dropDownSearch');
 let searchByName = document.getElementById('searchByNameLink');
@@ -77,6 +78,11 @@ function hide(element) {
   element.classList.add("hidden");
 }
 
+function showRecipeCardSection() {
+  show(recipeCardSection);
+  hide(individualCardView);
+}
+
 function displayAllRecipes() {
   hide(ingredientsTitle);
   hide(directionsTitle);
@@ -92,6 +98,11 @@ function displayAllRecipes() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
+}
+
+function scrollViewAllRecipes() {
+  document.getElementById('recipeCardSection');
+  displayAllRecipes();
 }
 
 function displayRecipeCard() {
@@ -111,7 +122,7 @@ function displayNameAndImage() {
     if (recipe.id === recipeId) {
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
-      <h2>${recipe.name}</h2>
+      <h4>${recipe.name}</h4>
       <img class="recipe-image" src=${recipe.image}>
       </article>`
     }
@@ -222,11 +233,13 @@ function searchByRecipeName() {
 
 function dropDown() {
   dropDownSearch.classList.toggle('show');
+  searchIcon.classList.toggle('fa-rotate-180');
   searchRecipes();
 }
 
 function findAppetizers() {
   recipeCardSection.innerHTML = '';
+  showRecipeCardSection();
   let userSelection = tags.appetizers;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
@@ -244,6 +257,7 @@ function findAppetizers() {
 
 function findBreakfast() {
   recipeCardSection.innerHTML = '';
+  showRecipeCardSection();
   let userSelection = tags.breakfast;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
@@ -261,6 +275,7 @@ function findBreakfast() {
 
 function findLunch() {
   recipeCardSection.innerHTML = '';
+  showRecipeCardSection();
   let userSelection = tags.lunch;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
@@ -278,6 +293,7 @@ function findLunch() {
 
 function findDinner() {
   recipeCardSection.innerHTML = '';
+  showRecipeCardSection();
   let userSelection = tags.dinner;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
@@ -295,6 +311,7 @@ function findDinner() {
 
 function findSides() {
   recipeCardSection.innerHTML = '';
+  showRecipeCardSection();
   let userSelection = tags.sides;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
@@ -312,6 +329,7 @@ function findSides() {
 
 function findCondiments() {
   recipeCardSection.innerHTML = '';
+  showRecipeCardSection();
   let userSelection = tags.condiments;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
@@ -329,6 +347,7 @@ function findCondiments() {
 
 function findSnacks() {
   recipeCardSection.innerHTML = '';
+  showRecipeCardSection();
   let userSelection = tags.snacks;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
