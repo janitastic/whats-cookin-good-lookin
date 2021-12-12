@@ -111,8 +111,8 @@ function displayNameAndImage() {
     if (recipe.id === recipeId) {
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
-      <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <h2>${recipe.name}</h2>
+      <img class="recipe-image" src=${recipe.image}>
       </article>`
     }
   });

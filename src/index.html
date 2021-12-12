@@ -53,26 +53,34 @@
       </article>
       <!-- this is our new area that we need to style -->
       <article class="individual-card hidden" id="individualCardView">
-        <section id="recipeImageName">
-          <!-- displays recipe image & name -->
-        </section>
-        <section class="ingredients-title hidden" id="ingredientsTitle">
-          <h4>Ingredients</h4>
-        </section>
-        </section>
-        <section id="recipeIngredients">
-          <!-- displays recipe ingredients -->
-        </section>
-        <section class="directions-title hidden" id="directionsTitle">
-          <h4>Directions</h4>
-        </section>
-        <section id="recipeDirections">
-          <!-- display recipe directions -->
-        </section>
-        </section>
-        <section id="recipeCost">
-          <!-- display recipe cost here -->
-        </section>
+        <summary class="recipe-card-top">
+          <aside class="name-and-image">
+            <section id="recipeImageName">
+              <!-- displays recipe image & name -->
+            </section>
+          </aside>
+          <aside class="ingredients">
+            <section class="ingredients-title hidden" id="ingredientsTitle">
+              <h4>Ingredients</h4>
+            </section>
+          <!-- </section> -->
+            <section id="recipeIngredients">
+              <!-- displays recipe ingredients -->
+            </section>
+          </aside>
+        </summary>
+        <summary class="recipe-card-bottom">
+          <section class="directions-title hidden" id="directionsTitle">
+            <h4>Directions</h4>
+          </section>
+          <section id="recipeDirections">
+            <!-- display recipe directions -->
+          </section>
+          </section>
+          <section id="recipeCost">
+            <!-- display recipe cost here -->
+          </section>
+        </summary>
       </article>
     </main>
   </body>

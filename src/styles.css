@@ -86,9 +86,10 @@ h1 {
 
 h2 {
 	font-family: 'Poppins', sans-serif;
-	font-size: 2em;
+	font-size: 1.5em;
 	color: #F2F2F2;
 	text-shadow: 3px 3px 8px black;
+	margin-bottom: 5%;
 }
 
 h3 {
@@ -101,7 +102,7 @@ h3 {
 h4 {
 	font-size: 1em;
 	color: #F2F2F2;
-	padding: 5%;
+	/* padding: 5%; */
 	/* text-align: center; */
 }
 
@@ -131,13 +132,6 @@ main {
 	padding: 5% 10%;
 }
 
-.individual-card {
-	display: flex;
-  flex-direction: column;
-  align-items: center;
-	margin: 5% 20%;
-}
-
 /* we need to refactor/remove 127 & 128 for recipe card */
 .card,
 .individual-card {
@@ -148,6 +142,25 @@ main {
 	padding: 5%;
 }
 
+.individual-card {
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+	margin: 5% 20%;
+}
+
+.name-and-image {
+	flex: 2;
+  padding-right: 5%;
+}
+
+.ingredients {
+	flex: 2;
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .card:hover {
 	transform: scale(1.1);
 }
@@ -155,6 +168,19 @@ main {
 .thumbnail-image {
 	width: 100%;
 	border-radius: 0.2em;
+}
+
+.recipe-image {
+	width: 100%;
+}
+
+.recipe-card-top {
+	display: flex;
+}
+
+.recipe-card-bottom {
+	display: flex;
+	flex-direction: column;
 }
 
 input {
