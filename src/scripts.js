@@ -63,6 +63,10 @@ let filterByCondiments = document.getElementById('condimentButton');
 let filterBySnacks = document.getElementById('snackButton');
 let showAllButton = document.getElementById('showAllButton');
 
+// Individual Recipe Card Selectors
+let favoriteButton = document.getElementById('favoriteButton');
+// let favoriteHeart = document.querySelector('#heart');
+
 // const recipeCard = document.getElementById('${recipe.id}');
 
               /*********** EVENT LISTENERS ***********/
@@ -84,7 +88,8 @@ filterBySides.addEventListener('click', findSides);
 filterByCondiments.addEventListener('click', findCondiments);
 filterBySnacks.addEventListener('click', findSnacks);
 showAllButton.addEventListener('click', displayAllRecipes);
-
+favoriteButton.addEventListener('click', saveToFavorites);
+// favoriteHeart.addEventListener('click', saveToFavorites);
               /*********** HELPER FUNCTIONS ***********/
 
 function show(element) {
@@ -151,12 +156,28 @@ function getRandomIndex(array) {
 }
 
               /*********** FUNCTIONS ***********/
+
+// function getUser() {
+  let userIndex = getRandomIndex(usersData);
+  // user = new User(usersData[userIndex].name, usersData[userIndex].id);
+  console.log(`Welcome ${usersData[userIndex].name}`)
+  console.log(`This is the userId ${usersData[userIndex].id}`)
+// }
+
 function loadPage() {
   displayAllRecipes();
-  let userIndex = getRandomIndex(usersData);
   user = new User(usersData[userIndex].name, usersData[userIndex].id);
-  console.log(`Welcome ${usersData[userIndex].name}`)
   userMessage.innerHTML = `<h2>Lookin' Good ${usersData[userIndex].name}!<br>Let's Get Cookin'!</h2>`
+}
+
+function buildHTML(index) {
+  favoriteHeart.addEventListener('click', saveToFavorites);
+  if (usersData.favorites[index].heart) {
+    let heart = 'img class="icon" id="heart" src="images/like.png"';
+  } else {
+    let heart = 'img class="icon" id="heart" src="images/baking.png"';
+  }
+  saveToFavorites(usersData[index].id);
 }
 
 function displayAllRecipes() {
@@ -165,8 +186,8 @@ function displayAllRecipes() {
   recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
+      <section class="card-icons" id="cardIcons">
+      <img class="icon heart" id="heart" src="images/like.png">
       <img class="icon" src="images/baking.png">
       </section>
       <h3>${recipe.name}</h3>
@@ -190,6 +211,7 @@ function displayNameAndImage() {
   const recipeId = Number(event.target.parentNode.id);
   recipeClasses.forEach((recipe, index) => {
     if (recipe.id === recipeId) {
+      console.log('recipe.id', recipe.id);
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
       <h4>${recipe.name}</h4>
@@ -420,7 +442,39 @@ function findSnacks() {
   });
 }
 
+
+function saveToFavorites() {
+  // if (recipe.id === user.id) {
+    console.log(user)
+    console.log('user id', user.id)
+    console.log('user name', user.name)
+    user.addToFavorites(recipeData)
+    console.log('user.favorites', user.favorites)
+  // }
+  
+  // buildHTML();
+  // if (event.target.classList.contains('heart')) {
+  //   console.log(event.target.parentNode)
+  // } 
+}
+
 function displayFavorites() {
+  recipeCardSection.innerHTML = '';
+  let userInput = searchInput.value;
+  let filteredRecipes = recipeRepo.filterByName(userInput);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <section class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </section>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+  toggleDropDown();
+  resetSearch();
   showFavoritesSection();
 }
 
