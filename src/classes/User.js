@@ -8,6 +8,20 @@ class User {
     this.favorites = [];
     this.toCook = [];
   }
+
+  addToFavorites(selectedRecipe) {
+    this.favorites.push(selectedRecipe);
+  }
+
+  removeFromFavorites(id) {
+    this.favorites.forEach((favorite, index) => {
+      if (favorite.id === id) {
+        this.favorites.splice(index, 1)
+      }
+    });
+  }
+
+  
 }
 
 
