@@ -38,12 +38,12 @@ const toCookBtn = document.getElementById('toCookBtn');
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
 // Detailed Recipe Card
-let recipeImageName = document.getElementById('recipeImageName');
-let recipeIngredients = document.getElementById('recipeIngredients');
-let ingredientsTitle = document.querySelector('.ingredients-title');
-let directionsTitle = document.querySelector('.directions-title');
-let recipeDirections = document.getElementById('recipeDirections');
-let recipeCost = document.getElementById('recipeCost');
+// let recipeImageName = document.getElementById('recipeImageName');
+// let recipeIngredients = document.getElementById('recipeIngredients');
+// let ingredientsTitle = document.querySelector('.ingredients-title');
+// let directionsTitle = document.querySelector('.directions-title');
+// let recipeDirections = document.getElementById('recipeDirections');
+// let recipeCost = document.getElementById('recipeCost');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
@@ -156,6 +156,7 @@ function loadPage() {
   let userIndex = getRandomIndex(usersData);
   user = new User(usersData[userIndex].name, usersData[userIndex].id);
   console.log(`Welcome ${usersData[userIndex].name}`)
+  userMessage.innerHTML = `<h2>Lookin' Good ${usersData[userIndex].name}!<br>Let's Get Cookin'!</h2>`
 }
 
 function displayAllRecipes() {
