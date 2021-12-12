@@ -16,7 +16,9 @@ import ingredientsData from './data/ingredients';
               /*********** GLOBAL VARIABLES ***********/
 
 let recipeRepo = new RecipeRepository(recipeData);
-let user = new User(usersData);
+let currentUser;
+let currentUserName;
+let currentUserId;
 const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
@@ -157,17 +159,19 @@ function getRandomIndex(array) {
 
               /*********** FUNCTIONS ***********/
 
-// function getUser() {
+function getUser() {
   let userIndex = getRandomIndex(usersData);
-  // user = new User(usersData[userIndex].name, usersData[userIndex].id);
-  console.log(`Welcome ${usersData[userIndex].name}`)
-  console.log(`This is the userId ${usersData[userIndex].id}`)
-// }
+  currentUser = new User(usersData[userIndex]);
+  currentUserName = currentUser.name;
+  currentUserId = currentUser.id;
+  console.log(`Welcome ${currentUserName}`)
+  console.log(`This is the userId ${currentUserId}`)
+}
 
 function loadPage() {
   displayAllRecipes();
-  user = new User(usersData[userIndex].name, usersData[userIndex].id);
-  userMessage.innerHTML = `<h2>Lookin' Good ${usersData[userIndex].name}!<br>Let's Get Cookin'!</h2>`
+  getUser();
+  userMessage.innerHTML = `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`
 }
 
 function buildHTML(index) {
@@ -445,6 +449,7 @@ function findSnacks() {
 
 function saveToFavorites() {
   // if (recipe.id === user.id) {
+  // get the recipe.id from the event by using event. target ? find where the id matches which will return the whole recipe object , then push that recipe
     console.log(user)
     console.log('user id', user.id)
     console.log('user name', user.name)
