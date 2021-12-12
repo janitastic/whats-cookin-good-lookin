@@ -220,7 +220,7 @@ hr {
 
 input {
 	margin: 1%;
-	width: 99%;
+	width: 98%;
 	padding: 2%;
 	border-radius: 3px;
 	border: none;
@@ -309,6 +309,7 @@ a:hover {
   display: none;
   /* position: absolute; */
   background-color: rgba(242, 242, 242, .8);
+	/* border-bottom: 4px solid black; */
   min-width: 230px;
 	margin: 1%;
 	/* max-width: 500px; */
@@ -319,7 +320,7 @@ a:hover {
   font-size: 1.2em;
 	font-weight: 500;
   box-shadow: 1px 1px 7px black;
-  padding-right: 2%;
+  /* padding-right: 2%; */
   color: #F2F2F2;
 	border: none;
 }
@@ -331,8 +332,9 @@ a:hover {
   display: block;
 }
 
-.dropdown a:hover {
-	background-color: #ddd;
+.drop-down a:hover {
+	color: #F2F2F2;
+	background-color: #641220;
 }
 
 .hidden {
