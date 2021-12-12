@@ -12,23 +12,27 @@ class Recipe {
 
   logIngredients() {
     const ingredientNameArr = this.ingredients.map(ingredient => {
-      const ingredientList = ingredientsData.find(ingredientObj => ingredientObj.id === ingredient.id)
-      return ingredientList.name
-    })
-    return ingredientNameArr
+      const ingredientList = ingredientsData.find(ingredientObj => ingredientObj.id === ingredient.id);
+      return ingredientList.name;
+    });
+    return ingredientNameArr;
   }
+
   logRecipeDirections() {
     return this.instructions;
   }
+
   logRecipeCost() {
     let totalCost;
     const result = this.ingredients.reduce((acc, currentIng) => {
-      let foundId = ingredientsData.find(ingredient => {return ingredient.id === currentIng.id})
+      let foundId = ingredientsData.find(ingredient => {
+        return ingredient.id === currentIng.id;
+      });
       totalCost = (currentIng.quantity.amount * foundId.estimatedCostInCents) / 100;
       acc += totalCost;
-      return acc
-    }, 0)
-    return result.toFixed(2); 
+      return acc;
+    }, 0);
+    return result.toFixed(2);
   }
 }
 

@@ -18,8 +18,7 @@ class User {
     let index = favorites.indexOf(selectedRecipe);
     if (index > -1) {
       favorites.splice(index, 1);
-    }
-    return favorites;
+    } return favorites;
   }
 
   addToCook(selectedRecipe) {
@@ -30,40 +29,33 @@ class User {
     const filteredRecipes = this.favorites.reduce((taggedRecipes, favorite) => {
       tags.forEach(tag => {
         if (favorite.tags.includes(tag) && !taggedRecipes.includes(favorite)) {
-          taggedRecipes.push(favorite)
+          taggedRecipes.push(favorite);
         }
       });
       return taggedRecipes;
-    }, [])
+    }, []);
     return filteredRecipes;
   }
 
   filterByName(userInput) {
     const filteredRecipes = this.favorites.reduce((recipeNames, recipe) => {
         if (recipe.name.toLowerCase().includes(userInput.toLowerCase())) {
-          recipeNames.push(recipe)
-        }
-      return recipeNames;
-    }, [])
+          recipeNames.push(recipe);
+        } return recipeNames;
+      }, []);
     return filteredRecipes;
   }
 
   filterByIngredients(userInput) {
     const foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()))
-    const foundId = foundIngredient.id
+    const foundId = foundIngredient.id;
 
     const filteredRecipes = this.favorites.filter(recipe => {
       return recipe.ingredients.some(ingredient =>
-      ingredient.id === foundId)
-    })
-    return filteredRecipes
+      ingredient.id === foundId);
+    });
+    return filteredRecipes;
   }
 }
-
-
-
-
-
-
 
 export default User;

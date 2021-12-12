@@ -7,7 +7,7 @@ describe('Ingredient', () => {
   let ingredient;
 
   beforeEach(() => {
-    ingredient = new Ingredient(200801, "wheat flour", 142);
+    ingredient = new Ingredient(ingredientsData[0]);
   });
 
   it('Should be a function', () => {
@@ -16,14 +16,17 @@ describe('Ingredient', () => {
 
   it('should be an instance of Ingredient ', () => {
     expect(ingredient).to.be.an.instanceof(Ingredient);
-  })
+  });
+
   it('should store an id number', () => {
-    expect(ingredient.id).to.equal(200801);
-  })
+    expect(ingredient.id).to.equal(20081);
+  });
+
   it('should store an ingredient name', () => {
-    expect(ingredient.name).to.equal("wheat flour");
-  })
+    expect(ingredient.name).to.equal('wheat flour');
+  });
+
   it('store an ingredient cost', () => {
     expect(ingredient.cost).to.equal(142);
-  })
+  });
 });

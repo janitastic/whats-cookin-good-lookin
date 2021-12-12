@@ -6,7 +6,7 @@ import usersData from '../src/data/users';
 /* May not need below imports */
 import recipeData from '../src/data/recipes';
 // import ingredientsData from '../src/data/ingredients';
-describe.only('User', () => {
+describe('User', () => {
   let currentUser, recipe1, recipe2, recipe3, recipe4;
 
   beforeEach(() => {
@@ -57,20 +57,20 @@ describe.only('User', () => {
     currentUser.addToFavorites(recipe1);
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe3);
-    expect(currentUser.filterByTag(["snack", "sauce"]).length).to.equal(2);
+    expect(currentUser.filterByTag(['snack', 'sauce']).length).to.equal(2);
   });
 
   it('should filter by name', () => {
     currentUser.addToFavorites(recipe1);
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe3);
-    expect(currentUser.filterByName("Chocolate").length).to.equal(1);
+    expect(currentUser.filterByName('Chocolate').length).to.equal(1);
   });
 
   it('should filter by ingredients', () => {
     currentUser.addToFavorites(recipe1);
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe4);
-    expect(currentUser.filterByIngredients("flour").length).to.equal(2);
+    expect(currentUser.filterByIngredients('flour').length).to.equal(2);
   });
-})
+});

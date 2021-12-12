@@ -19,14 +19,14 @@ describe('RecipeRepo', () => {
   });
 
   it('should filter by tag', () => {
-    expect(recipeRepository.filterByTag(["side dish", "antipasto"]).length).to.equal(30);
+    expect(recipeRepository.filterByTag(['side dish', 'antipasto']).length).to.equal(30);
   });
 
   it('should filter by name', () => {
-    expect(recipeRepository.filterByName("Chocolate").length).to.equal(3);
+    expect(recipeRepository.filterByName('Chocolate').length).to.equal(3);
   });
 
   it('should filter by ingredients', () => {
-    expect(recipeRepository.filterByIngredients("onion powder").length).to.equal(3);
+    expect(recipeRepository.filterByIngredients('onion powder').length).to.equal(3);
   });
-})
+});
