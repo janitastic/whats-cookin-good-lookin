@@ -26,6 +26,8 @@ const tags = {
 
 //Query Selectors
 const allRecipesBtn = document.getElementById('recipesBtn');
+const favoritesBtn = document.getElementById('favoritesBtn');
+const toCookBtn = document.getElementById('toCookBtn');
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
 let recipeImageName = document.getElementById('recipeImageName');
@@ -55,10 +57,12 @@ let showAllButton = document.getElementById('showAllButton');
 window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
-searchButton.addEventListener('click', dropDown);
+favoritesBtn.addEventListener('click', displayFavorites);
+toCookBtn.addEventListener('click', displayToCook);
+searchButton.addEventListener('click', toggleDropDown);
 searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
-// searchInput.addEventListener('keyup', searchRecipes);
+searchInput.addEventListener('keyup', checkInput);
 filterByAppetizer.addEventListener('click', findAppetizers);
 filterByBreakfast.addEventListener('click', findBreakfast);
 filterByLunch.addEventListener('click', findLunch);
@@ -83,10 +87,29 @@ function showRecipeCardSection() {
   hide(directionsTitle);
   show(recipeCardSection);
   hide(individualCardView);
+  hide(favoritesSection);
+  hide(toCookSection);
+}
+
+function showFavoritesSection() {
+  hide(ingredientsTitle);
+  hide(directionsTitle);
+  hide(recipeCardSection);
+  hide(individualCardView);
+  show(favoritesSection);
+  hide(toCookSection);
+}
+
+function showToCookSection() {
+  hide(ingredientsTitle);
+  hide(directionsTitle);
+  hide(recipeCardSection);
+  hide(individualCardView);
+  hide(favoritesSection);
+  show(toCookSection);
 }
 
 function displayAllRecipes() {
-
   showRecipeCardSection();
   recipeCardSection.innerHTML = '';
   recipeClasses.forEach(recipe => {
@@ -166,14 +189,23 @@ function displayRecipeCost() {
     </article>`
 }
 
-// function checkInput() {
-//   let userInput = searchInput.value;
-//   if (!userInput.value) {
-//     // searchByName.disabled = true;
-//     // searchByIngredient.disabled = true;
-//     console.log('please enter something');
-//   }
-// }
+function checkInput() {
+  let userInput = searchInput.value;
+  if (userInput.value !== null) {
+    searchByName.disabled = false;
+    searchByIngredient.disabled = false;
+  } else {
+    searchByName.disabled = true;
+    searchByIngredient.disabled = true;
+    console.log('please enter something');
+  }
+}
+
+function resetSearch() {
+  searchInput.value = null;
+  searchByName.disabled = true;
+  searchByIngredient.disabled = true;
+}
 
 function searchRecipes() {
   let userInput = searchInput.value;
@@ -205,8 +237,8 @@ function searchByIngredients() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
-  // dropDown();
-  searchInput.value = '';
+  toggleDropDown();
+  resetSearch();
 }
 
 function searchByRecipeName() {
@@ -224,14 +256,14 @@ function searchByRecipeName() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
-  // dropDown();
-  searchInput.value = '';
+  toggleDropDown();
+  resetSearch();
 }
 
-function dropDown() {
+function toggleDropDown() {
   dropDownSearch.classList.toggle('show');
   searchIcon.classList.toggle('fa-rotate-180');
-  searchRecipes();
+  // searchRecipes();
 }
 
 function findAppetizers() {
@@ -358,4 +390,12 @@ function findSnacks() {
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
   });
+}
+
+function displayFavorites() {
+  showFavoritesSection();
+}
+
+function displayToCook() {
+  showToCookSection();
 }

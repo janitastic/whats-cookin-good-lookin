@@ -15,10 +15,10 @@
           <button class="menu-button" id="recipesBtn">
           <img class="icon" src="images/recipe-book.png"> All Recipes
         </button>
-        <button class="menu-button">
+        <button class="menu-button" id="favoritesBtn">
           <img class="icon" src="images/like.png">  Favorites
         </button>
-        <button class="menu-button">
+        <button class="menu-button" id="toCookBtn">
           <img class="icon" src="images/baking.png"> To Cook
         </button>
       </nav>
@@ -36,9 +36,13 @@
           <div id="dropDownSearch" class="drop-down-search hidden">
             <h2 class="search-title">What would you like to cook?</h2>
             <input class="input" type="search" placeholder="Search by name or ingredients" id="searchBar" required>
-            <p class="example-text">Example: Chicken, pork, flour, chocolate.</p>
-            <a href="#recipeCardSection" id="searchByNameLink">Search Recipe Names</a>
-            <a href="#recipeCardSection" id="searchByIngredientLink">Search Ingredients</a>
+            <p class="example-text">Example: Chicken, pork, flour, chocolate, etc.</p>
+            <a href="#recipeCardSection">
+              <button class="search-buttons" id="searchByNameLink" disabled>Search Recipe Names</button>
+            </a>
+            <a href="#recipeCardSection">
+              <button class="search-buttons" id="searchByIngredientLink" disabled>Search Ingredients</button>
+            </a>
           </div>
         </div>
         </section>
@@ -46,28 +50,28 @@
           <h2>Filter Recipes By Recipe Type</h2>
           <a class="link-to-recipes" href="#recipeCardSection">
             <button class="filter-buttons" id="appetizerButton">
-              <img class="icon" src="images/like.png">Appetizers
+              <img class="filter-icon" src="images/like.png">Appetizers
             </button>
             <button class="filter-buttons" id="breakfastButton">
-              <img class="icon" src="images/like.png">Breakfast
+              <img class="filter-icon" src="images/like.png">Breakfast
             </button>
             <button class="filter-buttons" id="lunchButton">
-              <img class="icon" src="images/like.png">Lunch
+              <img class="filter-icon" src="images/like.png">Lunch
             </button>
             <button class="filter-buttons" id="dinnerButton">
-              <img class="icon" src="images/like.png">Dinner
+              <img class="filter-icon" src="images/like.png">Dinner
             </button>
             <button class="filter-buttons" id="sideButton">
-              <img class="icon" src="images/like.png">Sides
+              <img class="filter-icon" src="images/like.png">Sides
             </button>
             <button class="filter-buttons" id="condimentButton">
-              <img class="icon" src="images/like.png">Condiments
+              <img class="filter-icon" src="images/like.png">Condiments
             </button>
             <button class="filter-buttons" id="snackButton">
-              <img class="icon" src="images/like.png">Snacks
+              <img class="filter-icon" src="images/like.png">Snacks
             </button>
             <button class="filter-buttons" id="showAllButton">
-              <img class="icon" src="images/like.png">Show All Recipes
+              <img class="filter-icon" src="images/like.png">Show All Recipes
             </button>
         </a>
         </section>
