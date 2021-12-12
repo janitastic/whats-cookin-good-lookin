@@ -6,14 +6,17 @@ import './images/like.png';
 import apiCalls from './apiCalls';
 
 import Recipe from './classes/Recipe';
+import recipeData from './data/recipes';
+import User from './classes/User';
+import usersData from './data/users';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
-import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
               /*********** GLOBAL VARIABLES ***********/
 
 let recipeRepo = new RecipeRepository(recipeData);
+let user = new User(usersData);
 const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
@@ -64,7 +67,7 @@ let showAllButton = document.getElementById('showAllButton');
 
               /*********** EVENT LISTENERS ***********/
 
-window.addEventListener('load', displayAllRecipes);
+window.addEventListener('load', loadPage);
 recipeCardSection.addEventListener('click', displayRecipeCard);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 favoritesBtn.addEventListener('click', displayFavorites);
@@ -143,7 +146,17 @@ function toggleDropDown() {
   // searchRecipes();
 }
 
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
               /*********** FUNCTIONS ***********/
+function loadPage() {
+  displayAllRecipes();
+  let userIndex = getRandomIndex(usersData);
+  user = new User(usersData[userIndex].name, usersData[userIndex].id);
+  console.log(`Welcome ${usersData[userIndex].name}`)
+}
 
 function displayAllRecipes() {
   showRecipeCardSection();
