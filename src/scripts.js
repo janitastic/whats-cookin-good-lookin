@@ -19,6 +19,7 @@ let recipeRepo = new RecipeRepository(recipeData);
 let currentUser;
 let currentUserName;
 let currentUserId;
+let myCurrentRecipeId;
 const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
@@ -39,13 +40,6 @@ const toCookBtn = document.getElementById('toCookBtn');
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
-// Detailed Recipe Card
-// let recipeImageName = document.getElementById('recipeImageName');
-// let recipeIngredients = document.getElementById('recipeIngredients');
-// let ingredientsTitle = document.querySelector('.ingredients-title');
-// let directionsTitle = document.querySelector('.directions-title');
-// let recipeDirections = document.getElementById('recipeDirections');
-// let recipeCost = document.getElementById('recipeCost');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
@@ -68,8 +62,6 @@ let showAllButton = document.getElementById('showAllButton');
 // Individual Recipe Card Selectors
 let favoriteButton = document.getElementById('favoriteButton');
 // let favoriteHeart = document.querySelector('#heart');
-
-// const recipeCard = document.getElementById('${recipe.id}');
 
               /*********** EVENT LISTENERS ***********/
 
@@ -162,10 +154,12 @@ function getRandomIndex(array) {
 function getUser() {
   let userIndex = getRandomIndex(usersData);
   currentUser = new User(usersData[userIndex]);
+  console.log('lets try xtines ideas >>>', currentUser)
   currentUserName = currentUser.name;
   currentUserId = currentUser.id;
   console.log(`Welcome ${currentUserName}`)
   console.log(`This is the userId ${currentUserId}`)
+  return currentUser;
 }
 
 function loadPage() {
@@ -173,7 +167,7 @@ function loadPage() {
   getUser();
   userMessage.innerHTML = `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`
 }
-
+//Might use later
 function buildHTML(index) {
   favoriteHeart.addEventListener('click', saveToFavorites);
   if (usersData.favorites[index].heart) {
@@ -201,6 +195,8 @@ function displayAllRecipes() {
 }
 
 function displayRecipeCard() {
+  const recipeId = Number(event.target.parentNode.id);
+  myCurrentRecipeId = recipeId;
   recipeImageName.innerHTML = '';
   show(individualCardView);
   hide(recipeCardSection);
@@ -215,7 +211,7 @@ function displayNameAndImage() {
   const recipeId = Number(event.target.parentNode.id);
   recipeClasses.forEach((recipe, index) => {
     if (recipe.id === recipeId) {
-      console.log('recipe.id', recipe.id);
+      console.log('recipe.id 225', recipe.id);
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
       <h4>${recipe.name}</h4>
@@ -229,7 +225,7 @@ function displayIngredients() {
   show(ingredientsTitle);
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
-
+  console.log('recipeId 239', recipeId);
   foundRecipe.ingredients.forEach((step, index) => {
       return recipeIngredients.innerHTML +=
       `<article class="full-recipe">
@@ -245,7 +241,7 @@ function displayDirections() {
   show(directionsTitle);
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
-
+  console.log('recipeId 255', recipeId);
   foundRecipe.instructions.forEach((step, index) => {
       return recipeDirections.innerHTML +=
       `<article class="full-recipe">
@@ -259,6 +255,7 @@ function displayDirections() {
 function displayRecipeCost() {
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
+  console.log('recipeId 269', recipeId);
     return recipeCost.innerHTML +=
     `<article class="full-recipe">
       <h4>Total Cost $${foundRecipe.logRecipeCost()}</h4>
@@ -446,21 +443,10 @@ function findSnacks() {
   });
 }
 
-
-function saveToFavorites(currentUser) {
-  // get the recipe.id from the event by using event. target ? find where the id matches which will return the whole recipe object , then push that recipe
-
-    console.log(currentUser)
-    console.log('user id', currentUserId)
-    console.log('user name', currentUserName)
-    currentUser.addToFavorites(recipeData)
-    console.log('user.favorites', currentUser.favorites)
-  // }
-  
-  // buildHTML();
-  // if (event.target.classList.contains('heart')) {
-  //   console.log(event.target.parentNode)
-  // } 
+function saveToFavorites() {
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
+  currentUser.addToFavorites(foundRecipe)
+  console.log(currentUser.favorites)
 }
 
 function displayFavorites() {
