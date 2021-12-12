@@ -17,58 +17,63 @@
       </nav>
     </header>
     <main>
-      <section class="search-bar">
-        <div class="drop-down">
-        <button class="search-button"
-        id="searchButton">Search Recipes</button>
-        <div id="dropDownSearch" class="drop-down-search hidden">
-          <input class="input" type="search" placeholder="Search Recipe" id="searchBar" required>
-          <a id="searchByNameLink">Search recipe names</a>
-          <a id="searchByIngredientLink">Search ingredients</a>
+      <article class="hero">
+        <section class="search-bar">
+          <div class="drop-down">
+          <button class="search-button"
+          id="searchButton">Search Recipes</button>
+          <div id="dropDownSearch" class="drop-down-search hidden">
+            <input class="input" type="search" placeholder="Search Recipe" id="searchBar" required>
+            <a id="searchByNameLink">Search recipe names</a>
+            <a id="searchByIngredientLink">Search ingredients</a>
+          </div>
         </div>
-      </div>
-      </section>
-      <section class="filter-icons" id="filterIcons">
-        <button class="filter-buttons" id="appetizerButton">
-        Appetizers</button>
-        <button class="filter-buttons" id="breakfastButton">
-        Breakfast</button>
-        <button class="filter-buttons" id="lunchButton">
-        Lunch</button>
-        <button class="filter-buttons" id="dinnerButton">
-        Dinner</button>
-        <button class="filter-buttons" id="sideButton">
-        Sides</button>
-        <button class="filter-buttons" id="condimentButton">
-        Condiments</button>
-        <button class="filter-buttons" id="snackButton">
-        Snacks</button>
-        <button class="filter-buttons" id="showAllButton">
-        Show All Recipes</button>
-      </section>
-      <section class="recipe-cards" id="recipeCardSection">
+        </section>
+        <section class="filter-icons" id="filterIcons">
+          <button class="filter-buttons" id="appetizerButton">
+          Appetizers</button>
+          <button class="filter-buttons" id="breakfastButton">
+          Breakfast</button>
+          <button class="filter-buttons" id="lunchButton">
+          Lunch</button>
+          <button class="filter-buttons" id="dinnerButton">
+          Dinner</button>
+          <button class="filter-buttons" id="sideButton">
+          Sides</button>
+          <button class="filter-buttons" id="condimentButton">
+          Condiments</button>
+          <button class="filter-buttons" id="snackButton">
+          Snacks</button>
+          <button class="filter-buttons" id="showAllButton">
+          Show All Recipes</button>
+        </section>
+      </article>
+      <article class="recipe-cards" id="recipeCardSection">
         <!-- display all recipe cards -->
-      </section>
-      <section id="recipeImageName">
-        <!-- displays recipe image & name -->
-      </section>
-      <section class="ingredients-title hidden" id="ingredientsTitle">
-        <h4>Ingredients</h4>
-      </section>
-      </section>
-      <section id="recipeIngredients">
-        <!-- displays recipe ingredients -->
-      </section>
-      <section class="directions-title hidden" id="directionsTitle">
-        <h4>Directions</h4>
-      </section>
-      <section id="recipeDirections">
-        <!-- display recipe directions -->
-      </section>
-      </section>
-      <section id="recipeCost">
-        <!-- display recipe cost here -->
-      </section>
+      </article>
+      <!-- this is our new area that we need to style -->
+      <article class="individual-card hidden" id="individualCardView">
+        <section id="recipeImageName">
+          <!-- displays recipe image & name -->
+        </section>
+        <section class="ingredients-title hidden" id="ingredientsTitle">
+          <h4>Ingredients</h4>
+        </section>
+        </section>
+        <section id="recipeIngredients">
+          <!-- displays recipe ingredients -->
+        </section>
+        <section class="directions-title hidden" id="directionsTitle">
+          <h4>Directions</h4>
+        </section>
+        <section id="recipeDirections">
+          <!-- display recipe directions -->
+        </section>
+        </section>
+        <section id="recipeCost">
+          <!-- display recipe cost here -->
+        </section>
+      </article>
     </main>
   </body>
 </html>

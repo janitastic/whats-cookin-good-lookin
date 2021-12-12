@@ -50,10 +50,19 @@ table {
 }
 
 body {
+	/* background-image: url('images/background-image.jpg'); */
+	/* background-size: cover; */
+	/* background-repeat: no-repeat; */
+	/* height: 100vh; */
+	background-color: #F2DCD8;
+}
+
+.hero {
 	background-image: url('images/background-image.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 100vh;
+	padding: 10% 0;
+	width: 100vw;
 }
 
 header {
@@ -101,7 +110,7 @@ p {
 }
 
 main {
-	background-color: rgba(242,242,242,.20);
+	/* background-color: rgba(242,242,242,.20); */
 	height: 100%;
 }
 
@@ -122,11 +131,16 @@ main {
 	padding: 5% 10%;
 }
 
+.individual-card {
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+	margin: 5% 20%;
+}
+
 /* we need to refactor/remove 127 & 128 for recipe card */
 .card,
-.full-recipe,
-.ingredients-title,
-.directions-title {
+.individual-card {
 	border-radius: 0.5em;
   font-size: 1em;
   background-color: rgba(10, 30, 35, .90);
@@ -236,7 +250,9 @@ a:hover {
   display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown a:hover {
+	background-color: #ddd;
+}
 
 .hidden {
 	display: none;

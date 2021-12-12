@@ -27,6 +27,7 @@ const tags = {
 //Query Selectors
 const allRecipesBtn = document.getElementById('recipesBtn');
 let recipeCardSection = document.getElementById('recipeCardSection');
+let individualCardView = document.getElementById('individualCardView');
 let recipeImageName = document.getElementById('recipeImageName');
 let recipeIngredients = document.getElementById('recipeIngredients');
 let ingredientsTitle = document.querySelector('.ingredients-title');
@@ -83,10 +84,10 @@ function displayAllRecipes() {
   recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -95,6 +96,8 @@ function displayAllRecipes() {
 
 function displayRecipeCard() {
   recipeImageName.innerHTML = '';
+  show(individualCardView);
+  hide(recipeCardSection);
   displayNameAndImage();
   displayIngredients();
   displayDirections();
@@ -185,10 +188,10 @@ function searchByIngredients() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -204,10 +207,10 @@ function searchByRecipeName() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -228,10 +231,10 @@ function findAppetizers() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -245,10 +248,10 @@ function findBreakfast() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -262,10 +265,10 @@ function findLunch() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -279,10 +282,10 @@ function findDinner() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -296,10 +299,10 @@ function findSides() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -313,10 +316,10 @@ function findCondiments() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
@@ -330,10 +333,10 @@ function findSnacks() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <div class="card-icons">
+      <section class="card-icons">
       <img class="icon" src="images/like.png">
       <img class="icon" src="images/baking.png">
-      </div>
+      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`
