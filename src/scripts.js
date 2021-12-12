@@ -6,14 +6,20 @@ import './images/like.png';
 import apiCalls from './apiCalls';
 
 import Recipe from './classes/Recipe';
+import recipeData from './data/recipes';
+import User from './classes/User';
+import usersData from './data/users';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
-import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
               /*********** GLOBAL VARIABLES ***********/
 
 let recipeRepo = new RecipeRepository(recipeData);
+let currentUser;
+let currentUserName;
+let currentUserId;
+let myCurrentRecipeId;
 const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
@@ -34,13 +40,6 @@ const toCookBtn = document.getElementById('toCookBtn');
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
-// Detailed Recipe Card
-let recipeImageName = document.getElementById('recipeImageName');
-let recipeIngredients = document.getElementById('recipeIngredients');
-let ingredientsTitle = document.querySelector('.ingredients-title');
-let directionsTitle = document.querySelector('.directions-title');
-let recipeDirections = document.getElementById('recipeDirections');
-let recipeCost = document.getElementById('recipeCost');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
@@ -60,11 +59,13 @@ let filterByCondiments = document.getElementById('condimentButton');
 let filterBySnacks = document.getElementById('snackButton');
 let showAllButton = document.getElementById('showAllButton');
 
-// const recipeCard = document.getElementById('${recipe.id}');
+// Individual Recipe Card Selectors
+let favoriteButton = document.getElementById('favoriteButton');
+// let favoriteHeart = document.querySelector('#heart');
 
               /*********** EVENT LISTENERS ***********/
 
-window.addEventListener('load', displayAllRecipes);
+window.addEventListener('load', loadPage);
 recipeCardSection.addEventListener('click', displayRecipeCard);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 favoritesBtn.addEventListener('click', displayFavorites);
@@ -81,7 +82,8 @@ filterBySides.addEventListener('click', findSides);
 filterByCondiments.addEventListener('click', findCondiments);
 filterBySnacks.addEventListener('click', findSnacks);
 showAllButton.addEventListener('click', displayAllRecipes);
-
+favoriteButton.addEventListener('click', saveToFavorites);
+// favoriteHeart.addEventListener('click', saveToFavorites);
               /*********** HELPER FUNCTIONS ***********/
 
 function show(element) {
@@ -143,7 +145,38 @@ function toggleDropDown() {
   // searchRecipes();
 }
 
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
               /*********** FUNCTIONS ***********/
+
+function getUser() {
+  let userIndex = getRandomIndex(usersData);
+  currentUser = new User(usersData[userIndex]);
+  console.log('lets try xtines ideas >>>', currentUser)
+  currentUserName = currentUser.name;
+  currentUserId = currentUser.id;
+  console.log(`Welcome ${currentUserName}`)
+  console.log(`This is the userId ${currentUserId}`)
+  return currentUser;
+}
+
+function loadPage() {
+  displayAllRecipes();
+  getUser();
+  userMessage.innerHTML = `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`
+}
+//Might use later
+function buildHTML(index) {
+  favoriteHeart.addEventListener('click', saveToFavorites);
+  if (usersData.favorites[index].heart) {
+    let heart = 'img class="icon" id="heart" src="images/like.png"';
+  } else {
+    let heart = 'img class="icon" id="heart" src="images/baking.png"';
+  }
+  saveToFavorites(usersData[index].id);
+}
 
 function displayAllRecipes() {
   showRecipeCardSection();
@@ -151,8 +184,8 @@ function displayAllRecipes() {
   recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
+      <section class="card-icons" id="cardIcons">
+      <img class="icon heart" id="heart" src="images/like.png">
       <img class="icon" src="images/baking.png">
       </section>
       <h3>${recipe.name}</h3>
@@ -162,6 +195,8 @@ function displayAllRecipes() {
 }
 
 function displayRecipeCard() {
+  const recipeId = Number(event.target.parentNode.id);
+  myCurrentRecipeId = recipeId;
   recipeImageName.innerHTML = '';
   show(individualCardView);
   hide(recipeCardSection);
@@ -176,6 +211,7 @@ function displayNameAndImage() {
   const recipeId = Number(event.target.parentNode.id);
   recipeClasses.forEach((recipe, index) => {
     if (recipe.id === recipeId) {
+      console.log('recipe.id 225', recipe.id);
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
       <h4>${recipe.name}</h4>
@@ -189,7 +225,7 @@ function displayIngredients() {
   show(ingredientsTitle);
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
-
+  console.log('recipeId 239', recipeId);
   foundRecipe.ingredients.forEach((step, index) => {
       return recipeIngredients.innerHTML +=
       `<article class="full-recipe">
@@ -205,7 +241,7 @@ function displayDirections() {
   show(directionsTitle);
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
-
+  console.log('recipeId 255', recipeId);
   foundRecipe.instructions.forEach((step, index) => {
       return recipeDirections.innerHTML +=
       `<article class="full-recipe">
@@ -219,6 +255,7 @@ function displayDirections() {
 function displayRecipeCost() {
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
+  console.log('recipeId 269', recipeId);
     return recipeCost.innerHTML +=
     `<article class="full-recipe">
       <h4>Total Cost $${foundRecipe.logRecipeCost()}</h4>
@@ -406,7 +443,29 @@ function findSnacks() {
   });
 }
 
+function saveToFavorites() {
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
+  currentUser.addToFavorites(foundRecipe)
+  console.log(currentUser.favorites)
+}
+
 function displayFavorites() {
+  recipeCardSection.innerHTML = '';
+  let userInput = searchInput.value;
+  let filteredRecipes = recipeRepo.filterByName(userInput);
+  filteredRecipes.forEach(recipe => {
+    return recipeCardSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <section class="card-icons">
+      <img class="icon" src="images/like.png">
+      <img class="icon" src="images/baking.png">
+      </section>
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+  toggleDropDown();
+  resetSearch();
   showFavoritesSection();
 }
 
