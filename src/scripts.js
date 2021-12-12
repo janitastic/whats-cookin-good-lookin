@@ -11,7 +11,8 @@ import RecipeRepository from './classes/RecipeRepository';
 import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 
-//global variables
+              /*********** GLOBAL VARIABLES ***********/
+
 let recipeRepo = new RecipeRepository(recipeData);
 const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
@@ -24,24 +25,32 @@ const tags = {
   condiments: ['condiment', 'sauce']
 }
 
-//Query Selectors
+              /*********** QUERY SELECTORS ***********/
+
+// Menu Buttons
 const allRecipesBtn = document.getElementById('recipesBtn');
 const favoritesBtn = document.getElementById('favoritesBtn');
 const toCookBtn = document.getElementById('toCookBtn');
+// Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
+// Detailed Recipe Card
 let recipeImageName = document.getElementById('recipeImageName');
 let recipeIngredients = document.getElementById('recipeIngredients');
 let ingredientsTitle = document.querySelector('.ingredients-title');
 let directionsTitle = document.querySelector('.directions-title');
 let recipeDirections = document.getElementById('recipeDirections');
 let recipeCost = document.getElementById('recipeCost');
+
+// Search Selectors
 let searchButton = document.getElementById('searchButton');
 let searchIcon = document.getElementById('searchIcon');
 let searchInput = document.getElementById('searchBar');
 let dropDownSearch = document.getElementById('dropDownSearch');
 let searchByName = document.getElementById('searchByNameLink');
 let searchByIngredient = document.getElementById('searchByIngredientLink');
+
+// Filter Selectors
 let filterByAppetizer = document.getElementById('appetizerButton');
 let filterByBreakfast = document.getElementById('breakfastButton');
 let filterByLunch = document.getElementById('lunchButton');
@@ -53,7 +62,8 @@ let showAllButton = document.getElementById('showAllButton');
 
 // const recipeCard = document.getElementById('${recipe.id}');
 
-//Event Listeners
+              /*********** EVENT LISTENERS ***********/
+
 window.addEventListener('load', displayAllRecipes);
 recipeCardSection.addEventListener('click', displayRecipeCard);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
@@ -72,7 +82,7 @@ filterByCondiments.addEventListener('click', findCondiments);
 filterBySnacks.addEventListener('click', findSnacks);
 showAllButton.addEventListener('click', displayAllRecipes);
 
-
+              /*********** HELPER FUNCTIONS ***********/
 
 function show(element) {
   element.classList.remove("hidden");
@@ -109,6 +119,32 @@ function showToCookSection() {
   show(toCookSection);
 }
 
+function checkInput() {
+  let userInput = searchInput.value;
+  if (userInput.value !== null) {
+    searchByName.disabled = false;
+    searchByIngredient.disabled = false;
+  } else {
+    searchByName.disabled = true;
+    searchByIngredient.disabled = true;
+    console.log('please enter something');
+  }
+}
+
+function resetSearch() {
+  searchInput.value = null;
+  searchByName.disabled = true;
+  searchByIngredient.disabled = true;
+}
+
+function toggleDropDown() {
+  dropDownSearch.classList.toggle('show');
+  searchIcon.classList.toggle('fa-rotate-180');
+  // searchRecipes();
+}
+
+              /*********** FUNCTIONS ***********/
+
 function displayAllRecipes() {
   showRecipeCardSection();
   recipeCardSection.innerHTML = '';
@@ -121,7 +157,7 @@ function displayAllRecipes() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
 }
 
@@ -144,7 +180,7 @@ function displayNameAndImage() {
       `<article class="full-recipe">
       <h4>${recipe.name}</h4>
       <img class="recipe-image" src=${recipe.image}>
-      </article>`
+      </article>`;
     }
   });
 }
@@ -152,7 +188,7 @@ function displayNameAndImage() {
 function displayIngredients() {
   show(ingredientsTitle);
   const recipeId = Number(event.target.parentNode.id);
-  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
 
   foundRecipe.ingredients.forEach((step, index) => {
       return recipeIngredients.innerHTML +=
@@ -161,14 +197,14 @@ function displayIngredients() {
           <li class="ingredient-bullet">${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}
           </li>
         </ul>
-      </article>`
-  });
+      </article>`;
+    });
 }
 
 function displayDirections() {
   show(directionsTitle);
   const recipeId = Number(event.target.parentNode.id);
-  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
 
   foundRecipe.instructions.forEach((step, index) => {
       return recipeDirections.innerHTML +=
@@ -176,35 +212,17 @@ function displayDirections() {
         <ol>
           <li><span class="step-number">${step.number}.</span> ${step.instruction}</li>
         </ol>
-      </article>`
-  });
+      </article>`;
+    });
 }
 
 function displayRecipeCost() {
   const recipeId = Number(event.target.parentNode.id);
-  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId)
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
     return recipeCost.innerHTML +=
     `<article class="full-recipe">
       <h4>Total Cost $${foundRecipe.logRecipeCost()}</h4>
-    </article>`
-}
-
-function checkInput() {
-  let userInput = searchInput.value;
-  if (userInput.value !== null) {
-    searchByName.disabled = false;
-    searchByIngredient.disabled = false;
-  } else {
-    searchByName.disabled = true;
-    searchByIngredient.disabled = true;
-    console.log('please enter something');
-  }
-}
-
-function resetSearch() {
-  searchInput.value = null;
-  searchByName.disabled = true;
-  searchByIngredient.disabled = true;
+    </article>`;
 }
 
 function searchRecipes() {
@@ -235,10 +253,11 @@ function searchByIngredients() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
   toggleDropDown();
   resetSearch();
+  showRecipeCardSection();
 }
 
 function searchByRecipeName() {
@@ -254,16 +273,11 @@ function searchByRecipeName() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
   toggleDropDown();
   resetSearch();
-}
-
-function toggleDropDown() {
-  dropDownSearch.classList.toggle('show');
-  searchIcon.classList.toggle('fa-rotate-180');
-  // searchRecipes();
+  showRecipeCardSection();
 }
 
 function findAppetizers() {
@@ -280,7 +294,7 @@ function findAppetizers() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
 }
 
@@ -298,7 +312,7 @@ function findBreakfast() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
 }
 
@@ -316,7 +330,7 @@ function findLunch() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
 }
 
@@ -334,7 +348,7 @@ function findDinner() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
 }
 
@@ -352,7 +366,7 @@ function findSides() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
 }
 
@@ -370,7 +384,7 @@ function findCondiments() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
 }
 
@@ -388,7 +402,7 @@ function findSnacks() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
-    </article>`
+    </article>`;
   });
 }
 
