@@ -127,7 +127,8 @@ function displayIngredients() {
       return recipeIngredients.innerHTML +=
       `<article class="full-recipe">
         <ul>
-          <li>${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}</li>
+          <li class="ingredient-bullet">${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}
+          </li>
         </ul>
       </article>`
   });
@@ -142,7 +143,7 @@ function displayDirections() {
       return recipeDirections.innerHTML +=
       `<article class="full-recipe">
         <ol>
-          <li>${step.number}) ${step.instruction}</li>
+          <li><span class="step-number">${step.number}.</span> ${step.instruction}</li>
         </ol>
       </article>`
   });
