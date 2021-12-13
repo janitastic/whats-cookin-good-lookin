@@ -127,7 +127,8 @@ a {
 	text-decoration: none;
 }
 
-.search-bar {
+.search-bar,
+.favorite-search-bar {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -369,7 +370,7 @@ input {
 }
 
 .drop-down-search,
-.fav-drop-down {
+.fav-drop-down-search {
   /* display: none; */
   background-color: rgba(242, 242, 242, .8);
   min-width: 230px;
@@ -385,13 +386,13 @@ input {
 	border: none;
 }
 
- .drop-down-search {
+.drop-down-search {
   display: none;
 }
 
-/* .fav-drop-down {
+.fav-drop-down {
   display: none;
-}  */
+}
 
 .fav-drop-down-search a,
 .drop-down-search a {
