@@ -19,7 +19,9 @@ class User {
   }
 
   addToCook(selectedRecipe) {
+    console.log('>>>>>>did we get a recipe', selectedRecipe);
     this.toCook.push(selectedRecipe);
+    console.log("what is here>>>>>", this.toCook);
   }
 
   filterByTag(tags) {
@@ -40,14 +42,12 @@ class User {
           recipeNames.push(recipe);
         } return recipeNames;
       }, []);
-      console.log("does this work", filteredRecipes);
     return filteredRecipes;
   }
 
   filterByIngredients(userInput) {
     const foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()));
     const foundId = foundIngredient.id;
-
     const filteredRecipes = this.favorites.filter(recipe => {
       return recipe.ingredients.some(ingredient =>
       ingredient.id === foundId);
