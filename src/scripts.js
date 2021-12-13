@@ -20,6 +20,7 @@ let currentUser;
 let currentUserName;
 let currentUserId;
 let myCurrentRecipeId;
+let currentUserFavorites;
 const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
@@ -67,6 +68,7 @@ let favoriteButton = document.getElementById('favoriteButton');
 
 window.addEventListener('load', loadPage);
 recipeCardSection.addEventListener('click', displayRecipeCard);
+favoritesSection.addEventListener('dblclick', removeFromFavorites);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 favoritesBtn.addEventListener('click', displayFavorites);
 toCookBtn.addEventListener('click', displayToCook);
@@ -454,6 +456,17 @@ function saveToFavorites() {
   displayFavorites();
 }
 
+function removeFromFavorites() {
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
+  const recipeId = Number(event.target.parentNode.id);
+  myCurrentRecipeId = recipeId;
+  currentUserFavorites = currentUser.favorites;
+
+  console.log(currentUser.favorites)
+  currentUser.removeFromFavorites(currentUserFavorites,foundRecipe)
+  displayFavorites()
+}
+
 function displayFavorites() {
   favoritesSection.innerHTML = '';
   const favoriteRecipes = currentUser.favorites;
@@ -469,7 +482,7 @@ function displayFavorites() {
     </article>`;
   });
   showFavoritesSection();
-  hideRecipeCardSection();
+  // hideRecipeCardSection();
 }
 
 function displayToCook() {
