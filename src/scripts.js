@@ -20,6 +20,7 @@ let currentUser;
 let currentUserName;
 let currentUserId;
 let myCurrentRecipeId;
+let currentUserFavorites;
 const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
@@ -67,6 +68,7 @@ let favoriteButton = document.getElementById('favoriteButton');
 
 window.addEventListener('load', loadPage);
 recipeCardSection.addEventListener('click', displayRecipeCard);
+favoritesSection.addEventListener('dblclick', removeFromFavorites);
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 favoritesBtn.addEventListener('click', displayFavorites);
 toCookBtn.addEventListener('click', displayToCook);
@@ -198,6 +200,7 @@ function displayRecipeCard() {
   const recipeId = Number(event.target.parentNode.id);
   myCurrentRecipeId = recipeId;
   recipeImageName.innerHTML = '';
+  // event.preventDefault();
   show(individualCardView);
   hide(recipeCardSection);
   displayNameAndImage();
@@ -223,6 +226,7 @@ function displayNameAndImage() {
 
 function displayIngredients() {
   show(ingredientsTitle);
+  recipeIngredients.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
   console.log('recipeId 239', recipeId);
@@ -239,6 +243,7 @@ function displayIngredients() {
 
 function displayDirections() {
   show(directionsTitle);
+  recipeDirections.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
   console.log('recipeId 255', recipeId);
@@ -253,6 +258,7 @@ function displayDirections() {
 }
 
 function displayRecipeCost() {
+  recipeCost.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
   console.log('recipeId 269', recipeId);
@@ -447,26 +453,34 @@ function saveToFavorites() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
   currentUser.addToFavorites(foundRecipe)
   console.log(currentUser.favorites)
+  displayFavorites();
+}
+
+function removeFromFavorites() {
+  const clickedRecipeId = Number(event.target.parentNode.id);
+
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === clickedRecipeId);
+  currentUser.removeFromFavorites(foundRecipe)
+  displayFavorites()
 }
 
 function displayFavorites() {
-  recipeCardSection.innerHTML = '';
-  let userInput = searchInput.value;
-  let filteredRecipes = recipeRepo.filterByName(userInput);
-  filteredRecipes.forEach(recipe => {
-    return recipeCardSection.innerHTML +=
+  favoritesSection.innerHTML = '';
+  const favoriteRecipes = currentUser.favorites;
+  debugger
+  favoriteRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
+      <section class="card-icons" id="cardIcons">
+      <img class="icon heart" id="heart" src="images/like.png">
       <img class="icon" src="images/baking.png">
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
   });
-  toggleDropDown();
-  resetSearch();
   showFavoritesSection();
+  // hideRecipeCardSection();
 }
 
 function displayToCook() {

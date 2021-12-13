@@ -49,7 +49,8 @@ describe('User', () => {
     currentUser.addToFavorites(recipe1);
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe3);
-    currentUser.removeFromFavorites(currentUser.favorites, recipe1);
+    currentUser.removeFromFavorites(recipe2);
+  
     expect(currentUser.favorites.length).to.equal(2);
   });
 
