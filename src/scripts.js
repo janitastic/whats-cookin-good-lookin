@@ -109,8 +109,6 @@ addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
-// searchByName.addEventListener('click', favSearchByRecipeName);
-// searchByIngredient.addEventListener('click', favSearchByIngredients);
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', findAppetizersFavs);
@@ -604,9 +602,10 @@ function findSnacksFavs() {
 
 function favSearchByRecipeName() {
   favoritesSection.innerHTML = '';
-  let userInput = searchInput.value;
-  let filteredRecipes = currentUser.filterByName(userInput);
+  let userInput = favSearchInput.value;
+  let filteredRecipes = currentUser.filterByNameFav(userInput);
   filteredRecipes.forEach(recipe => {
+    console.log("recipe name", recipe.name);
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
@@ -620,7 +619,7 @@ function favSearchByRecipeName() {
 
 function favSearchByIngredients() {
   favoritesSection.innerHTML = '';
-  let userInput = searchInput.value;
+  let userInput = favSearchInput.value;
   let filteredRecipes = currentUser.filterByIngredients(userInput);
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=

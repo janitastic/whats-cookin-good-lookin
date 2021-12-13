@@ -19,9 +19,7 @@ class User {
   }
 
   addToCook(selectedRecipe) {
-    console.log('>>>>>>did we get a recipe', selectedRecipe);
     this.toCook.push(selectedRecipe);
-    console.log("what is here>>>>>", this.toCook);
   }
 
   filterByTag(tags) {
@@ -36,7 +34,7 @@ class User {
     return filteredRecipes;
   }
 
-  filterByName(userInput) {
+  filterByNameFav(userInput) {
     const filteredRecipes = this.favorites.reduce((recipeNames, recipe) => {
         if (recipe.name.toLowerCase().includes(userInput.toLowerCase())) {
           recipeNames.push(recipe);

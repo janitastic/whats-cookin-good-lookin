@@ -50,7 +50,7 @@ describe('User', () => {
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe3);
     currentUser.removeFromFavorites(recipe2);
-  
+
     expect(currentUser.favorites.length).to.equal(2);
   });
 
@@ -65,7 +65,7 @@ describe('User', () => {
     currentUser.addToFavorites(recipe1);
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe3);
-    expect(currentUser.filterByName('Chocolate').length).to.equal(1);
+    expect(currentUser.filterByNameFav('Pork').length).to.equal(1);
   });
 
   it('should filter by ingredients', () => {
