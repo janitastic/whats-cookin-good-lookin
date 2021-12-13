@@ -15,7 +15,7 @@ class User {
   }
 
   removeFromFavorites(selectedRecipe) {
-    this.favorites = this.favorites.filter(favorite => favorite.id !== selectedRecipe.id)
+    this.favorites = this.favorites.filter(favorite => favorite.id !== selectedRecipe.id);
   }
 
   addToCook(selectedRecipe) {
@@ -45,7 +45,7 @@ class User {
   }
 
   filterByIngredients(userInput) {
-    const foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()))
+    const foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()));
     const foundId = foundIngredient.id;
 
     const filteredRecipes = this.favorites.filter(recipe => {

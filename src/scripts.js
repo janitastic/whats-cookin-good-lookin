@@ -30,7 +30,7 @@ const tags = {
   sides: ['side dish', 'dip'],
   snacks: ['snack', 'dip'],
   condiments: ['condiment', 'sauce']
-}
+};
 
               /*********** QUERY SELECTORS ***********/
 
@@ -41,7 +41,6 @@ const toCookBtn = document.getElementById('toCookBtn');
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
-
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
@@ -179,19 +178,18 @@ function getRandomIndex(array) {
 function getUser() {
   let userIndex = getRandomIndex(usersData);
   currentUser = new User(usersData[userIndex]);
-  console.log('lets try xtines ideas >>>', currentUser)
   currentUserName = currentUser.name;
   currentUserId = currentUser.id;
-  console.log(`Welcome ${currentUserName}`)
-  console.log(`This is the userId ${currentUserId}`)
   return currentUser;
 }
 
 function loadPage() {
   displayAllRecipes();
   getUser();
-  userMessage.innerHTML = `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`
+  userMessage.innerHTML =
+    `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
 }
+
 //Might use later
 function buildHTML(index) {
   favoriteHeart.addEventListener('click', saveToFavorites);
@@ -200,6 +198,7 @@ function buildHTML(index) {
   } else {
     let heart = 'img class="icon" id="heart" src="images/baking.png"';
   }
+
   saveToFavorites(usersData[index].id);
 }
 
@@ -235,7 +234,6 @@ function displayNameAndImage() {
   const recipeId = Number(event.target.parentNode.id);
   recipeClasses.forEach((recipe, index) => {
     if (recipe.id === recipeId) {
-      console.log('recipe.id 225', recipe.id);
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
       <h4>${recipe.name}</h4>
@@ -250,12 +248,12 @@ function displayIngredients() {
   recipeIngredients.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
-  console.log('recipeId 239', recipeId);
   foundRecipe.ingredients.forEach((step, index) => {
       return recipeIngredients.innerHTML +=
       `<article class="full-recipe">
         <ul>
-          <li class="ingredient-bullet">${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}
+          <li class="ingredient-bullet">
+          ${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}
           </li>
         </ul>
       </article>`;
@@ -267,12 +265,13 @@ function displayDirections() {
   recipeDirections.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
-  console.log('recipeId 255', recipeId);
   foundRecipe.instructions.forEach((step, index) => {
       return recipeDirections.innerHTML +=
       `<article class="full-recipe">
         <ol>
-          <li><span class="step-number">${step.number}.</span> ${step.instruction}</li>
+          <li>
+            <span class="step-number">${step.number}.</span> ${step.instruction}
+          </li>
         </ol>
       </article>`;
     });
@@ -282,8 +281,7 @@ function displayRecipeCost() {
   recipeCost.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
-  console.log('recipeId 269', recipeId);
-    return recipeCost.innerHTML +=
+  return recipeCost.innerHTML +=
     `<article class="full-recipe">
       <h4>Total Cost $${foundRecipe.logRecipeCost()}</h4>
     </article>`;
@@ -350,7 +348,6 @@ function findAppetizers() {
   });
 }
 
-
 function findBreakfast() {
   recipeCardSection.innerHTML = '';
   showRecipeCardSection();
@@ -364,8 +361,6 @@ function findBreakfast() {
     </article>`;
   });
 }
-
-
 
 function findLunch() {
   recipeCardSection.innerHTML = '';
@@ -535,11 +530,9 @@ function findSnacksFavs() {
   });
 }
 
-
 function saveToFavorites() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
-  currentUser.addToFavorites(foundRecipe)
-  console.log(currentUser.favorites)
+  currentUser.addToFavorites(foundRecipe);
   displayFavorites();
 }
 
@@ -547,8 +540,8 @@ function removeFromFavorites() {
   const clickedRecipeId = Number(event.target.parentNode.id);
 
   const foundRecipe = recipeClasses.find(recipe => recipe.id === clickedRecipeId);
-  currentUser.removeFromFavorites(foundRecipe)
-  displayFavorites()
+  currentUser.removeFromFavorites(foundRecipe);
+  displayFavorites();
 }
 
 function displayFavorites() {
@@ -562,7 +555,6 @@ function displayFavorites() {
     </article>`;
   });
   showFavoritesSection();
-  // hideRecipeCardSection();
   hide(filterIcons);
   show(favoriteFilterIcons);
 }
