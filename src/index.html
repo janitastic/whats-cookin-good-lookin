@@ -112,6 +112,14 @@
         <!-- display all recipe cards -->
       </article>
       <article class="individual-card hidden" id="individualCardView">
+        <section class="full-recipe-buttons">
+          <button class="recipe-card-button" id="favoriteButton" title="Add to Favorites">
+            <img class="filter-icon" src="images/like.png">
+          </button>
+          <button class="recipe-card-button right" id="addToCook" title="Cook this Recipe">
+            <img class="filter-icon" src="images/baking.png">
+          </button>
+        </section>
         <summary class="recipe-card-top">
           <aside class="name-and-image">
             <section id="recipeImageName">
@@ -140,9 +148,6 @@
           <section id="recipeCost">
             <!-- display recipe cost here -->
           </section>
-          <button class="favorite-button" id="favoriteButton">
-            Add To Favorites
-          </button>
         </summary>
       </article>
       <article class="recipe-cards favorites-section hidden" id="favoritesSection">
