@@ -101,17 +101,16 @@ searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', checkInput);
 //Favorite Search Buttons
 favSearchButton.addEventListener('click', toggleDropDown);
-favSearchByName.addEventListener('click', searchByRecipeName);
-favSearchByIngredient.addEventListener('click', searchByIngredients);
+favSearchByName.addEventListener('click', favSearchByRecipeName);
+favSearchByIngredient.addEventListener('click', favSearchByIngredients);
 favSearchInput.addEventListener('keyup', favCheckInput);
-
+//To Cook Button
+addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
-//will add toCook button here
-addToCookButton.addEventListener('click', addToCookList);
-searchByName.addEventListener('click', favSearchByRecipeName);
-searchByIngredient.addEventListener('click', favSearchByIngredients);
+// searchByName.addEventListener('click', favSearchByRecipeName);
+// searchByIngredient.addEventListener('click', favSearchByIngredients);
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', findAppetizersFavs);
@@ -160,7 +159,6 @@ function showFavoritesSection() {
   hide(individualCardView);
   show(favoritesSection);
   hide(toCookSection);
-  // show(favoriteSearch);
 }
 
 function showToCookSection() {
@@ -500,10 +498,10 @@ function displayFavorites() {
     </article>`;
   });
   showFavoritesSection();
-  show(filterIcons);
   show(favoriteFilterIcons);
   show(favoriteSearch);
   hide(allSearch);
+  hide(filterIcons);
 }
 
 function findAppetizersFavs() {
