@@ -14,12 +14,21 @@ class User {
     this.favorites.push(selectedRecipe);
   }
 
-  removeFromFavorites(favorites, selectedRecipe) {
-    let index = favorites.indexOf(selectedRecipe);
-    if (index > -1) {
-      favorites.splice(index, 1);
-    } return favorites;
+  removeFromFavorites(selectedRecipe) {
+    this.favorites.forEach(recipe => {
+      if (selectedRecipe.id === recipe.id) {
+        this.favorites.splice(selectedRecipe, 1)
+      }
+    })
   }
+    // if (index > -1) {
+    //   favorites.splice(index, 1, selectedRecipe);
+    // }   console.log('favorites >>>>', favorites)
+    // console.log('selected recipe >>>>', selectedRecipe)
+    // console.log('indexs >>>>', index)
+    // console.log('id >>>>', selectedRecipe.id)
+    // return favorites;
+  
 
   addToCook(selectedRecipe) {
     this.toCook.push(selectedRecipe);

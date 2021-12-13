@@ -45,11 +45,12 @@ describe('User', () => {
     expect(currentUser.toCook).to.deep.equal([]);
   });
 
-  it('should be able to add and remove to a list of favorites', () => {
+  it.only('should be able to add and remove to a list of favorites', () => {
     currentUser.addToFavorites(recipe1);
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe3);
-    currentUser.removeFromFavorites(currentUser.favorites, recipe1);
+    currentUser.removeFromFavorites(recipe1);
+  
     expect(currentUser.favorites.length).to.equal(2);
   });
 

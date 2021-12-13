@@ -463,13 +463,14 @@ function removeFromFavorites() {
   currentUserFavorites = currentUser.favorites;
 
   console.log(currentUser.favorites)
-  currentUser.removeFromFavorites(currentUserFavorites,foundRecipe)
+  currentUser.removeFromFavorites(foundRecipe)
   displayFavorites()
 }
 
 function displayFavorites() {
   favoritesSection.innerHTML = '';
   const favoriteRecipes = currentUser.favorites;
+  debugger
   favoriteRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
