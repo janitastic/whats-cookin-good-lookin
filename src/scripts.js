@@ -467,7 +467,6 @@ function removeFromFavorites() {
 function displayFavorites() {
   favoritesSection.innerHTML = '';
   const favoriteRecipes = currentUser.favorites;
-  debugger
   favoriteRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
