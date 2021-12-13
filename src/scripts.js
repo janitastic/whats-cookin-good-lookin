@@ -14,7 +14,18 @@ import './images/sides.png';
 import './images/condiments.png';
 import './images/snacks.png';
 
-import apiCalls from './apiCalls';
+import {fetchUsersData, fetchIngredientsData, fetchRecipesData} from './apiCalls';
+
+function fetchAllData() {
+  Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
+    .then((allData) => {
+      console.log(allData);
+    })
+}
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+});
 
 import Recipe from './classes/Recipe';
 import recipeData from './data/recipes';
