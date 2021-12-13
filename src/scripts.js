@@ -92,8 +92,8 @@ favoriteButton.addEventListener('click', saveToFavorites);
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', findAppetizersFavs);
 favFilterByBreakfast.addEventListener('click', findBreakfastFavs);
-// favFilterByLunch.addEventListener('click', findLunchFavs);
-// favFilterByDinner.addEventListener('click', findDinnerFavs);
+favFilterByLunch.addEventListener('click', findLunchFavs);
+favFilterByDinner.addEventListener('click', findDinnerFavs);
 // favFilterBySides.addEventListener('click', findSidesFavs);
 // favFilterByCondiments.addEventListener('click', findCondimentsFavs);
 // favFilterBySnacks.addEventListener('click', findSnacksFavs);
@@ -517,6 +517,24 @@ function findLunchFavs() {
   favoritesSection.innerHTML = '';
   showFavoritesSection();
   let userSelection = tags.lunch;
+  let filteredRecipes = currentUser.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+    <section class="card-icons">
+    <img class="icon" src="images/like.png">
+    <img class="icon" src="images/baking.png">
+    </section>
+    <h3>${recipe.name}</h3>
+    <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+}
+
+function findDinnerFavs() {
+  favoritesSection.innerHTML = '';
+  showFavoritesSection();
+  let userSelection = tags.dinner;
   let filteredRecipes = currentUser.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
