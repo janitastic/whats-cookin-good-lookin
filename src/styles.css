@@ -221,7 +221,6 @@ hr {
 .recipe-card-bottom {
 	display: flex;
 	flex-direction: column;
-	/* margin-top: 5%; */
 }
 
 .step-number {
@@ -246,7 +245,8 @@ hr {
 	padding: 5%;
 }
 
-.icon:hover {
+.icon:hover,
+.filter-icon:hover {
 	transform: scale(1.2);
 }
 
@@ -282,7 +282,8 @@ input {
 }
 
 .filter-buttons,
-.recipe-card-button, {
+.cook-button,
+.favorite-button {
 	/* display: flex;
 	align-items: center; */
 	background-color: transparent;
@@ -295,21 +296,39 @@ input {
 	margin: 1%;
 }
 
+.hide-text {
+	display: none;
+}
+.filter-icon:hover + .hide-text {
+	display: block;
+}
+
 .filter-buttons:hover
 .recipe-card-button:hover {
 	transform: scale(1.1);
 }
 
-.full-recipe-buttons {
+/* .button-left {
+	display: flex;
+}
+
+.button-right {
+	display: flex;
+} */
+
+.top-buttons {
 	display: grid;
 	gap: 11em;
 	grid-template-columns: 50% 50%;
 	justify-content: center;
 	margin: 0 0 10% 0;
+	/* display: flex; */
 }
 
 .recipe-card-button {
 	display: flex;
+	flex-direction: column;
+  align-items: center;
 }
 
 .right {
