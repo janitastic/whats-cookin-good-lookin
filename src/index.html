@@ -29,7 +29,7 @@
           <div class="user-message" id="userMessage">
             <!-- where our user greeting displays -->
           </div>
-          <div class="drop-down">
+          <div class="drop-down" id="allSearch">
             <button class="search-button" id="searchButton">Search Recipes
               <span class="search-icon" id="searchIcon">
               <i class="fa fa-chevron-down fa-flip-horizontal"></i>
@@ -47,13 +47,13 @@
               </a>
             </div>
           </div>
-          <div class="favorite-drop-down hidden">
-            <button class="search-button" id="searchButton">Search Recipes
+          <div class="fav-drop-down" id="favoriteSearch">
+            <button class="search-button" id="favSearchButton">Search Favorites
               <span class="search-icon" id="searchIcon">
               <i class="fa fa-chevron-down fa-flip-horizontal"></i>
               </span>
             </button>
-            <div id="dropDownSearch" class="drop-down-search hidden">
+            <div id="dropDownSearch" class="fav-drop-down-search hidden">
               <h2 class="search-title">What would you like to cook?</h2>
               <input class="input" type="search" placeholder="Search by name or ingredients" id="searchBar" required>
               <p class="example-text">Example: Chicken, pork, flour, chocolate, etc.</p>

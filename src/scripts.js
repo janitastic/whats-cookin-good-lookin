@@ -44,6 +44,7 @@ let individualCardView = document.getElementById('individualCardView');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
+let favSearchButton = document.getElementById('favSearchButton');
 let searchIcon = document.getElementById('searchIcon');
 let searchInput = document.getElementById('searchBar');
 let dropDownSearch = document.getElementById('dropDownSearch');
@@ -83,6 +84,7 @@ allRecipesBtn.addEventListener('click', displayAllRecipes);
 favoritesBtn.addEventListener('click', displayFavorites);
 toCookBtn.addEventListener('click', displayToCook);
 searchButton.addEventListener('click', toggleDropDown);
+favSearchButton.addEventListener('click', toggleDropDown);
 searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', checkInput);
@@ -134,6 +136,7 @@ function showFavoritesSection() {
   hide(individualCardView);
   show(favoritesSection);
   hide(toCookSection);
+  show(favoriteSearch);
 }
 
 function showToCookSection() {
@@ -206,6 +209,8 @@ function displayAllRecipes() {
   showRecipeCardSection();
   show(filterIcons);
   hide(favoriteFilterIcons);
+  hide(favoriteSearch);
+  show(allSearch);
   recipeCardSection.innerHTML = '';
   recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
@@ -557,6 +562,8 @@ function displayFavorites() {
   showFavoritesSection();
   hide(filterIcons);
   show(favoriteFilterIcons);
+  show(favoriteSearch);
+  hide(allSearch);
 }
 
 function displayToCook() {
