@@ -61,6 +61,16 @@ let filterByCondiments = document.getElementById('condimentButton');
 let filterBySnacks = document.getElementById('snackButton');
 let showAllButton = document.getElementById('showAllButton');
 
+// Favorite Filter Selectors
+let favFilterByAppetizer = document.getElementById('favAppetizerButton');
+let favFilterByBreakfast = document.getElementById('favBreakfastButton');
+let favFilterByLunch = document.getElementById('favLunchButton');
+let favFilterByDinner = document.getElementById('favDinnerButton');
+let favFilterBySides = document.getElementById('favSideButton');
+let favFilterByCondiments = document.getElementById('favCondimentButton');
+let favFilterBySnacks = document.getElementById('favSnackButton');
+let favShowAllButton = document.getElementById('favShowAllButton');
+
 // Individual Recipe Card Selectors
 let favoriteButton = document.getElementById('favoriteButton');
 // let favoriteHeart = document.querySelector('#heart');
@@ -77,6 +87,19 @@ searchButton.addEventListener('click', toggleDropDown);
 searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', checkInput);
+favoriteButton.addEventListener('click', saveToFavorites);
+
+// Filter Favorites
+favFilterByAppetizer.addEventListener('click', findAppetizersFavs);
+favFilterByBreakfast.addEventListener('click', findBreakfastFavs);
+// favFilterByLunch.addEventListener('click', findLunchFavs);
+// favFilterByDinner.addEventListener('click', findDinnerFavs);
+// favFilterBySides.addEventListener('click', findSidesFavs);
+// favFilterByCondiments.addEventListener('click', findCondimentsFavs);
+// favFilterBySnacks.addEventListener('click', findSnacksFavs);
+// favShowAllButton.addEventListener('click', displayAllRecipesFavs);
+
+// Filter recipes
 filterByAppetizer.addEventListener('click', findAppetizers);
 filterByBreakfast.addEventListener('click', findBreakfast);
 filterByLunch.addEventListener('click', findLunch);
@@ -85,7 +108,6 @@ filterBySides.addEventListener('click', findSides);
 filterByCondiments.addEventListener('click', findCondiments);
 filterBySnacks.addEventListener('click', findSnacks);
 showAllButton.addEventListener('click', displayAllRecipes);
-favoriteButton.addEventListener('click', saveToFavorites);
 // favoriteHeart.addEventListener('click', saveToFavorites);
               /*********** HELPER FUNCTIONS ***********/
 
@@ -183,6 +205,8 @@ function buildHTML(index) {
 
 function displayAllRecipes() {
   showRecipeCardSection();
+  show(filterIcons);
+  hide(favoriteFilterIcons);
   recipeCardSection.innerHTML = '';
   recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
@@ -342,6 +366,7 @@ function findAppetizers() {
   });
 }
 
+
 function findBreakfast() {
   recipeCardSection.innerHTML = '';
   showRecipeCardSection();
@@ -359,6 +384,8 @@ function findBreakfast() {
     </article>`;
   });
 }
+
+
 
 function findLunch() {
   recipeCardSection.innerHTML = '';
@@ -446,6 +473,60 @@ function findSnacks() {
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+}
+
+function findAppetizersFavs() {
+  favoritesSection.innerHTML = '';
+  showFavoritesSection();
+  let userSelection = tags.appetizers;
+  let filteredRecipes = currentUser.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+    <section class="card-icons">
+    <img class="icon" src="images/like.png">
+    <img class="icon" src="images/baking.png">
+    </section>
+    <h3>${recipe.name}</h3>
+    <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+}
+
+function findBreakfastFavs() {
+  favoritesSection.innerHTML = '';
+  showFavoritesSection();
+  let userSelection = tags.breakfast;
+  let filteredRecipes = currentUser.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+    <section class="card-icons">
+    <img class="icon" src="images/like.png">
+    <img class="icon" src="images/baking.png">
+    </section>
+    <h3>${recipe.name}</h3>
+    <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+}
+
+function findLunchFavs() {
+  favoritesSection.innerHTML = '';
+  showFavoritesSection();
+  let userSelection = tags.lunch;
+  let filteredRecipes = currentUser.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+    <section class="card-icons">
+    <img class="icon" src="images/like.png">
+    <img class="icon" src="images/baking.png">
+    </section>
+    <h3>${recipe.name}</h3>
+    <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
   });
 }

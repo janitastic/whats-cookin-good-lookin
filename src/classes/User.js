@@ -17,7 +17,7 @@ class User {
   removeFromFavorites(selectedRecipe) {
     this.favorites = this.favorites.filter(favorite => favorite.id !== selectedRecipe.id)
   }
-  
+
   addToCook(selectedRecipe) {
     this.toCook.push(selectedRecipe);
   }
@@ -31,6 +31,7 @@ class User {
       });
       return taggedRecipes;
     }, []);
+    console.log(filteredRecipes);
     return filteredRecipes;
   }
 
