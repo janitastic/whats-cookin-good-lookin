@@ -15,21 +15,9 @@ class User {
   }
 
   removeFromFavorites(selectedRecipe) {
-    this.favorites.forEach(recipe => {
-      if (selectedRecipe.id === recipe.id) {
-        this.favorites.splice(selectedRecipe, 1)
-      }
-    })
+    this.favorites = this.favorites.filter(favorite => favorite.id !== selectedRecipe.id)
   }
-    // if (index > -1) {
-    //   favorites.splice(index, 1, selectedRecipe);
-    // }   console.log('favorites >>>>', favorites)
-    // console.log('selected recipe >>>>', selectedRecipe)
-    // console.log('indexs >>>>', index)
-    // console.log('id >>>>', selectedRecipe.id)
-    // return favorites;
   
-
   addToCook(selectedRecipe) {
     this.toCook.push(selectedRecipe);
   }

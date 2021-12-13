@@ -457,12 +457,9 @@ function saveToFavorites() {
 }
 
 function removeFromFavorites() {
-  const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
-  const recipeId = Number(event.target.parentNode.id);
-  myCurrentRecipeId = recipeId;
-  currentUserFavorites = currentUser.favorites;
+  const clickedRecipeId = Number(event.target.parentNode.id);
 
-  console.log(currentUser.favorites)
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === clickedRecipeId);
   currentUser.removeFromFavorites(foundRecipe)
   displayFavorites()
 }
