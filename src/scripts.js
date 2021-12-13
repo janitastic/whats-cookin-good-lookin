@@ -42,6 +42,7 @@ const toCookBtn = document.getElementById('toCookBtn');
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
 
+
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
 let searchIcon = document.getElementById('searchIcon');
@@ -467,7 +468,6 @@ function removeFromFavorites() {
 function displayFavorites() {
   favoritesSection.innerHTML = '';
   const favoriteRecipes = currentUser.favorites;
-  debugger
   favoriteRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
@@ -481,6 +481,8 @@ function displayFavorites() {
   });
   showFavoritesSection();
   // hideRecipeCardSection();
+  hide(filterIcons);
+  show(favoriteFilterIcons);
 }
 
 function displayToCook() {

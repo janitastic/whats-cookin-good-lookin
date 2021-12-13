@@ -325,11 +325,16 @@ input {
 	display: inline-block;
 }
 
-.filter-icons {
+.filter-icons,
+.favorite-filter-icons {
 	margin-top: 10%;
 	padding: 2% 0;
 	text-align: center;
 	background-color: rgba(10, 30, 35, .9);
+}
+
+.favorite-filter-icons {
+	background-color: black;
 }
 
 .link-to-recipes {
