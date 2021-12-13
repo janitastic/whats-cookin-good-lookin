@@ -31,7 +31,6 @@ class User {
       });
       return taggedRecipes;
     }, []);
-    console.log(filteredRecipes);
     return filteredRecipes;
   }
 
@@ -41,6 +40,7 @@ class User {
           recipeNames.push(recipe);
         } return recipeNames;
       }, []);
+      console.log("does this work", filteredRecipes);
     return filteredRecipes;
   }
 

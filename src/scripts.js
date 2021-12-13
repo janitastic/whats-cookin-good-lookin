@@ -89,6 +89,8 @@ searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', checkInput);
 favoriteButton.addEventListener('click', saveToFavorites);
+searchByName.addEventListener('click', favSearchByRecipeName);
+
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', findAppetizersFavs);
@@ -110,6 +112,7 @@ filterByCondiments.addEventListener('click', findCondiments);
 filterBySnacks.addEventListener('click', findSnacks);
 showAllButton.addEventListener('click', displayAllRecipes);
 // favoriteHeart.addEventListener('click', saveToFavorites);
+
               /*********** HELPER FUNCTIONS ***********/
 
 function show(element) {
@@ -535,6 +538,22 @@ function findSnacksFavs() {
   });
 }
 
+function favSearchByRecipeName() {
+  favoritesSection.innerHTML = '';
+  let userInput = searchInput.value;
+  let filteredRecipes = currentUser.filterByName(userInput);
+  filteredRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+  toggleDropDown();
+  resetSearch();
+  showFavoritesSection();
+}
+
 function saveToFavorites() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
   currentUser.addToFavorites(foundRecipe);
@@ -568,4 +587,5 @@ function displayFavorites() {
 
 function displayToCook() {
   showToCookSection();
+  // favSearchByRecipeName();
 }
