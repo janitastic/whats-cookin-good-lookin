@@ -44,12 +44,19 @@ let individualCardView = document.getElementById('individualCardView');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
-let favSearchButton = document.getElementById('favSearchButton');
 let searchIcon = document.getElementById('searchIcon');
 let searchInput = document.getElementById('searchBar');
 let dropDownSearch = document.getElementById('dropDownSearch');
 let searchByName = document.getElementById('searchByNameLink');
 let searchByIngredient = document.getElementById('searchByIngredientLink');
+
+// Favorite Search Selectors
+let favSearchButton = document.getElementById('favSearchButton');
+let favSearchIcon = document.getElementById('favSearchIcon');
+let favSearchInput = document.getElementById('favSearchBar');
+let favDropDownSearch = document.getElementById('favDropDownSearch');
+let favSearchByName = document.getElementById('favSearchByNameLink');
+let favSearchByIngredient = document.getElementById('favSearchByIngredientLink');
 
 // Filter Selectors
 let filterByAppetizer = document.getElementById('appetizerButton');
@@ -78,17 +85,28 @@ let favoriteButton = document.getElementById('favoriteButton');
               /*********** EVENT LISTENERS ***********/
 
 window.addEventListener('load', loadPage);
+//Sections
 recipeCardSection.addEventListener('click', displayRecipeCard);
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
+//Menu Buttons
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 favoritesBtn.addEventListener('click', displayFavorites);
 toCookBtn.addEventListener('click', displayToCook);
+//Main Search Buttons
 searchButton.addEventListener('click', toggleDropDown);
-favSearchButton.addEventListener('click', toggleDropDown);
 searchByName.addEventListener('click', searchByRecipeName);
 searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', checkInput);
+//Favorite Search Buttons
+favSearchButton.addEventListener('click', toggleDropDown);
+favSearchByName.addEventListener('click', searchByRecipeName);
+favSearchByIngredient.addEventListener('click', searchByIngredients);
+favSearchInput.addEventListener('keyup', favCheckInput);
+
+
+//Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
+//will add toCook button here
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', findAppetizersFavs);
@@ -136,7 +154,7 @@ function showFavoritesSection() {
   hide(individualCardView);
   show(favoritesSection);
   hide(toCookSection);
-  show(favoriteSearch);
+  // show(favoriteSearch);
 }
 
 function showToCookSection() {
@@ -160,6 +178,18 @@ function checkInput() {
   }
 }
 
+function favCheckInput() {
+  let userInput = favSearchInput.value;
+  if (userInput.value !== null) {
+    favSearchByName.disabled = false;
+    favSearchByIngredient.disabled = false;
+  } else {
+    favSearchByName.disabled = true;
+    favSearchByIngredient.disabled = true;
+    console.log('please enter something');
+  }
+}
+
 function resetSearch() {
   searchInput.value = null;
   searchByName.disabled = true;
@@ -169,8 +199,11 @@ function resetSearch() {
 function toggleDropDown() {
   dropDownSearch.classList.toggle('show');
   searchIcon.classList.toggle('fa-rotate-180');
+  favDropDownSearch.classList.toggle('show');
+  favSearchIcon.classList.toggle('fa-rotate-180');
   // searchRecipes();
 }
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
