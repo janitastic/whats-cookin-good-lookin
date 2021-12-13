@@ -50,7 +50,7 @@
         </div>
         </section>
         <section class="filter-icons" id="filterIcons">
-          <h2>Filter Recipes By Recipe Type</h2>
+          <h2>Filter All Recipes</h2>
           <a class="link-to-recipes" href="#recipeCardSection">
             <button class="filter-buttons" id="appetizerButton">
               <img class="filter-icon" src="images/like.png">Appetizers
@@ -78,11 +78,48 @@
             </button>
         </a>
         </section>
+        <section class="favorite-filter-icons hidden" id="favoriteFilterIcons">
+          <h2>Filter Your Favorite Recipes</h2>
+          <a class="link-to-recipes" href="#recipeCardSection">
+            <button class="filter-buttons" id="favAppetizerButton">
+              <img class="filter-icon" src="images/like.png">Appetizers
+            </button>
+            <button class="filter-buttons" id="favBreakfastButton">
+              <img class="filter-icon" src="images/like.png">Breakfast
+            </button>
+            <button class="filter-buttons" id="favLunchButton">
+              <img class="filter-icon" src="images/like.png">Lunch
+            </button>
+            <button class="filter-buttons" id="favDinnerButton">
+              <img class="filter-icon" src="images/like.png">Dinner
+            </button>
+            <button class="filter-buttons" id="favSideButton">
+              <img class="filter-icon" src="images/like.png">Sides
+            </button>
+            <button class="filter-buttons" id="favCondimentButton">
+              <img class="filter-icon" src="images/like.png">Condiments
+            </button>
+            <button class="filter-buttons" id="favSnackButton">
+              <img class="filter-icon" src="images/like.png">Snacks
+            </button>
+            <button class="filter-buttons" id="favShowAllButton">
+              <img class="filter-icon" src="images/like.png">Show All Favorites
+            </button>
+        </a>
+        </section>
       </article>
       <article class="recipe-cards" id="recipeCardSection">
         <!-- display all recipe cards -->
       </article>
       <article class="individual-card hidden" id="individualCardView">
+        <section class="full-recipe-buttons">
+          <button class="recipe-card-button" id="favoriteButton" title="Add to Favorites">
+            <img class="filter-icon" src="images/like.png">
+          </button>
+          <button class="recipe-card-button right" id="addToCook" title="Cook this Recipe">
+            <img class="filter-icon" src="images/baking.png">
+          </button>
+        </section>
         <summary class="recipe-card-top">
           <aside class="name-and-image">
             <section id="recipeImageName">
@@ -111,9 +148,6 @@
           <section id="recipeCost">
             <!-- display recipe cost here -->
           </section>
-          <button class="favorite-button" id="favoriteButton">
-            Add To Favorites
-          </button>
         </summary>
       </article>
       <article class="recipe-cards favorites-section hidden" id="favoritesSection">
