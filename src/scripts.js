@@ -198,6 +198,7 @@ function displayRecipeCard() {
   const recipeId = Number(event.target.parentNode.id);
   myCurrentRecipeId = recipeId;
   recipeImageName.innerHTML = '';
+  // event.preventDefault();
   show(individualCardView);
   hide(recipeCardSection);
   displayNameAndImage();
@@ -223,6 +224,7 @@ function displayNameAndImage() {
 
 function displayIngredients() {
   show(ingredientsTitle);
+  recipeIngredients.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
   console.log('recipeId 239', recipeId);
@@ -239,6 +241,7 @@ function displayIngredients() {
 
 function displayDirections() {
   show(directionsTitle);
+  recipeDirections.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
   console.log('recipeId 255', recipeId);
@@ -253,6 +256,7 @@ function displayDirections() {
 }
 
 function displayRecipeCost() {
+  recipeCost.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
   console.log('recipeId 269', recipeId);
