@@ -5,7 +5,15 @@ import './images/baking.png';
 import './images/like.png';
 import './images/menu-baking.png';
 import './images/menu-like.png';
-import './images/trash.png';
+import './images/view-recipes.png';
+import './images/appetizer.png';
+import './images/breakfast.png';
+import './images/lunch.png';
+import './images/dinner.png';
+import './images/sides.png';
+import './images/condiments.png';
+import './images/snacks.png';
+
 import apiCalls from './apiCalls';
 
 import Recipe from './classes/Recipe';
@@ -505,6 +513,12 @@ function displayFavorites() {
   hide(filterIcons);
 }
 
+function displayDeleteMessage() {
+  favInstructions.innerHTML = '';
+  return favInstructions.innerHTML =
+  `<h4 class="instructions">Double click on a recipe to remove it from your favorites.</h4>`
+}
+
 function findAppetizersFavs() {
   favoritesSection.innerHTML = '';
   showFavoritesSection();
@@ -656,6 +670,7 @@ function displayToCook() {
     </article>`;
   });
   showToCookSection();
+  hide(favoritesSection);
   hide(filterIcons);
   hide(favoriteFilterIcons);
   hide(favoriteSearch);
