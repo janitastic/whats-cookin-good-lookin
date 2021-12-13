@@ -3,6 +3,9 @@ import './styles.css';
 import './images/recipe-book.png';
 import './images/baking.png';
 import './images/like.png';
+import './images/menu-baking.png';
+import './images/menu-like.png';
+import './images/trash.png';
 import apiCalls from './apiCalls';
 
 import Recipe from './classes/Recipe';

@@ -16,10 +16,10 @@
           <img class="icon" src="images/recipe-book.png"> All Recipes
         </button>
         <button class="menu-button" id="favoritesBtn">
-          <img class="icon" src="images/like.png">  Favorites
+          <img class="icon" src="images/menu-like.png">  Favorites
         </button>
         <button class="menu-button" id="toCookBtn">
-          <img class="icon" src="images/baking.png"> To Cook
+          <img class="icon" src="images/menu-baking.png"> To Cook
         </button>
       </nav>
     </header>
@@ -129,12 +129,16 @@
         <!-- display all recipe cards -->
       </article>
       <article class="individual-card hidden" id="individualCardView">
-        <section class="full-recipe-buttons">
-          <button class="recipe-card-button" id="favoriteButton" title="Add to Favorites">
+        <section class="top-buttons">
+          <button class="favorite-button" id="favoriteButton" title="Add to Favorites">
             <img class="filter-icon" src="images/like.png">
+            <span class="hide-text">Add to Favorites</span>
           </button>
-          <button class="recipe-card-button right" id="addToCook" title="Cook this Recipe">
+        <!-- </section>
+        <section class="button-right"> -->
+          <button class="cook-button right" id="addToCook" title="Cook this Recipe">
             <img class="filter-icon" src="images/baking.png">
+            <span class="hide-text">Cook This</span>
           </button>
         </section>
         <summary class="recipe-card-top">
