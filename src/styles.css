@@ -280,7 +280,8 @@ input {
 	padding: 0;
 }
 
-.filter-buttons {
+.filter-buttons,
+.recipe-card-button, {
 	/* display: flex;
 	align-items: center; */
 	background-color: transparent;
@@ -293,8 +294,25 @@ input {
 	margin: 1%;
 }
 
-.filter-buttons:hover {
+.filter-buttons:hover
+.recipe-card-button:hover {
 	transform: scale(1.1);
+}
+
+.full-recipe-buttons {
+	display: grid;
+	gap: 11em;
+	grid-template-columns: 50% 50%;
+	justify-content: center;
+	margin: 0 0 10% 0;
+}
+
+.recipe-card-button {
+	display: flex;
+}
+
+.right {
+	justify-content: flex-end;
 }
 
 .card-icons {
@@ -331,10 +349,6 @@ input {
 	padding: 2% 0;
 	text-align: center;
 	background-color: rgba(10, 30, 35, .9);
-}
-
-.favorite-filter-icons {
-	background-color: black;
 }
 
 .link-to-recipes {
