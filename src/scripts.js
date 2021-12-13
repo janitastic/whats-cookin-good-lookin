@@ -447,26 +447,25 @@ function saveToFavorites() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
   currentUser.addToFavorites(foundRecipe)
   console.log(currentUser.favorites)
+  displayFavorites();
 }
 
 function displayFavorites() {
-  recipeCardSection.innerHTML = '';
-  let userInput = searchInput.value;
-  let filteredRecipes = recipeRepo.filterByName(userInput);
-  filteredRecipes.forEach(recipe => {
-    return recipeCardSection.innerHTML +=
+  favoritesSection.innerHTML = '';
+  const favoriteRecipes = currentUser.favorites;
+  favoriteRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
+      <section class="card-icons" id="cardIcons">
+      <img class="icon heart" id="heart" src="images/like.png">
       <img class="icon" src="images/baking.png">
       </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
   });
-  toggleDropDown();
-  resetSearch();
   showFavoritesSection();
+  hideRecipeCardSection();
 }
 
 function displayToCook() {
