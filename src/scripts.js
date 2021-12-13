@@ -94,9 +94,9 @@ favFilterByAppetizer.addEventListener('click', findAppetizersFavs);
 favFilterByBreakfast.addEventListener('click', findBreakfastFavs);
 favFilterByLunch.addEventListener('click', findLunchFavs);
 favFilterByDinner.addEventListener('click', findDinnerFavs);
-// favFilterBySides.addEventListener('click', findSidesFavs);
-// favFilterByCondiments.addEventListener('click', findCondimentsFavs);
-// favFilterBySnacks.addEventListener('click', findSnacksFavs);
+favFilterBySides.addEventListener('click', findSidesFavs);
+favFilterByCondiments.addEventListener('click', findCondimentsFavs);
+favFilterBySnacks.addEventListener('click', findSnacksFavs);
 // favShowAllButton.addEventListener('click', displayAllRecipesFavs);
 
 // Filter recipes
@@ -548,6 +548,61 @@ function findDinnerFavs() {
     </article>`;
   });
 }
+
+function findSidesFavs() {
+  favoritesSection.innerHTML = '';
+  showFavoritesSection();
+  let userSelection = tags.sides;
+  let filteredRecipes = currentUser.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+    <section class="card-icons">
+    <img class="icon" src="images/like.png">
+    <img class="icon" src="images/baking.png">
+    </section>
+    <h3>${recipe.name}</h3>
+    <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+}
+
+function findCondimentsFavs() {
+  favoritesSection.innerHTML = '';
+  showFavoritesSection();
+  let userSelection = tags.condiments;
+  let filteredRecipes = currentUser.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+    <section class="card-icons">
+    <img class="icon" src="images/like.png">
+    <img class="icon" src="images/baking.png">
+    </section>
+    <h3>${recipe.name}</h3>
+    <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+}
+
+function findSnacksFavs() {
+  favoritesSection.innerHTML = '';
+  showFavoritesSection();
+  let userSelection = tags.snacks;
+  let filteredRecipes = currentUser.filterByTag(userSelection);
+  filteredRecipes.forEach(recipe => {
+    return favoritesSection.innerHTML +=
+    `<article class="card" id="${recipe.id}">
+    <section class="card-icons">
+    <img class="icon" src="images/like.png">
+    <img class="icon" src="images/baking.png">
+    </section>
+    <h3>${recipe.name}</h3>
+    <img class="thumbnail-image" src=${recipe.image}>
+    </article>`;
+  });
+}
+
 
 function saveToFavorites() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
