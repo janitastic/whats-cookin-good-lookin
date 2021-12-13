@@ -211,10 +211,6 @@ function displayAllRecipes() {
   recipeClasses.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons" id="cardIcons">
-      <img class="icon heart" id="heart" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -315,10 +311,6 @@ function searchByIngredients() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -335,10 +327,6 @@ function searchByRecipeName() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -356,10 +344,6 @@ function findAppetizers() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -375,10 +359,6 @@ function findBreakfast() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -395,10 +375,6 @@ function findLunch() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -413,10 +389,6 @@ function findDinner() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -431,10 +403,6 @@ function findSides() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -449,10 +417,6 @@ function findCondiments() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -467,10 +431,6 @@ function findSnacks() {
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons">
-      <img class="icon" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -484,14 +444,10 @@ function findAppetizersFavs() {
   let filteredRecipes = currentUser.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
-    <section class="card-icons">
-    <img class="icon" src="images/like.png">
-    <img class="icon" src="images/baking.png">
-    </section>
-    <h3>${recipe.name}</h3>
-    <img class="thumbnail-image" src=${recipe.image}>
-    </article>`;
+     `<article class="card" id="${recipe.id}">
+      <h3>${recipe.name}</h3>
+      <img class="thumbnail-image" src=${recipe.image}>
+      </article>`;
   });
 }
 
@@ -503,10 +459,6 @@ function findBreakfastFavs() {
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-    <section class="card-icons">
-    <img class="icon" src="images/like.png">
-    <img class="icon" src="images/baking.png">
-    </section>
     <h3>${recipe.name}</h3>
     <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -521,10 +473,6 @@ function findLunchFavs() {
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-    <section class="card-icons">
-    <img class="icon" src="images/like.png">
-    <img class="icon" src="images/baking.png">
-    </section>
     <h3>${recipe.name}</h3>
     <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -539,10 +487,6 @@ function findDinnerFavs() {
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-    <section class="card-icons">
-    <img class="icon" src="images/like.png">
-    <img class="icon" src="images/baking.png">
-    </section>
     <h3>${recipe.name}</h3>
     <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -557,10 +501,6 @@ function findSidesFavs() {
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-    <section class="card-icons">
-    <img class="icon" src="images/like.png">
-    <img class="icon" src="images/baking.png">
-    </section>
     <h3>${recipe.name}</h3>
     <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -575,10 +515,6 @@ function findCondimentsFavs() {
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-    <section class="card-icons">
-    <img class="icon" src="images/like.png">
-    <img class="icon" src="images/baking.png">
-    </section>
     <h3>${recipe.name}</h3>
     <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -593,10 +529,6 @@ function findSnacksFavs() {
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-    <section class="card-icons">
-    <img class="icon" src="images/like.png">
-    <img class="icon" src="images/baking.png">
-    </section>
     <h3>${recipe.name}</h3>
     <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
@@ -625,10 +557,6 @@ function displayFavorites() {
   favoriteRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
-      <section class="card-icons" id="cardIcons">
-      <img class="icon heart" id="heart" src="images/like.png">
-      <img class="icon" src="images/baking.png">
-      </section>
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image}>
     </article>`;
