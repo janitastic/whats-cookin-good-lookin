@@ -97,7 +97,7 @@ favFilterByDinner.addEventListener('click', findDinnerFavs);
 favFilterBySides.addEventListener('click', findSidesFavs);
 favFilterByCondiments.addEventListener('click', findCondimentsFavs);
 favFilterBySnacks.addEventListener('click', findSnacksFavs);
-// favShowAllButton.addEventListener('click', displayAllRecipesFavs);
+favShowAllButton.addEventListener('click', displayFavorites);
 
 // Filter recipes
 filterByAppetizer.addEventListener('click', findAppetizers);
