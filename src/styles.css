@@ -125,14 +125,14 @@ a {
 	padding: 5% 5% 2% 5%;
 }
 
-.favorite-instructions {
+.no-recipes,
+.delete-instructions {
 	text-align: center;
 	margin-top: 5%;
 }
 
 .instructions {
 	color: #0A0A0A;
-	text-shadow: none;
 }
 
 .user-message {
