@@ -17,20 +17,39 @@ import './images/snacks.png';
 import {fetchUsersData, fetchIngredientsData, fetchRecipesData} from './apiCalls';
 
 function fetchAllData() {
-  Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
-    .then((allData) => {
-      console.log(allData);
+  return new Promise((resolve, reject) => {
+    fetchUsersData().then(res => {
+      resolve(res.usersData)
     })
+  })
+  // return Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
+  // .then(data => {
+  //   debugger
+  //   // currentUser = new User()
+  // })
+    // .then((usersData) => {
+    //   return usersData;
+    // })
+    // console.log(allData)
 }
 
-Promise.all([promise1, promise2, promise3]).then((values) => {
-  console.log(values);
-});
+// function getData() {
+//   fetchAllData()
+//     .then(data => {
+//       usersData = data[0].usersData
+//       });
+
+//   // usersData = allData[0].usersData;
+//   // recipeData = allRecipeData[1].recipeData;
+//   // ingredientsData = allIngredientsData[2].ingredientsData;
+//   // return allData(usersData, recipeData, ingredientsData);
+// }
+
 
 import Recipe from './classes/Recipe';
 import recipeData from './data/recipes';
 import User from './classes/User';
-import usersData from './data/users';
+// import usersData from './data/users';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
 import ingredientsData from './data/ingredients';
@@ -40,6 +59,8 @@ import ingredientsData from './data/ingredients';
 let recipeRepo = new RecipeRepository(recipeData);
 let currentUser;
 let currentUserName;
+let usersData = [];
+let ingredients;
 let currentUserId;
 let myCurrentRecipeId;
 let currentUserFavorites;
@@ -237,17 +258,23 @@ function getRandomIndex(array) {
 
 function getUser() {
   let userIndex = getRandomIndex(usersData);
-  currentUser = new User(usersData[userIndex]);
+  const u = usersData[userIndex]
+  currentUser = new User(u.name, u.id, u.pantry);
   currentUserName = currentUser.name;
   currentUserId = currentUser.id;
   return currentUser;
 }
 
 function loadPage() {
-  displayAllRecipes();
-  getUser();
-  userMessage.innerHTML =
-    `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
+  fetchAllData().then(data => {
+    usersData = data
+    debugger
+    displayAllRecipes();
+    getUser();
+    userMessage.innerHTML =
+      `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
+  })
+
 }
 
 //Might use later

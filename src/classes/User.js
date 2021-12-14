@@ -1,11 +1,12 @@
-import usersData from '../data/users';
-import Ingredients from '../data/ingredients';
+// import usersData from '../data/users';
+import Ingredients from '../data/ingredients'
+// import usersData from './apiCalls';
 
 class User {
-  constructor(usersData) {
-    this.name = usersData.name;
-    this.id = usersData.id;
-    this.pantry = usersData.pantry;
+  constructor(name, id, pantry) {
+    this.name = name;
+    this.id = id;
+    this.pantry = pantry;
     this.favorites = [];
     this.toCook = [];
   }
