@@ -246,13 +246,7 @@ function getUser() {
 
 function getRecipes() {
   recipeRepo = new RecipeRepository(recipeData);
-  debugger
   recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
-  debugger
-}
-
-function getIngredients() {
-  ingredientsData = new Ingredient(ingredientsData);
 }
 
 function loadPage() {
@@ -298,7 +292,6 @@ function displayAllRecipes() {
 }
 
 function displayRecipeCard() {
-  getIngredients();
   const recipeId = Number(event.target.parentNode.id);
   myCurrentRecipeId = recipeId;
   recipeImageName.innerHTML = '';
@@ -334,7 +327,7 @@ function displayIngredients() {
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
-          ${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}
+          ${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients(ingredientsData)[index]}
           </li>
         </ul>
       </article>`;
@@ -364,7 +357,7 @@ function displayRecipeCost() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
   return recipeCost.innerHTML +=
     `<article class="full-recipe">
-      <h4>Total Cost $${foundRecipe.logRecipeCost()}</h4>
+      <h4>Total Cost $${foundRecipe.logRecipeCost(ingredientsData)}</h4>
     </article>`;
 }
 
