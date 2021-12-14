@@ -710,7 +710,9 @@ function displayToCook() {
 function displayToCookMessage() {
   if (currentUser.toCook.length === 0) {
     show(noRecipes);
+    hide(favInstructions);
   } else {
     hide(noRecipes);
+    hide(favInstructions);
   }
 }
