@@ -17,24 +17,27 @@ import './images/snacks.png';
 import {fetchUsersData, fetchIngredientsData, fetchRecipesData} from './apiCalls';
 
 import Recipe from './classes/Recipe';
-import recipeData from './data/recipes';
+// import recipeData from './data/recipes';
 import User from './classes/User';
 // import usersData from './data/users';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
-import ingredientsData from './data/ingredients';
+// import ingredientsData from './data/ingredients';
 
               /*********** GLOBAL VARIABLES ***********/
 
-let recipeRepo = new RecipeRepository(recipeData);
+let recipeRepo;
 let currentUser;
+let recipeData;
+let ingredientsData;
 let currentUserName;
 let usersData = [];
 let ingredients;
 let currentUserId;
 let myCurrentRecipeId;
 let currentUserFavorites;
-const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
+let recipeClasses;
+// const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
   breakfast: ['breakfast', 'morning meal', 'brunch'],
@@ -227,12 +230,10 @@ function getRandomIndex(array) {
               /*********** HOME PAGE FUNCTIONS ***********/
 
    
-function fetchAllData() {
-  return new Promise((resolve) => {
-    fetchUsersData().then(res => {
-      resolve(res.usersData)
-    })
-  })
+async function fetchAllData() {
+  const response = await Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
+
+  return response
 }
 
 function getUser() {
@@ -243,11 +244,25 @@ function getUser() {
   return currentUser;
 }
 
+function getRecipes() {
+  recipeRepo = new RecipeRepository(recipeData);
+  debugger
+  recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
+  debugger
+}
+
+function getIngredients() {
+  ingredientsData = new Ingredient(ingredientsData);
+}
+
 function loadPage() {
   fetchAllData().then(data => {
-    usersData = data
-    displayAllRecipes();
+    usersData = data[0].usersData
+    ingredientsData = data[1].ingredientsData
+    recipeData = data[2].recipeData
     getUser();
+    getRecipes();
+    displayAllRecipes();
     userMessage.innerHTML =
       `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
   })
@@ -283,6 +298,7 @@ function displayAllRecipes() {
 }
 
 function displayRecipeCard() {
+  getIngredients();
   const recipeId = Number(event.target.parentNode.id);
   myCurrentRecipeId = recipeId;
   recipeImageName.innerHTML = '';

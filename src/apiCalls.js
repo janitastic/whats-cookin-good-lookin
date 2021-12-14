@@ -1,14 +1,12 @@
 // Your fetch requests will live here!
 
-import usersData from "./data/users";
-
 
 console.log('I will be a fetch request!')
 
 function fetchUsersData() {
  return fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/users")
  .then(response => response.json())
-//  .then(data => data.usersData);
+//  .then(data => return data)
  .catch(err => console.log(err));
 }
 
