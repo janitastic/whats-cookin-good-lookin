@@ -258,8 +258,7 @@ function getRandomIndex(array) {
 
 function getUser() {
   let userIndex = getRandomIndex(usersData);
-  const u = usersData[userIndex]
-  currentUser = new User(u.name, u.id, u.pantry);
+  currentUser = new User(usersData[userIndex]);
   currentUserName = currentUser.name;
   currentUserId = currentUser.id;
   return currentUser;
@@ -268,7 +267,6 @@ function getUser() {
 function loadPage() {
   fetchAllData().then(data => {
     usersData = data
-    debugger
     displayAllRecipes();
     getUser();
     userMessage.innerHTML =
