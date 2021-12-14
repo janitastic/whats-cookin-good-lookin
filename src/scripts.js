@@ -16,36 +16,6 @@ import './images/snacks.png';
 
 import {fetchUsersData, fetchIngredientsData, fetchRecipesData} from './apiCalls';
 
-function fetchAllData() {
-  return new Promise((resolve, reject) => {
-    fetchUsersData().then(res => {
-      resolve(res.usersData)
-    })
-  })
-  // return Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
-  // .then(data => {
-  //   debugger
-  //   // currentUser = new User()
-  // })
-    // .then((usersData) => {
-    //   return usersData;
-    // })
-    // console.log(allData)
-}
-
-// function getData() {
-//   fetchAllData()
-//     .then(data => {
-//       usersData = data[0].usersData
-//       });
-
-//   // usersData = allData[0].usersData;
-//   // recipeData = allRecipeData[1].recipeData;
-//   // ingredientsData = allIngredientsData[2].ingredientsData;
-//   // return allData(usersData, recipeData, ingredientsData);
-// }
-
-
 import Recipe from './classes/Recipe';
 import recipeData from './data/recipes';
 import User from './classes/User';
@@ -255,6 +225,15 @@ function getRandomIndex(array) {
 }
 
               /*********** HOME PAGE FUNCTIONS ***********/
+
+   
+function fetchAllData() {
+  return new Promise((resolve) => {
+    fetchUsersData().then(res => {
+      resolve(res.usersData)
+    })
+  })
+}
 
 function getUser() {
   let userIndex = getRandomIndex(usersData);
