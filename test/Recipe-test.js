@@ -20,7 +20,7 @@ describe('Recipe', () => {
 
   it('should return the names of ingredients in a recipe', () => {
     const expected = ['wheat flour', 'bicarbonate of soda', 'eggs', 'sucrose', 'instant vanilla pudding', 'brown sugar', 'salt', 'fine sea salt', 'semi sweet chips', 'unsalted butter', 'vanilla'];
-    const actual = myRecipe.logIngredients();
+    const actual = myRecipe.logIngredients(ingredientsData);
     expect(actual).to.deep.equal(expected);
   });
 
@@ -29,6 +29,6 @@ describe('Recipe', () => {
   });
 
   it('should calculate recipe cost', () => {
-    expect(myRecipe.logRecipeCost()).to.deep.equal('177.76');
+    expect(myRecipe.logRecipeCost(ingredientsData)).to.deep.equal('177.76');
   });
 });

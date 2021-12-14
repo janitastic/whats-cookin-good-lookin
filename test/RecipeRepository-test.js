@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import RecipeRepository from '../src/classes/RecipeRepository';
 import recipeData from '../src/data/recipes';
-// import ingredientsData from '../src/data/ingredients';
+import ingredientsData from '../src/data/ingredients';
 
 describe('RecipeRepo', () => {
   let recipeRepository;
@@ -26,7 +26,7 @@ describe('RecipeRepo', () => {
     expect(recipeRepository.filterByName('Chocolate').length).to.equal(3);
   });
 
-  it('should filter by ingredients', () => {
-    expect(recipeRepository.filterByIngredients('onion powder').length).to.equal(3);
+  it('should filter by ingredients',() => {
+    expect(recipeRepository.filterByIngredients('onion powder', ingredientsData).length).to.equal(3);
   });
 });
