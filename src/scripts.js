@@ -14,25 +14,30 @@ import './images/sides.png';
 import './images/condiments.png';
 import './images/snacks.png';
 
-import apiCalls from './apiCalls';
+import {fetchUsersData, fetchIngredientsData, fetchRecipesData} from './apiCalls';
 
 import Recipe from './classes/Recipe';
-import recipeData from './data/recipes';
+// import recipeData from './data/recipes';
 import User from './classes/User';
-import usersData from './data/users';
+// import usersData from './data/users';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
-import ingredientsData from './data/ingredients';
+// import ingredientsData from './data/ingredients';
 
               /*********** GLOBAL VARIABLES ***********/
 
-let recipeRepo = new RecipeRepository(recipeData);
+let recipeRepo;
 let currentUser;
+let recipeData;
+let ingredientsData;
 let currentUserName;
+let usersData = [];
+let ingredients;
 let currentUserId;
 let myCurrentRecipeId;
 let currentUserFavorites;
-const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
+let recipeClasses;
+// const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
   breakfast: ['breakfast', 'morning meal', 'brunch'],
@@ -224,6 +229,13 @@ function getRandomIndex(array) {
 
               /*********** HOME PAGE FUNCTIONS ***********/
 
+   
+async function fetchAllData() {
+  const response = await Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
+
+  return response
+}
+
 function getUser() {
   let userIndex = getRandomIndex(usersData);
   currentUser = new User(usersData[userIndex]);
@@ -232,11 +244,23 @@ function getUser() {
   return currentUser;
 }
 
+function getRecipes() {
+  recipeRepo = new RecipeRepository(recipeData);
+  recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
+}
+
 function loadPage() {
-  displayAllRecipes();
-  getUser();
-  userMessage.innerHTML =
-    `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
+  fetchAllData().then(data => {
+    usersData = data[0].usersData
+    ingredientsData = data[1].ingredientsData
+    recipeData = data[2].recipeData
+    getUser();
+    getRecipes();
+    displayAllRecipes();
+    userMessage.innerHTML =
+      `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
+  })
+
 }
 
 //Might use later
@@ -303,7 +327,7 @@ function displayIngredients() {
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
-          ${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients()[index]}
+          ${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients(ingredientsData)[index]}
           </li>
         </ul>
       </article>`;
@@ -333,7 +357,7 @@ function displayRecipeCost() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
   return recipeCost.innerHTML +=
     `<article class="full-recipe">
-      <h4>Total Cost $${foundRecipe.logRecipeCost()}</h4>
+      <h4>Total Cost $${foundRecipe.logRecipeCost(ingredientsData)}</h4>
     </article>`;
 }
 

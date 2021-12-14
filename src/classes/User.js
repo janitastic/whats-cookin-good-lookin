@@ -1,5 +1,6 @@
-import usersData from '../data/users';
-import Ingredients from '../data/ingredients';
+// import usersData from '../data/users';
+// import Ingredients from '../data/ingredients'
+// import usersData from './apiCalls';
 
 class User {
   constructor(usersData) {

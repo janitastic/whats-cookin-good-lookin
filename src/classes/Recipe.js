@@ -1,4 +1,5 @@
-import ingredientsData from '../data/ingredients';
+// import ingredientsData from '../data/ingredients';
+// import ingredientsData from './apiCalls';
 
 class Recipe {
   constructor(recipeData) {
@@ -10,7 +11,7 @@ class Recipe {
     this.tags = recipeData.tags;
   }
 
-  logIngredients() {
+  logIngredients(ingredientsData) {
     const ingredientNameArr = this.ingredients.map(ingredient => {
       const ingredientList = ingredientsData.find(ingredientObj => ingredientObj.id === ingredient.id);
       return ingredientList.name;
@@ -22,7 +23,7 @@ class Recipe {
     return this.instructions;
   }
 
-  logRecipeCost() {
+  logRecipeCost(ingredientsData) {
     let totalCost;
     const result = this.ingredients.reduce((acc, currentIng) => {
       let foundId = ingredientsData.find(ingredient => {
