@@ -1,22 +1,57 @@
-# What's Cookin'? Starter Kit 
+# What's Cookin' Good Lookin'
 
-The details of this project are outlined in the <a href="https://frontend.turing.edu/projects/What%27sCookin-PartOne.html" target="\__blank">project spec</a>.
+## Project Overview
 
-## Set Up 
+What's Cookin' Good Lookin' is an application that presents a user with an extensive list of recipes. Users can favorite recipes, save recipes to the 'Let's Cook' section, and delete from their favorites. All recipes include ingredients needed, directions, and cost. On page load, a random user will be generated and they can then interact with the page.
 
-1. Within your group, decide on one person to have the project repository on their Github account. This person will *fork* this repository - on the top right corner of the page, click the fork button. 
-2. All group members should then clone down the forked repository (make sure that everyone is added as a collaborator as well). Since you don't want your project to be named "whats-cookin-starter-kit", add an optional argument after the repo url when cloning. The command should look like this: `git clone [remote-address] [what you want to name the repo]`.
-3. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` or `npm i` to install project dependencies.
-4. Run `npm start` and visit `localhost:8080`
-5. Make sure both members of your team are collaborators on the forked repo.
+## See it in action!
+- Upon opening the application, the user is greeted and will see all recipes displayed. They may also search by recipe name or ingredient or filter by recipe type.
 
-## Testing 
+![recipe-page](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Recipe-Page.gif)
 
-Mocha and chai are already set up, with a boilerplate test for you. 
+- User is able to click on a recipe thumbnail and view the detailed recipe. User may click on any recipe for more details such as directions, ingredients, and total   recipe cost.
 
-## Linting Your Code 
+![full-recipe-card](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Full-Recipe-Card.gif)
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+- From within the recipe, the user may add a recipe to favorites or they can add to cook later. The User may then click on Favorites or Let's Cook to view their saved recipes.
 
-Your linter will look only at the JavaScript files you have within the src and the test directories.
+![adding](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Adding-to-Favorites-and-to-Cook.gif)
+
+- User may also search for a recipe by name or ingredient within the Favorites View. They can also filter by recipe type and can clear these filters to see all favorite recipes displayed. 
+
+![filters-favs](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Filtering-Favorites.gif)
+
+- On the favorite recipe view they can delete recipes. 
+
+![deleting-favs](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Deleting-Favorites.gif)
+
+## Installation and Setup:
+**To navigate the website live, a server download is required.**
+  1. Download the necessary server and API [here](https://github.com/turingschool-examples/whats-cookin-starter-kit)
+  2. In the command line, run `npm install` or `npm i`.
+  3. In the command line, run `npm start`
+
+**Then clone down this repository**
+  1. In your command line, `cd` into your local directory and clone down this repository -<br>
+      `git@github.com:janitastic/whats-cookin-good-lookin.git`
+  2. Install the necessary package dependencies - <br>
+      `npm install`
+  3. Run the command `npm start` 
+  4. With both the server running and this package, and visit `http://localhost:8080/` in your browser.
+
+## Technologies Used
+  - JavaScript
+  - HTML, CSS
+  - Node.js
+  - Mocha and Chai
+  - Webpack
+
+## Future Goals
+  - Make JavaScript functions more dynamic
+  - Allow users to see what recipes they can cook with the ingredients they have in their pantry
+  - Add more elements to user profile such as profile photo and comments on recipes
+
+## Rubric
+  - Part One [Rubric and Project Specifications - Part 1](https://frontend.turing.edu/projects/whats-cookin-part-one.html)
+
 
