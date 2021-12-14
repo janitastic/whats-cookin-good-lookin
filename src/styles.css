@@ -125,7 +125,8 @@ a {
 	padding: 5% 5% 2% 5%;
 }
 
-.favorite-instructions {
+.no-recipes,
+.delete-instructions {
 	text-align: center;
 	margin-top: 5%;
 }

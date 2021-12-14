@@ -229,7 +229,7 @@ function getRandomIndex(array) {
 
               /*********** HOME PAGE FUNCTIONS ***********/
 
-   
+
 async function fetchAllData() {
   const response = await Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
 
@@ -379,7 +379,7 @@ function searchRecipes() {
 function searchByIngredients() {
   recipeCardSection.innerHTML = '';
   let userInput = searchInput.value;
-  let filteredRecipes = recipeRepo.filterByIngredients(userInput);
+  let filteredRecipes = recipeRepo.filterByIngredients(userInput, ingredientsData);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
@@ -531,16 +531,21 @@ function displayFavorites() {
     </article>`;
   });
   showFavoritesSection();
+  displayDeleteFavMessage();
   show(favoriteFilterIcons);
   show(favoriteSearch);
   hide(allSearch);
   hide(filterIcons);
 }
 
-function displayDeleteMessage() {
-  favInstructions.innerHTML = '';
-  return favInstructions.innerHTML =
-  `<h4 class="instructions">Double click on a recipe to remove it from your favorites.</h4>`
+function displayDeleteFavMessage() {
+  if (currentUser.favorites.length === 0) {
+    show(noRecipes);
+    hide(favInstructions);
+  } else {
+    show(favInstructions);
+    hide(noRecipes);
+  }
 }
 
 function findAppetizersFavs() {
@@ -661,7 +666,7 @@ function favSearchByRecipeName() {
 function favSearchByIngredients() {
   favoritesSection.innerHTML = '';
   let userInput = favSearchInput.value;
-  let filteredRecipes = currentUser.filterByIngredients(userInput);
+  let filteredRecipes = currentUser.filterByIngredients(userInput, ingredientsData);
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
@@ -694,9 +699,20 @@ function displayToCook() {
     </article>`;
   });
   showToCookSection();
+  displayToCookMessage();
   hide(favoritesSection);
   hide(filterIcons);
   hide(favoriteFilterIcons);
   hide(favoriteSearch);
   hide(allSearch);
+}
+
+function displayToCookMessage() {
+  if (currentUser.toCook.length === 0) {
+    show(noRecipes);
+    hide(favInstructions);
+  } else {
+    hide(noRecipes);
+    hide(favInstructions);
+  }
 }
