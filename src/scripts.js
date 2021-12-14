@@ -229,7 +229,7 @@ function getRandomIndex(array) {
 
               /*********** HOME PAGE FUNCTIONS ***********/
 
-   
+
 async function fetchAllData() {
   const response = await Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
 
@@ -531,6 +531,7 @@ function displayFavorites() {
     </article>`;
   });
   showFavoritesSection();
+  displayDeleteMessage();
   show(favoriteFilterIcons);
   show(favoriteSearch);
   hide(allSearch);
@@ -538,9 +539,12 @@ function displayFavorites() {
 }
 
 function displayDeleteMessage() {
-  favInstructions.innerHTML = '';
-  return favInstructions.innerHTML =
-  `<h4 class="instructions">Double click on a recipe to remove it from your favorites.</h4>`
+  if (currentUser.favorites.length === 0) {
+    show(noRecipes)
+  } else {
+    show(favInstructions)
+    hide(noRecipes)
+  }
 }
 
 function findAppetizersFavs() {
