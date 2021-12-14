@@ -44,8 +44,8 @@ class User {
     return filteredRecipes;
   }
 
-  filterByIngredients(userInput) {
-    const foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()));
+  filterByIngredients(userInput, ingredientsData) {
+    const foundIngredient = ingredientsData.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()));
     const foundId = foundIngredient.id;
     const filteredRecipes = this.favorites.filter(recipe => {
       return recipe.ingredients.some(ingredient =>
