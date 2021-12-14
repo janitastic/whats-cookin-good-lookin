@@ -5,6 +5,7 @@ import usersData from '../src/data/users';
 
 /* May not need below imports */
 import recipeData from '../src/data/recipes';
+import ingredientsData from '../src/data/ingredients';
 // import ingredientsData from '../src/data/ingredients';
 describe('User', () => {
   let currentUser, recipe1, recipe2, recipe3, recipe4;
@@ -72,6 +73,6 @@ describe('User', () => {
     currentUser.addToFavorites(recipe1);
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe4);
-    expect(currentUser.filterByIngredients('flour').length).to.equal(2);
+    expect(currentUser.filterByIngredients('flour', ingredientsData).length).to.equal(2);
   });
 });
