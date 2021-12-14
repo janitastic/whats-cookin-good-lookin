@@ -379,7 +379,7 @@ function searchRecipes() {
 function searchByIngredients() {
   recipeCardSection.innerHTML = '';
   let userInput = searchInput.value;
-  let filteredRecipes = recipeRepo.filterByIngredients(userInput);
+  let filteredRecipes = recipeRepo.filterByIngredients(userInput, ingredientsData);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
@@ -666,7 +666,7 @@ function favSearchByRecipeName() {
 function favSearchByIngredients() {
   favoritesSection.innerHTML = '';
   let userInput = favSearchInput.value;
-  let filteredRecipes = currentUser.filterByIngredients(userInput);
+  let filteredRecipes = currentUser.filterByIngredients(userInput, ingredientsData);
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">

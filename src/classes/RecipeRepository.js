@@ -1,5 +1,5 @@
-import Recipe from '../data/recipes';
-import Ingredients from '../data/ingredients';
+// import Recipe from '../data/recipes';
+// import Ingredients from '../data/ingredients';
 
 class RecipeRepository {
   constructor(recipeData) {
@@ -28,9 +28,8 @@ class RecipeRepository {
     return filteredRecipes;
   }
 
-  filterByIngredients(userInput) {
-    //we may need an if/else here so that it can create error handling when an ingredient doesn't exist
-    const foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()));
+  filterByIngredients(userInput, ingredientsData) {
+    const foundIngredient = ingredientsData.find(ingredient => ingredient.name.toLowerCase().includes(userInput.toLowerCase()));
     const foundId = foundIngredient.id;
 
     const filteredRecipes = this.recipes.filter(recipe => {
