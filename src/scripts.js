@@ -531,19 +531,20 @@ function displayFavorites() {
     </article>`;
   });
   showFavoritesSection();
-  displayDeleteMessage();
+  displayDeleteFavMessage();
   show(favoriteFilterIcons);
   show(favoriteSearch);
   hide(allSearch);
   hide(filterIcons);
 }
 
-function displayDeleteMessage() {
+function displayDeleteFavMessage() {
   if (currentUser.favorites.length === 0) {
-    show(noRecipes)
+    show(noRecipes);
+    hide(favInstructions);
   } else {
-    show(favInstructions)
-    hide(noRecipes)
+    show(favInstructions);
+    hide(noRecipes);
   }
 }
 
@@ -698,9 +699,18 @@ function displayToCook() {
     </article>`;
   });
   showToCookSection();
+  displayToCookMessage();
   hide(favoritesSection);
   hide(filterIcons);
   hide(favoriteFilterIcons);
   hide(favoriteSearch);
   hide(allSearch);
+}
+
+function displayToCookMessage() {
+  if (currentUser.toCook.length === 0) {
+    show(noRecipes);
+  } else {
+    hide(noRecipes);
+  }
 }
