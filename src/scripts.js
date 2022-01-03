@@ -291,6 +291,8 @@ function displayRecipeCard() {
   recipeImageName.innerHTML = '';
   show(individualCardView);
   hide(recipeCardSection);
+  hide(noRecipes);
+  hide(favInstructions);
   displayNameAndImage();
   displayIngredients();
   displayDirections();
