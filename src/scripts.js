@@ -50,6 +50,7 @@ const tags = {
 const allRecipesBtn = document.getElementById('recipesBtn');
 const favoritesBtn = document.getElementById('favoritesBtn');
 const toCookBtn = document.getElementById('toCookBtn');
+const returnBtn = document.getElementById('returnBtn');
 
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
@@ -101,6 +102,7 @@ window.addEventListener('load', loadPage);
 //Sections
 recipeCardSection.addEventListener('click', displayRecipeCard);
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
+returnBtn.addEventListener('click', displayAllRecipes);
 //Menu Buttons
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 favoritesBtn.addEventListener('click', displayFavorites);
