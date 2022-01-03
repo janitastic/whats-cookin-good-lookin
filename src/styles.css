@@ -323,7 +323,8 @@ input {
 	justify-content: space-between;
 }
 
-.search-button {
+.search-button,
+.return-button {
 	border-radius: 0.5em;
   font-size: 1.5em;
 	font-weight: 600;
@@ -336,7 +337,15 @@ input {
   min-height: 4em;
 }
 
-.search-button:hover {
+.return-button {
+	letter-spacing: 1px;
+	min-width: 10em;
+  min-height: 2em;
+	margin: 1em;
+}
+
+.search-button:hover,
+.return-button:hover {
 	cursor: pointer;
 	background-color: #A66953;
 	transform: scale(1.1);
