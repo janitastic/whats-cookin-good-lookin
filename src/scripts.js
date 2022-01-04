@@ -135,8 +135,12 @@ favFilterBySnacks.addEventListener('click', findSnacksFavs);
 favShowAllButton.addEventListener('click', displayFavorites);
 
 // Filter recipes
-filterByAppetizer.addEventListener('click', filterBySelection(appetizer));
-filterByBreakfast.addEventListener('click', findBreakfast);
+filterByAppetizer.addEventListener('click', () => {
+  filterBySelection(tags.appetizers)
+});
+filterByBreakfast.addEventListener('click', () => {
+  filterBySelection(tags.breakfast)
+});
 filterByLunch.addEventListener('click', findLunch);
 filterByDinner.addEventListener('click', findDinner);
 filterBySides.addEventListener('click', findSides);
@@ -409,38 +413,11 @@ function searchByRecipeName() {
   hide(favInstructions);
 }
 
+//fancy new function to illiminate find by tag redundant functions
 function filterBySelection(selectedTag) {
   recipeCardSection.innerHTML = '';
   showRecipeCardSection();
-  let userSelection = tags.selectedTag;
-  let filteredRecipes = recipeRepo.filterByTag(userSelection);
-  filteredRecipes.forEach(recipe => {
-    return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
-      <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
-    </article>`;
-  });
-}
-
-// function findAppetizers() {
-//   recipeCardSection.innerHTML = '';
-//   showRecipeCardSection();
-//   let userSelection = tags.appetizers;
-//   let filteredRecipes = recipeRepo.filterByTag(userSelection);
-//   filteredRecipes.forEach(recipe => {
-//     return recipeCardSection.innerHTML +=
-//     `<article class="card" id="${recipe.id}">
-//       <h3>${recipe.name}</h3>
-//       <img class="thumbnail-image" src=${recipe.image}>
-//     </article>`;
-//   });
-// }
-
-function findBreakfast() {
-  recipeCardSection.innerHTML = '';
-  showRecipeCardSection();
-  let userSelection = tags.breakfast;
+  let userSelection = selectedTag;
   let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
