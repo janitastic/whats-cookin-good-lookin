@@ -423,82 +423,10 @@ function searchByRecipeName() {
   hide(favInstructions);
 }
 
-//fancy new function to eliminate find by tag redundant functions
 function filterBySelection(selectedTag) {
   recipeCardSection.innerHTML = '';
   showRecipeCardSection();
-  // let userSelection = selectedTag;
   let filteredRecipes = recipeRepo.filterByTag(selectedTag);
-  filteredRecipes.forEach(recipe => {
-    return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
-      <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
-    </article>`;
-  });
-}
-
-function findLunch() {
-  recipeCardSection.innerHTML = '';
-  showRecipeCardSection();
-  let userSelection = tags.lunch;
-  let filteredRecipes = recipeRepo.filterByTag(userSelection);
-  filteredRecipes.forEach(recipe => {
-    return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
-      <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
-    </article>`;
-  });
-}
-
-function findDinner() {
-  recipeCardSection.innerHTML = '';
-  showRecipeCardSection();
-  let userSelection = tags.dinner;
-  let filteredRecipes = recipeRepo.filterByTag(userSelection);
-  filteredRecipes.forEach(recipe => {
-    return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
-      <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
-    </article>`;
-  });
-}
-
-function findSides() {
-  recipeCardSection.innerHTML = '';
-  showRecipeCardSection();
-  let userSelection = tags.sides;
-  let filteredRecipes = recipeRepo.filterByTag(userSelection);
-  filteredRecipes.forEach(recipe => {
-    return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
-      <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
-    </article>`;
-  });
-}
-
-function findCondiments() {
-  recipeCardSection.innerHTML = '';
-  showRecipeCardSection();
-  let userSelection = tags.condiments;
-  let filteredRecipes = recipeRepo.filterByTag(userSelection);
-  filteredRecipes.forEach(recipe => {
-    return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
-      <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
-    </article>`;
-  });
-}
-
-function findSnacks() {
-  recipeCardSection.innerHTML = '';
-  showRecipeCardSection();
-  let userSelection = tags.snacks;
-  let filteredRecipes = recipeRepo.filterByTag(userSelection);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
