@@ -141,11 +141,21 @@ filterByAppetizer.addEventListener('click', () => {
 filterByBreakfast.addEventListener('click', () => {
   filterBySelection(tags.breakfast)
 });
-filterByLunch.addEventListener('click', findLunch);
-filterByDinner.addEventListener('click', findDinner);
-filterBySides.addEventListener('click', findSides);
-filterByCondiments.addEventListener('click', findCondiments);
-filterBySnacks.addEventListener('click', findSnacks);
+filterByLunch.addEventListener('click', () => {
+  filterBySelection(tags.lunch)
+});
+filterByDinner.addEventListener('click', () => {
+  filterBySelection(tags.dinner)
+});
+filterBySides.addEventListener('click', () => {
+  filterBySelection(tags.sides)
+});
+filterByCondiments.addEventListener('click', () => {
+  filterBySelection(tags.condiments)
+});
+filterBySnacks.addEventListener('click', () => {
+  filterBySelection(tags.snacks)
+});
 showAllButton.addEventListener('click', displayAllRecipes);
 // favoriteHeart.addEventListener('click', saveToFavorites);
 
@@ -413,12 +423,12 @@ function searchByRecipeName() {
   hide(favInstructions);
 }
 
-//fancy new function to illiminate find by tag redundant functions
+//fancy new function to eliminate find by tag redundant functions
 function filterBySelection(selectedTag) {
   recipeCardSection.innerHTML = '';
   showRecipeCardSection();
-  let userSelection = selectedTag;
-  let filteredRecipes = recipeRepo.filterByTag(userSelection);
+  // let userSelection = selectedTag;
+  let filteredRecipes = recipeRepo.filterByTag(selectedTag);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
