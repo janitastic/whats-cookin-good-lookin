@@ -171,7 +171,6 @@ filterBySnacks.addEventListener('click', () => {
   filterBySelection(tags.snacks)
 });
 showAllButton.addEventListener('click', displayAllRecipes);
-// favoriteHeart.addEventListener('click', saveToFavorites);
 
               /*********** HELPER FUNCTIONS ***********/
 
@@ -247,7 +246,6 @@ function toggleDropDown() {
   favSearchIcon.classList.toggle('fa-rotate-180');
 }
 
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -285,19 +283,6 @@ function loadPage() {
     userMessage.innerHTML =
       `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
   })
-
-}
-
-//Might use later
-function buildHTML(index) {
-  favoriteHeart.addEventListener('click', saveToFavorites);
-  if (usersData.favorites[index].heart) {
-    let heart = 'img class="icon" id="heart" src="images/like.png"';
-  } else {
-    let heart = 'img class="icon" id="heart" src="images/baking.png"';
-  }
-
-  saveToFavorites(usersData[index].id);
 }
 
 function displayAllRecipes() {
@@ -386,21 +371,6 @@ function displayRecipeCost() {
     `<article class="full-recipe">
       <h4>Total Cost $${foundRecipe.logRecipeCost(ingredientsData)}</h4>
     </article>`;
-}
-
-function searchRecipes() {
-  let userInput = searchInput.value;
-  if (!userInput.value && searchByName.clicked === true) {
-    console.log('please type a name');
-  } else if (!userInput.value && searchByIngredient.clicked === true) {
-    console.log('please type an ingredient');
-  } else if (userInput.value && searchByName.clicked === true) {
-    searchByRecipeName();
-  } else if (userInput.value && searchByIngredient.clicked === true) {
-    searchByIngredients();
-  } else {
-    console.log('please make a selection');
-  }
 }
 
 function searchByIngredients() {
