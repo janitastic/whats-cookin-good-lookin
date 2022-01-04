@@ -1,5 +1,5 @@
-import './styles.css';
-// import './css/index.scss';
+// import './styles.css';
+import './css/index.scss';
 import './images/recipe-book.png';
 import './images/baking.png';
 import './images/like.png';
@@ -404,6 +404,8 @@ function searchByRecipeName() {
   toggleDropDown();
   resetSearch();
   showRecipeCardSection();
+  hide(noRecipes);
+  hide(favInstructions);
 }
 
 function findAppetizers() {
