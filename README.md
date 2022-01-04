@@ -26,10 +26,10 @@ What's Cookin' Good Lookin' is an application that presents a user with an exten
 ![deleting-favs](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Deleting-Favorites.gif)
 
 ## Installation and Setup:
-**To navigate the website live, a server download is required.**
-  1. Download the necessary server and API [here](https://github.com/turingschool-examples/whats-cookin-starter-kit)
-  2. In the command line, run `npm install` or `npm i`.
-  3. In the command line, run `npm start`
+**To navigate the website live, a local server download is required.**
+  1. Clone the necessary server and API [here](https://github.com/turingschool-examples/whats-cookin-api)
+  2. In the command line, `cd` into the directory and run `npm install` or `npm i`.
+  3. After the install is completely, run `npm start`.
 
 **Then clone down this repository**
   1. In your command line, `cd` into your local directory and clone down this repository -<br>
@@ -53,5 +53,6 @@ What's Cookin' Good Lookin' is an application that presents a user with an exten
 
 ## Rubric
   - Part One [Rubric and Project Specifications - Part 1](https://frontend.turing.edu/projects/whats-cookin-part-one.html)
+  - Part Two [Rubric and Project Specifications - Part 2](https://frontend.turing.edu/projects/whats-cookin-part-two.html) 
 
 

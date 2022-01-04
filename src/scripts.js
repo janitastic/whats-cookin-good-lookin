@@ -1,5 +1,5 @@
-import './styles.css';
-// import './css/index.scss';
+// import './styles.css';
+import './css/index.scss';
 import './images/recipe-book.png';
 import './images/baking.png';
 import './images/like.png';
@@ -17,12 +17,9 @@ import './images/snacks.png';
 import {fetchUsersData, fetchIngredientsData, fetchRecipesData} from './apiCalls';
 
 import Recipe from './classes/Recipe';
-// import recipeData from './data/recipes';
 import User from './classes/User';
-// import usersData from './data/users';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
-// import ingredientsData from './data/ingredients';
 
               /*********** GLOBAL VARIABLES ***********/
 
@@ -37,7 +34,6 @@ let currentUserId;
 let myCurrentRecipeId;
 let currentUserFavorites;
 let recipeClasses;
-// const recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
 const tags = {
   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
   breakfast: ['breakfast', 'morning meal', 'brunch'],
@@ -54,6 +50,7 @@ const tags = {
 const allRecipesBtn = document.getElementById('recipesBtn');
 const favoritesBtn = document.getElementById('favoritesBtn');
 const toCookBtn = document.getElementById('toCookBtn');
+const returnBtn = document.getElementById('returnBtn');
 
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
@@ -98,7 +95,6 @@ let favShowAllButton = document.getElementById('favShowAllButton');
 // Individual Recipe Card Selectors
 let favoriteButton = document.getElementById('favoriteButton');
 let addToCookButton = document.getElementById('addToCook');
-// let favoriteHeart = document.querySelector('#heart');
 
               /*********** EVENT LISTENERS ***********/
 
@@ -106,6 +102,7 @@ window.addEventListener('load', loadPage);
 //Sections
 recipeCardSection.addEventListener('click', displayRecipeCard);
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
+returnBtn.addEventListener('click', displayAllRecipes);
 //Menu Buttons
 allRecipesBtn.addEventListener('click', displayAllRecipes);
 favoritesBtn.addEventListener('click', displayFavorites);
@@ -219,7 +216,6 @@ function toggleDropDown() {
   searchIcon.classList.toggle('fa-rotate-180');
   favDropDownSearch.classList.toggle('show');
   favSearchIcon.classList.toggle('fa-rotate-180');
-  // searchRecipes();
 }
 
 
@@ -297,6 +293,8 @@ function displayRecipeCard() {
   recipeImageName.innerHTML = '';
   show(individualCardView);
   hide(recipeCardSection);
+  hide(noRecipes);
+  hide(favInstructions);
   displayNameAndImage();
   displayIngredients();
   displayDirections();
@@ -406,6 +404,8 @@ function searchByRecipeName() {
   toggleDropDown();
   resetSearch();
   showRecipeCardSection();
+  hide(noRecipes);
+  hide(favInstructions);
 }
 
 function findAppetizers() {
