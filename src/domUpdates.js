@@ -299,18 +299,15 @@ function domUpdates(recipeClasses, recipeCardSection) {
 //     })
 // }
 
-function displayAllRecipes(recipeClasses, recipeCardSection) {
-    console.log(recipeClasses)
+function displayAllRecipes(recipeCollection, cardSection) {
 //    showRecipeCardSection();
 //    show(filterIcons);
 //    hide(favoriteFilterIcons);
 //    hide(favoriteSearch);
 //    show(allSearch);
-   recipeCardSection.innerHTML = '';
-   console.log("recipeClasses <>>>>>>>", recipeClasses)
-   recipeClasses.forEach(recipe => {
-       console.log(recipe)
-       return recipeCardSection.innerHTML +=
+   cardSection.innerHTML = '';
+   recipeCollection.forEach(recipe => {
+       return cardSection.innerHTML +=
        `<article class="card" id="${recipe.id}">
        <h3>${recipe.name}</h3>
        <img class="thumbnail-image" src=${recipe.image}>
@@ -321,9 +318,8 @@ function displayAllRecipes(recipeClasses, recipeCardSection) {
  
 
 function displayRecipeCard() {
-  const recipeId = Number(event.target.parentNode.id);
-  myCurrentRecipeId = recipeId;
-  recipeImageName.innerHTML = '';
+//   const recipeId = Number(event.target.parentNode.id);
+//   myCurrentRecipeId = recipeId;
   show(individualCardView);
   hide(recipeCardSection);
   hide(noRecipes);
@@ -335,7 +331,7 @@ function displayRecipeCard() {
 }
 
 function displayNameAndImage() {
-  recipeCardSection.innerHTML = '';
+  recipeImageName.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   recipeClasses.forEach((recipe, index) => {
     if (recipe.id === recipeId) {

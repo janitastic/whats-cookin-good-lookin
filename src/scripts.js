@@ -35,7 +35,6 @@ let currentUserId;
 let myCurrentRecipeId;
 let currentUserFavorites;
 let recipeClasses;
-let querySelectors;
 // const tags = {
 //   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
 //   breakfast: ['breakfast', 'morning meal', 'brunch'],
@@ -72,9 +71,11 @@ const toCookBtn = document.getElementById('toCookBtn');
 const returnBtn = document.getElementById('returnBtn');
 
 // Main Sections
-
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
+
+//Big Recipe Card
+let bigImageAndName = document.getElementById('recipeImageName');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
@@ -120,7 +121,7 @@ let addToCookButton = document.getElementById('addToCook');
 
 window.addEventListener('load', loadPage);
 //Sections
-recipeCardSection.addEventListener('click', () => {domUpdates.displayRecipeCard()});
+recipeCardSection.addEventListener('click', selectRecipeCard);
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {domUpdates.displayAllRecipes(recipeClasses)});
 //Menu Buttons
@@ -289,18 +290,16 @@ function getUser() {
 function getRecipes() {
   recipeRepo = new RecipeRepository(recipeData);
   recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
-  console.log('recipeClasses on scripts', recipeClasses)
 }
 
 function loadPage() {
   fetchAllData().then(data => {
-    console.log(data)
     usersData = data[0].usersData
     ingredientsData = data[1].ingredientsData
     recipeData = data[2].recipeData
     getUser();
     getRecipes();
-    domUpdates(recipeClasses, recipeCardSection);
+    domUpdates(recipeClasses, recipeCardSection, bigImageAndName);
     // displayRecipes()
     // displayAllRecipes(recipeClasses, recipeCardSection);
     userMessage.innerHTML =
@@ -308,6 +307,11 @@ function loadPage() {
   })
 }
 
+function selectRecipeCard() {
+  const recipeId = Number(event.target.parentNode.id);
+  myCurrentRecipeId = recipeId;
+  domUpdates.displayRecipeCard();
+}
 // function displayRecipes() {
 //   domUpdates.showRecipeCardSection();
 //   domUpdates.displayAllRecipes();
