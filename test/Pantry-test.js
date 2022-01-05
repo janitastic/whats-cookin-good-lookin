@@ -1,0 +1,1 @@
+import Pantry from '../src/classes/Pantry'
