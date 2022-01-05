@@ -35,6 +35,7 @@ let currentUserId;
 let myCurrentRecipeId;
 let currentUserFavorites;
 let recipeClasses;
+let querySelectors;
 // const tags = {
 //   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
 //   breakfast: ['breakfast', 'morning meal', 'brunch'],
@@ -49,20 +50,19 @@ let recipeClasses;
 
 // const {
 //   // loadPage(),
-//   allRecipesBtn,
-//   favoritesBtn, 
-//   toCookBtn, 
-//   returnBtn, 
-//   recipeCardSection, 
-//   individualCardView, 
-//   searchButton, 
-//   searchIcon,
-//   searchInput,
-//   dropDownSearch,
-//   searchByName, 
-//   searchByIngredient
-
-// } = domUpdates;
+//   // allRecipesBtn,
+//   // favoritesBtn, 
+//   // toCookBtn, 
+//   // returnBtn, 
+//   // recipeCardSection, 
+//   // individualCardView, 
+//   // searchButton, 
+//   // searchIcon,
+//   // searchInput,
+//   // dropDownSearch,
+//   // searchByName, 
+//   // searchByIngredient
+// } = querySelectors;
               /*********** QUERY SELECTORS ***********/
 
 // Menu Buttons
@@ -72,6 +72,7 @@ const toCookBtn = document.getElementById('toCookBtn');
 const returnBtn = document.getElementById('returnBtn');
 
 // Main Sections
+
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
 
@@ -121,9 +122,9 @@ window.addEventListener('load', loadPage);
 //Sections
 recipeCardSection.addEventListener('click', () => {domUpdates.displayRecipeCard()});
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
-returnBtn.addEventListener('click', () => {domUpdates.displayAllRecipes()});
+returnBtn.addEventListener('click', () => {domUpdates.displayAllRecipes(recipeClasses)});
 //Menu Buttons
-allRecipesBtn.addEventListener('click', () => {domUpdates.displayAllRecipes()});
+allRecipesBtn.addEventListener('click', () => {domUpdates.displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {domUpdates.displayFavorites()});
 toCookBtn.addEventListener('click', () => {domUpdates.displayToCook()});
 //Main Search Buttons
@@ -285,10 +286,11 @@ function getUser() {
   return currentUser;
 }
 
-// function getRecipes() {
-//   recipeRepo = new RecipeRepository(recipeData);
-//   recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
-// }
+function getRecipes() {
+  recipeRepo = new RecipeRepository(recipeData);
+  recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
+  console.log('recipeClasses on scripts', recipeClasses)
+}
 
 function loadPage() {
   fetchAllData().then(data => {
@@ -297,30 +299,31 @@ function loadPage() {
     ingredientsData = data[1].ingredientsData
     recipeData = data[2].recipeData
     getUser();
-    // getRecipes();
-    domUpdates();
-    displayRecipes()
-    // displayAllRecipes();
+    getRecipes();
+    domUpdates(recipeClasses, recipeCardSection);
+    // displayRecipes()
+    // displayAllRecipes(recipeClasses, recipeCardSection);
     userMessage.innerHTML =
       `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
   })
 }
 
-function displayRecipes() {
-  domUpdates.showRecipeCardSection();
-  // show(filterIcons);
-  // hide(favoriteFilterIcons);
-  // hide(favoriteSearch);
-  // show(allSearch);
-  // recipeCardSection.innerHTML = '';
-  // recipeClasses.forEach(recipe => {
-  //   return recipeCardSection.innerHTML +=
-  //   `<article class="card" id="${recipe.id}">
-  //     <h3>${recipe.name}</h3>
-  //     <img class="thumbnail-image" src=${recipe.image}>
-  //   </article>`;
-  // });
-}
+// function displayRecipes() {
+//   domUpdates.showRecipeCardSection();
+//   domUpdates.displayAllRecipes();
+//   // show(filterIcons);
+//   // hide(favoriteFilterIcons);
+//   // hide(favoriteSearch);
+//   // show(allSearch);
+//   // recipeCardSection.innerHTML = '';
+//   // recipeClasses.forEach(recipe => {
+//   //   return recipeCardSection.innerHTML +=
+//   //   `<article class="card" id="${recipe.id}">
+//   //     <h3>${recipe.name}</h3>
+//   //     <img class="thumbnail-image" src=${recipe.image}>
+//   //   </article>`;
+//   // });
+// }
 
 // function displayRecipeCard() {
 //   const recipeId = Number(event.target.parentNode.id);
@@ -568,3 +571,4 @@ function addToCookList() {
 // }
 
 // export {currentUser}
+export {recipeCardSection}

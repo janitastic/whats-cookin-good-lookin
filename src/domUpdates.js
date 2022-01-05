@@ -21,11 +21,13 @@ import User from './classes/User';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
 
+import {recipeCardSection} from './scripts'
+
               /*********** GLOBAL VARIABLES ***********/
 
 // let recipeRepo;
 // let currentUser;
-// let recipeData;
+let recipeData;
 // let ingredientsData;
 // let currentUserName;
 let usersData = [];
@@ -269,15 +271,17 @@ function toggleDropDown() {
 //   return currentUser;
 // }
 
-function getRecipes() {
-  recipeRepo = new RecipeRepository(recipeData);
-  recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
-}
+// function getRecipes() {
+//   recipeRepo = new RecipeRepository(recipeData);
+//   recipeClasses = recipeData.map(recipeData => new Recipe(recipeData));
+//   console.log("here??? <>>>>>", recipeData)
+// }
 
-function domUpdates() {
-    displayAllRecipes()
+function domUpdates(recipeClasses, recipeCardSection) {
+    displayAllRecipes(recipeClasses, recipeCardSection)
     displayRecipeCard()
-    getRecipes()
+    // getRecipes()
+    showRecipeCardSection()
 }
 
 
@@ -295,14 +299,17 @@ function domUpdates() {
 //     })
 // }
 
-function displayAllRecipes() {
+function displayAllRecipes(recipeClasses, recipeCardSection) {
+    console.log(recipeClasses)
 //    showRecipeCardSection();
 //    show(filterIcons);
 //    hide(favoriteFilterIcons);
 //    hide(favoriteSearch);
 //    show(allSearch);
    recipeCardSection.innerHTML = '';
+   console.log("recipeClasses <>>>>>>>", recipeClasses)
    recipeClasses.forEach(recipe => {
+       console.log(recipe)
        return recipeCardSection.innerHTML +=
        `<article class="card" id="${recipe.id}">
        <h3>${recipe.name}</h3>
