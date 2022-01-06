@@ -11,16 +11,23 @@
   <body>
     <header>
       <a href="/"><h1>What's Cookin' Good Lookin'</h1></a>
-      <nav>
+      <nav class="desktop-menu">
+        <!-- <article class="desktop-menu"> -->
           <button class="menu-button" id="recipesBtn">
           <img class="icon" src="images/recipe-book.png"> All Recipes
-        </button>
-        <button class="menu-button" id="favoritesBtn">
-          <img class="icon" src="images/menu-like.png">  Favorites
-        </button>
-        <button class="menu-button" id="toCookBtn">
-          <img class="icon" src="images/menu-baking.png"> Let's Cook!
-        </button>
+          </button>
+          <button class="menu-button" id="favoritesBtn">
+            <img class="icon" src="images/menu-like.png">  Favorites
+          </button>
+          <button class="menu-button" id="toCookBtn">
+            <img class="icon" src="images/menu-baking.png"> Let's Cook!
+          </button>
+      </nav>
+        <!-- </article> -->
+      <nav class="mobile-menu hidden">
+        <!-- <article class="mobile-menu"> -->
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        <!-- </article> -->
       </nav>
     </header>
     <main>

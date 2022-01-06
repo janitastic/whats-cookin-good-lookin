@@ -406,3 +406,55 @@ input {
 .show {
 	display: block;
 }
+
+// MEDIA QUERIES
+
+//tablet view
+@media only screen and (max-width: 1068px) {
+  nav {
+		padding: 0% 5% 0% 0%;
+	}
+
+	.icon {
+		width: 30%;
+	}
+
+	.menu-button {
+		font-size: 1em;
+		margin: 0% 2%;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+//large mobile device view
+@media only screen and (max-width: 734px) {
+	.desktop-menu {
+		display: none;
+	}
+
+	.mobile-menu {
+		display: block;
+	}
+
+	.fa-bars {
+		font-size: 2em;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+//small mobile device view
+@media (min-width: 320px) and (max-width: 480px) {
+  h2 {
+    padding-top: 30%;
+  }
+
+  .recipe-cards {
+    grid-template-columns: 100%;
+  }
+}
