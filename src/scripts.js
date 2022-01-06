@@ -51,7 +51,8 @@ import {
   filterByCondiments,
   filterBySnacks,
   showAllButton, 
-  favoriteButton, 
+  favoriteButton,
+  bigImageAndName, 
   displayRecipeCard
 } from './domUpdates';
 
@@ -344,7 +345,7 @@ function loadPage() {
 function selectRecipeCard() {
   const recipeId = Number(event.target.parentNode.id);
   myCurrentRecipeId = recipeId;
-  displayRecipeCard();
+  displayRecipeCard(recipeClasses);
 }
 // function displayRecipes() {
 //   domUpdates.showRecipeCardSection();

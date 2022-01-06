@@ -58,6 +58,9 @@ const returnBtn = document.getElementById('returnBtn');
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
 
+//Big Recipe Card
+let bigImageAndName = document.getElementById('recipeImageName');
+
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
 let searchIcon = document.getElementById('searchIcon');
@@ -317,25 +320,25 @@ function displayAllRecipes(recipeCollection) {
 
  
 
-function displayRecipeCard() {
+function displayRecipeCard(recipeCollection) {
   // const recipeId = Number(event.target.parentNode.id);
   // myCurrentRecipeId = recipeId;
   show(individualCardView);
   hide(recipeCardSection);
   hide(noRecipes);
   hide(favInstructions);
-  displayNameAndImage();
+  displayNameAndImage(recipeCollection);
   displayIngredients();
   displayDirections();
   displayRecipeCost();
 }
 
-function displayNameAndImage() {
-  recipeImageName.innerHTML = '';
+function displayNameAndImage(recipeCollection) {
+  bigImageAndName.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
-  recipeClasses.forEach((recipe, index) => {
+  recipeCollection.forEach((recipe, index) => {
     if (recipe.id === recipeId) {
-     return recipeImageName.innerHTML +=
+     return bigImageAndName.innerHTML +=
       `<article class="full-recipe">
       <h4>${recipe.name}</h4>
       <img class="recipe-image" src=${recipe.image}>
@@ -593,5 +596,6 @@ export {
   filterBySnacks,
   showAllButton,
   favoriteButton,
+  bigImageAndName,
   displayRecipeCard
 }
