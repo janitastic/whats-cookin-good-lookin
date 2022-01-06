@@ -20,6 +20,7 @@ import Recipe from './classes/Recipe';
 import User from './classes/User';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
+import scripts from './scripts';
 
 
               /*********** GLOBAL VARIABLES ***********/
@@ -46,6 +47,10 @@ const tags = {
 };
 
               /*********** QUERY SELECTORS ***********/
+let querySelectors = {
+// const allRecipesBtn = document.getElementById('recipesBtn'),
+}
+export {querySelectors};
 
 // Menu Buttons
 const allRecipesBtn = document.getElementById('recipesBtn');
@@ -105,14 +110,14 @@ let addToCookButton = document.getElementById('addToCook');
 // favoritesSection.addEventListener('dblclick', removeFromFavorites);
 // returnBtn.addEventListener('click', displayAllRecipes);
 // //Menu Buttons
-// allRecipesBtn.addEventListener('click', displayAllRecipes);
+allRecipesBtn.addEventListener('click', displayAllRecipes);
 // favoritesBtn.addEventListener('click', displayFavorites);
 // toCookBtn.addEventListener('click', displayToCook);
 // //Main Search Buttons
 // searchButton.addEventListener('click', toggleDropDown);
-// searchByName.addEventListener('click', searchByRecipeName);
-// searchByIngredient.addEventListener('click', searchByIngredients);
-// searchInput.addEventListener('keyup', checkInput);
+searchByName.addEventListener('click', searchByRecipeName);
+searchByIngredient.addEventListener('click', searchByIngredients);
+searchInput.addEventListener('keyup', () => {scripts.checkInput()});
 // //Favorite Search Buttons
 // favSearchButton.addEventListener('click', toggleDropDown);
 // favSearchByName.addEventListener('click', favSearchByRecipeName);
