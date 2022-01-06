@@ -47,10 +47,6 @@ const tags = {
 };
 
               /*********** QUERY SELECTORS ***********/
-let querySelectors = {
-// const allRecipesBtn = document.getElementById('recipesBtn'),
-}
-export {querySelectors};
 
 // Menu Buttons
 const allRecipesBtn = document.getElementById('recipesBtn');
@@ -110,18 +106,18 @@ let addToCookButton = document.getElementById('addToCook');
 // favoritesSection.addEventListener('dblclick', removeFromFavorites);
 // returnBtn.addEventListener('click', displayAllRecipes);
 // //Menu Buttons
-allRecipesBtn.addEventListener('click', displayAllRecipes);
+// allRecipesBtn.addEventListener('click', displayAllRecipes);
 // favoritesBtn.addEventListener('click', displayFavorites);
 // toCookBtn.addEventListener('click', displayToCook);
 // //Main Search Buttons
 // searchButton.addEventListener('click', toggleDropDown);
-searchByName.addEventListener('click', searchByRecipeName);
-searchByIngredient.addEventListener('click', searchByIngredients);
+// searchByName.addEventListener('click', searchByRecipeName);
+// searchByIngredient.addEventListener('click', searchByIngredients);
 // searchInput.addEventListener('keyup', () => {scripts.checkInput()});
 // //Favorite Search Buttons
 // favSearchButton.addEventListener('click', toggleDropDown);
-favSearchByName.addEventListener('click', favSearchByRecipeName);
-favSearchByIngredient.addEventListener('click', favSearchByIngredients);
+// favSearchByName.addEventListener('click', favSearchByRecipeName);
+// favSearchByIngredient.addEventListener('click', favSearchByIngredients);
 // favSearchInput.addEventListener('keyup', () => {scripts.favCheckInput()});
 // //To Cook Button
 // addToCookButton.addEventListener('click', () => {scripts.addToCookList()});
@@ -573,7 +569,17 @@ function displayToCookMessage() {
 // }
 export default  domUpdates;
 export {
+  allRecipesBtn,
+  favoritesBtn,
+  toCookBtn,
+  returnBtn,
+  searchButton,
+  favSearchButton,
+  searchByName,
+  searchByIngredient,
   searchInput,
+  favSearchByName,
+  favSearchByIngredient,
   favSearchInput,
   addToCookButton,
   favFilterByAppetizer,
@@ -591,5 +597,6 @@ export {
   filterBySides,
   filterByCondiments,
   filterBySnacks,
-  // showAllButton
+  showAllButton,
+  favoriteButton
 }
