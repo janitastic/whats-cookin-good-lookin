@@ -21,7 +21,6 @@ import User from './classes/User';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
 
-import {recipeCardSection} from './scripts'
 
               /*********** GLOBAL VARIABLES ***********/
 
@@ -48,55 +47,55 @@ const tags = {
 
               /*********** QUERY SELECTORS ***********/
 
-// // Menu Buttons
-// const allRecipesBtn = document.getElementById('recipesBtn');
-// const favoritesBtn = document.getElementById('favoritesBtn');
-// const toCookBtn = document.getElementById('toCookBtn');
-// const returnBtn = document.getElementById('returnBtn');
+// Menu Buttons
+const allRecipesBtn = document.getElementById('recipesBtn');
+const favoritesBtn = document.getElementById('favoritesBtn');
+const toCookBtn = document.getElementById('toCookBtn');
+const returnBtn = document.getElementById('returnBtn');
 
-// // Main Sections
-// let recipeCardSection = document.getElementById('recipeCardSection');
-// let individualCardView = document.getElementById('individualCardView');
+// Main Sections
+let recipeCardSection = document.getElementById('recipeCardSection');
+let individualCardView = document.getElementById('individualCardView');
 
-// // Search Selectors
-// let searchButton = document.getElementById('searchButton');
-// let searchIcon = document.getElementById('searchIcon');
-// let searchInput = document.getElementById('searchBar');
-// let dropDownSearch = document.getElementById('dropDownSearch');
-// let searchByName = document.getElementById('searchByNameLink');
-// let searchByIngredient = document.getElementById('searchByIngredientLink');
+// Search Selectors
+let searchButton = document.getElementById('searchButton');
+let searchIcon = document.getElementById('searchIcon');
+let searchInput = document.getElementById('searchBar');
+let dropDownSearch = document.getElementById('dropDownSearch');
+let searchByName = document.getElementById('searchByNameLink');
+let searchByIngredient = document.getElementById('searchByIngredientLink');
 
-// // Favorite Search Selectors
-// let favSearchButton = document.getElementById('favSearchButton');
-// let favSearchIcon = document.getElementById('favSearchIcon');
-// let favSearchInput = document.getElementById('favSearchBar');
-// let favDropDownSearch = document.getElementById('favDropDownSearch');
-// let favSearchByName = document.getElementById('favSearchByNameLink');
-// let favSearchByIngredient = document.getElementById('favSearchByIngredientLink');
+// Favorite Search Selectors
+let favSearchButton = document.getElementById('favSearchButton');
+let favSearchIcon = document.getElementById('favSearchIcon');
+let favSearchInput = document.getElementById('favSearchBar');
+let favDropDownSearch = document.getElementById('favDropDownSearch');
+let favSearchByName = document.getElementById('favSearchByNameLink');
+let favSearchByIngredient = document.getElementById('favSearchByIngredientLink');
 
-// // Filter Selectors
-// let filterByAppetizer = document.getElementById('appetizerButton');
-// let filterByBreakfast = document.getElementById('breakfastButton');
-// let filterByLunch = document.getElementById('lunchButton');
-// let filterByDinner = document.getElementById('dinnerButton');
-// let filterBySides = document.getElementById('sideButton');
-// let filterByCondiments = document.getElementById('condimentButton');
-// let filterBySnacks = document.getElementById('snackButton');
-// let showAllButton = document.getElementById('showAllButton');
+// Filter Selectors
+let filterByAppetizer = document.getElementById('appetizerButton');
+let filterByBreakfast = document.getElementById('breakfastButton');
+let filterByLunch = document.getElementById('lunchButton');
+let filterByDinner = document.getElementById('dinnerButton');
+let filterBySides = document.getElementById('sideButton');
+let filterByCondiments = document.getElementById('condimentButton');
+let filterBySnacks = document.getElementById('snackButton');
+let showAllButton = document.getElementById('showAllButton');
 
-// // Favorite Filter Selectors
-// let favFilterByAppetizer = document.getElementById('favAppetizerButton');
-// let favFilterByBreakfast = document.getElementById('favBreakfastButton');
-// let favFilterByLunch = document.getElementById('favLunchButton');
-// let favFilterByDinner = document.getElementById('favDinnerButton');
-// let favFilterBySides = document.getElementById('favSideButton');
-// let favFilterByCondiments = document.getElementById('favCondimentButton');
-// let favFilterBySnacks = document.getElementById('favSnackButton');
-// let favShowAllButton = document.getElementById('favShowAllButton');
+// Favorite Filter Selectors
+let favFilterByAppetizer = document.getElementById('favAppetizerButton');
+let favFilterByBreakfast = document.getElementById('favBreakfastButton');
+let favFilterByLunch = document.getElementById('favLunchButton');
+let favFilterByDinner = document.getElementById('favDinnerButton');
+let favFilterBySides = document.getElementById('favSideButton');
+let favFilterByCondiments = document.getElementById('favCondimentButton');
+let favFilterBySnacks = document.getElementById('favSnackButton');
+let favShowAllButton = document.getElementById('favShowAllButton');
 
-// // Individual Recipe Card Selectors
-// let favoriteButton = document.getElementById('favoriteButton');
-// let addToCookButton = document.getElementById('addToCook');
+// Individual Recipe Card Selectors
+let favoriteButton = document.getElementById('favoriteButton');
+let addToCookButton = document.getElementById('addToCook');
 
               /*********** EVENT LISTENERS ***********/
 
@@ -277,9 +276,9 @@ function toggleDropDown() {
 //   console.log("here??? <>>>>>", recipeData)
 // }
 
-function domUpdates(recipeClasses, recipeCardSection) {
-    displayAllRecipes(recipeClasses, recipeCardSection)
-    displayRecipeCard()
+function domUpdates(recipeClasses) {
+    displayAllRecipes(recipeClasses)
+    // displayRecipeCard()
     // getRecipes()
     showRecipeCardSection()
 }
@@ -299,15 +298,15 @@ function domUpdates(recipeClasses, recipeCardSection) {
 //     })
 // }
 
-function displayAllRecipes(recipeCollection, cardSection) {
+function displayAllRecipes(recipeCollection) {
 //    showRecipeCardSection();
 //    show(filterIcons);
 //    hide(favoriteFilterIcons);
 //    hide(favoriteSearch);
 //    show(allSearch);
-   cardSection.innerHTML = '';
+   recipeCardSection.innerHTML = '';
    recipeCollection.forEach(recipe => {
-       return cardSection.innerHTML +=
+       return recipeCardSection.innerHTML +=
        `<article class="card" id="${recipe.id}">
        <h3>${recipe.name}</h3>
        <img class="thumbnail-image" src=${recipe.image}>
