@@ -53,7 +53,9 @@ import {
   showAllButton, 
   favoriteButton,
   // bigImageAndName, 
-  displayRecipeCard
+  displayRecipeCard, 
+  displayFavorites,
+  displayToCook
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -576,7 +578,7 @@ function removeFromFavorites() {
 function addToCookList() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
   currentUser.addToCook(foundRecipe);
-  showToCookSection();
+  // showToCookSection();
   displayToCook();
 }
 
@@ -609,4 +611,4 @@ function addToCookList() {
 //   }
 // }
 
-// export default scripts;
+export {currentUser};

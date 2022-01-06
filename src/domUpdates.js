@@ -20,7 +20,7 @@ import Recipe from './classes/Recipe';
 import User from './classes/User';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
-import scripts from './scripts';
+import {currentUser} from './scripts';
 
 
               /*********** GLOBAL VARIABLES ***********/
@@ -597,5 +597,7 @@ export {
   showAllButton,
   favoriteButton,
   // bigImageAndName,
-  displayRecipeCard
+  displayRecipeCard, 
+  displayFavorites,
+  displayToCook
 }
