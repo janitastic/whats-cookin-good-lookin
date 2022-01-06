@@ -49,7 +49,8 @@ header {
 
 nav {
 	display: flex;
-	padding: 0 10% 0 0;
+	justify-content: space-evenly;
+	margin-right: 5%;
 }
 
 h1 {
@@ -411,10 +412,6 @@ input {
 
 //tablet view
 @media only screen and (max-width: 1068px) {
-  nav {
-		padding: 0% 5% 0% 0%;
-	}
-
 	.icon {
 		width: 30%;
 	}
@@ -429,18 +426,54 @@ input {
   }
 }
 
-//large mobile device view
-@media only screen and (max-width: 734px) {
-	.desktop-menu {
-		display: none;
+//Tablet landscape view
+// @media only screen and (max-width: 734px)
+@media (min-width: 1024px) and (max-width: 768px) {
+	header {
+		display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
 	}
 
-	.mobile-menu {
-		display: block;
+	h1 {
+		text-align: center;
+		margin: 2% 0%;
 	}
 
-	.fa-bars {
-		font-size: 2em;
+	nav {
+		margin: 2% 0%;
+	}
+
+	.menu-button {
+		margin: none;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+//Tablet portrait view
+@media (min-width: 768px) and (max-width: 1024px) {
+	header {
+		display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
+	}
+
+	h1 {
+		text-align: center;
+		margin: 2% 0%;
+	}
+
+	nav {
+		margin: 2% 0%;
+	}
+
+	.menu-button {
+		margin: none;
 	}
 
   .recipe-cards {
@@ -449,10 +482,21 @@ input {
 }
 
 //small mobile device view
-@media (min-width: 320px) and (max-width: 480px) {
-  h2 {
-    padding-top: 30%;
-  }
+@media (min-width: 320px) and (max-width: 767px) {
+	header {
+		display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
+	}
+
+	nav {
+		margin: 2% 0%;
+	}
+
+	.menu-button {
+		font-size: 1.3em;
+	}
 
   .recipe-cards {
     grid-template-columns: 100%;
