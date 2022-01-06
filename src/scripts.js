@@ -51,7 +51,8 @@ import {
   filterByCondiments,
   filterBySnacks,
   showAllButton, 
-  favoriteButton
+  favoriteButton, 
+  displayRecipeCard
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -331,6 +332,7 @@ function loadPage() {
     recipeData = data[2].recipeData
     getUser();
     getRecipes();
+    // domUpdates.displayAllRecipes(recipeClasses);
     domUpdates(recipeClasses);
     // displayRecipes()
     // displayAllRecipes(recipeClasses, recipeCardSection);
@@ -342,7 +344,7 @@ function loadPage() {
 function selectRecipeCard() {
   const recipeId = Number(event.target.parentNode.id);
   myCurrentRecipeId = recipeId;
-  domUpdates.displayRecipeCard();
+  displayRecipeCard();
 }
 // function displayRecipes() {
 //   domUpdates.showRecipeCardSection();

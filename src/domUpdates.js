@@ -279,9 +279,9 @@ function toggleDropDown() {
 
 function domUpdates(recipeClasses) {
     displayAllRecipes(recipeClasses)
-    // displayRecipeCard()
     // getRecipes()
     showRecipeCardSection()
+    
 }
 
 
@@ -318,8 +318,8 @@ function displayAllRecipes(recipeCollection) {
  
 
 function displayRecipeCard() {
-//   const recipeId = Number(event.target.parentNode.id);
-//   myCurrentRecipeId = recipeId;
+  // const recipeId = Number(event.target.parentNode.id);
+  // myCurrentRecipeId = recipeId;
   show(individualCardView);
   hide(recipeCardSection);
   hide(noRecipes);
@@ -561,12 +561,6 @@ function displayToCookMessage() {
   }
 }
 
-// let domUpdates = {
-//     loadPage(),
-//     // displayAllRecipes(),
-//     // displayRecipeCard(),
-//     // displayNameAndImage()
-// }
 export default  domUpdates;
 export {
   allRecipesBtn,
@@ -598,5 +592,6 @@ export {
   filterByCondiments,
   filterBySnacks,
   showAllButton,
-  favoriteButton
+  favoriteButton,
+  displayRecipeCard
 }
