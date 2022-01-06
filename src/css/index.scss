@@ -413,7 +413,7 @@ input {
 //tablet view
 @media only screen and (max-width: 1068px) {
 	.icon {
-		width: 30%;
+		// width: 30%;
 	}
 
 	.menu-button {
@@ -490,12 +490,23 @@ input {
     flex-wrap: wrap;
 	}
 
-	nav {
+	h1 {
+		text-align: center;
 		margin: 2% 0%;
+	}
+
+	nav {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 2%;
 	}
 
 	.menu-button {
 		font-size: 1.3em;
+		padding: 0;
+		margin: 0;
+		max-height: 2em;
 	}
 
   .recipe-cards {
