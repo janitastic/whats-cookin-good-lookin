@@ -22,6 +22,27 @@ import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
 import domUpdates from './domUpdates';
 import {querySelectors} from './domUpdates';
+import {
+  searchInput,
+  favSearchInput,
+  addToCookButton,
+  favFilterByAppetizer,
+  favFilterByBreakfast,
+  favFilterByLunch,
+  favFilterByDinner,
+  favFilterBySides,
+  favFilterByCondiments,
+  favFilterBySnacks, 
+  favShowAllButton,
+  filterByAppetizer,
+  filterByBreakfast,
+  filterByLunch,
+  filterByDinner,
+  filterBySides,
+  filterByCondiments,
+  filterBySnacks,
+  // showAllButton
+} from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
 
@@ -133,14 +154,14 @@ toCookBtn.addEventListener('click', () => {domUpdates.displayToCook()});
 searchButton.addEventListener('click', () => {domUpdates.toggleDropDown()});
 // searchByName.addEventListener('click', () => {domUpdates.searchByRecipeName()});
 // searchByIngredient.addEventListener('click', () => {domUpdates.searchByIngredients()});
-// searchInput.addEventListener('keyup', checkInput);
+searchInput.addEventListener('keyup', checkInput);
 //Favorite Search Buttons
 favSearchButton.addEventListener('click', () => {domUpdates.toggleDropDown()});
 // favSearchByName.addEventListener('click', () => {domUpdates.favSearchByRecipeName()});
 // favSearchByIngredient.addEventListener('click', () => {domUpdates.favSearchByIngredients()});
-// favSearchInput.addEventListener('keyup', favCheckInput);
+favSearchInput.addEventListener('keyup', favCheckInput);
 //To Cook Button
-// addToCookButton.addEventListener('click', addToCookList);
+addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
@@ -575,4 +596,4 @@ function addToCookList() {
 //   }
 // }
 
-export default scripts;
+// export default scripts;
