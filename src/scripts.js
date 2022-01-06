@@ -52,7 +52,7 @@ import {
   filterBySnacks,
   showAllButton, 
   favoriteButton,
-  bigImageAndName, 
+  // bigImageAndName, 
   displayRecipeCard
 } from './domUpdates';
 
@@ -345,7 +345,7 @@ function loadPage() {
 function selectRecipeCard() {
   const recipeId = Number(event.target.parentNode.id);
   myCurrentRecipeId = recipeId;
-  displayRecipeCard(recipeClasses);
+  displayRecipeCard(recipeClasses, ingredientsData);
 }
 // function displayRecipes() {
 //   domUpdates.showRecipeCardSection();

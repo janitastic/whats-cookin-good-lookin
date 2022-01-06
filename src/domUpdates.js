@@ -59,7 +59,7 @@ let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
 
 //Big Recipe Card
-let bigImageAndName = document.getElementById('recipeImageName');
+// let bigImageAndName = document.getElementById('recipeImageName');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
@@ -320,7 +320,7 @@ function displayAllRecipes(recipeCollection) {
 
  
 
-function displayRecipeCard(recipeCollection) {
+function displayRecipeCard(recipeCollection, ingredientsData) {
   // const recipeId = Number(event.target.parentNode.id);
   // myCurrentRecipeId = recipeId;
   show(individualCardView);
@@ -328,17 +328,17 @@ function displayRecipeCard(recipeCollection) {
   hide(noRecipes);
   hide(favInstructions);
   displayNameAndImage(recipeCollection);
-  displayIngredients();
+  displayIngredients(recipeCollection, ingredientsData);
   displayDirections();
   displayRecipeCost();
 }
 
 function displayNameAndImage(recipeCollection) {
-  bigImageAndName.innerHTML = '';
+  recipeImageName.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   recipeCollection.forEach((recipe, index) => {
     if (recipe.id === recipeId) {
-     return bigImageAndName.innerHTML +=
+     return recipeImageName.innerHTML +=
       `<article class="full-recipe">
       <h4>${recipe.name}</h4>
       <img class="recipe-image" src=${recipe.image}>
@@ -347,11 +347,11 @@ function displayNameAndImage(recipeCollection) {
   });
 }
 
-function displayIngredients() {
+function displayIngredients(recipeCollection, ingredientsData) {
   show(ingredientsTitle);
   recipeIngredients.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
-  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
+  const foundRecipe = recipeCollection.find(recipe => recipe.id === recipeId);
   foundRecipe.ingredients.forEach((step, index) => {
       return recipeIngredients.innerHTML +=
       `<article class="full-recipe">
@@ -596,6 +596,6 @@ export {
   filterBySnacks,
   showAllButton,
   favoriteButton,
-  bigImageAndName,
+  // bigImageAndName,
   displayRecipeCard
 }
