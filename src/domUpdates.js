@@ -329,8 +329,8 @@ function displayRecipeCard(recipeCollection, ingredientsData) {
   hide(favInstructions);
   displayNameAndImage(recipeCollection);
   displayIngredients(recipeCollection, ingredientsData);
-  displayDirections();
-  displayRecipeCost();
+  displayDirections(recipeCollection);
+  displayRecipeCost(recipeCollection, ingredientsData);
 }
 
 function displayNameAndImage(recipeCollection) {
@@ -364,11 +364,11 @@ function displayIngredients(recipeCollection, ingredientsData) {
     });
 }
 
-function displayDirections() {
+function displayDirections(recipeCollection) {
   show(directionsTitle);
   recipeDirections.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
-  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
+  const foundRecipe = recipeCollection.find(recipe => recipe.id === recipeId);
   foundRecipe.instructions.forEach((step, index) => {
       return recipeDirections.innerHTML +=
       `<article class="full-recipe">
@@ -381,10 +381,10 @@ function displayDirections() {
     });
 }
 
-function displayRecipeCost() {
+function displayRecipeCost(recipeCollection, ingredientsData) {
   recipeCost.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
-  const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
+  const foundRecipe = recipeCollection.find(recipe => recipe.id === recipeId);
   return recipeCost.innerHTML +=
     `<article class="full-recipe">
       <h4>Total Cost $${foundRecipe.logRecipeCost(ingredientsData)}</h4>
