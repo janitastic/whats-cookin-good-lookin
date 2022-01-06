@@ -120,11 +120,11 @@ searchByIngredient.addEventListener('click', searchByIngredients);
 searchInput.addEventListener('keyup', () => {scripts.checkInput()});
 // //Favorite Search Buttons
 // favSearchButton.addEventListener('click', toggleDropDown);
-// favSearchByName.addEventListener('click', favSearchByRecipeName);
-// favSearchByIngredient.addEventListener('click', favSearchByIngredients);
-// favSearchInput.addEventListener('keyup', favCheckInput);
+favSearchByName.addEventListener('click', favSearchByRecipeName);
+favSearchByIngredient.addEventListener('click', favSearchByIngredients);
+favSearchInput.addEventListener('keyup', () => {scripts.favCheckInput()});
 // //To Cook Button
-// addToCookButton.addEventListener('click', addToCookList);
+addToCookButton.addEventListener('click', () => {scripts.addToCookList()});
 
 //Recipe Card Buttons
 // favoriteButton.addEventListener('click', saveToFavorites);

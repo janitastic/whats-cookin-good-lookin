@@ -136,11 +136,11 @@ searchButton.addEventListener('click', () => {domUpdates.toggleDropDown()});
 // searchInput.addEventListener('keyup', checkInput);
 //Favorite Search Buttons
 favSearchButton.addEventListener('click', () => {domUpdates.toggleDropDown()});
-favSearchByName.addEventListener('click', () => {domUpdates.favSearchByRecipeName()});
-favSearchByIngredient.addEventListener('click', () => {domUpdates.favSearchByIngredients()});
-favSearchInput.addEventListener('keyup', favCheckInput);
+// favSearchByName.addEventListener('click', () => {domUpdates.favSearchByRecipeName()});
+// favSearchByIngredient.addEventListener('click', () => {domUpdates.favSearchByIngredients()});
+// favSearchInput.addEventListener('keyup', favCheckInput);
 //To Cook Button
-addToCookButton.addEventListener('click', addToCookList);
+// addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
