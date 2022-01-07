@@ -1,6 +1,7 @@
 class Pantry  {
-  constructor(ingredientsInPantry) {
-    this.ingredientsInPantry = ingredientsInPantry
+  constructor(usersData) {
+    this.userName = usersData.name;
+    this.pantry = usersData.pantry
   }
 
   findIngredients(recipe) {
