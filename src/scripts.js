@@ -56,7 +56,12 @@ import {
   displayRecipeCard, 
   displayFavorites,
   displayToCook,
-  filterBySelection
+  filterBySelection,
+  toggleDropDown,
+  searchByRecipeName,
+  searchByIngredients,
+  // favSearchByRecipeName,
+  // favSearchByIngredients
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -166,14 +171,14 @@ allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)}
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
 toCookBtn.addEventListener('click', () => {displayToCook()});
 //Main Search Buttons
-searchButton.addEventListener('click', () => {domUpdates.toggleDropDown()});
-searchByName.addEventListener('click', () => {domUpdates.searchByRecipeName()});
-searchByIngredient.addEventListener('click', () => {domUpdates.searchByIngredients()});
+searchButton.addEventListener('click', () => {toggleDropDown()});
+searchByName.addEventListener('click', () => {searchByRecipeName()});
+searchByIngredient.addEventListener('click', () => {searchByIngredients(ingredientsData)});
 searchInput.addEventListener('keyup', checkInput);
 //Favorite Search Buttons
-favSearchButton.addEventListener('click', () => {domUpdates.toggleDropDown()});
-favSearchByName.addEventListener('click', () => {domUpdates.favSearchByRecipeName()});
-favSearchByIngredient.addEventListener('click', () => {domUpdates.favSearchByIngredients()});
+favSearchButton.addEventListener('click', () => {toggleDropDown()});
+favSearchByName.addEventListener('click', () => {favSearchByRecipeName()});
+favSearchByIngredient.addEventListener('click', () => {favSearchByIngredients()});
 favSearchInput.addEventListener('keyup', favCheckInput);
 //To Cook Button
 addToCookButton.addEventListener('click', addToCookList);
@@ -290,11 +295,11 @@ function favCheckInput() {
   }
 }
 
-function resetSearch() {
-  searchInput.value = null;
-  searchByName.disabled = true;
-  searchByIngredient.disabled = true;
-}
+// function resetSearch() {
+//   searchInput.value = null;
+//   searchByName.disabled = true;
+//   searchByIngredient.disabled = true;
+// }
 
 // function toggleDropDown() {
 //   dropDownSearch.classList.toggle('show');

@@ -242,11 +242,11 @@ function showToCookSection() {
 //   }
 // }
 
-// function resetSearch() {
-//   searchInput.value = null;
-//   searchByName.disabled = true;
-//   searchByIngredient.disabled = true;
-// }
+function resetSearch() {
+  searchInput.value = null;
+  searchByName.disabled = true;
+  searchByIngredient.disabled = true;
+}
 
 function toggleDropDown() {
   dropDownSearch.classList.toggle('show');
@@ -393,7 +393,7 @@ function displayRecipeCost(recipeCollection, ingredientsData) {
     </article>`;
 }
 
-function searchByIngredients() {
+function searchByIngredients(ingredientsData) {
   recipeCardSection.innerHTML = '';
   let userInput = searchInput.value;
   let filteredRecipes = recipeRepo.filterByIngredients(userInput, ingredientsData);
@@ -602,5 +602,10 @@ export {
   displayRecipeCard, 
   displayFavorites,
   displayToCook,
-  filterBySelection
+  filterBySelection,
+  toggleDropDown,
+  searchByRecipeName,
+  searchByIngredients,
+  // favSearchByRecipeName,
+  // favSearchByIngredients
 }
