@@ -303,11 +303,12 @@ function domUpdates(recipeClasses) {
 // }
 
 function displayAllRecipes(recipeCollection) {
-//    showRecipeCardSection();
-//    show(filterIcons);
-//    hide(favoriteFilterIcons);
-//    hide(favoriteSearch);
-//    show(allSearch);
+   showRecipeCardSection();
+   show(filterIcons);
+   hide(favoriteFilterIcons);
+   hide(favoriteSearch);
+   hide(favInstructions);
+   show(allSearch);
    recipeCardSection.innerHTML = '';
    recipeCollection.forEach(recipe => {
        return recipeCardSection.innerHTML +=
@@ -596,8 +597,8 @@ export {
   filterBySnacks,
   showAllButton,
   favoriteButton,
-  // bigImageAndName,
+  displayAllRecipes,
   displayRecipeCard, 
   displayFavorites,
-  displayToCook
+  displayToCook,
 }

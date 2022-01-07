@@ -52,7 +52,7 @@ import {
   filterBySnacks,
   showAllButton, 
   favoriteButton,
-  // bigImageAndName, 
+  displayAllRecipes, 
   displayRecipeCard, 
   displayFavorites,
   displayToCook
@@ -161,9 +161,9 @@ recipeCardSection.addEventListener('click', selectRecipeCard);
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {domUpdates.displayAllRecipes(recipeClasses)});
 //Menu Buttons
-allRecipesBtn.addEventListener('click', () => {domUpdates.displayAllRecipes(recipeClasses)});
-favoritesBtn.addEventListener('click', () => {domUpdates.displayFavorites()});
-toCookBtn.addEventListener('click', () => {domUpdates.displayToCook()});
+allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
+favoritesBtn.addEventListener('click', () => {displayFavorites()});
+toCookBtn.addEventListener('click', () => {displayToCook()});
 //Main Search Buttons
 searchButton.addEventListener('click', () => {domUpdates.toggleDropDown()});
 searchByName.addEventListener('click', () => {domUpdates.searchByRecipeName()});
