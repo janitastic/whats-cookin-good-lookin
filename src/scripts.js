@@ -60,8 +60,8 @@ import {
   toggleDropDown,
   searchByRecipeName,
   searchByIngredients,
-  // favSearchByRecipeName,
-  // favSearchByIngredients
+  favSearchByRecipeName,
+  favSearchByIngredients
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -178,7 +178,7 @@ searchInput.addEventListener('keyup', checkInput);
 //Favorite Search Buttons
 favSearchButton.addEventListener('click', () => {toggleDropDown()});
 favSearchByName.addEventListener('click', () => {favSearchByRecipeName()});
-favSearchByIngredient.addEventListener('click', () => {favSearchByIngredients()});
+favSearchByIngredient.addEventListener('click', () => {favSearchByIngredients(ingredientsData)});
 favSearchInput.addEventListener('keyup', favCheckInput);
 //To Cook Button
 addToCookButton.addEventListener('click', addToCookList);

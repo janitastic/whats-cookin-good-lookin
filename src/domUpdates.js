@@ -512,7 +512,7 @@ function favSearchByRecipeName() {
   showFavoritesSection();
 }
 
-function favSearchByIngredients() {
+function favSearchByIngredients(ingredientsData) {
   favoritesSection.innerHTML = '';
   let userInput = favSearchInput.value;
   let filteredRecipes = currentUser.filterByIngredients(userInput, ingredientsData);
@@ -606,6 +606,6 @@ export {
   toggleDropDown,
   searchByRecipeName,
   searchByIngredients,
-  // favSearchByRecipeName,
-  // favSearchByIngredients
+  favSearchByRecipeName,
+  favSearchByIngredients
 }
