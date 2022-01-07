@@ -55,7 +55,8 @@ import {
   displayAllRecipes, 
   displayRecipeCard, 
   displayFavorites,
-  displayToCook
+  displayToCook,
+  filterBySelection
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -71,15 +72,15 @@ let currentUserId;
 let myCurrentRecipeId;
 let currentUserFavorites;
 let recipeClasses;
-// const tags = {
-//   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
-//   breakfast: ['breakfast', 'morning meal', 'brunch'],
-//   lunch: ['lunch', 'brunch', 'main dish', 'salad'],
-//   dinner: ['dinner', 'main course', 'main dish', 'salad'],
-//   sides: ['side dish', 'dip'],
-//   snacks: ['snack', 'dip'],
-//   condiments: ['condiment', 'sauce']
-// };
+const tags = {
+  appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
+  breakfast: ['breakfast', 'morning meal', 'brunch'],
+  lunch: ['lunch', 'brunch', 'main dish', 'salad'],
+  dinner: ['dinner', 'main course', 'main dish', 'salad'],
+  sides: ['side dish', 'dip'],
+  snacks: ['snack', 'dip'],
+  condiments: ['condiment', 'sauce']
+};
 
 
 
@@ -159,7 +160,7 @@ window.addEventListener('load', loadPage);
 //Sections
 recipeCardSection.addEventListener('click', selectRecipeCard);
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
-returnBtn.addEventListener('click', () => {domUpdates.displayAllRecipes(recipeClasses)});
+returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 //Menu Buttons
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
@@ -226,7 +227,7 @@ filterByCondiments.addEventListener('click', () => {
 filterBySnacks.addEventListener('click', () => {
   filterBySelection(tags.snacks)
 });
-showAllButton.addEventListener('click', () => {domUpdates.displayAllRecipes()});
+showAllButton.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 
               /*********** HELPER FUNCTIONS ***********/
 
@@ -612,3 +613,4 @@ function addToCookList() {
 // }
 
 export {currentUser};
+export {recipeRepo};

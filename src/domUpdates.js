@@ -21,6 +21,7 @@ import User from './classes/User';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
 import {currentUser} from './scripts';
+import {recipeRepo} from './scripts';
 
 
               /*********** GLOBAL VARIABLES ***********/
@@ -36,15 +37,15 @@ let usersData = [];
 // let myCurrentRecipeId;
 // let currentUserFavorites;
 let recipeClasses;
-const tags = {
-  appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
-  breakfast: ['breakfast', 'morning meal', 'brunch'],
-  lunch: ['lunch', 'brunch', 'main dish', 'salad'],
-  dinner: ['dinner', 'main course', 'main dish', 'salad'],
-  sides: ['side dish', 'dip'],
-  snacks: ['snack', 'dip'],
-  condiments: ['condiment', 'sauce']
-};
+// const tags = {
+//   appetizers: ['antipasti', 'antipasto', 'starter', 'appetizer', 'hor d\'oeuvre', 'dip', 'spread'],
+//   breakfast: ['breakfast', 'morning meal', 'brunch'],
+//   lunch: ['lunch', 'brunch', 'main dish', 'salad'],
+//   dinner: ['dinner', 'main course', 'main dish', 'salad'],
+//   sides: ['side dish', 'dip'],
+//   snacks: ['snack', 'dip'],
+//   condiments: ['condiment', 'sauce']
+// };
 
               /*********** QUERY SELECTORS ***********/
 
@@ -601,4 +602,5 @@ export {
   displayRecipeCard, 
   displayFavorites,
   displayToCook,
+  filterBySelection
 }
