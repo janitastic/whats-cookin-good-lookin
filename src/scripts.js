@@ -201,9 +201,9 @@ function getRecipes() {
 
 function loadPage() {
   fetchAllData().then(data => {
-    usersData = data[0].usersData
-    ingredientsData = data[1].ingredientsData
-    recipeData = data[2].recipeData
+    usersData = data[0]
+    ingredientsData = data[1]
+    recipeData = data[2]
     getUser();
     getRecipes();
     domUpdates(recipeClasses);
