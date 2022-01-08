@@ -4,9 +4,9 @@
 console.log('I will be a fetch request!')
 
 function fetchUsersData() {
- return fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/users")
+ return fetch("http://localhost:3001/api/v1/users")
  .then(response => response.json())
-//  .then(data => return data)
+//  .then(data => console.log(data))
  .catch(err => console.log(err));
 }
 

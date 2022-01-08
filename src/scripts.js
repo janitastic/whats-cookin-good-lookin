@@ -201,7 +201,7 @@ function getRecipes() {
 
 function loadPage() {
   fetchAllData().then(data => {
-    usersData = data[0].usersData
+    usersData = data[0]
     ingredientsData = data[1].ingredientsData
     recipeData = data[2].recipeData
     getUser();
