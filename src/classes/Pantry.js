@@ -2,8 +2,11 @@ class Pantry  {
   constructor(currentUser) {
     this.user = currentUser;
     this.pantry = currentUser.pantry
-    // this.hasAllIngredients = true;
-    // this.hasEnoughIngredients = true;
+    this.hasAllIngredients = true;
+    this.hasEnoughIngredients = true;
+    this.ingredientAmount = 0;
+    this.amountAvailable = 0;
+    this.amountToBuy = 0;
   }
 
   checkPantry(recipe) {
@@ -17,40 +20,38 @@ class Pantry  {
     const hasAllIngredients = recipeIngredients.every(ingredient => {
 
       //step 2: Find the amount needed for every ingredient.
-      const amountNeeded = ingredient.quantity.amount;
-      // console.log('each ingredient amount', amountNeeded);
+      const ingredientAmount = ingredient.quantity.amount;
+      // console.log('each ingredient amount', ingredientAmount);
 
       //step 3: Check the pantry for ingredients needed.
       const foundInPantry = pantryItems.find(pantryItem => ingredient.id === pantryItem.ingredient); //when find only tests one condition we do not need {}
       // console.log('ingredient avaialble in pantry', foundInPantry);
 
-      //step 4: If the ingredient is found in the pantry, find the amount available of each foundInPantry item. If it's not found, it's "undefined"
-      let amountAvailable;
-      //step 5: Check to see if found in pantry. If it is, check to see if the amountAvailable is enough for the amountNeeded
-      let hasEnough;
+      //step 4: If the ingredient is found in the pantry, find the amount available of each foundInPantry item. If it's not found, availability is 0.
+      let amountAvailable = 0;
+
+      //step 5: Check to see if found in pantry. If it is, check to see if the amountAvailable is enough for the ingredientAmount
+      let hasEnoughIngredients;
+
+      //step 6: Calculate amountToBuy
+      let amountToBuy = 0;
 
       if (foundInPantry) {
         amountAvailable = foundInPantry.amount;
         // console.log('pantry amount available', amountAvailable)
-        if (amountNeeded > amountAvailable) {
-          hasEnough = false;
-          amountNeeded - amountAvailable
+        if (ingredientAmount > amountAvailable) {
+          hasEnoughIngredients = false;
+          amountToBuy = ingredientAmount - amountAvailable;
         } else {
-          hasEnough = true;
+          hasEnoughIngredients = true;
         }
       }
-      console.log('is there enough of that ingredient in the pantry?', hasEnough);
-
-
+      console.log('is there enough of that ingredient in the pantry?', hasEnoughIngredients);
+      console.log('how much of each ingredient does the user need to buy?', amountToBuy)
 
       return foundInPantry;//returns all ingredients that are in the pantry that match the recipe ingredients
     });
     return hasAllIngredients;//returns true or false
-  }
-
-  checkIngredientAmounts(recipe) {
-    // console.log(this.compareIngredients(recipe))
-
   }
 
   findMissingIngredients(recipe) {
@@ -63,23 +64,6 @@ class Pantry  {
     //       this.missingIngredients.push(item);
     //     }
     //   }
-
-    // Ali's Code
-  //   checkPantry(recipe) {
-  //   let hasAllIngredients = true;
-  //
-  //   recipe.ingredients.forEach(recipeIng => {
-  //     const matchedId = this.ingredients.find(pantryIng => {
-  //       return recipeIng.id === pantryIng.ingredient;
-  //     })
-  //
-  //     if ((matchedId && (matchedId.amount < recipeIng.quantity.amount)) || !matchedId) {
-  //       hasAllIngredients = false;
-  //     }
-  //   })
-  //
-  //   return hasAllIngredients;
-  // }
   }
 }
 

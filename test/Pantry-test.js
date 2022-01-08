@@ -60,7 +60,7 @@ describe.only('Pantry', () => {
     expect(myPantry.pantry.length).to.equal(35);
   })
 
-  it('should check the pantry for every ingredient needed in the recipe', () => {
+  it('should be able to check if all the ingredients needed in a recipe are available in the pantry ', () => {
     expect(myPantry.checkPantry(fakeRecipe)).to.equal(true);
     expect(myPantry.checkPantry(recipe3)).to.equal(false);
   })
