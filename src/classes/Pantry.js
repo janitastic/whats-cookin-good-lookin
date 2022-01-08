@@ -46,10 +46,18 @@ class Pantry  {
           hasEnoughIngredients = true;
         }
       }
-      console.log('is there enough of that ingredient in the pantry?', hasEnoughIngredients);
-      console.log('how much of each ingredient does the user need to buy?', amountToBuy)
+      // console.log('is there enough of that ingredient in the pantry?', hasEnoughIngredients);
+      // console.log('how much of each ingredient does the user need to buy?', amountToBuy)
+
+/********** CONTINUE HERE! *************/
+      //step 7: If an ingredient is not found in the pantry, tell the user what ingredients are needed
+      // if (ingredient.id !== pantryItem.ingredient) {
+      //   console.log('ingredients needed', ingredient)
+      //   return ingredient;
+      // }
 
       return foundInPantry;//returns all ingredients that are in the pantry that match the recipe ingredients
+
     });
     return hasAllIngredients;//returns true or false
   }
