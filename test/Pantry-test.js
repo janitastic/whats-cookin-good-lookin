@@ -6,7 +6,7 @@ import usersData from '../src/data/users';
 import recipeData from '../src/data/recipes';
 
 describe('Pantry', () => {
-  let user, myPantry, recipe1, recipe2, recipe3, recipe4;
+  let user, myPantry, recipe1, recipe2, recipe3, recipe4, recipe5;
    
   beforeEach(()=> {
     user = new User(usersData[0]);
@@ -15,6 +15,52 @@ describe('Pantry', () => {
     recipe2 = new Recipe(recipeData[1]);
     recipe3 = new Recipe(recipeData[2]);
     recipe4 = new Recipe(recipeData[3]);
+    recipe5 = new Recipe({
+      "id": 97979797,
+      "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
+      "ingredients": [
+        {
+          "id": 19335,
+          "quantity": {
+            "amount": 0.5,
+            "unit": "c"
+          }
+        },
+        {
+          "id": 1145,
+          "quantity": {
+            "amount": 0.5,
+            "unit": "c"
+          }
+        },
+        {
+          "id": 2050,
+          "quantity": {
+            "amount": 0.5,
+            "unit": "tsp"
+          }
+        }
+      ],
+      "instructions": [
+        {
+          "instruction": "Pour into a bowl",
+          "number": 1
+        },
+        {
+          "instruction": "Stick into oven",
+          "number": 2
+        },
+        {
+          "instruction": "Serve hot.",
+          "number": 3
+        }
+      ],
+      "name": "Fake recipe",
+      "tags": [
+        "fake tag"
+      ]
+    })
+
   })
 
   it('should instantiate a new pantry', () => {
@@ -26,12 +72,20 @@ describe('Pantry', () => {
   });
   
   it('should have the correct amount of pantry items', () => {
-    expect(myPantry.pantry.length).to.equal(35);
+    expect(myPantry.pantry.length).to.equal(64);
   })
 
-  it('should have enough ingredients to make a recipe', () => {
-    console.log(recipe1.ingredients)
-    console.log(myPantry.pantry)
+  it('should return a false value if there are not correct ingredients', () => {
+    // console.log(recipe1.ingredients)
+    // console.log(myPantry.pantry)
+    // console.log(myPantry.haveIngredients)
+    expect(myPantry.compareIngredients(recipeData[2])).to.equal(false);
+  })
+
+  it('should return a true value when there are correct ingredients' , () => {
+    // console.log(recipe4)
+    // console.log(recipe5)
+    console.log("pantryyyyy", myPantry)
     expect(myPantry.compareIngredients(recipe2)).to.equal(true);
   })
 }); 

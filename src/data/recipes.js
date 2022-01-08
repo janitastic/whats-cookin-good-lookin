@@ -5379,7 +5379,7 @@ const recipeData = [
       "tags": [
         "side dish"
       ]
-    }
+    },
   ]
 
 export default recipeData;
