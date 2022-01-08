@@ -23,7 +23,7 @@ describe.only('Pantry', () => {
         { id: 18372, quantity: { amount: 0.5, unit: 'tsp' } },
         { id: 1123, quantity: { amount: 1, unit: 'large' } },
         { id: 19335, quantity: { amount: 0.5, unit: 'c' } },
-        { id: 19206, quantity: { amount: 3, unit: 'Tbsp' } },
+        { id: 19206, quantity: { amount: 3, unit: 'Tbsp' } },//short 1 amount
         { id: 19334, quantity: { amount: 0.5, unit: 'c' } },//not in pantry
         { id: 2047, quantity: { amount: 0.5, unit: 'tsp' } },
         { id: 1012047, quantity: { amount: 24, unit: 'servings' } },//not in pantry
@@ -62,26 +62,18 @@ describe.only('Pantry', () => {
     expect(myPantry.pantry.length).to.equal(35);
   })
 
-  it('should be able to check if all the ingredients needed in a recipe are available in the pantry ', () => {
+  it('should check to see if there is enough of an ingredient a recipe needs in the pantry', () => {
     myPantry.checkPantry(fakeRecipe);
-    expect(myPantry.ingredientsFoundInPantry.length - myPantry.neededIngredients.length).to.equal(6);
-    // expect(myPantry.checkPantry(fakeRecipe)).to.equal(true);
-    // expect(myPantry.checkPantry(recipe3)).to.equal(false);
+    expect(myPantry.missingAmount).to.equal(1);
   })
 
-  // it('should be able to check for missing ingredients', () => {
-  //   expect(myPantry.findMissingIngredients(fakeRecipe)).to.equal(true);
-  // })
-  //
-  // it('should return an array of the ingredients not found in the pantry that the recipe needs', () => {
-  //   expect(myPantry.findMissingIngredients(fakeRecipe)).to.equal([]);
+  // it('should be able to check if all the ingredients needed in a recipe are available in the pantry', () => {
+  //   myPantry.checkPantry(fakeRecipe);
+  //   expect(myPantry.missingIngredient).to.equal({ id: 19334, quantity: { amount: 0.5, unit: 'c' } });
   // })
 
-  // it('should be able to find some recipe ingredients in the pantry' , () => {
-  //   expect(myPantry.foundInPantry.length).to.equal(6));
-  // })
-  //
-  // it('blah blah blah' , () => {
-  //   expect(myPantry.findMissingIngredients(recipe1)).to.equal(true);
-  // })
+  it('should be able to create a shopping list with all the missing ingredients and amounts', () => {
+    myPantry.checkPantry(fakeRecipe);
+    expect(myPantry.shoppingList.length).to.equal(3);
+  })
 });

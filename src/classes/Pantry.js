@@ -8,7 +8,7 @@ class Pantry  {
     this.pantryAmountAvailable = 0;
     this.missingAmount = 0;
     this.ingredientsFoundInPantry = [];
-    this.neededIngredients = [];
+    this.shoppingList = [];
   }
 
   checkPantry(recipe) {
@@ -27,20 +27,28 @@ class Pantry  {
             this.hasEnoughIngredients = false;
             this.missingAmount = this.recipeIngAmount - this.pantryAmountAvailable;
             // console.log('amountTobuy', this.missingAmount)
-          }
+            this.foundIngredient.amount = this.missingAmount;
+            this.shoppingList.push(this.foundIngredient);
+            // console.log('needs more amount', this.shoppingList);
+        }
       } else if (!this.foundIngredient) {
             this.hasAllIngredients = false;
-            // console.log('missing ingredient', ingredient)
-            this.neededIngredients.push(ingredient);
-            console.log('needed ingredients', this.neededIngredients)
+            console.log('missing ingredient', ingredient)
+
+            let missingIngredient = {ingredient: 0, amount: 0};
+            missingIngredient.ingredient = ingredient.id;
+            missingIngredient.amount = ingredient.quantity.amount;
+
+            this.shoppingList.push(missingIngredient);
+            // console.log('needed ingredients', this.shoppingList)
       }
       // console.log('items that are found in pantry', this.foundIngredient)
       this.ingredientsFoundInPantry.push(this.foundIngredient);
       // console.log('ingredientsFoundInPantry', this.ingredientsFoundInPantry)
       return this.foundIngredient;//this needs to stay here! returns each ingredient that is found
     });
-    // console.log('needed on Every Ingredient', this.neededIngredients)
-    // this.neededIngredients.push(ingredient);
+    console.log('needed on Every Ingredient', this.shoppingList)
+    // this.shoppingList.push(ingredient);
     return this.hasAllIngredients;//returns true or false
   }
 }
