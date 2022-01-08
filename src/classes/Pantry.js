@@ -32,11 +32,11 @@ class Pantry  {
             this.hasAllIngredients = false;
             // console.log('missing ingredient', ingredient)
             this.neededIngredients.push(ingredient);
-            // console.log('needed if in pantry', this.neededIngredients)
+            console.log('needed ingredients', this.neededIngredients)
       }
       // console.log('items that are found in pantry', this.foundIngredient)
       this.ingredientsFoundInPantry.push(this.foundIngredient);
-      console.log('ingredientsFoundInPantry', this.ingredientsFoundInPantry)
+      // console.log('ingredientsFoundInPantry', this.ingredientsFoundInPantry)
       return this.foundIngredient;//this needs to stay here! returns each ingredient that is found
     });
     // console.log('needed on Every Ingredient', this.neededIngredients)

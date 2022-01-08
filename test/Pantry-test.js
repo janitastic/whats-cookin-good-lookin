@@ -64,9 +64,7 @@ describe.only('Pantry', () => {
 
   it('should be able to check if all the ingredients needed in a recipe are available in the pantry ', () => {
     myPantry.checkPantry(fakeRecipe);
-    expect(myPantry.ingredientsFoundInPantry.length).to.equal(6);
-    //find length of recipe ingredients
-    //compare to pantry items length
+    expect(myPantry.ingredientsFoundInPantry.length - myPantry.neededIngredients.length).to.equal(6);
     // expect(myPantry.checkPantry(fakeRecipe)).to.equal(true);
     // expect(myPantry.checkPantry(recipe3)).to.equal(false);
   })
