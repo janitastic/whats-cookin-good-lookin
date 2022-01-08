@@ -2,57 +2,55 @@ class Pantry  {
   constructor(currentUser) {
     this.user = currentUser;
     this.pantry = currentUser.pantry
-    this.hasIngredients = true;
+    this.hasAllIngredients = false;
+    this.hasEnoughIngredients = true;
+    this.recipeIngAmount = 0;
+    this.pantryAmountAvailable = 0;
+    this.missingAmount = 0;
+    this.ingredientsFoundInPantry = [];
+    this.shoppingList = [];
   }
 
-  compareIngredients(recipe) {
-    // console.log(recipe.ingredients)
-    // console.log(this.pantry)
-    // checking to see what's in the pantry (ingredients)
-    // checking to see what ingredients are in the recipe
-    // checking to see if the pantry ingredients are enough for the recipe
+  checkPantry(recipe) {
+    let recipeIngredients = recipe.ingredients;
+    let pantryItems = this.pantry;
 
-     this.hasIngredients = recipe.ingredients.forEach(recipeIngredient => {
-      // console.log(recipeIngredient.id)
-     let foundIngredient = this.pantry.find((pantryItem) => {
-        pantryItem.ingredient === recipeIngredient.id
-     })
-    // console.log(foundIngredient)
-      return foundIngredient
-    } 
-    )
-    console.log(hasIngredients)
-    return hasIngredients
-    
-    // if undefined (ie pantry does not have ingredient) then return false, else return true
+    this.hasAllIngredients = recipeIngredients.forEach(ingredient => {
+      this.recipeIngAmount = ingredient.quantity.amount;//recipe amount
+
+      this.foundIngredient = pantryItems.find(pantryItem => ingredient.id === pantryItem.ingredient);
+
+      if (this.foundIngredient) {
+        this.hasAllIngredients = true;
+        this.pantryAmountAvailable = this.foundIngredient.amount;
+        if (this.recipeIngAmount > this.pantryAmountAvailable) {
+            this.hasEnoughIngredients = false;
+            this.missingAmount = this.recipeIngAmount - this.pantryAmountAvailable;
+            // console.log('amountTobuy', this.missingAmount)
+            this.foundIngredient.amount = this.missingAmount;
+            this.shoppingList.push(this.foundIngredient);
+            // console.log('needs more amount', this.shoppingList);
+        }
+      } else if (!this.foundIngredient) {
+            this.hasAllIngredients = false;
+            console.log('missing ingredient', ingredient)
+
+            let missingIngredient = {ingredient: 0, amount: 0};
+            missingIngredient.ingredient = ingredient.id;
+            missingIngredient.amount = ingredient.quantity.amount;
+
+            this.shoppingList.push(missingIngredient);
+            // console.log('needed ingredients', this.shoppingList)
+      }
+      // console.log('items that are found in pantry', this.foundIngredient)
+      this.ingredientsFoundInPantry.push(this.foundIngredient);
+      // console.log('ingredientsFoundInPantry', this.ingredientsFoundInPantry)
+      return this.foundIngredient;//this needs to stay here! returns each ingredient that is found
+    });
+    console.log('needed on Every Ingredient', this.shoppingList)
+    // this.shoppingList.push(ingredient);
+    return this.hasAllIngredients;//returns true or false
   }
 }
-
-  // Does my pantry have all of the ingredients I need in the recipe?
-// If true - then find each ingredient
-// Then check the pantry.ingredient.amount to see if it’s >= the recipe.ingredient.amount
-    //   let inPantry = this.pantry.some(pantryIngredient => {
-    //     pantryIngredient === recipeIngredient.id
-    //   });
-    //   let enoughIngredients;
-
-    // const foundIngredient = this.pantry.find(pantryIngredient => {
-    //   ingredient.id === this.pantry.ingredient
-    // })
-
-    
-      //I want this one to find a match - ingredient.id === this.pantry.ingredient
-    //   ingredient.quantity.amount >= this.pantry.
-    // const result = this.pantry.find((pantryIngredient) => {
-    //   pantryIngredient.ingredient === ingredient.id
-    //   // recipeData[0].ingredients.id === myPantry.pantry.ingredient
-    // })
-    // for each ingredient in recipe
-    // find ingredient in this.pantry
-    // if it exists and the quantity is enough - good
-// if it exists and the quantity is too low - show error
-// if it doesn't exist - show error
-
-
 
 export default Pantry

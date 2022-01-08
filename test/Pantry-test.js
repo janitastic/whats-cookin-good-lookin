@@ -5,9 +5,9 @@ import Recipe from '../src/classes/Recipe';
 import usersData from '../src/data/users';
 import recipeData from '../src/data/recipes';
 
-describe('Pantry', () => {
-  let user, myPantry, recipe1, recipe2, recipe3, recipe4, recipe5;
-   
+describe.only('Pantry', () => {
+  let user, myPantry, recipe1, recipe2, recipe3, recipe4, fakeRecipe;
+
   beforeEach(()=> {
     user = new User(usersData[0]);
     myPantry = new Pantry(user);
@@ -15,31 +15,18 @@ describe('Pantry', () => {
     recipe2 = new Recipe(recipeData[1]);
     recipe3 = new Recipe(recipeData[2]);
     recipe4 = new Recipe(recipeData[3]);
-    recipe5 = new Recipe({
+    fakeRecipe = new Recipe({
       "id": 97979797,
       "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
       "ingredients": [
-        {
-          "id": 19335,
-          "quantity": {
-            "amount": 0.5,
-            "unit": "c"
-          }
-        },
-        {
-          "id": 1145,
-          "quantity": {
-            "amount": 0.5,
-            "unit": "c"
-          }
-        },
-        {
-          "id": 2050,
-          "quantity": {
-            "amount": 0.5,
-            "unit": "tsp"
-          }
-        }
+        { id: 20081, quantity: { amount: 1.5, unit: 'c' } },
+        { id: 18372, quantity: { amount: 0.5, unit: 'tsp' } },
+        { id: 1123, quantity: { amount: 1, unit: 'large' } },
+        { id: 19335, quantity: { amount: 0.5, unit: 'c' } },
+        { id: 19206, quantity: { amount: 3, unit: 'Tbsp' } },//short 1 amount
+        { id: 19334, quantity: { amount: 0.5, unit: 'c' } },//not in pantry
+        { id: 2047, quantity: { amount: 0.5, unit: 'tsp' } },
+        { id: 1012047, quantity: { amount: 24, unit: 'servings' } },//not in pantry
       ],
       "instructions": [
         {
@@ -70,24 +57,23 @@ describe('Pantry', () => {
   it('should be an instance of Pantry', () => {
     expect(myPantry).to.be.an.instanceof(Pantry);
   });
-  
+
   it('should have the correct amount of pantry items', () => {
-    expect(myPantry.pantry.length).to.equal(64);
+    expect(myPantry.pantry.length).to.equal(35);
   })
 
-  it('should return a false value if there are not correct ingredients', () => {
-    // console.log(recipe1.ingredients)
-    // console.log(myPantry.pantry)
-    // console.log(myPantry.haveIngredients)
-    expect(myPantry.compareIngredients(recipeData[2])).to.equal(false);
+  it('should check to see if there is enough of an ingredient a recipe needs in the pantry', () => {
+    myPantry.checkPantry(fakeRecipe);
+    expect(myPantry.missingAmount).to.equal(1);
   })
 
-  it('should return a true value when there are correct ingredients' , () => {
-    // console.log(recipe4)
-    // console.log(recipe5)
-    console.log("pantryyyyy", myPantry)
-    expect(myPantry.compareIngredients(recipe2)).to.equal(true);
+  // it('should be able to check if all the ingredients needed in a recipe are available in the pantry', () => {
+  //   myPantry.checkPantry(fakeRecipe);
+  //   expect(myPantry.missingIngredient).to.equal({ id: 19334, quantity: { amount: 0.5, unit: 'c' } });
+  // })
+
+  it('should be able to create a shopping list with all the missing ingredients and amounts', () => {
+    myPantry.checkPantry(fakeRecipe);
+    expect(myPantry.shoppingList.length).to.equal(3);
   })
-}); 
-
-
+});
