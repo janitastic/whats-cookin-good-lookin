@@ -143,7 +143,7 @@ function displayAllRecipes(recipeCollection) {
        return recipeCardSection.innerHTML +=
        `<article class="card" id="${recipe.id}">
        <h3>${recipe.name}</h3>
-       <img class="thumbnail-image" src=${recipe.image}>
+       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
        </article>`;
    });
 }
@@ -169,7 +169,7 @@ function displayNameAndImage(recipeCollection) {
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
       <h4>${recipe.name}</h4>
-      <img class="recipe-image" src=${recipe.image}>
+      <img class="recipe-image" src=${recipe.image} alt="image of ${recipe.name}">
       </article>`;
     }
   });
@@ -227,7 +227,7 @@ function searchByIngredients(ingredientsData) {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
   });
   toggleDropDown();
@@ -243,7 +243,7 @@ function searchByRecipeName() {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
   });
   toggleDropDown();
@@ -261,7 +261,7 @@ function filterBySelection(selectedTag) {
     return recipeCardSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
   });
 }
@@ -274,7 +274,7 @@ function displayFavorites() {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
   });
   showFavoritesSection();
@@ -303,7 +303,7 @@ function filterByFavSelection(selectedTag) {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
   });
 }
@@ -317,7 +317,7 @@ function favSearchByRecipeName() {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
   });
   toggleDropDown();
@@ -333,7 +333,7 @@ function favSearchByIngredients(ingredientsData) {
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
   });
   toggleDropDown();
@@ -350,7 +350,7 @@ function displayToCook() {
     return toCookSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
-      <img class="thumbnail-image" src=${recipe.image}>
+      <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
   });
   showToCookSection();
