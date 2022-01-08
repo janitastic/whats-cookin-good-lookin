@@ -24,6 +24,7 @@ const allRecipesBtn = document.getElementById('recipesBtn');
 const favoritesBtn = document.getElementById('favoritesBtn');
 const toCookBtn = document.getElementById('toCookBtn');
 const returnBtn = document.getElementById('returnBtn');
+const pantryBtn = document.getElementById('pantryBtn');
 
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
@@ -414,5 +415,6 @@ export {
   searchByIngredients,
   favSearchByRecipeName,
   favSearchByIngredients, 
-  filterByFavSelection
+  filterByFavSelection,
+  pantryBtn
 }
