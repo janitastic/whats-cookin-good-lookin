@@ -24,7 +24,7 @@ describe.only('Pantry', () => {
         { id: 1123, quantity: { amount: 1, unit: 'large' } },
         { id: 19335, quantity: { amount: 0.5, unit: 'c' } },
         { id: 19206, quantity: { amount: 3, unit: 'Tbsp' } },
-        // { id: 19334, quantity: { amount: 0.5, unit: 'c' } },//not in pantry
+        { id: 19334, quantity: { amount: 0.5, unit: 'c' } },//not in pantry
       ],
       "instructions": [
         {
