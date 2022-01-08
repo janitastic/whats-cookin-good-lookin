@@ -65,14 +65,10 @@ describe.only('Pantry', () => {
     expect(myPantry.checkPantry(recipe3)).to.equal(false);
   })
 
-  it('should be able to find some recipe ingredients in the pantry' , () => {
-    expect()
-  })
-
-  // it('blah blah bloooo' , () => {
-  //   expect(myPantry.checkIngredientAmounts(fakeRecipe)).to.equal(true);
+  // it('should be able to find some recipe ingredients in the pantry' , () => {
+  //   expect(myPantry.foundInPantry.length).to.equal(6));
   // })
-
+  //
   // it('blah blah blah' , () => {
   //   expect(myPantry.findMissingIngredients(recipe1)).to.equal(true);
   // })
