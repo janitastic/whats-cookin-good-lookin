@@ -5,9 +5,9 @@ import Recipe from '../src/classes/Recipe';
 import usersData from '../src/data/users';
 import recipeData from '../src/data/recipes';
 
-describe('Pantry', () => {
+describe.only('Pantry', () => {
   let user, myPantry, recipe1, recipe2, recipe3, recipe4, recipe5;
-   
+
   beforeEach(()=> {
     user = new User(usersData[0]);
     myPantry = new Pantry(user);
@@ -70,24 +70,16 @@ describe('Pantry', () => {
   it('should be an instance of Pantry', () => {
     expect(myPantry).to.be.an.instanceof(Pantry);
   });
-  
+
   it('should have the correct amount of pantry items', () => {
-    expect(myPantry.pantry.length).to.equal(64);
+    expect(myPantry.pantry.length).to.equal(35);
   })
 
   it('should return a false value if there are not correct ingredients', () => {
-    // console.log(recipe1.ingredients)
-    // console.log(myPantry.pantry)
-    // console.log(myPantry.haveIngredients)
     expect(myPantry.compareIngredients(recipeData[2])).to.equal(false);
   })
 
   it('should return a true value when there are correct ingredients' , () => {
-    // console.log(recipe4)
-    // console.log(recipe5)
-    console.log("pantryyyyy", myPantry)
-    expect(myPantry.compareIngredients(recipe2)).to.equal(true);
+    expect(myPantry.compareIngredients(recipe5)).to.equal(true);
   })
-}); 
-
-
+});
