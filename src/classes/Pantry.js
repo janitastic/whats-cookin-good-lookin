@@ -17,10 +17,18 @@ class Pantry  {
 
 
     this.hasAllIngredients = recipeIngredients.every(ingredient => {
-      this.ingredientAmount = ingredient.quantity.amount;
+      this.ingredientAmount = ingredient.quantity.amount;//recipe amount
+
       this.foundInPantry = pantryItems.find(pantryItem => ingredient.id === pantryItem.ingredient);
+
       if (this.foundInPantry) {
         this.hasAllIngredients = true;
+        if (this.ingredientAmount > this.amountAvailable) {
+            this.hasEnoughIngredients = false;
+            this.amountToBuy = this.ingredientAmount - this.foundInPantry.amount;
+          } else {
+            this.hasEnoughIngredients = true;
+          }
       } else if (!this.foundInPantry) {
         this.hasAllIngredients = false;
         this.neededIngredients.push(ingredient);
@@ -32,8 +40,8 @@ class Pantry  {
 
 
 
+      // this.amountAvailable = this.foundInPantry.amount;//pantry amount
 
-      // this.amountAvailable = this.foundInPantry.amount;
       // if (this.ingredientAmount > this.amountAvailable) {
         //   this.hasEnoughIngredients = false;
         //   this.amountToBuy = this.ingredientAmount - this.amountAvailable;
@@ -51,7 +59,8 @@ class Pantry  {
       //   return ingredient;
       // }
       // return this.hasEnoughIngredients;
-      return this.foundInPantry;//this needs to stay here!
+      // console.log(this.foundInPantry);
+      return this.foundInPantry;//this needs to stay here! returns each ingredient that is found
     });
     return this.hasAllIngredients;//returns true or false
   }
