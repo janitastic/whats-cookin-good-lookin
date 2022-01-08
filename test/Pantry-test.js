@@ -25,6 +25,8 @@ describe.only('Pantry', () => {
         { id: 19335, quantity: { amount: 0.5, unit: 'c' } },
         { id: 19206, quantity: { amount: 3, unit: 'Tbsp' } },
         { id: 19334, quantity: { amount: 0.5, unit: 'c' } },//not in pantry
+        { id: 2047, quantity: { amount: 0.5, unit: 'tsp' } },
+        { id: 1012047, quantity: { amount: 24, unit: 'servings' } },//not in pantry
       ],
       "instructions": [
         {
@@ -61,7 +63,11 @@ describe.only('Pantry', () => {
   })
 
   it('should be able to check if all the ingredients needed in a recipe are available in the pantry ', () => {
-    expect(myPantry.checkPantry(fakeRecipe)).to.equal(true);
+    myPantry.checkPantry(fakeRecipe);
+    expect(myPantry.ingredientsFoundInPantry.length).to.equal(6);
+    //find length of recipe ingredients
+    //compare to pantry items length
+    // expect(myPantry.checkPantry(fakeRecipe)).to.equal(true);
     // expect(myPantry.checkPantry(recipe3)).to.equal(false);
   })
 

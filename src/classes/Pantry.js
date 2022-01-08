@@ -7,6 +7,7 @@ class Pantry  {
     this.recipeIngAmount = 0;
     this.pantryAmountAvailable = 0;
     this.missingAmount = 0;
+    this.ingredientsFoundInPantry = [];
     this.neededIngredients = [];
   }
 
@@ -14,31 +15,32 @@ class Pantry  {
     let recipeIngredients = recipe.ingredients;
     let pantryItems = this.pantry;
 
-    this.hasAllIngredients = recipeIngredients.every(ingredient => {
+    this.hasAllIngredients = recipeIngredients.forEach(ingredient => {
       this.recipeIngAmount = ingredient.quantity.amount;//recipe amount
 
-      this.foundInPantry = pantryItems.find(pantryItem => ingredient.id === pantryItem.ingredient);
+      this.foundIngredient = pantryItems.find(pantryItem => ingredient.id === pantryItem.ingredient);
 
-      if (this.foundInPantry) {
+      if (this.foundIngredient) {
         this.hasAllIngredients = true;
-        this.pantryAmountAvailable = this.foundInPantry.amount;//pantry amount
+        this.pantryAmountAvailable = this.foundIngredient.amount;
         if (this.recipeIngAmount > this.pantryAmountAvailable) {
             this.hasEnoughIngredients = false;
             this.missingAmount = this.recipeIngAmount - this.pantryAmountAvailable;
-            console.log('amountTobuy', this.missingAmount)
-          } else {
-            this.hasEnoughIngredients = true;
+            // console.log('amountTobuy', this.missingAmount)
           }
-          // console.log(this.neededIngredients)
-      return this.foundInPantry;//this needs to stay here! returns each ingredient that is found
-      } else if (!this.foundInPantry) {
-        this.hasAllIngredients = false;
-        this.neededIngredients.push(ingredient);
-        console.log(this.neededIngredients)
+      } else if (!this.foundIngredient) {
+            this.hasAllIngredients = false;
+            // console.log('missing ingredient', ingredient)
+            this.neededIngredients.push(ingredient);
+            // console.log('needed if in pantry', this.neededIngredients)
       }
-
-
+      // console.log('items that are found in pantry', this.foundIngredient)
+      this.ingredientsFoundInPantry.push(this.foundIngredient);
+      console.log('ingredientsFoundInPantry', this.ingredientsFoundInPantry)
+      return this.foundIngredient;//this needs to stay here! returns each ingredient that is found
     });
+    // console.log('needed on Every Ingredient', this.neededIngredients)
+    // this.neededIngredients.push(ingredient);
     return this.hasAllIngredients;//returns true or false
   }
 }
