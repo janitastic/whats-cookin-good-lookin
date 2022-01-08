@@ -6,7 +6,7 @@ import usersData from '../src/data/users';
 import recipeData from '../src/data/recipes';
 
 describe.only('Pantry', () => {
-  let user, myPantry, recipe1, recipe2, recipe3, recipe4, recipe5;
+  let user, myPantry, recipe1, recipe2, recipe3, recipe4, fakeRecipe;
 
   beforeEach(()=> {
     user = new User(usersData[0]);
@@ -15,31 +15,16 @@ describe.only('Pantry', () => {
     recipe2 = new Recipe(recipeData[1]);
     recipe3 = new Recipe(recipeData[2]);
     recipe4 = new Recipe(recipeData[3]);
-    recipe5 = new Recipe({
+    fakeRecipe = new Recipe({
       "id": 97979797,
       "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
       "ingredients": [
-        {
-          "id": 19335,
-          "quantity": {
-            "amount": 0.5,
-            "unit": "c"
-          }
-        },
-        {
-          "id": 1145,
-          "quantity": {
-            "amount": 0.5,
-            "unit": "c"
-          }
-        },
-        {
-          "id": 2050,
-          "quantity": {
-            "amount": 0.5,
-            "unit": "tsp"
-          }
-        }
+        { id: 20081, quantity: { amount: 1.5, unit: 'c' } },
+        { id: 18372, quantity: { amount: 0.5, unit: 'tsp' } },
+        { id: 1123, quantity: { amount: 1, unit: 'large' } },
+        { id: 19335, quantity: { amount: 0.5, unit: 'c' } },
+        { id: 19206, quantity: { amount: 3, unit: 'Tbsp' } },
+        // { id: 19334, quantity: { amount: 0.5, unit: 'c' } },//not in pantry
       ],
       "instructions": [
         {
@@ -75,11 +60,20 @@ describe.only('Pantry', () => {
     expect(myPantry.pantry.length).to.equal(35);
   })
 
-  it('should return a false value if there are not correct ingredients', () => {
-    expect(myPantry.compareIngredients(recipeData[2])).to.equal(false);
+  it('should check the pantry for every ingredient needed in the recipe', () => {
+    expect(myPantry.checkPantry(fakeRecipe)).to.equal(true);
+    expect(myPantry.checkPantry(recipe3)).to.equal(false);
   })
 
-  it('should return a true value when there are correct ingredients' , () => {
-    expect(myPantry.compareIngredients(recipe5)).to.equal(true);
+  it('should be able to find some recipe ingredients in the pantry' , () => {
+    expect()
   })
+
+  // it('blah blah bloooo' , () => {
+  //   expect(myPantry.checkIngredientAmounts(fakeRecipe)).to.equal(true);
+  // })
+
+  // it('blah blah blah' , () => {
+  //   expect(myPantry.findMissingIngredients(recipe1)).to.equal(true);
+  // })
 });
