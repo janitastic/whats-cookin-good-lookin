@@ -25,7 +25,6 @@ class Pantry  {
         this.hasAllIngredients = false;
         this.neededIngredients.push(ingredient);
         console.log(this.neededIngredients)
-        return this.neededIngredients
       }
       // console.log(this.neededIngredients)
 
@@ -52,7 +51,7 @@ class Pantry  {
       //   return ingredient;
       // }
       // return this.hasEnoughIngredients;
-      return this.foundInPantry;
+      return this.foundInPantry;//this needs to stay here!
     });
     return this.hasAllIngredients;//returns true or false
   }
