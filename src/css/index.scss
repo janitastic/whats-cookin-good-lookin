@@ -42,14 +42,14 @@ body {
 header {
 	background-color: rgba(242,242,242,.25);
 	display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
 	padding: 2%;
 	background-color: #0A1E23;
 }
 
 nav {
 	display: flex;
-	padding: 0 10% 0 0;
+	// padding: 0 10% 0 0;
 }
 
 h1 {
@@ -121,7 +121,8 @@ a {
 }
 
 .card,
-.individual-card {
+.individual-card,
+.pantry-card {
 	border-radius: 0.5em;
   font-size: 1.2em;
   background-color: rgba(10, 30, 35, .90);
@@ -129,10 +130,16 @@ a {
 	padding: 5%;
 }
 
-.individual-card {
+.individual-card,
+.pantry-card {
 	display: flex;
   flex-direction: column;
 	margin: 5% 20%;
+}
+
+.pantry-list {
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .name-and-image {
@@ -262,7 +269,12 @@ input {
 	display: none;
 }
 
-.recipe-icon:hover + .hide-text {
+.add-icon {
+	// width: 20%;
+}
+
+.recipe-icon:hover + .hide-text,
+.add-icon:hover + .hide-text {
 	display: flex;
   justify-content: center;
 }
@@ -278,6 +290,14 @@ input {
 	grid-template-columns: 50% 50%;
 	justify-content: center;
 	margin: 0 0 10% 0;
+}
+
+.pantry-title {
+	display: grid;
+	gap: 5em;
+	grid-template-columns: 75% 25%;
+	justify-content: center;
+	margin: 0 0 5% 10%;
 }
 
 .recipe-card-button {

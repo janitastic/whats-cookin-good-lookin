@@ -25,7 +25,7 @@ import {
   favFilterByDinner,
   favFilterBySides,
   favFilterByCondiments,
-  favFilterBySnacks, 
+  favFilterBySnacks,
   favShowAllButton,
   filterByAppetizer,
   filterByBreakfast,
@@ -34,10 +34,10 @@ import {
   filterBySides,
   filterByCondiments,
   filterBySnacks,
-  showAllButton, 
+  showAllButton,
   favoriteButton,
-  displayAllRecipes, 
-  displayRecipeCard, 
+  displayAllRecipes,
+  displayRecipeCard,
   displayFavorites,
   displayToCook,
   filterBySelection,
@@ -45,10 +45,13 @@ import {
   searchByRecipeName,
   searchByIngredients,
   favSearchByRecipeName,
-  favSearchByIngredients, 
+  favSearchByIngredients,
   filterByFavSelection,
   pantryBtn,
-  displayUserPantry
+  checkPantryBtn,
+  displayUserPantry,
+  checkForIngredients,
+  addToPantry
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -62,6 +65,7 @@ let usersData = [];
 let ingredients;
 let currentUserId;
 let myCurrentRecipeId;
+let currentUserPantry;
 let currentUserFavorites;
 let recipeClasses;
 const tags = {
@@ -79,8 +83,10 @@ const tags = {
 window.addEventListener('load', loadPage);
 //Sections
 recipeCardSection.addEventListener('click', selectRecipeCard);
+toCookSection.addEventListener('click', selectRecipeToCook)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
+checkPantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
 //Menu Buttons
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
@@ -101,6 +107,7 @@ addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
+addToPantry.addEventListener('click', addIngredientsToPantry);
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', () => {
@@ -194,6 +201,7 @@ function getUser() {
   currentUser = new User(usersData[userIndex]);
   currentUserName = currentUser.name;
   currentUserId = currentUser.id;
+  currentUserPantry = currentUser.pantry;
   return currentUser;
 }
 
@@ -221,6 +229,11 @@ function selectRecipeCard() {
   displayRecipeCard(recipeClasses, ingredientsData);
 }
 
+function selectRecipeToCook() {
+  const recipeId = Number(event.target.parentNode.id);
+  myCurrentRecipeId = recipeId;
+  checkForIngredients(recipeClasses, ingredientsData);
+}
           /*********** FAVORITE PAGE FUNCTIONS ***********/
 
 function saveToFavorites() {
@@ -243,6 +256,12 @@ function addToCookList() {
   currentUser.addToCook(foundRecipe);
   displayToCook();
 }
+
+function addIngredientsToPantry() {
+  console.log("this is a console log")
+  displayFavorites()
+}
+
 
 export {currentUser};
 export {recipeRepo};

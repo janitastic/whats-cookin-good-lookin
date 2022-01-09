@@ -12,10 +12,13 @@ import './images/dinner.png';
 import './images/sides.png';
 import './images/condiments.png';
 import './images/snacks.png';
+import './images/add.png';
+import './images/pantry.png';
 
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';
 import Pantry from './classes/Pantry';
+import ingredientsData from './data/ingredients';
 
 
               /*********** QUERY SELECTORS ***********/
@@ -30,6 +33,7 @@ const pantryBtn = document.getElementById('pantryBtn');
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
+const checkPantryBtn = document.getElementById('checkPantryBtn');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
@@ -70,6 +74,7 @@ let favShowAllButton = document.getElementById('favShowAllButton');
 // Individual Recipe Card Selectors
 let favoriteButton = document.getElementById('favoriteButton');
 let addToCookButton = document.getElementById('addToCook');
+let addToPantry = document.getElementById('addToPantry');
 
               /*********** HELPER FUNCTIONS ***********/
 function show(element) {
@@ -81,34 +86,68 @@ function hide(element) {
 }
 
 function showRecipeCardSection() {
+  show(recipeCardSection);
+  show(filterIcons);
+  show(allSearch);
   hide(ingredientsTitle);
   hide(directionsTitle);
-  show(recipeCardSection);
   hide(individualCardView);
   hide(favoritesSection);
   hide(toCookSection);
-  show(filterIcons);
   hide(favoriteFilterIcons);
   hide(favoriteSearch);
-  show(allSearch);
+  hide(pantryCardView);
+  hide(favInstructions);
+  hide(cookInstructions);
 }
 
 function showFavoritesSection() {
+  show(favoritesSection);
+  show(favoriteFilterIcons);
+  show(favoriteSearch);
   hide(ingredientsTitle);
   hide(directionsTitle);
   hide(recipeCardSection);
   hide(individualCardView);
-  show(favoritesSection);
   hide(toCookSection);
+  hide(allSearch);
+  hide(filterIcons);
+  hide(checkPantryBtn);
+  hide(pantryCardView);
 }
 
 function showToCookSection() {
+  show(toCookSection);
   hide(ingredientsTitle);
   hide(directionsTitle);
   hide(recipeCardSection);
   hide(individualCardView);
   hide(favoritesSection);
-  show(toCookSection);
+  hide(filterIcons);
+  hide(favoriteFilterIcons);
+  hide(favoriteSearch);
+  hide(allSearch);
+  hide(pantryCardView);
+}
+
+function showPantryCardSection() {
+  hide(toCookSection);
+  hide(cookInstructions);
+  show(pantryCardView);
+  hide(pantryTitle);
+  hide(pantryIngredients);
+  show(cantCookTitle);
+}
+
+function showCookSection() {
+
+}
+
+function showBigRecipeCard() {
+  show(individualCardView);
+  hide(recipeCardSection);
+  hide(favInstructions);
+  hide(pantryCardView);
 }
 
 function resetSearch() {
@@ -130,16 +169,11 @@ function domUpdates(recipeClasses) {
     displayAllRecipes(recipeClasses)
     // getRecipes()
     showRecipeCardSection()
-    
 }
 
 function displayAllRecipes(recipeCollection) {
    showRecipeCardSection();
-   show(filterIcons);
-   hide(favoriteFilterIcons);
-   hide(favoriteSearch);
-   hide(favInstructions);
-   show(allSearch);
+   hide(noRecipes);
    recipeCardSection.innerHTML = '';
    recipeCollection.forEach(recipe => {
        return recipeCardSection.innerHTML +=
@@ -150,13 +184,11 @@ function displayAllRecipes(recipeCollection) {
    });
 }
 
- 
+
 
 function displayRecipeCard(recipeCollection, ingredientsData) {
-  show(individualCardView);
-  hide(recipeCardSection);
+  showBigRecipeCard()
   hide(noRecipes);
-  hide(favInstructions);
   displayNameAndImage(recipeCollection);
   displayIngredients(recipeCollection, ingredientsData);
   displayDirections(recipeCollection);
@@ -281,19 +313,19 @@ function displayFavorites() {
   });
   showFavoritesSection();
   displayDeleteFavMessage();
-  show(favoriteFilterIcons);
-  show(favoriteSearch);
-  hide(allSearch);
-  hide(filterIcons);
 }
 
 function displayDeleteFavMessage() {
   if (currentUser.favorites.length === 0) {
     show(noRecipes);
     hide(favInstructions);
+    hide(checkPantryBtn);
+    // hide(pantryCardView);
   } else {
     show(favInstructions);
     hide(noRecipes);
+    hide(checkPantryBtn);
+    // hide(pantryCardView);
   }
 }
 
@@ -346,6 +378,8 @@ function favSearchByIngredients(ingredientsData) {
           /*********** TO COOK PAGE FUNCTIONS ***********/
 
 function displayToCook() {
+  show(cookInstructions);
+  hide(favoritesSection);
   toCookSection.innerHTML = '';
   const toCookRecipes = currentUser.toCook;
   toCookRecipes.forEach(recipe => {
@@ -357,18 +391,13 @@ function displayToCook() {
   });
   showToCookSection();
   displayToCookMessage();
-  hide(favoritesSection);
-  hide(filterIcons);
-  hide(favoriteFilterIcons);
-  hide(favoriteSearch);
-  hide(allSearch);
 }
 
 function displayToCookMessage() {
-  hide(pantrySection)
   if (currentUser.toCook.length === 0) {
     show(noRecipes);
     hide(favInstructions);
+    hide(cookInstructions);
   } else {
     hide(noRecipes);
     hide(favInstructions);
@@ -377,15 +406,16 @@ function displayToCookMessage() {
 
 function displayUserPantry(ingredientsData) {
   hide(noRecipes);
-  hide(toCookSection)
-  show(pantrySection)
-  show(pantryItems)
-  pantryItems.innerHTML = '';
+  hide(toCookSection);
+  hide(cookInstructions);
+  show(pantryCardView);
+  hide(recipeCardSection);
+  pantryIngredients.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
-      return pantryItems.innerHTML += 
+      return pantryIngredients.innerHTML +=
       `<article class="full-recipe">
-        <ul>
+        <ul class="pantry-list">
           <li class="ingredient-bullet">
           ${step.amount} ${myPantryOne.logPantryIngredients(ingredientsData)[index]}
           </li>
@@ -393,6 +423,46 @@ function displayUserPantry(ingredientsData) {
       </article>`;
     });
 }
+
+function checkForIngredients(recipeCollection, ingredientsData) {
+  showPantryCardSection();
+  let currentPantry = new Pantry(currentUser);
+  cantCookSection.innerHTML = '';
+  const recipeId = Number(event.target.parentNode.id);
+  const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
+  currentPantry.checkPantry(selectedRecipe);
+  console.log(currentPantry.shoppingList)
+  if(currentPantry.shoppingList === []) {
+    displayRecipeCard(recipeCollection, ingredientsData)
+  } else {
+    currentPantry.shoppingList.forEach((elem, index) => {
+      ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
+      show(cantCookSection);
+      show(cantCookInstructions);
+      return cantCookSection.innerHTML +=
+      `<article class="full-recipe">
+        <ul>
+          <li class="ingredient-bullet">
+           ${elem.amount} ${selectedRecipe.logIngredients(ingredientsData)[index]}
+          </li>
+        </ul>
+      </article>`;
+    });
+  }
+}
+
+function displayIngredientsNeeded() {
+  recipeCollection.forEach((recipe, index) => {
+    if (recipe.id === recipeId) {
+     return recipeImageName.innerHTML +=
+      `<article class="full-recipe">
+        <h4>${recipe.name}</h4>
+        <img class="recipe-image" src=${recipe.image} alt="image of ${recipe.name}">
+      </article>`;
+    }
+  });
+}
+
 
 export default  domUpdates;
 export {
@@ -415,7 +485,7 @@ export {
   favFilterByDinner,
   favFilterBySides,
   favFilterByCondiments,
-  favFilterBySnacks, 
+  favFilterBySnacks,
   favShowAllButton,
   filterByAppetizer,
   filterByBreakfast,
@@ -427,7 +497,7 @@ export {
   showAllButton,
   favoriteButton,
   displayAllRecipes,
-  displayRecipeCard, 
+  displayRecipeCard,
   displayFavorites,
   displayToCook,
   filterBySelection,
@@ -435,8 +505,11 @@ export {
   searchByRecipeName,
   searchByIngredients,
   favSearchByRecipeName,
-  favSearchByIngredients, 
+  favSearchByIngredients,
   filterByFavSelection,
   pantryBtn,
-  displayUserPantry
+  checkPantryBtn,
+  displayUserPantry,
+  checkForIngredients,
+  addToPantry
 }
