@@ -349,6 +349,7 @@ function favSearchByIngredients(ingredientsData) {
 
 function displayToCook() {
   show(cookInstructions);
+  hide(pantryCardView);
   toCookSection.innerHTML = '';
   const toCookRecipes = currentUser.toCook;
   toCookRecipes.forEach(recipe => {
@@ -398,15 +399,19 @@ function displayUserPantry(ingredientsData) {
 }
 
 function checkForIngredients(recipeCollection, ingredientsData) {
+  hide(toCookSection);
+  hide(cookInstructions);
   let myPantryOne = new Pantry(currentUser);
-  pantryCardView.innerHTML = '';
-  displayRecipeCard(recipeCollection, ingredientsData)
+  cantCookSection.innerHTML = '';
+  // displayRecipeCard(recipeCollection, ingredientsData)
   const recipeId = Number(event.target.parentNode.id);
   //need to match recipeId to a recipe
   const selectedRecipe = recipeCollection.forEach((recipe, index) => {
     if (recipe.id === recipeId) {
       console.log(recipe)
-      return pantryCardView.innerHTML +=
+      show(cantCookInstructions);
+      show(cantCookSection);
+      return cantCookSection.innerHTML +=
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
