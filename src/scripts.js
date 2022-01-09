@@ -1,4 +1,4 @@
-import {fetchUsersData, fetchIngredientsData, fetchRecipesData} from './apiCalls';
+import {fetchUsersData, fetchIngredientsData, fetchRecipesData, postToPantry} from './apiCalls';
 
 import Recipe from './classes/Recipe';
 import User from './classes/User';
@@ -107,7 +107,7 @@ addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
-addToPantry.addEventListener('click', addIngredientsToPantry);
+addToPantry.addEventListener('click', postIngredient);
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', () => {
@@ -257,10 +257,22 @@ function addToCookList() {
   displayToCook();
 }
 
-function addIngredientsToPantry() {
-  console.log("this is a console log")
-  displayFavorites()
+// function addIngredientsToPantry() {
+//   console.log("this is a console log")
+//   displayFavorites()
+// }
+
+
+function postIngredient() {
+  console.log('this is working')
+  let data = { userID: currentUser.id, ingredientID: currentPantry.ingredient, ingredientModification: currentPantry.amount };
+  postToPantry(data)
+  .then(data => {
+    currentPantry.logPantryIngredients(data[0])
+    checkForIngredients(recipeClasses, ingredientsData);
+  })
 }
+
 
 
 export {currentUser};

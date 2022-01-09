@@ -435,7 +435,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   if(currentPantry.shoppingList === []) {
     displayRecipeCard(recipeCollection, ingredientsData)
   } else {
-    currentPantry.shoppingList.forEach((elem, index) => {
+    const missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
       show(cantCookSection);
       show(cantCookInstructions);
@@ -451,16 +451,22 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   }
 }
 
+
+
 function displayIngredientsNeeded() {
-  recipeCollection.forEach((recipe, index) => {
-    if (recipe.id === recipeId) {
-     return recipeImageName.innerHTML +=
+  const missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
+      ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
+      show(cantCookSection);
+      show(cantCookInstructions);
+      return cantCookSection.innerHTML +=
       `<article class="full-recipe">
-        <h4>${recipe.name}</h4>
-        <img class="recipe-image" src=${recipe.image} alt="image of ${recipe.name}">
+        <ul>
+          <li class="ingredient-bullet">
+           ${elem.amount} ${selectedRecipe.logIngredients(ingredientsData)[index]}
+          </li>
+        </ul>
       </article>`;
-    }
-  });
+    });
 }
 
 
