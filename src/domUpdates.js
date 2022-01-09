@@ -12,6 +12,7 @@ import './images/dinner.png';
 import './images/sides.png';
 import './images/condiments.png';
 import './images/snacks.png';
+import './images/add.png';
 
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';

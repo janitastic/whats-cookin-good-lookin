@@ -269,7 +269,12 @@ input {
 	display: none;
 }
 
-.recipe-icon:hover + .hide-text {
+.add-icon {
+	// width: 20%;
+}
+
+.recipe-icon:hover + .hide-text,
+.add-icon:hover + .hide-text {
 	display: flex;
   justify-content: center;
 }
@@ -288,8 +293,11 @@ input {
 }
 
 .pantry-title {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	gap: 5em;
+	grid-template-columns: 75% 25%;
+	justify-content: center;
+	margin: 0 0 5% 10%;
 }
 
 .recipe-card-button {
