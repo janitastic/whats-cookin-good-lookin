@@ -429,17 +429,16 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   cantCookSection.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
-  const result = myPantryOne.checkPantry(selectedRecipe);
+  myPantryOne.checkPantry(selectedRecipe);
   console.log(myPantryOne.shoppingList)
   myPantryOne.shoppingList.forEach((elem, index) => {
-    // console.log('clicked-recipe>>>', selectedRecipe)
       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
       show(cantCookSection);
       return cantCookSection.innerHTML +=
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
-           ${selectedRecipe.logIngredients(ingredientsData)[index]}
+           ${elem.amount} ${selectedRecipe.logIngredients(ingredientsData)[index]}
           </li>
         </ul>
       </article>`;
