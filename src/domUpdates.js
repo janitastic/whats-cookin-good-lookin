@@ -15,6 +15,7 @@ import './images/snacks.png';
 
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';
+import Pantry from './classes/Pantry';
 
 
               /*********** QUERY SELECTORS ***********/
@@ -24,6 +25,7 @@ const allRecipesBtn = document.getElementById('recipesBtn');
 const favoritesBtn = document.getElementById('favoritesBtn');
 const toCookBtn = document.getElementById('toCookBtn');
 const returnBtn = document.getElementById('returnBtn');
+const pantryBtn = document.getElementById('pantryBtn');
 
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
@@ -363,6 +365,7 @@ function displayToCook() {
 }
 
 function displayToCookMessage() {
+  hide(pantrySection)
   if (currentUser.toCook.length === 0) {
     show(noRecipes);
     hide(favInstructions);
@@ -370,6 +373,25 @@ function displayToCookMessage() {
     hide(noRecipes);
     hide(favInstructions);
   }
+}
+
+function displayUserPantry(ingredientsData) {
+  hide(noRecipes);
+  hide(toCookSection)
+  show(pantrySection)
+  show(pantryItems)
+  pantryItems.innerHTML = '';
+  let myPantryOne = new Pantry(currentUser);
+  myPantryOne.pantry.forEach((step, index) => {
+      return pantryItems.innerHTML += 
+      `<article class="full-recipe">
+        <ul>
+          <li class="ingredient-bullet">
+          ${step.amount} ${myPantryOne.logPantryIngredients(ingredientsData)[index]}
+          </li>
+        </ul>
+      </article>`;
+    });
 }
 
 export default  domUpdates;
@@ -414,5 +436,7 @@ export {
   searchByIngredients,
   favSearchByRecipeName,
   favSearchByIngredients, 
-  filterByFavSelection
+  filterByFavSelection,
+  pantryBtn,
+  displayUserPantry
 }

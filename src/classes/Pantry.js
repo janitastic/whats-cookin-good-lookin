@@ -33,7 +33,7 @@ class Pantry  {
         }
       } else if (!this.foundIngredient) {
             this.hasAllIngredients = false;
-            console.log('missing ingredient', ingredient)
+            // console.log('missing ingredient', ingredient)
 
             let missingIngredient = {ingredient: 0, amount: 0};
             missingIngredient.ingredient = ingredient.id;
@@ -47,10 +47,19 @@ class Pantry  {
       // console.log('ingredientsFoundInPantry', this.ingredientsFoundInPantry)
       return this.foundIngredient;//this needs to stay here! returns each ingredient that is found
     });
-    console.log('needed on Every Ingredient', this.shoppingList)
+    // console.log('needed on Every Ingredient', this.shoppingList)
     // this.shoppingList.push(ingredient);
     return this.hasAllIngredients;//returns true or false
   }
+
+  logPantryIngredients(ingredientsData) {
+    const ingredientNameArr = this.pantry.map(ingredient => {
+      const ingredientList = ingredientsData.find(ingredientObj => 
+        ingredientObj.id === ingredient.ingredient)
+      return ingredientList.name;
+    });
+    return ingredientNameArr;
+  }
 }
 
-export default Pantry
+export default Pantry;
