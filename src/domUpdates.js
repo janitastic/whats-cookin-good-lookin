@@ -408,6 +408,7 @@ function displayUserPantry(ingredientsData) {
   hide(toCookSection);
   hide(cookInstructions);
   show(pantryCardView);
+  hide(recipeCardSection);
   pantryIngredients.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
