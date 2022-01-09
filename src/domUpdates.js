@@ -379,10 +379,11 @@ function displayUserPantry(ingredientsData) {
   hide(noRecipes);
   hide(toCookSection)
   show(pantrySection)
-  pantrySection.innerHTML = '';
+  show(pantryItems)
+  pantryItems.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
-      return pantrySection.innerHTML += 
+      return pantryItems.innerHTML += 
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
