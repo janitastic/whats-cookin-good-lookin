@@ -131,7 +131,7 @@ function domUpdates(recipeClasses) {
     displayAllRecipes(recipeClasses)
     // getRecipes()
     showRecipeCardSection()
-    
+
 }
 
 function displayAllRecipes(recipeCollection) {
@@ -151,7 +151,7 @@ function displayAllRecipes(recipeCollection) {
    });
 }
 
- 
+
 
 function displayRecipeCard(recipeCollection, ingredientsData) {
   show(individualCardView);
@@ -347,6 +347,7 @@ function favSearchByIngredients(ingredientsData) {
           /*********** TO COOK PAGE FUNCTIONS ***********/
 
 function displayToCook() {
+  show(cookInstructions);
   toCookSection.innerHTML = '';
   const toCookRecipes = currentUser.toCook;
   toCookRecipes.forEach(recipe => {
@@ -366,10 +367,11 @@ function displayToCook() {
 }
 
 function displayToCookMessage() {
-  hide(pantrySection)
+  hide(pantrySection);
   if (currentUser.toCook.length === 0) {
     show(noRecipes);
     hide(favInstructions);
+    hide(cookInstructions);
   } else {
     hide(noRecipes);
     hide(favInstructions);
@@ -378,13 +380,14 @@ function displayToCookMessage() {
 
 function displayUserPantry(ingredientsData) {
   hide(noRecipes);
-  hide(toCookSection)
-  show(pantrySection)
-  show(pantryItems)
+  hide(toCookSection);
+  hide(cookInstructions);
+  show(pantrySection);
+  show(pantryItems);
   pantryItems.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
-      return pantryItems.innerHTML += 
+      return pantryItems.innerHTML +=
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
@@ -404,7 +407,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   const selectedRecipe = recipeCollection.forEach((recipe, index) => {
     if (recipe.id === recipeId) {
       console.log(recipe)
-      return toCookSection.innerHTML += 
+      return toCookSection.innerHTML +=
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
@@ -460,7 +463,7 @@ export {
   favFilterByDinner,
   favFilterBySides,
   favFilterByCondiments,
-  favFilterBySnacks, 
+  favFilterBySnacks,
   favShowAllButton,
   filterByAppetizer,
   filterByBreakfast,
@@ -472,7 +475,7 @@ export {
   showAllButton,
   favoriteButton,
   displayAllRecipes,
-  displayRecipeCard, 
+  displayRecipeCard,
   displayFavorites,
   displayToCook,
   filterBySelection,
@@ -480,9 +483,9 @@ export {
   searchByRecipeName,
   searchByIngredients,
   favSearchByRecipeName,
-  favSearchByIngredients, 
+  favSearchByIngredients,
   filterByFavSelection,
   pantryBtn,
-  displayUserPantry, 
+  displayUserPantry,
   checkForIngredients
 }
