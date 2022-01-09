@@ -25,7 +25,7 @@ import {
   favFilterByDinner,
   favFilterBySides,
   favFilterByCondiments,
-  favFilterBySnacks, 
+  favFilterBySnacks,
   favShowAllButton,
   filterByAppetizer,
   filterByBreakfast,
@@ -34,10 +34,10 @@ import {
   filterBySides,
   filterByCondiments,
   filterBySnacks,
-  showAllButton, 
+  showAllButton,
   favoriteButton,
-  displayAllRecipes, 
-  displayRecipeCard, 
+  displayAllRecipes,
+  displayRecipeCard,
   displayFavorites,
   displayToCook,
   filterBySelection,
@@ -45,10 +45,11 @@ import {
   searchByRecipeName,
   searchByIngredients,
   favSearchByRecipeName,
-  favSearchByIngredients, 
+  favSearchByIngredients,
   filterByFavSelection,
   pantryBtn,
-  displayUserPantry, 
+  checkPantryBtn,
+  displayUserPantry,
   checkForIngredients
 } from './domUpdates';
 
@@ -84,6 +85,7 @@ recipeCardSection.addEventListener('click', selectRecipeCard);
 toCookSection.addEventListener('click', selectRecipeToCook)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
+checkPantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
 //Menu Buttons
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});

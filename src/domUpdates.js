@@ -32,6 +32,7 @@ const pantryBtn = document.getElementById('pantryBtn');
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
+const checkPantryBtn = document.getElementById('checkPantryBtn');
 
 // Search Selectors
 let searchButton = document.getElementById('searchButton');
@@ -159,6 +160,7 @@ function displayRecipeCard(recipeCollection, ingredientsData) {
   hide(recipeCardSection);
   hide(noRecipes);
   hide(favInstructions);
+  hide(pantryCardView);
   displayNameAndImage(recipeCollection);
   displayIngredients(recipeCollection, ingredientsData);
   displayDirections(recipeCollection);
@@ -293,9 +295,13 @@ function displayDeleteFavMessage() {
   if (currentUser.favorites.length === 0) {
     show(noRecipes);
     hide(favInstructions);
+    hide(checkPantryBtn);
+    hide(pantryCardView);
   } else {
     show(favInstructions);
     hide(noRecipes);
+    hide(checkPantryBtn);
+    hide(pantryCardView);
   }
 }
 
@@ -404,6 +410,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   show(pantryCardView);
   hide(pantryTitle);
   hide(pantryIngredients);
+  show(cantCookTitle);
   let myPantryOne = new Pantry(currentUser);
   cantCookSection.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
@@ -480,6 +487,7 @@ export {
   favSearchByIngredients,
   filterByFavSelection,
   pantryBtn,
+  checkPantryBtn,
   displayUserPantry,
   checkForIngredients
 }
