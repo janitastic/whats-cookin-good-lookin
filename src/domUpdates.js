@@ -74,6 +74,7 @@ let favShowAllButton = document.getElementById('favShowAllButton');
 // Individual Recipe Card Selectors
 let favoriteButton = document.getElementById('favoriteButton');
 let addToCookButton = document.getElementById('addToCook');
+let addToPantry = document.getElementById('addToPantry');
 
               /*********** HELPER FUNCTIONS ***********/
 function show(element) {
@@ -425,18 +426,18 @@ function displayUserPantry(ingredientsData) {
 
 function checkForIngredients(recipeCollection, ingredientsData) {
   showPantryCardSection();
-  let myPantryOne = new Pantry(currentUser);
+  let currentPantry = new Pantry(currentUser);
   cantCookSection.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
-  myPantryOne.checkPantry(selectedRecipe);
-  console.log(myPantryOne.shoppingList)
-  if(myPantryOne.shoppingList === []) {
+  currentPantry.checkPantry(selectedRecipe);
+  if(currentPantry.shoppingList === []) {
     displayRecipeCard(recipeCollection, ingredientsData)
   } else {
-    myPantryOne.shoppingList.forEach((elem, index) => {
+    currentPantry.shoppingList.forEach((elem, index) => {
       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
       show(cantCookSection);
+      show(cantCookInstructions);
       return cantCookSection.innerHTML +=
       `<article class="full-recipe">
         <ul>
@@ -508,5 +509,6 @@ export {
   pantryBtn,
   checkPantryBtn,
   displayUserPantry,
-  checkForIngredients
+  checkForIngredients,
+  addToPantry
 }

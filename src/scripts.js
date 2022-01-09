@@ -50,7 +50,8 @@ import {
   pantryBtn,
   checkPantryBtn,
   displayUserPantry,
-  checkForIngredients
+  checkForIngredients,
+  addToPantry
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -106,6 +107,7 @@ addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
+addToPantry.addEventListener('click', addIngredientsToPantry);
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', () => {
@@ -254,6 +256,12 @@ function addToCookList() {
   currentUser.addToCook(foundRecipe);
   displayToCook();
 }
+
+function addIngredientsToPantry() {
+  console.log("this is a console log")
+  displayFavorites()
+}
+
 
 export {currentUser};
 export {recipeRepo};
