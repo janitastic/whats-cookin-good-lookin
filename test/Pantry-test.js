@@ -4,6 +4,7 @@ import User from '../src/classes/User';
 import Recipe from '../src/classes/Recipe';
 import usersData from '../src/data/users';
 import recipeData from '../src/data/recipes';
+import ingredientsData from '../src/data/ingredients';
 
 describe.only('Pantry', () => {
   let user, myPantry, recipe1, recipe2, recipe3, recipe4, fakeRecipe;
@@ -76,4 +77,38 @@ describe.only('Pantry', () => {
     myPantry.checkPantry(fakeRecipe);
     expect(myPantry.shoppingList.length).to.equal(3);
   })
+
+  it('should return the names of ingredients in a recipe', () => {
+    const expected = ['flat leaf parsley leaves',
+  'kosher salt', 'wheat flour', 'whole garlic clove','salt', 'eggs','onions', 'chicken stock', 'basil',
+  'vanilla',
+  'dried red chili',
+  'roasted chicken',
+  'cream cheese',
+  'baking powder',
+  'butter',
+  'canned chipotle chilies in adobo',
+  'buttermilk',
+  'lemon juice',
+  'white onions',
+  'almondmilk',
+  'white wine',
+  'full-fat milk',
+  'bar b que sauce',
+  'egg albumen',
+  'canned tomato',
+  's&p',
+  'instant vanilla pudding',
+  'unsalted butter',
+  'black pepper',
+  'whole almonds',
+  'sucrose',
+  'jumbo shrimp',
+  'apple',
+  'bicarbonate of soda',
+  'oregano'
+];
+    const actual = myPantry.logPantryIngredients(ingredientsData);
+    expect(actual).to.deep.equal(expected);
+  });
 });

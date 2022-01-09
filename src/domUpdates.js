@@ -372,6 +372,27 @@ function displayToCookMessage() {
     hide(favInstructions);
   }
 }
+let ingredientNames;
+function displayUserPantry(ingredientsData) {
+  hide(noRecipes);
+  hide(toCookSection)
+  show(pantrySection)
+  ingredientNames = currentUser.pantry.forEach((step, index) => {
+
+    // let pantryList = currentUser.pantry
+    // console.log(currentUser.pantry)
+  // step.logIngredients(recipeCollection)[index]
+      return pantrySection.innerHTML += 
+      `<article class="full-recipe">
+        <ul>
+          <li class="ingredient-bullet">
+          ${step.amount} ${step.logIngredients(ingredientsData)}
+          </li>
+        </ul>
+      </article>`;
+    });
+    // console.log(ingredientNames)
+}
 
 export default  domUpdates;
 export {
@@ -416,5 +437,6 @@ export {
   favSearchByRecipeName,
   favSearchByIngredients, 
   filterByFavSelection,
-  pantryBtn
+  pantryBtn,
+  displayUserPantry
 }

@@ -47,7 +47,8 @@ import {
   favSearchByRecipeName,
   favSearchByIngredients, 
   filterByFavSelection,
-  pantryBtn
+  pantryBtn,
+  displayUserPantry
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -84,7 +85,7 @@ returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
 toCookBtn.addEventListener('click', () => {displayToCook()});
-pantryBtn.addEventListener('click', () => {displayUserPantry()});
+pantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
 //Main Search Buttons
 searchButton.addEventListener('click', () => {toggleDropDown()});
 searchByName.addEventListener('click', () => {searchByRecipeName()});
