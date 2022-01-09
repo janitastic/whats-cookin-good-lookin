@@ -192,12 +192,19 @@
       <article class="delete-instructions hidden" id="cantCookInstructions">
         <h4 class="instructions">Oops! You can't cook this recipe yet, you don't have enough ingredients.<br>Make a shopping trip and then add the ingredients below to your pantry.</h4>
       </article>
-      <article class="recipe-cards cant-cook-section hidden" id="cantCookSection">
-        <!-- display recipes to cook section -->
-      </article>
+      <!-- <article class="recipe-cards cant-cook-section hidden" id="cantCookSection">
+
+      </article> -->
       <article class="pantry-card hidden" id="pantryCardView">
-        <section class="pantry-title">
+        <section class="pantry-title" id="pantryTitle">
           <h4>Pantry Ingredients</h4>
+          <button class="cook-button" id="addToPantry" title="add to pantry">
+            <img class="add-icon" src="images/add.png" alt="Add Ingredients to Your Pantry">
+            <span class="hide-text">Add to Pantry</span>
+          </button>
+        </section>
+        <section class="pantry-title" id="cantCookTitle">
+          <h4 id="ingNeededTitle"></h4>
           <button class="cook-button" id="addToPantry" title="add to pantry">
             <img class="add-icon" src="images/add.png" alt="Add Ingredients to Your Pantry">
             <span class="hide-text">Add to Pantry</span>
@@ -208,6 +215,10 @@
             <p class="pantry-instructions" id="pantryInstructions">
             </p>
             <section class="pantry-ingredients" id="pantryIngredients">
+              <!-- pantry ingredients display here -->
+            </section>
+            <section class="pantry-ingredients cant-cook hidden" id="cantCookSection">
+              <!-- pantry ingredients display here -->
             </section>
           </aside>
         </summary>

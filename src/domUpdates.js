@@ -401,36 +401,26 @@ function displayUserPantry(ingredientsData) {
 function checkForIngredients(recipeCollection, ingredientsData) {
   hide(toCookSection);
   hide(cookInstructions);
+  show(pantryCardView);
+  hide(pantryTitle);
+  hide(pantryIngredients);
   let myPantryOne = new Pantry(currentUser);
   cantCookSection.innerHTML = '';
-  // displayRecipeCard(recipeCollection, ingredientsData)
   const recipeId = Number(event.target.parentNode.id);
-  //need to match recipeId to a recipe
-  const selectedRecipe = recipeCollection.forEach((recipe, index) => {
-    if (recipe.id === recipeId) {
-      console.log(recipe)
-      show(cantCookInstructions);
+  const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
+  selectedRecipe.ingredients.forEach((elem, index) => {
+    console.log(selectedRecipe)
+      ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
       show(cantCookSection);
       return cantCookSection.innerHTML +=
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
-          ${recipe.ingredients}
+           ${selectedRecipe.logIngredients(ingredientsData)[index]}
           </li>
         </ul>
       </article>`;
-    }
-  });
-  // myPantryOne.checkPantry(recipe)
-  // recipeCollection.forEach((recipe, index) => {
-  //   if (recipe.id === recipeId) {
-  //    return recipeImageName.innerHTML +=
-  //     `<article class="full-recipe">
-  //     <h4>${recipe.name}</h4>
-  //     <img class="recipe-image" src=${recipe.image} alt="image of ${recipe.name}">
-  //     </article>`;
-  //   }
-  // });
+    });
 }
 
 function displayIngredientsNeeded() {
