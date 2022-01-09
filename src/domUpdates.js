@@ -16,6 +16,7 @@ import './images/snacks.png';
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';
 import Pantry from './classes/Pantry';
+import ingredientsData from './data/ingredients';
 
 
               /*********** QUERY SELECTORS ***********/
@@ -394,8 +395,12 @@ function displayUserPantry(ingredientsData) {
     });
 }
 
-function checkForIngredients() {
-  console.log('hello')
+function checkForIngredients(recipeCollection, ingredientsData) {
+  // let myPantryOne = new Pantry(currentUser);
+  // myPantryOne.checkPantry(selectRecipe)
+  toCookSection.innerHTML = '';
+ displayRecipeCard(recipeCollection, ingredientsData)
+ 
 }
 
 export default  domUpdates;

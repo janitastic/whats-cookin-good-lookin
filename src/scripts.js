@@ -63,6 +63,7 @@ let usersData = [];
 let ingredients;
 let currentUserId;
 let myCurrentRecipeId;
+let currentUserPantry;
 let currentUserFavorites;
 let recipeClasses;
 const tags = {
@@ -80,7 +81,7 @@ const tags = {
 window.addEventListener('load', loadPage);
 //Sections
 recipeCardSection.addEventListener('click', selectRecipeCard);
-toCookSection.addEventListener('click', checkForIngredients)
+toCookSection.addEventListener('click', selectRecipeToCook)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 //Menu Buttons
@@ -196,6 +197,7 @@ function getUser() {
   currentUser = new User(usersData[userIndex]);
   currentUserName = currentUser.name;
   currentUserId = currentUser.id;
+  currentUserPantry = currentUser.pantry;
   return currentUser;
 }
 
@@ -223,6 +225,11 @@ function selectRecipeCard() {
   displayRecipeCard(recipeClasses, ingredientsData);
 }
 
+function selectRecipeToCook() {
+  const recipeId = Number(event.target.parentNode.id);
+  myCurrentRecipeId = recipeId;
+  checkForIngredients(recipeClasses, ingredientsData);
+}
           /*********** FAVORITE PAGE FUNCTIONS ***********/
 
 function saveToFavorites() {
