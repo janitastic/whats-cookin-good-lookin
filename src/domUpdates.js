@@ -431,7 +431,10 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
   myPantryOne.checkPantry(selectedRecipe);
   console.log(myPantryOne.shoppingList)
-  myPantryOne.shoppingList.forEach((elem, index) => {
+  if(myPantryOne.shoppingList === []) {
+    displayRecipeCard(recipeCollection, ingredientsData)
+  } else {
+    myPantryOne.shoppingList.forEach((elem, index) => {
       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
       show(cantCookSection);
       return cantCookSection.innerHTML +=
@@ -443,6 +446,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
         </ul>
       </article>`;
     });
+  }
 }
 
 function displayIngredientsNeeded() {
