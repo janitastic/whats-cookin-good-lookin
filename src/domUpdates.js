@@ -431,6 +431,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   const recipeId = Number(event.target.parentNode.id);
   const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
   currentPantry.checkPantry(selectedRecipe);
+  console.log(currentPantry.shoppingList)
   if(currentPantry.shoppingList === []) {
     displayRecipeCard(recipeCollection, ingredientsData)
   } else {
