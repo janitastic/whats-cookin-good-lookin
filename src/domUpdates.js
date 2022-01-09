@@ -396,12 +396,48 @@ function displayUserPantry(ingredientsData) {
 }
 
 function checkForIngredients(recipeCollection, ingredientsData) {
-  // let myPantryOne = new Pantry(currentUser);
-  // myPantryOne.checkPantry(selectRecipe)
+  let myPantryOne = new Pantry(currentUser);
   toCookSection.innerHTML = '';
- displayRecipeCard(recipeCollection, ingredientsData)
- 
+  displayRecipeCard(recipeCollection, ingredientsData)
+  const recipeId = Number(event.target.parentNode.id);
+  //need to match recipeId to a recipe
+  const selectedRecipe = recipeCollection.forEach((recipe, index) => {
+    if (recipe.id === recipeId) {
+      console.log(recipe)
+      return toCookSection.innerHTML += 
+      `<article class="full-recipe">
+        <ul>
+          <li class="ingredient-bullet">
+          ${recipe.ingredients}
+          </li>
+        </ul>
+      </article>`;
+    }
+  });
+  // myPantryOne.checkPantry(recipe)
+  // recipeCollection.forEach((recipe, index) => {
+  //   if (recipe.id === recipeId) {
+  //    return recipeImageName.innerHTML +=
+  //     `<article class="full-recipe">
+  //     <h4>${recipe.name}</h4>
+  //     <img class="recipe-image" src=${recipe.image} alt="image of ${recipe.name}">
+  //     </article>`;
+  //   }
+  // });
 }
+
+function displayIngredientsNeeded() {
+  recipeCollection.forEach((recipe, index) => {
+    if (recipe.id === recipeId) {
+     return recipeImageName.innerHTML +=
+      `<article class="full-recipe">
+      <h4>${recipe.name}</h4>
+      <img class="recipe-image" src=${recipe.image} alt="image of ${recipe.name}">
+      </article>`;
+    }
+  });
+}
+
 
 export default  domUpdates;
 export {
