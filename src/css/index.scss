@@ -121,7 +121,8 @@ a {
 }
 
 .card,
-.individual-card {
+.individual-card,
+.pantry-card {
 	border-radius: 0.5em;
   font-size: 1.2em;
   background-color: rgba(10, 30, 35, .90);
@@ -129,10 +130,16 @@ a {
 	padding: 5%;
 }
 
-.individual-card {
+.individual-card,
+.pantry-card {
 	display: flex;
   flex-direction: column;
 	margin: 5% 20%;
+}
+
+.pantry-list {
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .name-and-image {
@@ -278,6 +285,11 @@ input {
 	grid-template-columns: 50% 50%;
 	justify-content: center;
 	margin: 0 0 10% 0;
+}
+
+.pantry-title {
+	display: flex;
+	justify-content: space-between;
 }
 
 .recipe-card-button {
