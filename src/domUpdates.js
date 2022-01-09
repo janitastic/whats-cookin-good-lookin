@@ -365,6 +365,7 @@ function displayToCook() {
 }
 
 function displayToCookMessage() {
+  hide(pantrySection)
   if (currentUser.toCook.length === 0) {
     show(noRecipes);
     hide(favInstructions);
@@ -373,14 +374,14 @@ function displayToCookMessage() {
     hide(favInstructions);
   }
 }
-// let ingredientNames;
+
 function displayUserPantry(ingredientsData) {
   hide(noRecipes);
   hide(toCookSection)
   show(pantrySection)
-  let myPantryOne = new Pantry(currentUser)
+  pantrySection.innerHTML = '';
+  let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
-    // step.logIngredients(recipeCollection)[index]
       return pantrySection.innerHTML += 
       `<article class="full-recipe">
         <ul>
@@ -390,7 +391,6 @@ function displayUserPantry(ingredientsData) {
         </ul>
       </article>`;
     });
-    // console.log(ingredientNames)
 }
 
 export default  domUpdates;
