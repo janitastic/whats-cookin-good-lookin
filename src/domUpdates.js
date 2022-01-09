@@ -15,6 +15,7 @@ import './images/snacks.png';
 
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';
+import Pantry from './classes/Pantry';
 
 
               /*********** QUERY SELECTORS ***********/
@@ -372,21 +373,19 @@ function displayToCookMessage() {
     hide(favInstructions);
   }
 }
-let ingredientNames;
+// let ingredientNames;
 function displayUserPantry(ingredientsData) {
   hide(noRecipes);
   hide(toCookSection)
   show(pantrySection)
-  ingredientNames = currentUser.pantry.forEach((step, index) => {
-
-    // let pantryList = currentUser.pantry
-    // console.log(currentUser.pantry)
-  // step.logIngredients(recipeCollection)[index]
+  let myPantryOne = new Pantry(currentUser)
+  myPantryOne.pantry.forEach((step, index) => {
+    // step.logIngredients(recipeCollection)[index]
       return pantrySection.innerHTML += 
       `<article class="full-recipe">
         <ul>
           <li class="ingredient-bullet">
-          ${step.amount} ${step.logIngredients(ingredientsData)}
+          ${step.amount} ${myPantryOne.logPantryIngredients(ingredientsData)[index]}
           </li>
         </ul>
       </article>`;
