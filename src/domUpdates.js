@@ -394,6 +394,10 @@ function displayUserPantry(ingredientsData) {
     });
 }
 
+function checkForIngredients() {
+  console.log('hello')
+}
+
 export default  domUpdates;
 export {
   allRecipesBtn,
@@ -438,5 +442,6 @@ export {
   favSearchByIngredients, 
   filterByFavSelection,
   pantryBtn,
-  displayUserPantry
+  displayUserPantry, 
+  checkForIngredients
 }

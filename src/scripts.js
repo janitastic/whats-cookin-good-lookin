@@ -48,7 +48,8 @@ import {
   favSearchByIngredients, 
   filterByFavSelection,
   pantryBtn,
-  displayUserPantry
+  displayUserPantry, 
+  checkForIngredients
 } from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
@@ -79,6 +80,7 @@ const tags = {
 window.addEventListener('load', loadPage);
 //Sections
 recipeCardSection.addEventListener('click', selectRecipeCard);
+toCookSection.addEventListener('click', checkForIngredients)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 //Menu Buttons
