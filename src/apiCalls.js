@@ -1,5 +1,7 @@
 // Your fetch requests will live here!
 
+import { currentUser } from "./scripts";
+
 
 console.log('I will be a fetch request!')
 
@@ -37,4 +39,17 @@ function fetchIngredientsData() {
   .catch(err => console.log(err));
  }
 
- export {fetchUsersData, fetchIngredientsData, fetchRecipesData};
+ const postToPantry = (missingIngredients) => {
+    return fetch('http://localhost:3001/api/v1/users', {
+        method: 'POST',
+        body: JSON.stringify(missingIngredients), 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+}
+
+ export {fetchUsersData, fetchIngredientsData, fetchRecipesData, postToPantry};

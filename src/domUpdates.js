@@ -15,11 +15,13 @@ import './images/snacks.png';
 import './images/add.png';
 import './images/pantry.png';
 
+import {postIngredient} from './scripts';
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';
 import Pantry from './classes/Pantry';
 import ingredientsData from './data/ingredients';
-
+let currentPantry;
+let missingIngredients;
 
               /*********** QUERY SELECTORS ***********/
 
@@ -128,6 +130,7 @@ function showToCookSection() {
   hide(favoriteSearch);
   hide(allSearch);
   hide(pantryCardView);
+  hide(cantCookInstructions);
 }
 
 function showPantryCardSection() {
@@ -183,8 +186,6 @@ function displayAllRecipes(recipeCollection) {
        </article>`;
    });
 }
-
-
 
 function displayRecipeCard(recipeCollection, ingredientsData) {
   showBigRecipeCard()
@@ -347,7 +348,7 @@ function favSearchByRecipeName() {
   let userInput = favSearchInput.value;
   let filteredRecipes = currentUser.filterByNameFav(userInput);
   filteredRecipes.forEach(recipe => {
-    console.log("recipe name", recipe.name);
+    // console.log("recipe name", recipe.name);
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
@@ -410,6 +411,8 @@ function displayUserPantry(ingredientsData) {
   hide(cookInstructions);
   show(pantryCardView);
   hide(recipeCardSection);
+  hide(cantCookSection);
+  hide(pantryCardView);
   pantryIngredients.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
@@ -426,16 +429,15 @@ function displayUserPantry(ingredientsData) {
 
 function checkForIngredients(recipeCollection, ingredientsData) {
   showPantryCardSection();
-  let currentPantry = new Pantry(currentUser);
+  currentPantry = new Pantry(currentUser);
   cantCookSection.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
   currentPantry.checkPantry(selectedRecipe);
-  console.log(currentPantry.shoppingList)
   if(currentPantry.shoppingList === []) {
     displayRecipeCard(recipeCollection, ingredientsData)
   } else {
-    currentPantry.shoppingList.forEach((elem, index) => {
+    missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
       show(cantCookSection);
       show(cantCookInstructions);
@@ -449,19 +451,31 @@ function checkForIngredients(recipeCollection, ingredientsData) {
       </article>`;
     });
   }
+  // onClick(currentPantry.shoppingList);
 }
 
-function displayIngredientsNeeded() {
-  recipeCollection.forEach((recipe, index) => {
-    if (recipe.id === recipeId) {
-     return recipeImageName.innerHTML +=
-      `<article class="full-recipe">
-        <h4>${recipe.name}</h4>
-        <img class="recipe-image" src=${recipe.image} alt="image of ${recipe.name}">
-      </article>`;
-    }
-  });
+function onClick() {
+  postIngredient(currentPantry)
+  console.log(currentPantry.shoppingList)
 }
+
+
+
+// function displayIngredientsNeeded() {
+//   const missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
+//       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
+//       show(cantCookSection);
+//       show(cantCookInstructions);
+//       return cantCookSection.innerHTML +=
+//       `<article class="full-recipe">
+//         <ul>
+//           <li class="ingredient-bullet">
+//            ${elem.amount} ${selectedRecipe.logIngredients(ingredientsData)[index]}
+//           </li>
+//         </ul>
+//       </article>`;
+//     });
+// }
 
 
 export default  domUpdates;
@@ -511,5 +525,8 @@ export {
   checkPantryBtn,
   displayUserPantry,
   checkForIngredients,
-  addToPantry
+  addToPantry,
+  missingIngredients,
+  onClick
 }
+export {currentPantry}
