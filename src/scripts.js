@@ -1,10 +1,9 @@
-import {fetchUsersData, fetchIngredientsData, fetchRecipesData, postToPantry} from './apiCalls';
+import {fetchUsersData, fetchIngredientsData, fetchRecipesData} from './apiCalls';
 
 import Recipe from './classes/Recipe';
 import User from './classes/User';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
-import Pantry from './classes/Pantry';
 import domUpdates from './domUpdates';
 import {
   allRecipesBtn,
@@ -51,12 +50,8 @@ import {
   pantryBtn,
   checkPantryBtn,
   displayUserPantry,
-  checkForIngredients,
-  addToPantry,
-  missingIngredients,
-  onClick
+  checkForIngredients
 } from './domUpdates';
-import {currentPantry} from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
 
@@ -90,7 +85,7 @@ recipeCardSection.addEventListener('click', selectRecipeCard);
 toCookSection.addEventListener('click', selectRecipeToCook)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
-checkPantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
+pantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
 //Menu Buttons
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
@@ -111,8 +106,6 @@ addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
-addToPantry.addEventListener('click', () => {onClick();
-});
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', () => {
@@ -259,28 +252,8 @@ function removeFromFavorites() {
 function addToCookList() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
   currentUser.addToCook(foundRecipe);
-  displayToCook();
+//   displayToCook();
 }
-
-// function addIngredientsToPantry() {
-//   console.log("this is a console log")
-//   displayFavorites()
-// }
-
-
-function postIngredient() {
-  currentPantry.shoppingList.forEach(item => {
-    let ingredient = {userID: currentUser.id, ingredientID: item.ingredient, ingredientModification: item.amount}
-    currentPantry.pantry.push(item)
-    postToPantry(ingredient).then(ingredient => {
-    currentPantry.logPantryIngredients(ingredientsData)
-    });
-  });
-  currentPantry.shoppingList = [];
-  // displayRecipeCard(recipeClasses, ingredientsData);
-}
-
-export {postIngredient};
 
 export {currentUser};
 export {recipeRepo};

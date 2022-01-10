@@ -15,7 +15,7 @@ import './images/snacks.png';
 import './images/add.png';
 import './images/pantry.png';
 
-import {postIngredient} from './scripts';
+// import {postIngredient} from './scripts';
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';
 import Pantry from './classes/Pantry';
@@ -412,7 +412,6 @@ function displayUserPantry(ingredientsData) {
   show(pantryCardView);
   hide(recipeCardSection);
   hide(cantCookSection);
-  hide(pantryCardView);
   pantryIngredients.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
@@ -458,24 +457,6 @@ function onClick() {
   postIngredient(currentPantry)
   console.log(currentPantry.shoppingList)
 }
-
-
-
-// function displayIngredientsNeeded() {
-//   const missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
-//       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
-//       show(cantCookSection);
-//       show(cantCookInstructions);
-//       return cantCookSection.innerHTML +=
-//       `<article class="full-recipe">
-//         <ul>
-//           <li class="ingredient-bullet">
-//            ${elem.amount} ${selectedRecipe.logIngredients(ingredientsData)[index]}
-//           </li>
-//         </ul>
-//       </article>`;
-//     });
-// }
 
 
 export default  domUpdates;

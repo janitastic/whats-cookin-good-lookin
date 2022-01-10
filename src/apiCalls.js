@@ -42,7 +42,7 @@ function fetchIngredientsData() {
  const postToPantry = (missingIngredients) => {
     return fetch('http://localhost:3001/api/v1/users', {
         method: 'POST',
-        body: JSON.stringify(missingIngredients), 
+        body: JSON.stringify(missingIngredients),
         headers: {
             'Content-Type': 'application/json'
         }
