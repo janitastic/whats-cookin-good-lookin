@@ -14,6 +14,7 @@ import './images/condiments.png';
 import './images/snacks.png';
 import './images/add.png';
 import './images/pantry.png';
+import './images/trash.png';
 
 import {postIngredient} from './scripts';
 import {currentUser} from './scripts';
@@ -77,6 +78,7 @@ let favShowAllButton = document.getElementById('favShowAllButton');
 let favoriteButton = document.getElementById('favoriteButton');
 let addToCookButton = document.getElementById('addToCook');
 let addToPantry = document.getElementById('addToPantry');
+let trashButton = document.getElementById('trashBtn');
 
               /*********** HELPER FUNCTIONS ***********/
 function show(element) {
@@ -175,6 +177,8 @@ function showCantCookCard() {
   show(cantCookTitle);
   hide(pantryTitle);
   hide(pantryIngredients);
+  show(addToCook);
+  hide(trashButton);
 }
 
 function displayDeleteFavMessage() {
@@ -414,7 +418,7 @@ function chooseToCookView() {
     hide(checkPantryBtn);
     show(cookInstructions);
     show(toCookSection);
-    show(cantCookInstructions);//if not enough ingredients
+    show(cantCookInstructions);
   } else {
     show(noRecipes);
     show(checkPantryBtn);
@@ -468,6 +472,8 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   console.log('should generate a list of missingIngredients', currentPantry.shoppingList)
   if (currentPantry.shoppingList.length < 1) {
     displayRecipeCard(recipeCollection, ingredientsData)
+    hide(addToCook);
+    show(trashButton);
   } else {
     showCantCookCard();
     missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
@@ -490,7 +496,6 @@ function addMissingIngredients() {
   postIngredient(currentPantry)
   console.log('this should still be empty []', currentPantry.shoppingList)
 }
-
 
 export default  domUpdates;
 export {
@@ -543,6 +548,7 @@ export {
   missingIngredients,
   addMissingIngredients,
   selectPantryMenu,
-  welcomeUser
+  welcomeUser,
+  trashButton
 }
 export {currentPantry}

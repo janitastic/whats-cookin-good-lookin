@@ -56,7 +56,8 @@ import {
   missingIngredients,
   addMissingIngredients,
   selectPantryMenu,
-  welcomeUser
+  welcomeUser,
+  trashButton
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
@@ -115,6 +116,7 @@ addToCookButton.addEventListener('click', addToCookList);
 favoriteButton.addEventListener('click', saveToFavorites);
 addToPantry.addEventListener('click', () => {addMissingIngredients();
 });
+trashButton.addEventListener('click', loadPage);
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', () => {
