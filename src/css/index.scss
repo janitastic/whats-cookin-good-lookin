@@ -41,15 +41,18 @@ body {
 
 header {
 	background-color: rgba(242,242,242,.25);
-	display: flex;
-  // justify-content: space-between;
 	padding: 2%;
 	background-color: #0A1E23;
+	display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1em;
+  justify-items: stretch;
 }
 
 nav {
 	display: flex;
-	// padding: 0 10% 0 0;
+	flex-wrap: wrap;
+	justify-content: flex-end;
 }
 
 h1 {
@@ -212,7 +215,7 @@ hr {
   border: none;
   font-size: 1.3em;
 	white-space: nowrap;
-	padding: 0 5%;
+	padding: 0 2%;
 }
 
 .icon,

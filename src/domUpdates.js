@@ -104,6 +104,7 @@ function showRecipeCardSection() {
   hide(pantryCardView);
   hide(favInstructions);
   hide(cookInstructions);
+  hide(cantCookInstructions);
 }
 
 function showFavoritesSection() {
