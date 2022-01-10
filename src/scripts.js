@@ -269,15 +269,15 @@ function addToCookList() {
 
 
 function postIngredient() {
-  console.log(currentPantry.shoppingList)
   currentPantry.shoppingList.forEach(item => {
     let ingredient = {userID: currentUser.id, ingredientID: item.ingredient, ingredientModification: item.amount}
-    console.log(ingredient)
+    currentPantry.pantry.push(item)
     postToPantry(ingredient).then(ingredient => {
     currentPantry.logPantryIngredients(ingredientsData)
-    // checkForIngredients(recipeClasses, ingredientsData);
-  })
-  })
+    });
+  });
+  currentPantry.shoppingList = [];
+  // displayRecipeCard(recipeClasses, ingredientsData);
 }
 
 export {postIngredient};

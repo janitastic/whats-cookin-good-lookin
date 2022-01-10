@@ -130,6 +130,7 @@ function showToCookSection() {
   hide(favoriteSearch);
   hide(allSearch);
   hide(pantryCardView);
+  hide(cantCookInstructions);
 }
 
 function showPantryCardSection() {
@@ -185,8 +186,6 @@ function displayAllRecipes(recipeCollection) {
        </article>`;
    });
 }
-
-
 
 function displayRecipeCard(recipeCollection, ingredientsData) {
   showBigRecipeCard()
@@ -349,7 +348,7 @@ function favSearchByRecipeName() {
   let userInput = favSearchInput.value;
   let filteredRecipes = currentUser.filterByNameFav(userInput);
   filteredRecipes.forEach(recipe => {
-    console.log("recipe name", recipe.name);
+    // console.log("recipe name", recipe.name);
     return favoritesSection.innerHTML +=
     `<article class="card" id="${recipe.id}">
       <h3>${recipe.name}</h3>
@@ -412,6 +411,8 @@ function displayUserPantry(ingredientsData) {
   hide(cookInstructions);
   show(pantryCardView);
   hide(recipeCardSection);
+  hide(cantCookSection);
+  hide(pantryCardView);
   pantryIngredients.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
@@ -433,7 +434,6 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   const recipeId = Number(event.target.parentNode.id);
   const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
   currentPantry.checkPantry(selectedRecipe);
-  // console.log(currentPantry.shoppingList)
   if(currentPantry.shoppingList === []) {
     displayRecipeCard(recipeCollection, ingredientsData)
   } else {
@@ -456,7 +456,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
 
 function onClick() {
   postIngredient(currentPantry)
-  currentPantry.push(currentPantry.shoppingList)
+  console.log(currentPantry.shoppingList)
 }
 
 
