@@ -180,7 +180,10 @@
       </article>
       <article class="no-recipes hidden" id="noRecipes">
         <!-- display delete message here -->
-        <h4 class="instructions">Oops! You haven't selected any recipes yet.</h4>
+        <h4 class="instructions oops" id="oops">Oops! You haven't selected any recipes yet.</h4>
+        <h4 class="instructions post-successful" id="postSuccessful">Your pantry has been updated.<br>
+          <img class="add-icon" src="images/checked.png" alt="Add Ingredients to Your Pantry">
+          <br>You're ready to cook!</h4>
         <button class="return-button" id="returnBtn">Back to Recipes</button>
         <button class="check-pantry-btn" id="checkPantryBtn">Check Your Pantry!</button>
       </article>
@@ -196,12 +199,12 @@
       <article class="recipe-cards to-cook-section hidden" id="toCookSection">
         <!-- display recipes to cook section -->
       </article>
+      <!-- <article class="post-successful" id="postSuccessful">
+        <h4 class="instructions">Your pantry has been updated.<br>You're ready to cook!</h4>
+      </article> -->
       <article class="delete-instructions hidden" id="cantCookInstructions">
         <h4 class="instructions">Oops! You can't cook this recipe yet, you don't have enough ingredients.<br>Make a shopping trip and then add the ingredients below to your pantry.</h4>
       </article>
-      <!-- <article class="recipe-cards cant-cook-section hidden" id="cantCookSection">
-
-      </article> -->
       <article class="pantry-card hidden" id="pantryCardView">
         <section class="pantry-title" id="pantryTitle">
           <h4>Pantry Ingredients</h4>
@@ -212,19 +215,18 @@
           </button>
         </section>
         <section class="pantry-title hidden" id="cantCookTitle">
-          <h4 id="ingNeededTitle"></h4>
+          <h4 id="ingNeededTitle">
+            <!-- Ingredient Needed title posts here -->
+          </h4>
           <button class="cook-button" id="addToPantry" title="add to pantry">
             <img class="add-icon" src="images/add.png" alt="Add Ingredients to Your Pantry">
             <span class="hide-text">Add to Pantry</span>
           </button>
-          <!-- <button class="cook-button" id="added" title="successfully added">
-            <img class="add-icon" src="images/add.png" alt="Successfully Added">
-            <span class="hide-text">Added!</span>
-          </button> -->
         </section>
         <summary class="recipe-card-top">
           <aside class="ingredients">
             <p class="pantry-instructions" id="pantryInstructions">
+              <!-- pantry instructions display here -->
             </p>
             <section class="pantry-ingredients" id="pantryIngredients">
               <!-- pantry ingredients display here -->
