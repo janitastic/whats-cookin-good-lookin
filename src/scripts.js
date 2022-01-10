@@ -55,7 +55,8 @@ import {
   addToPantry,
   missingIngredients,
   addMissingIngredients,
-  selectPantryMenu
+  selectPantryMenu,
+  welcomeUser
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
@@ -91,7 +92,7 @@ recipeCardSection.addEventListener('click', selectRecipeCard);
 toCookSection.addEventListener('click', selectRecipeToCook)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
-checkPantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
+checkPantryBtn.addEventListener('click', () => {selectPantryMenu()});
 //Menu Buttons
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
@@ -224,8 +225,7 @@ function loadPage() {
     getUser();
     getRecipes();
     domUpdates(recipeClasses);
-    userMessage.innerHTML =
-      `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
+    welcomeUser();
   })
 }
 
