@@ -19,6 +19,7 @@ import './images/trash.png';
 import {postIngredient} from './scripts';
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';
+import {removeIngredient} from './scripts';
 import Pantry from './classes/Pantry';
 import ingredientsData from './data/ingredients';
 let currentPantry;
@@ -476,7 +477,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
     show(trashButton);
   } else {
     showCantCookCard();
-    missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
+    currentPantry.shoppingList.forEach((elem, index) => {
       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
       show(cantCookSection);
       show(cantCookInstructions);
@@ -493,8 +494,13 @@ function checkForIngredients(recipeCollection, ingredientsData) {
 }
 
 function addMissingIngredients() {
-  postIngredient(currentPantry)
+  postIngredient(currentPantry);
   console.log('this should still be empty []', currentPantry.shoppingList)
+}
+
+function removeFromPantry(recipeCollection, ingredientsData) {
+  removeIngredient(recipeCollection, ingredientsData);
+  // console.log('RECIPE ID HERE PLEASE! >>>', recipe.id)
 }
 
 export default  domUpdates;
@@ -545,10 +551,10 @@ export {
   displayUserPantry,
   checkForIngredients,
   addToPantry,
-  missingIngredients,
   addMissingIngredients,
   selectPantryMenu,
   welcomeUser,
-  trashButton
+  trashButton,
+  removeFromPantry
 }
 export {currentPantry}

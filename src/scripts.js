@@ -53,11 +53,11 @@ import {
   displayUserPantry,
   checkForIngredients,
   addToPantry,
-  missingIngredients,
   addMissingIngredients,
   selectPantryMenu,
   welcomeUser,
-  trashButton
+  trashButton,
+  removeFromPantry
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
@@ -116,7 +116,7 @@ addToCookButton.addEventListener('click', addToCookList);
 favoriteButton.addEventListener('click', saveToFavorites);
 addToPantry.addEventListener('click', () => {addMissingIngredients();
 });
-trashButton.addEventListener('click', loadPage);
+trashButton.addEventListener('click', removeIngredient);
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', () => {
@@ -284,6 +284,41 @@ function postIngredient() {
   displayToCook();
 }
 
+function removeIngredient() {
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
+  console.log('foundRecipe', foundRecipe)
+  // currentUser.addToCook(foundRecipe);
+  // displayToCook();
+}
+
+// function removeIngredient(recipeClasses, ingredientsData) {
+//   const recipeId = Number(event.target.parentNode.id);
+//   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
+//   console.log('RECIPE ID HERE PLEASE! >>>', recipeId)
+  // foundRecipe.ingredients.forEach((step, index) => {
+  //     return recipeIngredients.innerHTML +=
+  //     `<article class="full-recipe">
+  //       <ul>
+  //         <li class="ingredient-bullet">
+  //         ${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients(ingredientsData)[index]}
+  //         </li>
+  //       </ul>
+  //     </article>`;
+  //   });
+
+  // currentPantry.pantry.forEach(item => {
+  //   let ingredient = {userID: currentUser.id, ingredientID: item.ingredient, ingredientModification: item.amount}
+  //   currentPantry.pantry.push(item)
+  //   postToPantry(ingredient).then(ingredient => {
+  //   currentPantry.logPantryIngredients(ingredientsData)
+  //   });
+  // });
+  // currentPantry.pantry = [];
+
+  // displayToCook();
+// }
+
 export {postIngredient};
 export {currentUser};
 export {recipeRepo};
+export {removeIngredient};
