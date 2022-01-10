@@ -204,6 +204,11 @@ function fetchAllData() {
   return response;
 }
 
+function fetchUserData() {
+  const response = Promise.all([fetchUsersData()])
+  return response
+}
+
 function getUser() {
   let userIndex = getRandomIndex(usersData);
   currentUser = new User(usersData[userIndex]);
@@ -281,6 +286,7 @@ function postIngredient() {
   currentPantry.shoppingList = [];
   console.log('AFTER adding shopping list to pantry should be []', currentPantry.shoppingList)
   displayToCook();
+  updatePantryData();
 }
 
 function removeIngredient() {
@@ -305,6 +311,12 @@ function removeIngredient() {
   console.log('pantry AFTER remove', currentPantry.pantry)
   // currentUser.addToCook(foundRecipe);
   // displayToCook();
+}
+
+function updatePantryData() {
+  fetchUserData().then(data => {
+    return currentUser.pantry
+  })
 }
 
 
