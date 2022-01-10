@@ -286,37 +286,30 @@ function postIngredient() {
 
 function removeIngredient() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
-  console.log('foundRecipe', foundRecipe)
+  // console.log('foundRecipe', foundRecipe);
+  console.log('pantry', currentPantry.pantry)
+
+  foundRecipe.ingredients.forEach(item => {
+    let ingredient = {userID: currentUser.id, ingredientID: item.id, ingredientModification: -item.quantity.amount}
+
+    //NEED CODE BELOW FOR DOM
+    // const index = currentPantry.pantry.indexOf(item);
+    //   if (index > -1) {
+    //     currentPantry.pantry.splice(index, 1);
+    // }
+
+    postToPantry(ingredient).then(ingredient => {
+    currentPantry.logPantryIngredients(ingredientsData)
+    });
+  });
+
+  console.log('pantry AFTER remove', currentPantry.pantry)
   // currentUser.addToCook(foundRecipe);
   // displayToCook();
 }
 
-// function removeIngredient(recipeClasses, ingredientsData) {
-//   const recipeId = Number(event.target.parentNode.id);
-//   const foundRecipe = recipeClasses.find(recipe => recipe.id === recipeId);
-//   console.log('RECIPE ID HERE PLEASE! >>>', recipeId)
-  // foundRecipe.ingredients.forEach((step, index) => {
-  //     return recipeIngredients.innerHTML +=
-  //     `<article class="full-recipe">
-  //       <ul>
-  //         <li class="ingredient-bullet">
-  //         ${step.quantity.amount} ${step.quantity.unit} ${foundRecipe.logIngredients(ingredientsData)[index]}
-  //         </li>
-  //       </ul>
-  //     </article>`;
-  //   });
 
-  // currentPantry.pantry.forEach(item => {
-  //   let ingredient = {userID: currentUser.id, ingredientID: item.ingredient, ingredientModification: item.amount}
-  //   currentPantry.pantry.push(item)
-  //   postToPantry(ingredient).then(ingredient => {
-  //   currentPantry.logPantryIngredients(ingredientsData)
-  //   });
-  // });
-  // currentPantry.pantry = [];
 
-  // displayToCook();
-// }
 
 export {postIngredient};
 export {currentUser};
