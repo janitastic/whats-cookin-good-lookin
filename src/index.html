@@ -40,7 +40,7 @@
             </button>
             <div class="drop-down-search hidden" id="dropDownSearch">
               <h2 class="search-title">What would you like to cook?</h2>
-              <input class="input" type="search" placeholder="Search by name or ingredients" id="searchBar" required>
+              <input class="input" type="search" placeholder="Search by name or ingredients" id="searchBar" label="search" required>
               <p class="example-text">Example: Chicken, pork, flour, chocolate, etc.</p>
               <a href="#recipeCardSection">
                 <button class="search-buttons" id="searchByNameLink" disabled>Search Recipe Names</button>
@@ -56,7 +56,7 @@
               <i class="fa fa-chevron-down fa-flip-horizontal"></i>
               </span>
             </button>
-            <div class="fav-drop-down-search hidden" id="favDropDownSearch">
+            <div class="fav-drop-down-search hidden" id="favDropDownSearch" tabindex="-1">
               <h2 class="search-title">What would you like to cook?</h2>
               <input class="input" type="search" placeholder="Search by name or ingredients" id="favSearchBar" required>
               <p class="example-text">Example: Chicken, pork, flour, chocolate, etc.</p>
@@ -217,6 +217,10 @@
             <img class="add-icon" src="images/add.png" alt="Add Ingredients to Your Pantry">
             <span class="hide-text">Add to Pantry</span>
           </button>
+          <!-- <button class="cook-button" id="added" title="successfully added">
+            <img class="add-icon" src="images/add.png" alt="Successfully Added">
+            <span class="hide-text">Added!</span>
+          </button> -->
         </section>
         <summary class="recipe-card-top">
           <aside class="ingredients">

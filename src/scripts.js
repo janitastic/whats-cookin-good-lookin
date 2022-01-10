@@ -199,10 +199,9 @@ function getRandomIndex(array) {
               /*********** HOME PAGE FUNCTIONS ***********/
 
 
-async function fetchAllData() {
-  const response = await Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
-
-  return response
+function fetchAllData() {
+  const response = Promise.all([fetchUsersData(), fetchIngredientsData(), fetchRecipesData()])
+  return response;
 }
 
 function getUser() {
