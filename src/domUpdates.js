@@ -141,6 +141,7 @@ function showPantryCardSection() {
   hide(pantryTitle);
   hide(pantryIngredients);
   show(cantCookTitle);
+  show(pantryIngredients);
 }
 
 function showBigRecipeCard() {
@@ -417,13 +418,27 @@ function displayToCookMessage() {
   }
 }
 
+function selectPantryMenu() {
+  show(pantryTitle);
+  hide(cantCookInstructions);
+  hide(cantCookTitle);
+  hide(cantCookSection);
+  displayUserPantry(ingredientsData);
+}
+
+function showCantCookCard() {
+  show(cantCookInstructions);
+  show(cantCookTitle);
+  hide(pantryTitle);
+}
+
 function displayUserPantry(ingredientsData) {
   hide(noRecipes);
-  hide(toCookSection);
-  hide(cookInstructions);
+  // hide(toCookSection);
+  // hide(cookInstructions);
   show(pantryCardView);
   hide(recipeCardSection);
-  hide(cantCookSection);
+  // hide(cantCookSection);
   pantryIngredients.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
@@ -521,6 +536,7 @@ export {
   checkForIngredients,
   addToPantry,
   missingIngredients,
-  addMissingIngredients
+  addMissingIngredients,
+  selectPantryMenu
 }
 export {currentPantry}

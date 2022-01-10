@@ -54,7 +54,8 @@ import {
   checkForIngredients,
   addToPantry,
   missingIngredients,
-  addMissingIngredients
+  addMissingIngredients,
+  selectPantryMenu
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
@@ -95,7 +96,7 @@ checkPantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsDat
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
 toCookBtn.addEventListener('click', () => {displayToCook()});
-pantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
+pantryBtn.addEventListener('click', () => {selectPantryMenu()});
 //Main Search Buttons
 searchButton.addEventListener('click', () => {toggleDropDown()});
 searchByName.addEventListener('click', () => {searchByRecipeName()});
