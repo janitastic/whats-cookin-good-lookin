@@ -2,12 +2,9 @@
 @import './_variables.scss';
 
 
-
-// font-family: 'Poppins', sans-serif;
-// font-family: 'Raleway', sans-serif;
 * {
-	font-family: 'Raleway', sans-serif;
-	color: $off-white;
+	font-family: $bodyFont;
+	color: $offWhite;
 }
 
 html {
@@ -16,7 +13,7 @@ html {
 
 body {
 	height: 100vh;
-	background-color: $golden-tan;
+	background-color: $goldenTan;
 	line-height: 1.2;
 }
 
@@ -33,9 +30,9 @@ header {
 	padding: 2%;
 	background-color: $dark-green;
 	display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 1em;
-  justify-items: stretch;
+	grid-template-columns: 1fr 2fr;
+	grid-gap: 1em;
+	justify-items: stretch;
 }
 
 nav {
@@ -45,22 +42,21 @@ nav {
 }
 
 h1 {
-	font-family: 'Poppins', sans-serif;
+	font-family: $headerFont;
 	font-size: 2em;
-	color: $off-white;
+	color: $offWhite;
 }
 
 h2 {
-	font-family: 'Poppins', sans-serif;
+	font-family: $headerFont;
 	font-size: 1.5em;
-	color: $off-white;
+	color: $offWhite;
 	text-shadow: 3px 3px 8px black;
-	/* margin-bottom: 5%; */
 }
 
 h3 {
 	font-size: 1.2em;
-	color: $off-white;
+	color: $offWhite;
 	padding: 5%;
 	text-align: center;
 }
@@ -68,7 +64,7 @@ h3 {
 h4 {
 	font-size: 1.5em;
   font-weight: 600;
-	color: $off-white;
+	color: $offWhite;
 }
 
 main {
@@ -96,7 +92,7 @@ a {
 }
 
 .instructions {
-	color: #0A0A0A;
+	color: $almost-black;
 }
 
 .user-message {
@@ -116,10 +112,10 @@ a {
 .individual-card,
 .pantry-card {
 	border-radius: 0.5em;
-  font-size: 1.2em;
+	font-size: 1.2em;
   background-color: rgba(10, 30, 35, .90);
-  box-shadow: 1px 1px 7px black;
-	padding: 5%;
+  box-shadow: $boxShadow;
+  padding: 5%;
 }
 
 .individual-card,
@@ -180,7 +176,7 @@ ol, li {
 }
 
 hr {
-	border-top: 1px solid $off-white;
+	border-top: 1px solid $offWhite;
   margin: 1.5em 0;
   width: 100%;
 }
@@ -200,7 +196,7 @@ hr {
 	display: flex;
 	align-items: center;
 	background-color: transparent;
-	color: $off-white;
+	color: $offWhite;
   border: none;
   font-size: 1.3em;
 	white-space: nowrap;
@@ -224,7 +220,7 @@ hr {
 .search-title {
 	text-align: left;
   margin: 2%;
-	color: #0A0A0A;
+	color: $almost-black;
 	font-size: 1.2em;
 	text-shadow: 1px 1px 18px black;
 }
@@ -236,12 +232,12 @@ input {
 	border-radius: 3px;
 	border: none;
 	font-size: 1em;
-	color: #0A0A0A;
+	color: $almost-black;
 }
 
 .example-text {
 	font-size: 0.60em;
-	color: #616161;
+	color: $light-gray;
 	text-align: left;
 	margin: 1% 2% 2% 2%;
 	padding: 0;
@@ -251,7 +247,7 @@ input {
 .cook-button,
 .favorite-button {
 	background-color: transparent;
-	color: $off-white;
+	color: $offWhite;
   border: none;
   font-size: 1em;
 	padding: 1%;
@@ -259,10 +255,6 @@ input {
 
 .hide-text {
 	display: none;
-}
-
-.add-icon {
-	// width: 20%;
 }
 
 .recipe-icon:hover + .hide-text,
@@ -313,9 +305,9 @@ input {
 	border-radius: 0.5em;
   font-size: 1.5em;
 	font-weight: 600;
-  background-color: #641220;
-  box-shadow: 1px 1px 7px black;
-  color: $off-white;
+  background-color: $burgundy;
+  box-shadow: $boxShadow;
+  color: $offWhite;
 	border: none;
 	letter-spacing: 2px;
 	min-width: 15em;
@@ -334,7 +326,7 @@ input {
 .return-button:hover,
 .check-pantry-btn:hover {
 	cursor: pointer;
-	background-color: #A66953;
+	background-color: $light-brown;
 	transform: scale(1.1);
 }
 
@@ -373,8 +365,8 @@ input {
 	border-radius: 0.5em;
   font-size: 1.2em;
 	font-weight: 500;
-  box-shadow: 1px 1px 7px black;
-  color: $off-white;
+  box-shadow: $boxShadow;
+  color: $offWhite;
 	border: none;
 }
 
@@ -391,7 +383,7 @@ input {
 }
 
 .search-buttons {
-	background-color: #641220;
+	background-color: $burgundy;
   padding: 3% 6%;
   border-radius: 0.2em;
 	border: none;
@@ -401,7 +393,7 @@ input {
 
 .search-buttons:hover {
 	cursor: pointer;
-	background-color: #A66953;
+	background-color: $light-brown;
 }
 
 .search-buttons:disabled {
@@ -411,7 +403,7 @@ input {
 
 .drop-down-arrow {
 	line-height: 4em;
-	color: $off-white;
+	color: $offWhite;
 }
 
 .hidden {
