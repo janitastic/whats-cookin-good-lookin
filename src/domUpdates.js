@@ -430,6 +430,7 @@ function showCantCookCard() {
   show(cantCookInstructions);
   show(cantCookTitle);
   hide(pantryTitle);
+  hide(pantryIngredients);
 }
 
 function displayUserPantry(ingredientsData) {
@@ -465,6 +466,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   if (currentPantry.shoppingList.length < 1) {
     displayRecipeCard(recipeCollection, ingredientsData)
   } else {
+    showCantCookCard();
     missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
       ingNeededTitle.innerHTML = `Ingredients Needed to Cook ${selectedRecipe.name}`
       show(cantCookSection);
