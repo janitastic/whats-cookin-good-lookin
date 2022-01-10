@@ -15,6 +15,7 @@ import './images/snacks.png';
 import './images/add.png';
 import './images/pantry.png';
 import './images/trash.png';
+import './images/checked.png';
 
 import {postIngredient} from './scripts';
 import {currentUser} from './scripts';
@@ -181,6 +182,14 @@ function showCantCookCard() {
   hide(pantryIngredients);
   show(addToCook);
   hide(trashButton);
+}
+
+function showPostAlert() {
+  show(noRecipes);
+  show(postSuccessful);
+  hide(oops);
+  hide(cookInstructions);
+  hide(toCookSection);
 }
 
 function displayDeleteFavMessage() {
@@ -449,6 +458,7 @@ function displayUserPantry(ingredientsData) {
   hide(noRecipes);
   show(pantryCardView);
   hide(recipeCardSection);
+  show(cantCookSection);
   pantryIngredients.innerHTML = '';
   let myPantryOne = new Pantry(currentUser);
   myPantryOne.pantry.forEach((step, index) => {
@@ -497,6 +507,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
 function addMissingIngredients() {
   postIngredient(currentPantry);
   console.log('this should still be empty []', currentPantry.shoppingList)
+  showPostAlert();
 }
 
 function removeFromPantry(recipeCollection, ingredientsData) {
