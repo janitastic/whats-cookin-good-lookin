@@ -120,6 +120,7 @@ function showFavoritesSection() {
 
 function showToCookSection() {
   show(toCookSection);
+  show(checkPantryBtn);
   hide(ingredientsTitle);
   hide(directionsTitle);
   hide(recipeCardSection);
@@ -140,10 +141,6 @@ function showPantryCardSection() {
   hide(pantryTitle);
   hide(pantryIngredients);
   show(cantCookTitle);
-}
-
-function showCookSection() {
-
 }
 
 function showBigRecipeCard() {
@@ -378,9 +375,24 @@ function favSearchByIngredients(ingredientsData) {
 
           /*********** TO COOK PAGE FUNCTIONS ***********/
 
+function chooseToCookView() {
+  if (currentUser.toCook.length >= 1) {
+    hide(noRecipes);
+    hide(checkPantryBtn);
+    show(cookInstructions);
+    show(toCookSection);
+    show(cantCookInstructions);//if not enough ingredients
+  } else {
+    show(noRecipes);
+    show(checkPantryBtn);
+    hide(cookInstructions);
+    hide(toCookSection);
+    hide(cantCookInstructions);
+  }
+}
+
 function displayToCook() {
-  show(cookInstructions);
-  hide(favoritesSection);
+  chooseToCookView();
   toCookSection.innerHTML = '';
   const toCookRecipes = currentUser.toCook;
   toCookRecipes.forEach(recipe => {

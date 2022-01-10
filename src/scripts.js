@@ -252,7 +252,7 @@ function removeFromFavorites() {
 function addToCookList() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
   currentUser.addToCook(foundRecipe);
-//   displayToCook();
+  displayToCook();
 }
 
 export {currentUser};
