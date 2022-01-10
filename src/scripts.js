@@ -4,6 +4,7 @@ import Recipe from './classes/Recipe';
 import User from './classes/User';
 import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
+import Pantry from './classes/Pantry';
 import domUpdates from './domUpdates';
 import {
   allRecipesBtn,
@@ -51,8 +52,11 @@ import {
   checkPantryBtn,
   displayUserPantry,
   checkForIngredients,
-  addToPantry
+  addToPantry,
+  missingIngredients,
+  onClick
 } from './domUpdates';
+import {currentPantry} from './domUpdates';
 
               /*********** GLOBAL VARIABLES ***********/
 
@@ -107,7 +111,8 @@ addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
-addToPantry.addEventListener('click', postIngredient);
+addToPantry.addEventListener('click', () => {onClick();
+});
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', () => {
@@ -264,16 +269,18 @@ function addToCookList() {
 
 
 function postIngredient() {
-  console.log('this is working')
-  let data = { userID: currentUser.id, ingredientID: currentPantry.ingredient, ingredientModification: currentPantry.amount };
-  postToPantry(data)
-  .then(data => {
-    currentPantry.logPantryIngredients(data[0])
-    checkForIngredients(recipeClasses, ingredientsData);
+  console.log(currentPantry.shoppingList)
+  currentPantry.shoppingList.forEach(item => {
+    let ingredient = {userID: currentUser.id, ingredientID: item.ingredient, ingredientModification: item.amount}
+    console.log(ingredient)
+    postToPantry(ingredient).then(ingredient => {
+    currentPantry.logPantryIngredients(ingredientsData)
+    // checkForIngredients(recipeClasses, ingredientsData);
+  })
   })
 }
 
-
+export {postIngredient};
 
 export {currentUser};
 export {recipeRepo};
