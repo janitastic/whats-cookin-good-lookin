@@ -464,10 +464,9 @@ function checkForIngredients(recipeCollection, ingredientsData) {
       </article>`;
     });
   }
-  // onClick(currentPantry.shoppingList);
 }
 
-function onClick() {
+function addMissingIngredients() {
   postIngredient(currentPantry)
   console.log('this should still be empty []', currentPantry.shoppingList)
 }
@@ -522,6 +521,6 @@ export {
   checkForIngredients,
   addToPantry,
   missingIngredients,
-  onClick
+  addMissingIngredients
 }
 export {currentPantry}

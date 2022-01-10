@@ -54,7 +54,7 @@ import {
   checkForIngredients,
   addToPantry,
   missingIngredients,
-  onClick
+  addMissingIngredients
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
@@ -111,7 +111,7 @@ addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
-addToPantry.addEventListener('click', () => {onClick();
+addToPantry.addEventListener('click', () => {addMissingIngredients();
 });
 
 // Filter Favorites
