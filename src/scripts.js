@@ -53,8 +53,11 @@ import {
   displayUserPantry,
   checkForIngredients,
   addToPantry,
-  missingIngredients,
-  onClick
+  addMissingIngredients,
+  selectPantryMenu,
+  welcomeUser,
+  trashButton,
+  removeFromPantry
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
@@ -90,12 +93,12 @@ recipeCardSection.addEventListener('click', selectRecipeCard);
 toCookSection.addEventListener('click', selectRecipeToCook)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
-checkPantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
+checkPantryBtn.addEventListener('click', () => {selectPantryMenu()});
 //Menu Buttons
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
 toCookBtn.addEventListener('click', () => {displayToCook()});
-pantryBtn.addEventListener('click', () => {displayUserPantry(ingredientsData)});
+pantryBtn.addEventListener('click', () => {selectPantryMenu()});
 //Main Search Buttons
 searchButton.addEventListener('click', () => {toggleDropDown()});
 searchByName.addEventListener('click', () => {searchByRecipeName()});
@@ -111,8 +114,9 @@ addToCookButton.addEventListener('click', addToCookList);
 
 //Recipe Card Buttons
 favoriteButton.addEventListener('click', saveToFavorites);
-addToPantry.addEventListener('click', () => {onClick();
+addToPantry.addEventListener('click', () => {addMissingIngredients();
 });
+trashButton.addEventListener('click', removeIngredient);
 
 // Filter Favorites
 favFilterByAppetizer.addEventListener('click', () => {
@@ -223,8 +227,7 @@ function loadPage() {
     getUser();
     getRecipes();
     domUpdates(recipeClasses);
-    userMessage.innerHTML =
-      `<h2>Lookin' Good ${currentUserName}!<br>Let's Get Cookin'!</h2>`;
+    welcomeUser();
   })
 }
 
@@ -277,10 +280,38 @@ function postIngredient() {
     });
   });
   currentPantry.shoppingList = [];
-  // displayRecipeCard(recipeClasses, ingredientsData);
+  console.log('AFTER adding shopping list to pantry should be []', currentPantry.shoppingList)
+  displayToCook();
 }
 
-export {postIngredient};
+function removeIngredient() {
+  const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
+  // console.log('foundRecipe', foundRecipe);
+  console.log('pantry', currentPantry.pantry)
 
+  foundRecipe.ingredients.forEach(item => {
+    let ingredient = {userID: currentUser.id, ingredientID: item.id, ingredientModification: -item.quantity.amount}
+
+    //NEED CODE BELOW FOR DOM
+    // const index = currentPantry.pantry.indexOf(item);
+    //   if (index > -1) {
+    //     currentPantry.pantry.splice(index, 1);
+    // }
+
+    postToPantry(ingredient).then(ingredient => {
+    currentPantry.logPantryIngredients(ingredientsData)
+    });
+  });
+
+  console.log('pantry AFTER remove', currentPantry.pantry)
+  // currentUser.addToCook(foundRecipe);
+  // displayToCook();
+}
+
+
+
+
+export {postIngredient};
 export {currentUser};
 export {recipeRepo};
+export {removeIngredient};
