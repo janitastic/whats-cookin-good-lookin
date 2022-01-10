@@ -15,7 +15,7 @@ import './images/snacks.png';
 import './images/add.png';
 import './images/pantry.png';
 
-// import {postIngredient} from './scripts';
+import {postIngredient} from './scripts';
 import {currentUser} from './scripts';
 import {recipeRepo} from './scripts';
 import Pantry from './classes/Pantry';
@@ -443,9 +443,11 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   currentPantry = new Pantry(currentUser);
   cantCookSection.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
+  console.log('before adding to pantry should be []', currentPantry.shoppingList)
   const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
   currentPantry.checkPantry(selectedRecipe);
-  if(currentPantry.shoppingList === []) {
+  console.log('should generate a list of missingIngredients', currentPantry.shoppingList)
+  if (currentPantry.shoppingList.length < 1) {
     displayRecipeCard(recipeCollection, ingredientsData)
   } else {
     missingIngredients = currentPantry.shoppingList.forEach((elem, index) => {
@@ -467,7 +469,7 @@ function checkForIngredients(recipeCollection, ingredientsData) {
 
 function onClick() {
   postIngredient(currentPantry)
-  console.log(currentPantry.shoppingList)
+  console.log('this should still be empty []', currentPantry.shoppingList)
 }
 
 
