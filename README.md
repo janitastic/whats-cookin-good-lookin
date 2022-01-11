@@ -44,7 +44,7 @@ What's Cookin' Good Lookin' is an application that presents a user with an exten
 - We're proud to share the the application is also fully tab accessible with a 100% Lighthouse Accessibility Score.
 
 ![tab-friendly](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Tab-Friendly.gif)
-![lighthouse-score](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Lighthouse-Score.gif)
+![lighthouse-score](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Lighthouse-Score.png)
 
 
 ## Installation and Setup:
