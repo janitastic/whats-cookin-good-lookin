@@ -34,7 +34,7 @@ const favoritesBtn = document.getElementById('favoritesBtn');
 const toCookBtn = document.getElementById('toCookBtn');
 const returnBtn = document.getElementById('returnBtn');
 const pantryBtn = document.getElementById('pantryBtn');
-
+const returnToCook = document.getElementById('returnToCook');
 // Main Sections
 let recipeCardSection = document.getElementById('recipeCardSection');
 let individualCardView = document.getElementById('individualCardView');
@@ -430,12 +430,16 @@ function chooseToCookView() {
     show(cookInstructions);
     show(toCookSection);
     show(cantCookInstructions);
+    hide(postSuccessful);
+    hide(returnToCook);
   } else {
     show(noRecipes);
     show(checkPantryBtn);
     hide(cookInstructions);
     hide(toCookSection);
     hide(cantCookInstructions);
+    hide(postSuccessful);
+    hide(returnToCook);
   }
 }
 
@@ -508,6 +512,7 @@ function addMissingIngredients() {
   postIngredient(currentPantry);
   console.log('this should still be empty []', currentPantry.shoppingList)
   showPostAlert();
+  show(returnToCook);
 }
 
 function removeFromPantry(recipeCollection, ingredientsData) {
@@ -567,6 +572,7 @@ export {
   selectPantryMenu,
   welcomeUser,
   trashButton,
-  removeFromPantry
+  removeFromPantry,
+  returnToCook 
 }
 export {currentPantry}

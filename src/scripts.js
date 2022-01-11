@@ -57,7 +57,8 @@ import {
   selectPantryMenu,
   welcomeUser,
   trashButton,
-  removeFromPantry
+  removeFromPantry, 
+  returnToCook 
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
@@ -94,6 +95,7 @@ toCookSection.addEventListener('click', selectRecipeToCook)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 checkPantryBtn.addEventListener('click', () => {selectPantryMenu()});
+returnToCook.addEventListener('click', () => {displayToCook()});
 //Menu Buttons
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
@@ -298,19 +300,25 @@ function removeIngredient() {
     let ingredient = {userID: currentUser.id, ingredientID: item.id, ingredientModification: -item.quantity.amount}
 
     //NEED CODE BELOW FOR DOM
-    // const index = currentPantry.pantry.indexOf(item);
-    //   if (index > -1) {
-    //     currentPantry.pantry.splice(index, 1);
-    // }
+    const index = currentPantry.pantry.indexOf(item);
+      if (index > -1) {
+        currentPantry.pantry.splice(index, 1);
+    }
 
     postToPantry(ingredient).then(ingredient => {
     currentPantry.logPantryIngredients(ingredientsData)
     });
   });
 
-  console.log('pantry AFTER remove', currentPantry.pantry)
-  // currentUser.addToCook(foundRecipe);
-  // displayToCook();
+  
+  //NEED CODE BELOW FOR DOM
+  const index = currentUser.toCook.indexOf(foundRecipe);
+  if (index > -1) {
+    currentUser.toCook.splice(index, 1);
+  }
+  updatePantryData();
+  displayToCook();
+  console.log('pantry after something', currentPantry.pantry)
 }
 
 function updatePantryData() {
