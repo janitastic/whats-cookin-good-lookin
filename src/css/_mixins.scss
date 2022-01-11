@@ -1,18 +1,17 @@
 
 @mixin flexbox($direction, $wrap, $alignContent, $justify, $alignItems) {
-      display: flex;
-      flex-direction: $direction;
-      flex-wrap: $wrap;
-      align-content: $alignContent;
-      justify-content: $justify;
-      align-items: $alignItems;
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  align-content: $alignContent;
+  justify-content: $justify;
+  align-items: $alignItems;
 }
 
 @mixin flexgrid($alignContent, $justifyContent, $alignItems, $justifyItems){
-      display: grid;
-      align-content: $alignContent;
-      justify-content: $justifyContent;
-      align-items: $alignItems;
-      justify-items: $justifyItems;
+  display: grid;
+  align-content: $alignContent;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  justify-items: $justifyItems;
 }
-

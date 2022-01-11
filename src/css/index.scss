@@ -146,6 +146,7 @@ a {
 
 .recipe-image {
 	width: 100%;
+	border-radius: 0.3em;
 }
 
 .recipe-card-top {
@@ -372,7 +373,7 @@ input {
 	border: none;
 	font-size: 1em;
 	width: 90%;
-	
+
 	&:hover {
 		cursor: pointer;
 		background-color: $light-brown;
@@ -395,4 +396,126 @@ input {
 
 .show {
 	display: block;
+}
+
+// MEDIA QUERIES
+
+//tablet view
+@media only screen and (max-width: 1068px) {
+	nav {
+		@include flexbox(row, wrap, normal, center, normal);
+	}
+
+  .recipe-cards {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+//Tablet landscape view
+// @media only screen and (max-width: 734px)
+@media (min-width: 1024px) and (max-width: 768px) {
+	header {
+		@include flexbox(column, wrap, normal, normal, stretch);
+	}
+
+	h1 {
+		text-align: center;
+		margin: 2% 0%;
+	}
+
+	nav {
+		margin: 2% 0%;
+	}
+
+	.menu-button {
+		margin: none;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 50% 50%;
+  }
+
+	.indvidual-card,
+	.pantry-card {
+		margin: 5%;
+	}
+}
+
+//Tablet portrait view
+@media (min-width: 768px) and (max-width: 1024px) {
+	header {
+		@include flexbox(column, wrap, normal, normal, stretch);
+	}
+
+	h1 {
+		text-align: center;
+		margin: 2% 0%;
+	}
+
+	nav {
+		margin: 2% 0%;
+	}
+
+	.menu-button {
+		margin: none;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 50% 50%;
+  }
+
+	.top-buttons {
+		@include flexbox(row, nowrap, normal, space-evenly, normal);
+	}
+
+	.indvidual-card,
+	.pantry-card {
+		margin: 5%;
+	}
+}
+
+//small mobile device view
+@media (min-width: 320px) and (max-width: 767px) {
+	header {
+		@include flexbox(column, wrap, normal, normal, stretch);
+	}
+
+	h1 {
+		text-align: center;
+		margin: 2% 0%;
+	}
+
+	nav {
+		@include flexbox(column, wrap, normal, normal, center);
+		margin: 2%;
+	}
+
+	.menu-button {
+		font-size: 1.3em;
+		padding: 0;
+		margin: 0;
+		max-height: 2em;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 100%;
+  }
+
+	.top-buttons {
+		@include flexbox(row, nowrap, normal, space-evenly, normal);
+	}
+
+	.indvidual-card,
+	.pantry-card {
+		margin: 5%;
+	}
+
+	.recipe-card-top {
+    display: flex;
+    flex-direction: column;
+	}
+
+	.ingredients-title {
+		margin-top: 5%;
+	}
 }

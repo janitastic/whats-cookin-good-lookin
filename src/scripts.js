@@ -53,8 +53,8 @@ import {
   addMissingIngredients,
   selectPantryMenu,
   welcomeUser,
-  trashButton, 
-  returnToCook 
+  trashButton,
+  returnToCook
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
