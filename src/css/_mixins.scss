@@ -8,31 +8,11 @@
       align-items: $alignItems;
 }
 
-/*
-Grid includes -
-  1: align-content
-        - center
-        - flex-start
-        - flex-end
-        - space-around
-        - space-between
-        - stretch
-  2: justify-content
-        - center
-        - flex-start
-        - flex-end
-        - space-between
-        - space-around
-        - space-evenly
-  3: align-items
-        - center
-        - start
-        - end
-        - stretch
-        - baseline
-  4: justify-items
-        - center
-        - start
-        - end
-        - stretch
-*/
+@mixin flexgrid($alignContent, $justifyContent, $alignItems, $justifyItems){
+      display: grid;
+      align-content: $alignContent;
+      justify-content: $justifyContent;
+      align-items: $alignItems;
+      justify-items: $justifyItems;
+}
+

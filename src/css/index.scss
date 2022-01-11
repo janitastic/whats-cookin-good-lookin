@@ -29,10 +29,9 @@ header {
 	background-color: rgba(242,242,242,.25);
 	padding: 2%;
 	background-color: $dark-green;
-	display: grid;
 	grid-template-columns: 1fr 2fr;
 	grid-gap: 1em;
-	justify-items: stretch;
+	@include flexgrid(normal, normal, normal, stretch);
 }
 
 nav {
@@ -99,11 +98,10 @@ a {
 }
 
 .recipe-cards {
-	display: grid;
 	gap: 2em;
   grid-template-columns: 25% 25% 25% 25%;
-  justify-content: center;
 	padding: 5% 10%;
+	@include flexgrid(normal, center, normal, normal);
 }
 
 .card,
@@ -264,19 +262,17 @@ input {
 }
 
 .top-buttons {
-	display: grid;
 	gap: 11em;
 	grid-template-columns: 50% 50%;
-	justify-content: center;
 	margin: 0 0 10% 0;
+	@include flexgrid(normal, center, normal, normal);
 }
 
 .pantry-title {
-	display: grid;
 	gap: 5em;
 	grid-template-columns: 75% 25%;
-	justify-content: center;
 	margin: 0 0 5% 10%;
+	@include flexgrid(normal, center, normal, normal);
 }
 
 .recipe-card-button {
