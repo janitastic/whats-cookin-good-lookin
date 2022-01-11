@@ -1,34 +1,14 @@
-//I recommend we create a mixin for display flex, and display grid.
+
+@mixin flexbox($direction, $wrap, $alignContent, $justify, $alignItems) {
+      display: flex;
+      flex-direction: $direction;
+      flex-wrap: $wrap;
+      align-content: $alignContent;
+      justify-content: $justify;
+      align-items: $alignItems;
+}
 
 /*
-For reference flex includes -
-  1: flex-direction
-        - row
-        - column
-  2: flex-wrap
-        - nowrap
-        - wrap
-  3: align-content
-        - center
-        - flex-start
-        - flex-end
-        - space-around
-        - space-between
-        - stretch
-  4: justify-content
-        - center
-        - flex-start
-        - flex-end
-        - space-between
-        - space-around
-        - space-evenly
-  5: align-items
-        - center
-        - flex-start
-        - flex-end
-        - stretch
-        - baseline
-
 Grid includes -
   1: align-content
         - center

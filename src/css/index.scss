@@ -1,6 +1,6 @@
 @import './_reset.scss';
 @import './_variables.scss';
-
+@import './_mixins.scss';
 
 * {
 	font-family: $bodyFont;
@@ -36,9 +36,7 @@ header {
 }
 
 nav {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-end;
+	@include flexbox(row, wrap, normal, flex-end, normal);
 }
 
 h1 {
@@ -77,11 +75,7 @@ a {
 
 .search-bar,
 .favorite-search-bar {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-content: center;
-	align-items: center;
+	@include flexbox(column, wrap, center, normal, center);
 	padding: 5% 5% 2% 5%;
 }
 
@@ -124,14 +118,12 @@ a {
 
 .individual-card,
 .pantry-card {
-	display: flex;
-  flex-direction: column;
+	@include flexbox(column, nowrap, normal, normal, normal);
 	margin: 5% 20%;
 }
 
 .pantry-list {
-	display: flex;
-	flex-wrap: wrap;
+	@include flexbox(row, wrap, normal, normal, normal);
 }
 
 .name-and-image {
@@ -141,9 +133,7 @@ a {
 
 .ingredients {
 	flex: 2;
-	display: flex;
-  flex-direction: column;
-  justify-content: center;
+	@include flexbox(column, nowrap, normal, center, normal);
 	padding-left: 5%;
 }
 
@@ -186,8 +176,7 @@ hr {
 }
 
 .recipe-card-bottom {
-	display: flex;
-	flex-direction: column;
+	@include flexbox(column, nowrap, normal, normal, normal);
 }
 
 .step-number {
@@ -197,8 +186,7 @@ hr {
 
 .menu-button {
 	cursor: pointer;
-	display: flex;
-	align-items: center;
+	@include flexbox(row, nowrap, normal, normal, center);
 	background-color: transparent;
 	color: $offWhite;
   border: none;
@@ -267,8 +255,7 @@ input {
 
 .recipe-icon:hover + .hide-text,
 .add-icon:hover + .hide-text {
-	display: flex;
-  justify-content: center;
+	@include flexbox(row, nowrap, normal, center, normal);
 }
 
 .filter-buttons:hover
@@ -293,9 +280,7 @@ input {
 }
 
 .recipe-card-button {
-	display: flex;
-	flex-direction: column;
-  align-items: center;
+	@include flexbox(column, nowrap, normal, normal, center);
 }
 
 .trash-icon {
@@ -303,8 +288,7 @@ input {
 }
 
 .card-icons {
-	display: flex;
-	justify-content: space-between;
+	@include flexbox(row, nowrap, normal, space-between, normal);
 }
 
 .search-button,
