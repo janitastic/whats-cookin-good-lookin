@@ -25,6 +25,18 @@ What's Cookin' Good Lookin' is an application that presents a user with an exten
 
 ![deleting-favs](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Deleting-Favorites.gif)
 
+- User is be able to see the ingredients in their pantry.
+
+![view-pantry](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/View-Pantry.gif)
+
+- User is able to click on a recipe to determine what ingredients they are missing and add them to their pantry.
+
+![add-to-pantry](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Add-To-Pantry.gif)
+
+- A user can delete a recipe from their to cook section after they have cooked it.
+
+![delete-from-pantry](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Remove-From-Pantry.gif)
+
 ## Installation and Setup:
 **To navigate the website live, a local server download is required.**
   1. Clone the necessary server and API [here](https://github.com/turingschool-examples/whats-cookin-api)
@@ -47,9 +59,9 @@ What's Cookin' Good Lookin' is an application that presents a user with an exten
   - Webpack
 
 ## Future Goals
-  - Make JavaScript functions more dynamic
-  - Allow users to see what recipes they can cook with the ingredients they have in their pantry
   - Add more elements to user profile such as profile photo and comments on recipes
+  - User log in page
+  - Ability to create custom recipes
 
 ## Rubric
   - Part One [Rubric and Project Specifications - Part 1](https://frontend.turing.edu/projects/whats-cookin-part-one.html)
