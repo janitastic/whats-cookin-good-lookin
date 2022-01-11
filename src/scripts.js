@@ -308,9 +308,14 @@ function removeIngredient() {
     });
   });
 
-  console.log('pantry AFTER remove', currentPantry.pantry)
-  // currentUser.addToCook(foundRecipe);
-  // displayToCook();
+  console.log('To cook list', currentUser.toCook)
+  
+  //NEED CODE BELOW FOR DOM
+    const index = currentUser.toCook.indexOf(foundRecipe);
+      if (index > -1) {
+        currentUser.toCook.splice(index, 1);
+    }
+  displayToCook();
 }
 
 function updatePantryData() {
