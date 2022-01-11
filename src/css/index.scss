@@ -191,24 +191,23 @@ hr {
   font-size: 1.3em;
 	white-space: nowrap;
 	padding: 0 2%;
+
+	&:hover {
+		transform: scale(1.1);
+	}
 }
 
 .icon,
 .filter-icon {
 	padding: 5%;
-}
 
-.icon:hover,
-.filter-icon:hover {
-	transform: scale(1.2);
+	&:hover {
+		transform: scale(1.2);
+	}
 }
 
 .checked-icon {
 	margin: 2%;
-}
-
-.menu-button:hover {
-	transform: scale(1.1);
 }
 
 .search-title {
@@ -300,6 +299,12 @@ input {
 	letter-spacing: 2px;
 	min-width: 15em;
   min-height: 4em;
+
+	&:hover {
+		cursor: pointer;
+		background-color: $light-brown;
+		transform: scale(1.1);
+	}
 }
 
 .return-button,
@@ -308,14 +313,6 @@ input {
 	min-width: 10em;
   min-height: 2em;
 	margin: 1em;
-}
-
-.search-button:hover,
-.return-button:hover,
-.check-pantry-btn:hover {
-	cursor: pointer;
-	background-color: $light-brown;
-	transform: scale(1.1);
 }
 
 .search-icon {
@@ -339,6 +336,10 @@ input {
   position: relative;
   display: inline-block;
   text-align: center;
+
+  & a:hover {
+		cursor: default;
+	}
 }
 
 .drop-down-search,
@@ -356,18 +357,12 @@ input {
   box-shadow: $boxShadow;
   color: $offWhite;
 	border: none;
-}
 
-.fav-drop-down-search a,
-.drop-down-search a {
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.drop-down a:hover,
-.fav-drop-down a:hover {
-	cursor: default;
+	& a {
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
 }
 
 .search-buttons {
@@ -377,16 +372,16 @@ input {
 	border: none;
 	font-size: 1em;
 	width: 90%;
-}
+	
+	&:hover {
+		cursor: pointer;
+		background-color: $light-brown;
+	}
 
-.search-buttons:hover {
-	cursor: pointer;
-	background-color: $light-brown;
-}
-
-.search-buttons:disabled {
-  cursor: no-drop;
-  background-color: gray;
+	&:disabled {
+		cursor: no-drop;
+		background-color: gray;
+	}
 }
 
 .drop-down-arrow {
