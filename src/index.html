@@ -12,7 +12,7 @@
     <header>
       <a href="/"><h1>What's Cookin' Good Lookin'</h1></a>
       <nav>
-          <button class="menu-button" id="recipesBtn">
+        <button class="menu-button" id="recipesBtn">
           <img class="icon" src="images/recipe-book.png" alt="all recipes"> All Recipes
         </button>
         <button class="menu-button" id="favoritesBtn">
@@ -42,10 +42,10 @@
               <h2 class="search-title">What would you like to cook?</h2>
               <input class="input" type="search" placeholder="Search by name or ingredients" id="searchBar" label="search" required>
               <p class="example-text">Example: Chicken, pork, flour, chocolate, etc.</p>
-              <a href="#recipeCardSection">
+              <a href="#recipeCardSection" tabindex="-1">
                 <button class="search-buttons" id="searchByNameLink" disabled>Search Recipe Names</button>
               </a>
-              <a href="#recipeCardSection">
+              <a href="#recipeCardSection" tabindex="-1">
                 <button class="search-buttons" id="searchByIngredientLink" disabled>Search Ingredients</button>
               </a>
             </div>
@@ -60,10 +60,10 @@
               <h2 class="search-title">What would you like to cook?</h2>
               <input class="input" type="search" placeholder="Search by name or ingredients" id="favSearchBar" required>
               <p class="example-text">Example: Chicken, pork, flour, chocolate, etc.</p>
-              <a href="#recipeCardSection">
+              <a href="#recipeCardSection" tabindex="-1">
                 <button class="search-buttons" id="favSearchByNameLink" disabled>Search Recipe Names</button>
               </a>
-              <a href="#recipeCardSection">
+                <a href="#recipeCardSection" tabindex="-1">
                 <button class="search-buttons" id="favSearchByIngredientLink" disabled>Search Ingredients</button>
               </a>
             </div>
@@ -71,7 +71,7 @@
         </section>
         <section class="filter-icons" id="filterIcons">
           <h2>Filter All Recipes</h2>
-          <a class="link-to-recipes" href="#recipeCardSection">
+          <a class="link-to-recipes" href="#recipeCardSection" tabindex="-1">
             <button class="filter-buttons" id="appetizerButton">
               <img class="filter-icon" src="images/appetizer.png" alt="filter by appetizer">Appetizers
             </button>
@@ -100,7 +100,7 @@
         </section>
         <section class="favorite-filter-icons hidden" id="favoriteFilterIcons">
           <h2>Filter Your Favorite Recipes</h2>
-          <a class="link-to-recipes" href="#recipeCardSection">
+          <a class="link-to-recipes" href="#recipeCardSection" tabindex="-1">
             <button class="filter-buttons" id="favAppetizerButton">
               <img class="filter-icon" src="images/appetizer.png" alt="filter by appetizer">Appetizers
             </button>
@@ -131,18 +131,16 @@
       <article class="js-error">
         <!-- this is where our error displays -->
       </article>
-      <article class="recipe-cards" id="recipeCardSection">
+      <article class="recipe-cards" id="recipeCardSection" tabindex="0">
         <!-- display all recipe cards -->
       </article>
       <article class="individual-card hidden" id="individualCardView">
         <section class="top-buttons">
-          <button class="favorite-button" id="favoriteButton" title="Add to Favorites">
+          <button class="favorite-button" id="favoriteButton" title="Add to Favorites" tabindex="0">
             <img class="recipe-icon" src="images/like.png" alt="favorite this recipe">
             <span class="hide-text">Add to Favorites</span>
           </button>
-        <!-- </section>
-        <section class="button-right"> -->
-          <button class="cook-button" id="addToCook" title="Cook this Recipe">
+          <button class="cook-button" id="addToCook" title="Cook this Recipe" tabindex="0">
             <img class="recipe-icon" src="images/baking.png" alt="cook this recipe">
             <span class="hide-text">Cook This</span>
           </button>
@@ -194,19 +192,19 @@
       <article class="delete-instructions hidden" id="favInstructions">
         <h4 class="instructions">Double click on a recipe to remove it from your favorites.</h4>
       </article>
-      <article class="recipe-cards favorites-section hidden" id="favoritesSection">
+      <article class="recipe-cards favorites-section hidden" id="favoritesSection" tabindex="0">
         <!-- display favorites section -->
       </article>
       <article class="delete-instructions hidden" id="cookInstructions">
         <h4 class="instructions">Ready to cook?<br>Get started by clicking on a recipe below.</h4>
       </article>
-      <article class="recipe-cards to-cook-section hidden" id="toCookSection">
+      <article class="recipe-cards to-cook-section hidden" id="toCookSection" tabindex="0">
         <!-- display recipes to cook section -->
       </article>
       <article class="delete-instructions hidden" id="cantCookInstructions">
         <h4 class="instructions">Oops! You can't cook this recipe yet, you don't have enough ingredients.<br>Make a shopping trip and then add the ingredients below to your pantry.</h4>
       </article>
-      <article class="pantry-card hidden" id="pantryCardView">
+      <article class="pantry-card hidden" id="pantryCardView" tabindex="0">
         <section class="pantry-title" id="pantryTitle">
           <h4>Pantry Ingredients</h4>
         </section>

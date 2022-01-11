@@ -239,7 +239,7 @@ function displayAllRecipes(recipeCollection) {
    recipeCardSection.innerHTML = '';
    recipeCollection.forEach(recipe => {
        return recipeCardSection.innerHTML +=
-       `<article class="card" id="${recipe.id}">
+       `<article class="card" id="${recipe.id}" tabindex="0">
        <h3>${recipe.name}</h3>
        <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
        </article>`;
@@ -319,7 +319,7 @@ function searchByIngredients(ingredientsData) {
   let filteredRecipes = recipeRepo.filterByIngredients(userInput, ingredientsData);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
+    `<article class="card" id="${recipe.id}" tabindex="0">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
@@ -335,7 +335,7 @@ function searchByRecipeName() {
   let filteredRecipes = recipeRepo.filterByName(userInput);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
+    `<article class="card" id="${recipe.id}" tabindex="0">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
@@ -353,7 +353,7 @@ function filterBySelection(selectedTag) {
   let filteredRecipes = recipeRepo.filterByTag(selectedTag);
   filteredRecipes.forEach(recipe => {
     return recipeCardSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
+    `<article class="card" id="${recipe.id}" tabindex="0">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
@@ -366,7 +366,7 @@ function displayFavorites() {
   const favoriteRecipes = currentUser.favorites;
   favoriteRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
+    `<article class="card" id="${recipe.id}" tabindex="0">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
@@ -381,7 +381,7 @@ function filterByFavSelection(selectedTag) {
   let filteredRecipes = currentUser.filterByTag(selectedTag);
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
+    `<article class="card" id="${recipe.id}" tabindex="0">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
@@ -395,7 +395,7 @@ function favSearchByRecipeName() {
   filteredRecipes.forEach(recipe => {
     // console.log("recipe name", recipe.name);
     return favoritesSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
+    `<article class="card" id="${recipe.id}" tabindex="0">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
@@ -411,7 +411,7 @@ function favSearchByIngredients(ingredientsData) {
   let filteredRecipes = currentUser.filterByIngredients(userInput, ingredientsData);
   filteredRecipes.forEach(recipe => {
     return favoritesSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
+    `<article class="card" id="${recipe.id}" tabindex="0">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
@@ -449,7 +449,7 @@ function displayToCook() {
   const toCookRecipes = currentUser.toCook;
   toCookRecipes.forEach(recipe => {
     return toCookSection.innerHTML +=
-    `<article class="card" id="${recipe.id}">
+    `<article class="card" id="${recipe.id}" tabindex="0">
       <h3>${recipe.name}</h3>
       <img class="thumbnail-image" src=${recipe.image} alt="image of ${recipe.name}">
     </article>`;
@@ -570,6 +570,6 @@ export {
   welcomeUser,
   trashButton,
   removeFromPantry,
-  returnToCook 
+  returnToCook
 }
 export {currentPantry}
