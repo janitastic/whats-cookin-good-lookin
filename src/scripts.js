@@ -57,7 +57,8 @@ import {
   selectPantryMenu,
   welcomeUser,
   trashButton,
-  removeFromPantry
+  removeFromPantry, 
+  returnToCook 
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
 
@@ -94,6 +95,7 @@ toCookSection.addEventListener('click', selectRecipeToCook)
 favoritesSection.addEventListener('dblclick', removeFromFavorites);
 returnBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 checkPantryBtn.addEventListener('click', () => {selectPantryMenu()});
+returnToCook.addEventListener('click', () => {displayToCook()});
 //Menu Buttons
 allRecipesBtn.addEventListener('click', () => {displayAllRecipes(recipeClasses)});
 favoritesBtn.addEventListener('click', () => {displayFavorites()});
