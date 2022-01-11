@@ -2,9 +2,7 @@ import {fetchUsersData, fetchIngredientsData, fetchRecipesData, postToPantry} fr
 
 import Recipe from './classes/Recipe';
 import User from './classes/User';
-import Ingredient from './classes/Ingredient';
 import RecipeRepository from './classes/RecipeRepository';
-import Pantry from './classes/Pantry';
 import domUpdates from './domUpdates';
 import {
   allRecipesBtn,
@@ -50,14 +48,12 @@ import {
   filterByFavSelection,
   pantryBtn,
   checkPantryBtn,
-  displayUserPantry,
   checkForIngredients,
   addToPantry,
   addMissingIngredients,
   selectPantryMenu,
   welcomeUser,
-  trashButton,
-  removeFromPantry, 
+  trashButton, 
   returnToCook 
 } from './domUpdates';
 import {currentPantry} from './domUpdates';
@@ -234,7 +230,7 @@ function loadPage() {
     getRecipes();
     domUpdates(recipeClasses);
     welcomeUser();
-  })
+  });
 }
 
 function selectRecipeCard() {
@@ -271,12 +267,6 @@ function addToCookList() {
   displayToCook();
 }
 
-// function addIngredientsToPantry() {
-//   console.log("this is a console log")
-//   displayFavorites()
-// }
-
-
 function postIngredient() {
   currentPantry.shoppingList.forEach(item => {
     let ingredient = {userID: currentUser.id, ingredientID: item.ingredient, ingredientModification: item.amount}
@@ -293,32 +283,25 @@ function postIngredient() {
 
 function removeIngredient() {
   const foundRecipe = recipeClasses.find(recipe => recipe.id === myCurrentRecipeId);
-  // console.log('foundRecipe', foundRecipe);
   console.log('pantry', currentPantry.pantry)
 
   foundRecipe.ingredients.forEach(item => {
     let ingredient = {userID: currentUser.id, ingredientID: item.id, ingredientModification: -item.quantity.amount}
-
-    //NEED CODE BELOW FOR DOM
     const index = currentPantry.pantry.indexOf(item);
       if (index > -1) {
         currentPantry.pantry.splice(index, 1);
     }
-
     postToPantry(ingredient).then(ingredient => {
     currentPantry.logPantryIngredients(ingredientsData)
     });
   });
-
-  
-  //NEED CODE BELOW FOR DOM
-  const index = currentUser.toCook.indexOf(foundRecipe);
-  if (index > -1) {
-    currentUser.toCook.splice(index, 1);
-  }
-  updatePantryData();
-  displayToCook();
-  console.log('pantry after something', currentPantry.pantry)
+    const index = currentUser.toCook.indexOf(foundRecipe);
+    if (index > -1) {
+      currentUser.toCook.splice(index, 1);
+    }
+    updatePantryData();
+    displayToCook();
+    console.log('pantry after something', currentPantry.pantry)
 }
 
 function updatePantryData() {
@@ -326,7 +309,6 @@ function updatePantryData() {
     return currentUser.pantry
   })
 }
-
 
 
 

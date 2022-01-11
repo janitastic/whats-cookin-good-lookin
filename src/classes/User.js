@@ -1,6 +1,4 @@
-// import usersData from '../data/users';
-// import Ingredients from '../data/ingredients'
-// import usersData from './apiCalls';
+
 import Pantry from './Pantry';
 
 class User {
