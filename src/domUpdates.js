@@ -161,6 +161,7 @@ function displayToCookMessage() {
     show(noRecipes);
     hide(favInstructions);
     hide(cookInstructions);
+    
   } else {
     hide(noRecipes);
     hide(favInstructions);

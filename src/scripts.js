@@ -298,24 +298,25 @@ function removeIngredient() {
     let ingredient = {userID: currentUser.id, ingredientID: item.id, ingredientModification: -item.quantity.amount}
 
     //NEED CODE BELOW FOR DOM
-    // const index = currentPantry.pantry.indexOf(item);
-    //   if (index > -1) {
-    //     currentPantry.pantry.splice(index, 1);
-    // }
+    const index = currentPantry.pantry.indexOf(item);
+      if (index > -1) {
+        currentPantry.pantry.splice(index, 1);
+    }
 
     postToPantry(ingredient).then(ingredient => {
     currentPantry.logPantryIngredients(ingredientsData)
     });
   });
 
-  console.log('To cook list', currentUser.toCook)
   
   //NEED CODE BELOW FOR DOM
-    const index = currentUser.toCook.indexOf(foundRecipe);
-      if (index > -1) {
-        currentUser.toCook.splice(index, 1);
-    }
+  const index = currentUser.toCook.indexOf(foundRecipe);
+  if (index > -1) {
+    currentUser.toCook.splice(index, 1);
+  }
+  updatePantryData();
   displayToCook();
+  console.log('pantry after something', currentPantry.pantry)
 }
 
 function updatePantryData() {
