@@ -47,8 +47,6 @@ What's Cookin' Good Lookin' is an application that presents a user with an exten
   - Webpack
 
 ## Future Goals
-  - Make JavaScript functions more dynamic
-  - Allow users to see what recipes they can cook with the ingredients they have in their pantry
   - Add more elements to user profile such as profile photo and comments on recipes
 
 ## Rubric
