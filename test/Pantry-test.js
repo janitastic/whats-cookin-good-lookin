@@ -6,7 +6,7 @@ import usersData from '../src/data/users';
 import recipeData from '../src/data/recipes';
 import ingredientsData from '../src/data/ingredients';
 
-describe.only('Pantry', () => {
+describe('Pantry', () => {
   let user, myPantry, recipe1, recipe2, recipe3, recipe4, fakeRecipe;
 
   beforeEach(()=> {
@@ -67,11 +67,6 @@ describe.only('Pantry', () => {
     myPantry.checkPantry(fakeRecipe);
     expect(myPantry.missingAmount).to.equal(1);
   })
-
-  // it('should be able to check if all the ingredients needed in a recipe are available in the pantry', () => {
-  //   myPantry.checkPantry(fakeRecipe);
-  //   expect(myPantry.missingIngredient).to.equal({ id: 19334, quantity: { amount: 0.5, unit: 'c' } });
-  // })
 
   it('should be able to create a shopping list with all the missing ingredients and amounts', () => {
     myPantry.checkPantry(fakeRecipe);

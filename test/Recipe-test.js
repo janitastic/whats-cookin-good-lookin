@@ -18,6 +18,23 @@ describe('Recipe', () => {
     expect(myRecipe).to.be.an.instanceof(Recipe);
   });
 
+  it('should have an id', () => {
+    expect(myRecipe.id).to.deep.equal(595736)
+  });
+
+  it('should have an image', () => {
+  expect(myRecipe.image).to.deep.equal('https://spoonacular.com/recipeImages/595736-556x370.jpg');
+  });
+
+  it('should have a name', () => {
+  expect(myRecipe.name).to.deep.equal('Loaded Chocolate Chip Pudding Cookie Cups');
+  });
+
+  it('should have an array of tags', () => {
+  expect(myRecipe.tags).to.be.an('array');
+  expect(myRecipe.tags.length).to.deep.equal(6);
+  });
+
   it('should return the names of ingredients in a recipe', () => {
     const expected = ['wheat flour', 'bicarbonate of soda', 'eggs', 'sucrose', 'instant vanilla pudding', 'brown sugar', 'salt', 'fine sea salt', 'semi sweet chips', 'unsalted butter', 'vanilla'];
     const actual = myRecipe.logIngredients(ingredientsData);

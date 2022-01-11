@@ -3,10 +3,9 @@ import User from '../src/classes/User';
 import Recipe from '../src/classes/Recipe';
 import usersData from '../src/data/users';
 
-/* May not need below imports */
 import recipeData from '../src/data/recipes';
 import ingredientsData from '../src/data/ingredients';
-// import ingredientsData from '../src/data/ingredients';
+
 describe('User', () => {
   let currentUser, recipe1, recipe2, recipe3, recipe4;
 
@@ -46,7 +45,14 @@ describe('User', () => {
     expect(currentUser.toCook).to.deep.equal([]);
   });
 
-  it('should be able to add and remove to a list of favorites', () => {
+  it('should be able to add to a list of favorites', () => {
+    currentUser.addToFavorites(recipe1);
+    currentUser.addToFavorites(recipe2);
+    currentUser.addToFavorites(recipe3);
+    expect(currentUser.favorites.length).to.equal(3);
+  });
+
+   it('should be able to remove a recipe from a list of favorites', () => {
     currentUser.addToFavorites(recipe1);
     currentUser.addToFavorites(recipe2);
     currentUser.addToFavorites(recipe3);

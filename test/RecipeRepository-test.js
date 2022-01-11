@@ -18,7 +18,11 @@ describe('RecipeRepo', () => {
     expect(recipeRepository).to.be.an.instanceof(RecipeRepository);
   });
 
-  it('should filter by tag', () => {
+  it('should filter by a tag', () => {
+    expect(recipeRepository.filterByTag(['side dish']).length).to.equal(22);
+  });
+
+  it('should filter by 2 tags', () => {
     expect(recipeRepository.filterByTag(['side dish', 'antipasto']).length).to.equal(30);
   });
 
