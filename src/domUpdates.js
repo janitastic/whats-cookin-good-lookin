@@ -258,7 +258,7 @@ function displayRecipeCard(recipeCollection, ingredientsData) {
 function displayNameAndImage(recipeCollection) {
   recipeImageName.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
-  recipeCollection.forEach((recipe, index) => {
+  recipeCollection.forEach((recipe) => {
     if (recipe.id === recipeId) {
      return recipeImageName.innerHTML +=
       `<article class="full-recipe">
@@ -291,7 +291,7 @@ function displayDirections(recipeCollection) {
   recipeDirections.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
   const foundRecipe = recipeCollection.find(recipe => recipe.id === recipeId);
-  foundRecipe.instructions.forEach((step, index) => {
+  foundRecipe.instructions.forEach((step) => {
       return recipeDirections.innerHTML +=
       `<article class="full-recipe">
         <ol>
@@ -482,10 +482,8 @@ function checkForIngredients(recipeCollection, ingredientsData) {
   currentPantry = new Pantry(currentUser);
   cantCookSection.innerHTML = '';
   const recipeId = Number(event.target.parentNode.id);
-  console.log('before adding to pantry should be []', currentPantry.shoppingList)
   const selectedRecipe = recipeCollection.find((recipe) => recipe.id === recipeId);
   currentPantry.checkPantry(selectedRecipe);
-  console.log('should generate a list of missingIngredients', currentPantry.shoppingList)
   if (currentPantry.shoppingList.length < 1) {
     displayRecipeCard(recipeCollection, ingredientsData)
     hide(addToCook);
@@ -517,7 +515,6 @@ function addMissingIngredients() {
 
 function removeFromPantry(recipeCollection, ingredientsData) {
   removeIngredient(recipeCollection, ingredientsData);
-  // console.log('RECIPE ID HERE PLEASE! >>>', recipe.id)
 }
 
 export default  domUpdates;

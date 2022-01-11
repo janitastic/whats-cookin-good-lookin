@@ -1,5 +1,3 @@
-// import Recipe from '../data/recipes';
-// import Ingredients from '../data/ingredients';
 
 class RecipeRepository {
   constructor(recipeData) {

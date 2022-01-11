@@ -1,5 +1,3 @@
-// import ingredientsData from '../data/ingredients';
-// import ingredientsData from './apiCalls';
 
 class Recipe {
   constructor(recipeData) {
