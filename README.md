@@ -37,6 +37,16 @@ What's Cookin' Good Lookin' is an application that presents a user with an exten
 
 ![delete-from-pantry](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Remove-From-Pantry.gif)
 
+- The application is tablet and mobile friendly.
+
+![mobile-friendly](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Mobile-Friendly.gif)
+
+- We're proud to share the the application is also fully tab accessible with a 100% Lighthouse Accessibility Score.
+
+![tab-friendly](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Tab-Friendly.gif)
+![lighthouse-score](https://github.com/janitastic/whats-cookin-good-lookin/blob/main/github/Lighthouse-Score.png)
+
+
 ## Installation and Setup:
 **To navigate the website live, a local server download is required.**
   1. Clone the necessary server and API [here](https://github.com/turingschool-examples/whats-cookin-api)
