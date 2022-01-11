@@ -1,6 +1,6 @@
 @import './_reset.scss';
 @import './_variables.scss';
-
+@import './_mixins.scss';
 
 * {
 	font-family: $bodyFont;
@@ -29,16 +29,13 @@ header {
 	background-color: rgba(242,242,242,.25);
 	padding: 2%;
 	background-color: $dark-green;
-	display: grid;
 	grid-template-columns: 1fr 2fr;
 	grid-gap: 1em;
-	justify-items: stretch;
+	@include flexgrid(normal, normal, normal, stretch);
 }
 
 nav {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-end;
+	@include flexbox(row, wrap, normal, flex-end, normal);
 }
 
 h1 {
@@ -77,11 +74,7 @@ a {
 
 .search-bar,
 .favorite-search-bar {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-content: center;
-	align-items: center;
+	@include flexbox(column, wrap, center, normal, center);
 	padding: 5% 5% 2% 5%;
 }
 
@@ -105,11 +98,10 @@ a {
 }
 
 .recipe-cards {
-	display: grid;
 	gap: 2em;
   grid-template-columns: 25% 25% 25% 25%;
-  justify-content: center;
 	padding: 5% 10%;
+	@include flexgrid(normal, center, normal, normal);
 }
 
 .card,
@@ -124,14 +116,12 @@ a {
 
 .individual-card,
 .pantry-card {
-	display: flex;
-  flex-direction: column;
+	@include flexbox(column, nowrap, normal, normal, normal);
 	margin: 5% 20%;
 }
 
 .pantry-list {
-	display: flex;
-	flex-wrap: wrap;
+	@include flexbox(row, wrap, normal, normal, normal);
 }
 
 .name-and-image {
@@ -141,9 +131,7 @@ a {
 
 .ingredients {
 	flex: 2;
-	display: flex;
-  flex-direction: column;
-  justify-content: center;
+	@include flexbox(column, nowrap, normal, center, normal);
 	padding-left: 5%;
 }
 
@@ -186,8 +174,7 @@ hr {
 }
 
 .recipe-card-bottom {
-	display: flex;
-	flex-direction: column;
+	@include flexbox(column, nowrap, normal, normal, normal);
 }
 
 .step-number {
@@ -197,32 +184,30 @@ hr {
 
 .menu-button {
 	cursor: pointer;
-	display: flex;
-	align-items: center;
+	@include flexbox(row, nowrap, normal, normal, center);
 	background-color: transparent;
 	color: $offWhite;
   border: none;
   font-size: 1.3em;
 	white-space: nowrap;
 	padding: 0 2%;
+
+	&:hover {
+		transform: scale(1.1);
+	}
 }
 
 .icon,
 .filter-icon {
 	padding: 5%;
-}
 
-.icon:hover,
-.filter-icon:hover {
-	transform: scale(1.2);
+	&:hover {
+		transform: scale(1.2);
+	}
 }
 
 .checked-icon {
 	margin: 2%;
-}
-
-.menu-button:hover {
-	transform: scale(1.1);
 }
 
 .search-title {
@@ -267,8 +252,7 @@ input {
 
 .recipe-icon:hover + .hide-text,
 .add-icon:hover + .hide-text {
-	display: flex;
-  justify-content: center;
+	@include flexbox(row, nowrap, normal, center, normal);
 }
 
 .filter-buttons:hover
@@ -277,25 +261,21 @@ input {
 }
 
 .top-buttons {
-	display: grid;
 	gap: 11em;
 	grid-template-columns: 50% 50%;
-	justify-content: center;
 	margin: 0 0 10% 0;
+	@include flexgrid(normal, center, normal, normal);
 }
 
 .pantry-title {
-	display: grid;
 	gap: 5em;
 	grid-template-columns: 75% 25%;
-	justify-content: center;
 	margin: 0 0 5% 10%;
+	@include flexgrid(normal, center, normal, normal);
 }
 
 .recipe-card-button {
-	display: flex;
-	flex-direction: column;
-  align-items: center;
+	@include flexbox(column, nowrap, normal, normal, center);
 }
 
 .trash-icon {
@@ -303,8 +283,7 @@ input {
 }
 
 .card-icons {
-	display: flex;
-	justify-content: space-between;
+	@include flexbox(row, nowrap, normal, space-between, normal);
 }
 
 .search-button,
@@ -320,6 +299,12 @@ input {
 	letter-spacing: 2px;
 	min-width: 15em;
   min-height: 4em;
+
+	&:hover {
+		cursor: pointer;
+		background-color: $light-brown;
+		transform: scale(1.1);
+	}
 }
 
 .return-button,
@@ -328,14 +313,6 @@ input {
 	min-width: 10em;
   min-height: 2em;
 	margin: 1em;
-}
-
-.search-button:hover,
-.return-button:hover,
-.check-pantry-btn:hover {
-	cursor: pointer;
-	background-color: $light-brown;
-	transform: scale(1.1);
 }
 
 .search-icon {
@@ -359,6 +336,10 @@ input {
   position: relative;
   display: inline-block;
   text-align: center;
+
+  & a:hover {
+		cursor: default;
+	}
 }
 
 .drop-down-search,
@@ -376,18 +357,12 @@ input {
   box-shadow: $boxShadow;
   color: $offWhite;
 	border: none;
-}
 
-.fav-drop-down-search a,
-.drop-down-search a {
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.drop-down a:hover,
-.fav-drop-down a:hover {
-	cursor: default;
+	& a {
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
 }
 
 .search-buttons {
@@ -397,16 +372,16 @@ input {
 	border: none;
 	font-size: 1em;
 	width: 90%;
-}
+	
+	&:hover {
+		cursor: pointer;
+		background-color: $light-brown;
+	}
 
-.search-buttons:hover {
-	cursor: pointer;
-	background-color: $light-brown;
-}
-
-.search-buttons:disabled {
-  cursor: no-drop;
-  background-color: gray;
+	&:disabled {
+		cursor: no-drop;
+		background-color: gray;
+	}
 }
 
 .drop-down-arrow {
