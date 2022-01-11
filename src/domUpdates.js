@@ -121,6 +121,9 @@ function showFavoritesSection() {
   hide(filterIcons);
   hide(checkPantryBtn);
   hide(pantryCardView);
+  hide(cookInstructions);
+  hide(cantCookInstructions);
+  hide(postSuccessful);
 }
 
 function showToCookSection() {
@@ -137,6 +140,7 @@ function showToCookSection() {
   hide(allSearch);
   hide(pantryCardView);
   hide(cantCookInstructions);
+  hide(postSuccessful);
 }
 
 function showPantryCardSection() {
@@ -147,6 +151,7 @@ function showPantryCardSection() {
   hide(pantryIngredients);
   show(cantCookTitle);
   show(pantryIngredients);
+  hide(postSuccessful);
 }
 
 function showBigRecipeCard() {
@@ -154,6 +159,7 @@ function showBigRecipeCard() {
   hide(recipeCardSection);
   hide(favInstructions);
   hide(pantryCardView);
+  hide(postSuccessful);
 }
 
 function displayToCookMessage() {
@@ -161,9 +167,11 @@ function displayToCookMessage() {
     show(noRecipes);
     hide(favInstructions);
     hide(cookInstructions);
+    hide(postSuccessful);
   } else {
     hide(noRecipes);
     hide(favInstructions);
+    hide(postSuccessful);
   }
 }
 
@@ -172,6 +180,9 @@ function selectPantryMenu() {
   hide(cantCookInstructions);
   hide(cantCookTitle);
   hide(cantCookSection);
+  hide(toCookSection);
+  hide(cookInstructions);
+  hide(postSuccessful);
   displayUserPantry(ingredientsData);
 }
 
@@ -182,6 +193,7 @@ function showCantCookCard() {
   hide(pantryIngredients);
   show(addToCook);
   hide(trashButton);
+  hide(postSuccessful);
 }
 
 function showPostAlert() {
